@@ -147,6 +147,7 @@ public class XList extends Canvas {
 		@Override
 		public void handleMouseReleased(MouseEvent event) {
 			super.handleMouseReleased(event);
+			@SuppressWarnings("unchecked")
 			List<Item> allItems = content.getChildren();
 			for (Item i : allItems) {
 				if(i.value.equals(value)) {
