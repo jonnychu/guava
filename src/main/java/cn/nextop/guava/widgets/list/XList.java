@@ -104,13 +104,11 @@ public class XList extends Canvas {
 		private String value;
 		private boolean select;
 		private boolean enter;
-		private XListItem item;
 		
 		/**
 		 * 
 		 */
 		public Item(XListItem item) {
-			this.item = item; 
 			this.value = item.getValue(); 
 			this.select = item.isSelect();
 		}
