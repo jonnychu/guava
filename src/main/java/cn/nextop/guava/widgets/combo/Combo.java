@@ -14,7 +14,7 @@ import cn.nextop.guava.widgets.combo.model.ComboModel;
 import cn.nextop.guava.widgets.combo.render.ComboPanel;
 
 /**
- * 
+ * @author jonny
  */
 public class Combo extends Canvas {
 	//

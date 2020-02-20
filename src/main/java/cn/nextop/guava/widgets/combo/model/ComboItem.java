@@ -1,9 +1,16 @@
 package cn.nextop.guava.widgets.combo.model;
 
+/**
+ * @author jonny
+ */
 public class ComboItem {
+	//
 	private String value;
 	private boolean select;
 	
+	/**
+	 * 
+	 */
 	public ComboItem(boolean select, String value) {
 		this.value = value; this.select = select;
 	}

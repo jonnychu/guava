@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * 
+ * @author jonny
  */
 public class ComboModel {
 	//
@@ -31,7 +31,6 @@ public class ComboModel {
 			else
 				i.setSelect(true);
 		}
-		
 	}
 	
 	/**

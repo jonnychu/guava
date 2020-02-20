@@ -115,12 +115,11 @@ public class ComboPanel extends Figure {
 	 */
 	protected class Button extends Figure {
 		
-		@Override
-		protected void paintFigure(Graphics g) {
+		@Override protected void paintFigure(Graphics g) {
 			super.paintFigure(g);
 			String icon = model.popup ? caret_up : caret_down;
 			Rectangle rect = getBounds(); g.setFont(FontAwesome.getFont());
-			Dimension d = INSTANCE.getStringExtents(icon, g.getFont());
+			final Dimension d = INSTANCE.getStringExtents(icon, g.getFont());
 			g.drawString(icon, new Point(rect.x + (rect.width - d.width) / 2, rect.y + (rect.height - d.height) / 2));
 		}
 	}

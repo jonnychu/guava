@@ -6,7 +6,7 @@ import org.eclipse.swt.graphics.Font;
 import org.eclipse.swt.widgets.Display;
 
 /**
- * 
+ * @author jonny
  */
 public final class Fonts {
 	//

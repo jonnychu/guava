@@ -8,18 +8,19 @@ import org.eclipse.swt.widgets.Shell;
 
 import cn.nextop.guava.widgets.combo.Combo;
 import cn.nextop.guava.widgets.combo.ComboPopup;
-import cn.nextop.guava.widgets.combo.model.ComboModel;
 
+/**
+ * @author jonny
+ */
 public class PopupLayout {
 	
-	private final int maxH = 200;
+	private final int maxH = 100;
 	
 	/**
 	 * 
 	 */
 	public void layout(Combo combo) {
 		ComboPopup popup = combo.getPopup();
-		ComboModel model = combo.getModel();
 		final Shell shell = popup.getShell();
 		final Display display = shell.getDisplay();
 		final Composite parent = combo.getParent();
@@ -27,8 +28,7 @@ public class PopupLayout {
 		final Rectangle r1 = display.map(parent, null, bounds);
 		final Rectangle r2 = shell.getMonitor().getClientArea();
 		// bound
-		int totalH = model.getInput().size(); if(totalH == 0) totalH = maxH;
-		shell.setSize(bounds.width, 100);
+		shell.setSize(bounds.width, maxH);
 		// location
 		final int margin = 2;
 		final Point size = shell.getSize();

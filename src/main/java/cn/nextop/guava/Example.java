@@ -24,16 +24,14 @@ public class Example {
 		cmp.setLayout(new MigLayout("insets 5, gap 0 0","[fill,grow]","[fill,grow]"));
 		Combo combo = new Combo(cmp, SWT.NONE); combo.setLayoutData("cell 0 0, width 10:150:,height 23!");
 		
-		ComboItem i1 = new ComboItem(false,"hello1");
-		ComboItem i2 = new ComboItem(false,"hello2");
-		ComboItem i3 = new ComboItem(false,"hello3");
-		ComboItem i4 = new ComboItem(false,"hello4");
-		ComboItem i5 = new ComboItem(false,"hello5");
-		ComboItem i6 = new ComboItem(false,"hello6");
-		ComboItem i7 = new ComboItem(true,"hello7");
 		List<ComboItem> r = new ArrayList<>();
-		r.add(i1);r.add(i2);r.add(i3);r.add(i4);r.add(i5);r.add(i6);r.add(i7);
-		System.out.println(r.size());
+		r.add(new ComboItem(true, "hello1"));
+		r.add(new ComboItem(false,"hello2"));
+		r.add(new ComboItem(false,"hello3"));
+		r.add(new ComboItem(false,"hello4"));
+		r.add(new ComboItem(false,"hello5"));
+		r.add(new ComboItem(false,"hello6"));
+		r.add(new ComboItem(false,"hello7"));
 		combo.setInput(r);
 		
 		shell.open(); dispatch(() -> shell.isDisposed());

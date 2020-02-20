@@ -2,6 +2,9 @@ package cn.nextop.guava.widgets.combo.model;
 
 import cn.nextop.guava.widgets.combo.layout.PopupLayout;
 
+/**
+ * @author jonny
+ */
 public class ComboPopupModel {
 	//
 	private PopupLayout layout;

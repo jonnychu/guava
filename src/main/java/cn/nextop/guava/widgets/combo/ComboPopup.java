@@ -14,6 +14,9 @@ import cn.nextop.guava.widgets.combo.model.ComboModel;
 import cn.nextop.guava.widgets.combo.model.ComboPopupModel;
 import cn.nextop.guava.widgets.combo.render.ComboPopupPanel;
 
+/**
+ * @author jonny
+ */
 public class ComboPopup extends FigureCanvas {
 	//
 	private Combo combo;
