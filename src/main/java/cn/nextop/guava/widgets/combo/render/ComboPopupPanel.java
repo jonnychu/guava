@@ -88,7 +88,7 @@ public class ComboPopupPanel extends Figure {
 			Rectangle rect = getBounds(); g.setFont(FontAwesome.getFont(12));
 			final Dimension d = INSTANCE.getStringExtents(icon, g.getFont());
 			if(enter) {
-				g.setBackgroundColor(Colors.cyan);
+				g.setBackgroundColor(Colors.COLOR_CYAN);
 			} else {
 				g.setBackgroundColor(Colors.COLOR_WHITE);
 			}

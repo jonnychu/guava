@@ -52,6 +52,11 @@ public class SwtUtils {
 	/**
 	 * Shell
 	 */
+	public static Shell shell(Shell shell) {
+		Shell parent = new Shell(shell, SWT.NO_TRIM | SWT.ON_TOP);
+		parent.setLayout(new FillLayout()); return parent;
+	}
+	
 	public static Shell creator(int w, int h, String title) {
 		final Shell r = new Shell(); r.setSize(w,h);
 		final Rectangle r1 = r.getMonitor().getBounds(), r2 = r.getBounds();

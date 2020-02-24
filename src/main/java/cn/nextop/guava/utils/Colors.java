@@ -19,32 +19,33 @@ public final class Colors {
 	//
 	public static final Color COLOR_RED = Display.getDefault().getSystemColor(SWT.COLOR_RED);
 	public static final Color COLOR_BLUE = Display.getDefault().getSystemColor(SWT.COLOR_BLUE);
+	public static final Color COLOR_CYAN = Display.getDefault().getSystemColor(SWT.COLOR_CYAN);
+	public static final Color COLOR_GRAY = Display.getDefault().getSystemColor(SWT.COLOR_GRAY);
 	public static final Color COLOR_BLACK = Display.getDefault().getSystemColor(SWT.COLOR_BLACK);
 	public static final Color COLOR_GREEN = Display.getDefault().getSystemColor(SWT.COLOR_GREEN);
 	public static final Color COLOR_WHITE = Display.getDefault().getSystemColor(SWT.COLOR_WHITE);
+	public static final Color COLOR_YELLOW = Display.getDefault().getSystemColor(SWT.COLOR_YELLOW);
+	public static final Color COLOR_MAGENTA = Display.getDefault().getSystemColor(SWT.COLOR_MAGENTA);
+	
+	//
 	public static final Color COLOR_DARK_RED = Display.getDefault().getSystemColor(SWT.COLOR_DARK_RED);
 	public static final Color COLOR_DARK_GRAY = Display.getDefault().getSystemColor(SWT.COLOR_DARK_GRAY);
+	public static final Color COLOR_DARK_BLUE = Display.getDefault().getSystemColor(SWT.COLOR_DARK_BLUE);
+	public static final Color COLOR_DARK_CYAN = Display.getDefault().getSystemColor(SWT.COLOR_DARK_CYAN);
+	public static final Color COLOR_DARK_GREEN = Display.getDefault().getSystemColor(SWT.COLOR_DARK_GREEN);
+	public static final Color COLOR_DARK_YELLOW = Display.getDefault().getSystemColor(SWT.COLOR_DARK_YELLOW);
+	public static final Color COLOR_DARK_MAGENTA = Display.getDefault().getSystemColor(SWT.COLOR_DARK_MAGENTA);
+	
+	//
 	public static final Color COLOR_LIST_BACKGROUND = getDefault().getSystemColor(SWT.COLOR_LIST_BACKGROUND);
 	public static final Color COLOR_WIDGET_FOREGROUND = getDefault().getSystemColor(SWT.COLOR_WIDGET_FOREGROUND);
 	public static final Color COLOR_WIDGET_BACKGROUND = getDefault().getSystemColor(SWT.COLOR_WIDGET_BACKGROUND);
 	public static final Color COLOR_WIDGET_NORMAL_SHADOW = getDefault().getSystemColor(SWT.COLOR_WIDGET_NORMAL_SHADOW);
 	
 	//
-	public static final Color black = getColor(0, 0, 0);
-	public static final Color red = getColor(255, 0, 0);
-	public static final Color blue = getColor(0, 0, 255);
-	public static final Color green = getColor(0, 255, 0);
-	public static final Color cyan = getColor(0, 255, 255);
-	public static final Color gray = getColor(128, 128, 128);
-	public static final Color orange = getColor(255, 196, 0);
-	public static final Color yellow = getColor(255, 255, 0);
-	public static final Color darkBlue = getColor(0, 0, 127);
-	public static final Color white = getColor(255, 255, 255);
-	public static final Color darkGray = getColor(64, 64, 64);
-	public static final Color darkGreen = getColor(0, 127, 0);
-	public static final Color lightGreen = getColor(96, 255, 96);
-	public static final Color lightGray = getColor(192, 192, 192);
-	public static final Color lightBlue = getColor(127, 127, 255);
+	public static final Color COLOR_LIGHT_GREEN = getColor(96, 255, 96);
+	public static final Color COLOR_LIGHT_GRAY = getColor(192, 192, 192);
+	public static final Color COLOR_LIGHT_BLUE = getColor(127, 127, 255);
 	
 	/**
 	 * Color
