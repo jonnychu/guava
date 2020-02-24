@@ -25,7 +25,7 @@ public class PopupPanel extends Figure {
 	 */
 	public CalendarPanel getCalendar() { return calendar; }
 	public ShortcutPanel getShortcut() { return shortcut; }
-
+	
 	/**
 	 * 
 	 */

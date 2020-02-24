@@ -29,7 +29,8 @@ public class XDateTimePopup extends Canvas {
 	 */
 	public XDateTimePopup(XDateTime dateTime) {
 		super(shell(dateTime.getShell()), SWT.DOUBLE_BUFFERED);
-		this.dateTime = dateTime;
+		this.dateTime = dateTime; 
+		this.layout = new Layout();
 		this.lws = new LightweightSystem(this);
 		this.lws.setContents(new PopupPanel(this));
 		
@@ -38,7 +39,7 @@ public class XDateTimePopup extends Canvas {
 	}
 
 	public void show() {
-		layout.layout(dateTime); getShell().open();
+		layout.layout(dateTime, this); getShell().open();
 	}
 	
 	public void hide() {
@@ -57,8 +58,7 @@ public class XDateTimePopup extends Canvas {
 		/**
 		 * 
 		 */
-		public void layout(XDateTime time) {
-			XDateTimePopup popup = time.getPopup();
+		public void layout(XDateTime time, XDateTimePopup popup) {
 			final Shell shell = popup.getShell();
 			final Composite parent = time.getParent();
 			final Rectangle bounds = time.getBounds();
@@ -66,7 +66,7 @@ public class XDateTimePopup extends Canvas {
 			final Rectangle r1 = display.map(parent, null, bounds);
 			final Rectangle r2 = shell.getMonitor().getClientArea();
 			// bound
-			shell.setSize(300, 350);
+			shell.setSize(300, 300);
 			// location
 			final int margin = 2;
 			final Point size = shell.getSize();

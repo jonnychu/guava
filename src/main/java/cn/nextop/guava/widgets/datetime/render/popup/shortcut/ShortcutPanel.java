@@ -1,12 +1,13 @@
 package cn.nextop.guava.widgets.datetime.render.popup.shortcut;
 
+import static org.eclipse.draw2d.TextUtilities.INSTANCE;
+
 import java.util.List;
 
 import org.eclipse.draw2d.Figure;
 import org.eclipse.draw2d.Graphics;
 import org.eclipse.draw2d.MouseEvent;
 import org.eclipse.draw2d.MouseMotionListener;
-import org.eclipse.draw2d.TextUtilities;
 import org.eclipse.draw2d.geometry.Dimension;
 import org.eclipse.draw2d.geometry.Rectangle;
 
@@ -17,7 +18,7 @@ public class ShortcutPanel extends Figure {
 	//
 	private Layout layout;
 	private PopupPanel popupPanel;
-	
+
 	/**
 	 * 
 	 */
@@ -66,10 +67,10 @@ public class ShortcutPanel extends Figure {
 				g.setBackgroundColor(Colors.COLOR_DARK_CYAN);
 			else
 				g.setBackgroundColor(Colors.COLOR_WIDGET_BACKGROUND);
-			g.fillRoundRectangle(rect, 5, 5);
+			g.fillRectangle(rect);
 			
 			//
-			Dimension d1 = TextUtilities.INSTANCE.getStringExtents(text, g.getFont());
+			Dimension d1 = INSTANCE.getStringExtents(text, g.getFont());
 			g.drawString(text, rect.x + 10, rect.y + (rect.height - d1.height) / 2);
 		}
 		
