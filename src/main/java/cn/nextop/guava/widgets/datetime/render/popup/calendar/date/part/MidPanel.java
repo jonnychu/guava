@@ -50,11 +50,6 @@ public class MidPanel extends AbstractPanel {
 	}
 	
 	@Override
-	protected void paintChildren(Graphics graphics) {
-		super.paintChildren(graphics); System.out.println(111);
-	}
-	
-	@Override
 	protected void layoutManager(IFigure container) {
 		// 7 * 7
 		MidPanel parent = (MidPanel)container;
