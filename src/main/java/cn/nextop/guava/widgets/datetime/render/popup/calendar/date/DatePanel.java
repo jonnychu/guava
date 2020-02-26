@@ -1,22 +1,25 @@
 package cn.nextop.guava.widgets.datetime.render.popup.calendar.date;
 
-import org.eclipse.draw2d.Figure;
 import org.eclipse.draw2d.Graphics;
+import org.eclipse.draw2d.IFigure;
 import org.eclipse.draw2d.geometry.Rectangle;
 
 import cn.nextop.guava.utils.Colors;
+import cn.nextop.guava.widgets.datetime.model.XDateTimeModel;
+import cn.nextop.guava.widgets.datetime.render.AbstractPanel;
 import cn.nextop.guava.widgets.datetime.render.popup.calendar.CalendarPanel;
 import cn.nextop.guava.widgets.datetime.render.popup.calendar.date.part.BottomPanel;
 import cn.nextop.guava.widgets.datetime.render.popup.calendar.date.part.MidPanel;
 import cn.nextop.guava.widgets.datetime.render.popup.calendar.date.part.TopPanel;
+import cn.nextop.guava.widgets.datetime.render.utils.DummyCalendar;
 
-public class DatePanel extends Figure {
+public class DatePanel extends AbstractPanel {
 	//
-	private Layout layout;
 	private TopPanel topPanel;
 	private MidPanel midPanel;
 	private CalendarPanel calendar;
 	private BottomPanel bottomPanel;
+	private DummyCalendar dummyCalendar;
 	
 	/**
 	 * 
@@ -25,13 +28,17 @@ public class DatePanel extends Figure {
 	public MidPanel getMidPanel() {	return midPanel; }
 	public CalendarPanel getCalendar() { return calendar; }
 	public BottomPanel getBottomPanel() { return bottomPanel; }
-
+	public DummyCalendar getDummyCalendar() { return dummyCalendar; }
+	
 	/**
 	 * 
 	 */
 	public DatePanel(CalendarPanel calendar) {
 		this.calendar = calendar;
-		this.layout = new Layout();
+		//
+		XDateTimeModel model = getXDateTimeModel();
+		this.dummyCalendar = new DummyCalendar(model.getTime1());
+		//
 		add(topPanel = new TopPanel(this));
 		add(midPanel = new MidPanel(this));
 		add(bottomPanel = new BottomPanel(this));
@@ -45,27 +52,23 @@ public class DatePanel extends Figure {
 	}
 	
 	@Override
-	protected void paintChildren(Graphics g) {
-		super.paintChildren(g); this.layout.layout(this);
+	protected void layoutManager(IFigure container) {
+		DatePanel parent = (DatePanel)container;
+		Rectangle r = parent.getBounds();
+		//
+		TopPanel topPanel = parent.getTopPanel();
+		MidPanel midPanel = parent.getMidPanel();
+		BottomPanel bottomPanel = parent.getBottomPanel();
+		//
+		final int th = 40, bh = 40, mh = r.height - th - bh;
+		final int x = r.x, y = r.y, w = r.width;
+		Rectangle r1 = new Rectangle(x, y, w, th); topPanel.setBounds(r1);
+		Rectangle r2 = new Rectangle(x, r1.height, w, mh); midPanel.setBounds(r2);
+		Rectangle r3 = new Rectangle(x, r1.height + r2.height, w, bh); bottomPanel.setBounds(r3);
+//		System.out.println("date:"+topPanel.getBounds() + "," + midPanel.getBounds() + "," + bottomPanel.getBounds());
 	}
 	
-	/**
-	 * 
-	 */
-	protected class Layout {
-		//
-		public void layout(DatePanel parent) {
-			Rectangle r = parent.getClientArea();
-			//
-			TopPanel topPanel = parent.getTopPanel();
-			MidPanel midPanel = parent.getMidPanel();
-			BottomPanel bottomPanel = parent.getBottomPanel();
-			//
-			final int th = 30, bh = 30, mh = r.height - th - bh;
-			final int x = r.x, y = r.y, w = r.width, h = r.height;
-			topPanel.setBounds(new Rectangle(x, y, w, th));
-			midPanel.setBounds(new Rectangle(x, y, w, mh));
-			bottomPanel.setBounds(new Rectangle(x, h - th - bh, w, bh));
-		}
+	private XDateTimeModel getXDateTimeModel() {
+		return this.calendar.getPopupPanel().getPopup().getDateTime().getModel();
 	}
 }

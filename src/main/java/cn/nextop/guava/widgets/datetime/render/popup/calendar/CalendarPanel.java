@@ -1,16 +1,25 @@
 package cn.nextop.guava.widgets.datetime.render.popup.calendar;
 
-import org.eclipse.draw2d.Figure;
-import org.eclipse.draw2d.Graphics;
+import org.eclipse.draw2d.IFigure;
 
+import cn.nextop.guava.widgets.datetime.render.AbstractPanel;
 import cn.nextop.guava.widgets.datetime.render.popup.PopupPanel;
 import cn.nextop.guava.widgets.datetime.render.popup.calendar.date.DatePanel;
 
-public class CalendarPanel extends Figure {
+/**
+ * @author jonny
+ */
+public class CalendarPanel extends AbstractPanel {
 	//
 	private DatePanel datePanel;
 	private PopupPanel popupPanel;
 	
+	/**
+	 * 
+	 */
+	public DatePanel getDatePanel() { return datePanel; }
+	public PopupPanel getPopupPanel() { return popupPanel; }
+
 	/**
 	 * 
 	 */
@@ -20,12 +29,7 @@ public class CalendarPanel extends Figure {
 	}
 	
 	@Override
-	protected void paintChildren(Graphics g) {
-		super.paintChildren(g); datePanel.setBounds(getBounds());
-	}
-	
-	@Override
-	public boolean isOpaque() {
-		return true;
+	protected void layoutManager(IFigure container) {
+		datePanel.setBounds(container.getBounds());
 	}
 }

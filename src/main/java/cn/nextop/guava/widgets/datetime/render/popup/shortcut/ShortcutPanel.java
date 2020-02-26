@@ -6,46 +6,45 @@ import java.util.List;
 
 import org.eclipse.draw2d.Figure;
 import org.eclipse.draw2d.Graphics;
+import org.eclipse.draw2d.IFigure;
 import org.eclipse.draw2d.MouseEvent;
 import org.eclipse.draw2d.MouseMotionListener;
 import org.eclipse.draw2d.geometry.Dimension;
 import org.eclipse.draw2d.geometry.Rectangle;
 
 import cn.nextop.guava.utils.Colors;
+import cn.nextop.guava.widgets.datetime.render.AbstractPanel;
 import cn.nextop.guava.widgets.datetime.render.popup.PopupPanel;
 
-public class ShortcutPanel extends Figure {
+/**
+ * @author jonny
+ */
+public class ShortcutPanel extends AbstractPanel {
 	//
-	private Layout layout;
 	private PopupPanel popupPanel;
+	
+	/**
+	 * 
+	 */
+	public PopupPanel getPopupPanel() { return popupPanel; }
 
 	/**
 	 * 
 	 */
 	public ShortcutPanel(PopupPanel popupPanel) {
-		this.layout = new Layout();
 		this.popupPanel = popupPanel;
 		add(new Item("NOW")); add(new Item("SOD")); add(new Item("EOD"));
 	}
 	
+	@SuppressWarnings("unchecked")
 	@Override
-	protected void paintChildren(Graphics graphics) {
-		super.paintChildren(graphics); layout.layout(this);
-	}
-	
-	/**
-	 * 
-	 */
-	protected class Layout {
+	protected void layoutManager(IFigure container) {
+		ShortcutPanel parent = (ShortcutPanel)container;
+		Rectangle r = parent.getBounds();
 		//
-		@SuppressWarnings("unchecked")
-		public void layout(ShortcutPanel parent) {
-			Rectangle r = parent.getClientArea();
-			//
-			List<Item> items = parent.getChildren();
-			int p = 0, h = 24; for (Item item : items) {
-				item.setBounds(new Rectangle(r.x, p++ * h, r.width, h));
-			}
+		List<Item> items = parent.getChildren();
+		int p = 0, h = 24; for (Item item : items) {
+			item.setBounds(new Rectangle(r.x, p++ * h, r.width, h));
 		}
 	}
 	
@@ -76,7 +75,7 @@ public class ShortcutPanel extends Figure {
 		
 		@Override
 		public void handleMouseEntered(MouseEvent event) {
-			super.handleMouseEntered(event); selected = true; repaint();
+			super.handleMouseEntered(event); selected = true; repaint(); 
 		}
 		
 		@Override

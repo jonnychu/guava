@@ -21,7 +21,11 @@ public class XDateTimeModel {
 	public String getTime() {
 		return formater_1.format(new Date(time));
 	}
-
+	
+	public long getTime1() {
+		return this.time;
+	}
+	
 	public void setTime(long time) {
 		this.time = time;
 	}

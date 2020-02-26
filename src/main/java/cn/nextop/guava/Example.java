@@ -22,7 +22,7 @@ import net.miginfocom.swt.MigLayout;
 public class Example {
 	public static void main(String[] args) {
 		final String name = "Widget Example";
-		Shell shell = creator(200, 400, name);
+		Shell shell = creator(500, 400, name);
 		Composite cmp = SwtUtils.creator(shell);
 		cmp.setLayout(new MigLayout("insets 5, gap 0 0","[fill,grow]","[fill,grow][fill,grow][fill,grow]"));
 		Combo combo = new Combo(cmp, SWT.NONE); combo.setLayoutData("cell 0 0, width 10:150:,height 23!");

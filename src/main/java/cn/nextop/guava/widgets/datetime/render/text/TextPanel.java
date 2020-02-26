@@ -4,8 +4,8 @@ import static com.patrikdufresne.fontawesome.FontAwesome.calendar_minus_o;
 import static com.patrikdufresne.fontawesome.FontAwesome.calendar_plus_o;
 import static org.eclipse.draw2d.TextUtilities.INSTANCE;
 
-import org.eclipse.draw2d.Figure;
 import org.eclipse.draw2d.Graphics;
+import org.eclipse.draw2d.IFigure;
 import org.eclipse.draw2d.MouseEvent;
 import org.eclipse.draw2d.MouseMotionListener;
 import org.eclipse.draw2d.TextUtilities;
@@ -18,16 +18,16 @@ import cn.nextop.guava.utils.CGUtils;
 import cn.nextop.guava.utils.Colors;
 import cn.nextop.guava.widgets.datetime.XDateTime;
 import cn.nextop.guava.widgets.datetime.model.XDateTimeModel;
+import cn.nextop.guava.widgets.datetime.render.AbstractPanel;
 
 /**
  * @author jonny
  */
-public class TextPanel extends Figure {
+public class TextPanel extends AbstractPanel {
 	//
 	private boolean focus;
 	private XDateTime dateTime;
 	private XDateTimeModel timeModel;
-	private final int margin = 8, arc = 5;
 	
 	/**
 	 * 
@@ -67,4 +67,5 @@ public class TextPanel extends Figure {
 	
 	@Override public void handleMouseExited(MouseEvent event) { focus = false; repaint(); }
 	@Override public void handleMouseEntered(MouseEvent event) { focus = true; repaint(); }
+	@Override protected void layoutManager(IFigure container) {} // no need implement layout;
 }
