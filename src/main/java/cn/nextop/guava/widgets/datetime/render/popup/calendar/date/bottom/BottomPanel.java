@@ -1,16 +1,14 @@
 package cn.nextop.guava.widgets.datetime.render.popup.calendar.date.bottom;
 
-import org.eclipse.draw2d.Figure;
 import org.eclipse.draw2d.Graphics;
 import org.eclipse.draw2d.IFigure;
-import org.eclipse.draw2d.TextUtilities;
-import org.eclipse.draw2d.geometry.Dimension;
 import org.eclipse.draw2d.geometry.Rectangle;
 
 import cn.nextop.guava.utils.Colors;
-import cn.nextop.guava.utils.Fonts;
 import cn.nextop.guava.widgets.datetime.render.AbstractPanel;
 import cn.nextop.guava.widgets.datetime.render.popup.calendar.date.DatePanel;
+import cn.nextop.guava.widgets.datetime.render.popup.calendar.date.bottom.widget.OkButtonWidget;
+import cn.nextop.guava.widgets.datetime.render.popup.calendar.date.bottom.widget.TimeButtonWidget;
 
 /**
  * @author jonny
@@ -18,8 +16,8 @@ import cn.nextop.guava.widgets.datetime.render.popup.calendar.date.DatePanel;
 public class BottomPanel extends AbstractPanel {
 	//
 	private DatePanel datePanel;
-	private OkButton btnOk;
-	private TimeButton btnTime;
+	private OkButtonWidget btnOk;
+	private TimeButtonWidget btnTime;
 	
 	/**
 	 * 
@@ -31,8 +29,8 @@ public class BottomPanel extends AbstractPanel {
 	 */
 	public BottomPanel(DatePanel datePanel) {
 		this.datePanel = datePanel;
-		add(btnOk = new OkButton("Select Time"));
-		add(btnTime = new TimeButton("OK"));
+		add(btnTime = new TimeButtonWidget("OK"));
+		add(btnOk = new OkButtonWidget("Select Time"));
 	}
 	
 	@Override
@@ -52,38 +50,5 @@ public class BottomPanel extends AbstractPanel {
 		int w1 = w / 2 , h1 = h - 4;
 		Rectangle r1 = new Rectangle(x, y + (h - h1) / 2, w1, h1); btnOk.setBounds(r1);
 		Rectangle r2 = new Rectangle(x + r1.width, y + (h - h1) / 2, w1, h1); btnTime.setBounds(r2);
-	}
-	
-	/**
-	 * 
-	 */
-	protected class OkButton extends Figure {
-		private String text;
-		public OkButton(String text) {
-			this.text = text;
-		}
-		
-		@Override
-		protected void paintFigure(Graphics g) {
-			super.paintFigure(g);
-			Rectangle r = getBounds(); g.setFont(Fonts.size(g.getFont(), 2));
-			Dimension d1 = TextUtilities.INSTANCE.getTextExtents(text, g.getFont());
-			g.drawString(text, r.x + (r.width - d1.width) / 2, r.y + (r.height - d1.height) / 2);
-		}
-	}
-	
-	protected class TimeButton extends Figure {
-		private String text;
-		public TimeButton(String text) {
-			this.text = text;
-		}
-		
-		@Override
-		protected void paintFigure(Graphics g) {
-			super.paintFigure(g);
-			Rectangle r = getBounds(); g.setFont(Fonts.size(g.getFont(), 2));
-			Dimension d1 = TextUtilities.INSTANCE.getTextExtents(text, g.getFont());
-			g.drawString(text, r.x + (r.width - d1.width) / 2, r.y + (r.height - d1.height) / 2);
-		}
 	}
 }

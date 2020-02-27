@@ -1,6 +1,5 @@
 package cn.nextop.guava.widgets.datetime.render.popup.calendar.date.mid;
 
-import org.eclipse.draw2d.Graphics;
 import org.eclipse.draw2d.IFigure;
 import org.eclipse.draw2d.geometry.Rectangle;
 
@@ -11,6 +10,9 @@ import cn.nextop.guava.widgets.datetime.render.popup.calendar.date.mid.widget.We
 import cn.nextop.guava.widgets.datetime.render.utils.DummyCalendar;
 import cn.nextop.guava.widgets.datetime.render.utils.DummyModel;
 
+/**
+ * @author jonny
+ */
 public class MidPanel extends AbstractPanel {
 	//
 	private WeekItem[] weeks;
@@ -44,21 +46,6 @@ public class MidPanel extends AbstractPanel {
 			for (int j = 0; j < models[i].length; j++) {
 				DummyModel m = models[i][j];
 				add(dates[i][j] = new DateItem(m.getDay(), m.isEditable()));
-			}
-		}
-	}
-	
-	@Override
-	protected void paintChildren(Graphics g) {
-		// TODO Auto-generated method stub
-		super.paintChildren(g);
-		System.out.println(2222);
-		DummyModel[][] models = datePanel.getDummyCalendar().getCalendar();
-		for (int i = 0; i < models.length; i++) {
-			for (int j = 0; j < models[i].length; j++) {
-				DummyModel m = models[i][j];
-				dates[i][j].setDay(m.getDay());
-				dates[i][j].setEditable(m.isEditable());
 			}
 		}
 	}

@@ -56,8 +56,9 @@ public class YearClickAction {
 		for (int i = 0; i < models.length; i++) {
 			for (int j = 0; j < models[i].length; j++) {
 				DummyModel dm = models[i][j];
-				dates[i][j].setDay(dm.getDay());
 				dates[i][j].setEditable(dm.isEditable());
+				dates[i][j].setText(valueOf(dm.getDay()));
+				dates[i][j].repaint();
 			}
 		}
 	}

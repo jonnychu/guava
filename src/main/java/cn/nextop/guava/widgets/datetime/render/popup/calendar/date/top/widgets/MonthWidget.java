@@ -57,12 +57,6 @@ public class MonthWidget extends AbstractWidget {
 	}
 	
 	@Override
-	public void handleMouseEntered(MouseEvent event) { super.handleMouseEntered(event); this.selected = true; repaint(); }
-	
-	@Override
-	public void handleMouseExited(MouseEvent event) { super.handleMouseExited(event); this.selected = false; repaint(); }
-	
-	@Override
 	public void handleMouseReleased(MouseEvent event) {
 		super.handleMouseReleased(event); MonthClickAction action = new MonthClickAction(type); action.onAction(topPanel);
 	}

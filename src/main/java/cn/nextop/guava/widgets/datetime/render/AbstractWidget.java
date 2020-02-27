@@ -1,6 +1,7 @@
 package cn.nextop.guava.widgets.datetime.render;
 
 import org.eclipse.draw2d.Figure;
+import org.eclipse.draw2d.MouseEvent;
 import org.eclipse.draw2d.MouseListener;
 import org.eclipse.draw2d.MouseMotionListener;
 
@@ -10,11 +11,15 @@ import org.eclipse.draw2d.MouseMotionListener;
 public abstract class AbstractWidget extends Figure {
 	//
 	protected String text;
+	protected boolean clicked;
 	protected boolean editable;
 	protected boolean selected;
 	//
 	protected final int margin = 2, arc = 3;
 	
+	/**
+	 * 
+	 */
 	public AbstractWidget() {
 		addMouseListener(new MouseListener.Stub());
 		addMouseMotionListener(new MouseMotionListener.Stub());
@@ -30,7 +35,15 @@ public abstract class AbstractWidget extends Figure {
 	public void setText(String text) {
 		this.text = text;
 	}
+	
+	public boolean isClicked() {
+		return clicked;
+	}
 
+	public void setClicked(boolean clicked) {
+		this.clicked = clicked;
+	}
+	
 	public boolean isEditable() {
 		return editable;
 	}
@@ -46,4 +59,10 @@ public abstract class AbstractWidget extends Figure {
 	public void setSelected(boolean selected) {
 		this.selected = selected;
 	}
+	
+	@Override
+	public void handleMouseExited(MouseEvent event) { super.handleMouseExited(event); this.selected = false; repaint(); }
+	
+	@Override
+	public void handleMouseEntered(MouseEvent event) { super.handleMouseEntered(event); this.selected = true; repaint(); }
 }
