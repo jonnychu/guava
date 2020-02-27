@@ -1,4 +1,4 @@
-package cn.nextop.guava.widgets.datetime.render.popup.calendar.date.part;
+package cn.nextop.guava.widgets.datetime.render.popup.calendar.date.bottom;
 
 import org.eclipse.draw2d.Figure;
 import org.eclipse.draw2d.Graphics;

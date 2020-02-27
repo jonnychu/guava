@@ -1,0 +1,70 @@
+package cn.nextop.guava.widgets.datetime.render.popup.calendar.date.top.widgets;
+
+import org.eclipse.draw2d.Graphics;
+import org.eclipse.draw2d.MouseEvent;
+import org.eclipse.draw2d.TextUtilities;
+import org.eclipse.draw2d.geometry.Dimension;
+import org.eclipse.draw2d.geometry.Rectangle;
+
+import com.patrikdufresne.fontawesome.FontAwesome;
+
+import cn.nextop.guava.utils.Colors;
+import cn.nextop.guava.utils.Fonts;
+import cn.nextop.guava.widgets.datetime.action.YearClickAction;
+import cn.nextop.guava.widgets.datetime.glossary.Type;
+import cn.nextop.guava.widgets.datetime.render.AbstractWidget;
+import cn.nextop.guava.widgets.datetime.render.popup.calendar.date.top.TopPanel;
+
+/**
+ * @author jonny
+ */
+public class YearWidget extends AbstractWidget {
+	//
+	private Type type;
+	private final TopPanel topPanel;
+	
+	/**
+	 * 
+	 */
+	public YearWidget(TopPanel topPanel, String text, Type type) {
+		this.topPanel = topPanel;
+		this.type = type;
+		this.text = text;
+	}
+	
+	@Override
+	protected void paintFigure(Graphics g) {
+		super.paintFigure(g);
+		Rectangle r = getBounds();
+		if(this.type == Type.DOWN) {
+			if (this.selected) g.setForegroundColor(Colors.COLOR_BLUE);
+			else g.setForegroundColor(Colors.COLOR_DARK_GRAY);
+			g.setFont(FontAwesome.getFont(12));
+			Dimension d1 = TextUtilities.INSTANCE.getStringExtents(text, g.getFont());
+			g.drawString(text, r.x + (r.width - d1.width) / 2, r.y + (r.height - d1.height) / 2);
+		} else if(this.type == Type.UP) {
+			if(this.selected) g.setForegroundColor(Colors.COLOR_BLUE);
+			else g.setForegroundColor(Colors.COLOR_DARK_GRAY);
+			g.setFont(FontAwesome.getFont(12));
+			Dimension d1 = TextUtilities.INSTANCE.getStringExtents(text, g.getFont());
+			g.drawString(text, r.x + (r.width - d1.width) / 2, r.y + (r.height - d1.height) / 2);
+		} else if(this.type == Type.SELECT) {
+			if (this.selected) g.setForegroundColor(Colors.COLOR_BLUE);
+			else g.setForegroundColor(Colors.COLOR_BLACK);
+			g.setFont(Fonts.size(g.getFont(), 3));
+			Dimension d1 = TextUtilities.INSTANCE.getTextExtents(text, g.getFont());
+			g.drawString(text, r.x + (r.width - d1.width) / 2, r.y + (r.height - d1.height) / 2);
+		}
+	}
+	
+	@Override
+	public void handleMouseEntered(MouseEvent event) { super.handleMouseEntered(event); this.selected = true; repaint(); }
+	
+	@Override
+	public void handleMouseExited(MouseEvent event) { super.handleMouseExited(event); this.selected = false; repaint(); }
+	
+	@Override
+	public void handleMouseReleased(MouseEvent event) {
+		super.handleMouseReleased(event); YearClickAction action = new YearClickAction(type); action.onAction(this.topPanel);
+	}
+}

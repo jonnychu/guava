@@ -8,9 +8,9 @@ import cn.nextop.guava.utils.Colors;
 import cn.nextop.guava.widgets.datetime.model.XDateTimeModel;
 import cn.nextop.guava.widgets.datetime.render.AbstractPanel;
 import cn.nextop.guava.widgets.datetime.render.popup.calendar.CalendarPanel;
-import cn.nextop.guava.widgets.datetime.render.popup.calendar.date.part.BottomPanel;
-import cn.nextop.guava.widgets.datetime.render.popup.calendar.date.part.MidPanel;
-import cn.nextop.guava.widgets.datetime.render.popup.calendar.date.part.TopPanel;
+import cn.nextop.guava.widgets.datetime.render.popup.calendar.date.bottom.BottomPanel;
+import cn.nextop.guava.widgets.datetime.render.popup.calendar.date.mid.MidPanel;
+import cn.nextop.guava.widgets.datetime.render.popup.calendar.date.top.TopPanel;
 import cn.nextop.guava.widgets.datetime.render.utils.DummyCalendar;
 
 public class DatePanel extends AbstractPanel {
@@ -65,7 +65,6 @@ public class DatePanel extends AbstractPanel {
 		Rectangle r1 = new Rectangle(x, y, w, th); topPanel.setBounds(r1);
 		Rectangle r2 = new Rectangle(x, r1.height, w, mh); midPanel.setBounds(r2);
 		Rectangle r3 = new Rectangle(x, r1.height + r2.height, w, bh); bottomPanel.setBounds(r3);
-//		System.out.println("date:"+topPanel.getBounds() + "," + midPanel.getBounds() + "," + bottomPanel.getBounds());
 	}
 	
 	private XDateTimeModel getXDateTimeModel() {

@@ -71,7 +71,7 @@ public class XDateTimePopup extends Canvas {
 			final Rectangle r1 = display.map(parent, null, bounds);
 			final Rectangle r2 = shell.getMonitor().getClientArea();
 			// bound
-			shell.setSize(300, 300);
+			shell.setSize(320, 300);
 			// location
 			final int margin = 2;
 			final Point size = shell.getSize();

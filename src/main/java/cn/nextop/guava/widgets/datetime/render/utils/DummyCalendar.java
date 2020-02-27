@@ -15,8 +15,9 @@ import java.util.stream.Collectors;
 public class DummyCalendar {
 	//
 	private int year, month, day;
+	private Calendar calendar;
 	//
-	private DateFormatSymbols symbols = new DateFormatSymbols(Locale.ENGLISH);
+	private DateFormatSymbols symbols;
 	
 	/**
 	 * 
@@ -27,20 +28,48 @@ public class DummyCalendar {
 	public void setMonth(int month) { this.month = month; }
 	public int getDay() { return day; }
 	public void setDay(int day) { this.day = day; }
-
+	
 	/**
 	 * 
 	 */
 	public DummyCalendar(long date) {
-		Calendar c = new GregorianCalendar(Locale.ENGLISH);
-		c.setTime(new Date(date));
-		this.year = c.get(Calendar.YEAR); 
-		this.month = c.get(Calendar.MONTH); 
-		this.day = c.get(Calendar.DATE);
+		this.symbols = new DateFormatSymbols(Locale.ENGLISH);
+		this.calendar = new GregorianCalendar(Locale.ENGLISH);
+		calendar.setTime(new Date(date));
+		this.day = calendar.get(Calendar.DATE);
+		this.year = calendar.get(Calendar.YEAR); 
+		this.month = calendar.get(Calendar.MONTH); 
 	}
 	
 	public DummyCalendar(int year, int month, int day) {
 		this.year = year; this.month = month; this.day = day;
+	}
+	
+	/**
+	 * 
+	 */
+	public int nextYear() {
+		calendar.add(Calendar.YEAR, 1);
+		return this.year = calendar.get(Calendar.YEAR);
+	}
+
+	public int prevYear() {
+		calendar.add(Calendar.YEAR, -1);
+		return this.year = calendar.get(Calendar.YEAR);
+	}
+
+	public String nextMonth() {
+		calendar.add(Calendar.MONTH, 1);
+		this.year = calendar.get(Calendar.YEAR);
+		this.month = calendar.get(Calendar.MONTH);
+		return getMonthSymbol();
+	}
+
+	public String prevMonth() {
+		calendar.add(Calendar.MONTH, -1);
+		this.year = calendar.get(Calendar.YEAR);
+		this.month = calendar.get(Calendar.MONTH);
+		return getMonthSymbol();
 	}
 	
 	/**
@@ -89,6 +118,12 @@ public class DummyCalendar {
 	}
 	
 	public static void main(String[] args) {
-		new DummyCalendar(2020, 1, 1).getCalendar();
+		DummyModel[][] model = new DummyCalendar(2020, 0, 1).getCalendar();
+		for (int i = 0; i < 6; i++) {
+			for (int j = 0; j < 7; j++) {
+				System.out.print(model[i][j].getDay()); System.out.print("\t");
+			}
+			System.out.println();
+		}
 	}
 }

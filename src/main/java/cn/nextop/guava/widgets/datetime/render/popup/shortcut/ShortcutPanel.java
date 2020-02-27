@@ -4,16 +4,15 @@ import static org.eclipse.draw2d.TextUtilities.INSTANCE;
 
 import java.util.List;
 
-import org.eclipse.draw2d.Figure;
 import org.eclipse.draw2d.Graphics;
 import org.eclipse.draw2d.IFigure;
 import org.eclipse.draw2d.MouseEvent;
-import org.eclipse.draw2d.MouseMotionListener;
 import org.eclipse.draw2d.geometry.Dimension;
 import org.eclipse.draw2d.geometry.Rectangle;
 
 import cn.nextop.guava.utils.Colors;
 import cn.nextop.guava.widgets.datetime.render.AbstractPanel;
+import cn.nextop.guava.widgets.datetime.render.AbstractWidget;
 import cn.nextop.guava.widgets.datetime.render.popup.PopupPanel;
 
 /**
@@ -48,24 +47,16 @@ public class ShortcutPanel extends AbstractPanel {
 		}
 	}
 	
-	protected class Item extends Figure {
-		//
-		private String text = "";
-		private boolean selected;
-		
+	protected class Item extends AbstractWidget {
 		public Item(String text) {
 			this.text = text;
-			addMouseMotionListener(new MouseMotionListener.Stub());
 		}
 		
 		@Override
 		protected void paintFigure(Graphics g) {
 			super.paintFigure(g);
 			Rectangle rect = getBounds();
-			if(selected)
-				g.setBackgroundColor(Colors.COLOR_DARK_CYAN);
-			else
-				g.setBackgroundColor(Colors.COLOR_WIDGET_BACKGROUND);
+			if(selected) g.setBackgroundColor(Colors.COLOR_CYAN);
 			g.fillRectangle(rect);
 			
 			//
@@ -74,13 +65,9 @@ public class ShortcutPanel extends AbstractPanel {
 		}
 		
 		@Override
-		public void handleMouseEntered(MouseEvent event) {
-			super.handleMouseEntered(event); selected = true; repaint(); 
-		}
+		public void handleMouseEntered(MouseEvent event) { super.handleMouseEntered(event); selected = true; repaint(); }
 		
 		@Override
-		public void handleMouseExited(MouseEvent event) {
-			super.handleMouseExited(event); selected = false; repaint();
-		}
+		public void handleMouseExited(MouseEvent event) { super.handleMouseExited(event); selected = false; repaint(); }
 	}
 }
