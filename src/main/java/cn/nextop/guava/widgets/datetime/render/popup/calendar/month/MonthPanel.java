@@ -106,18 +106,18 @@ public class MonthPanel extends AbstractPanel {
 			}
 		}
 		
-		// line
-		{
-			line1.setBounds(new Rectangle(x, th, w, space));
-			line2.setBounds(new Rectangle(x, h - bh, w, space));
-		}
-		
 		// h = 40
 		final int sy2 = th + mh - space;
 		{
 			int w1 = w / 2 , h1 = bh - 4;
 			Rectangle r1 = new Rectangle(x, sy2 + (bh - h1) / 2, w1, h1); btnOk.setBounds(r1);
 			Rectangle r2 = new Rectangle(x + r1.width, sy2 + (bh - h1) / 2, w1, h1); btnTime.setBounds(r2);
+		}
+		
+		// line
+		{
+			line1.setBounds(new Rectangle(x, th, w, space));
+			line2.setBounds(new Rectangle(x, h - bh, w, space));
 		}
 	}
 	

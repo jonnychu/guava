@@ -16,6 +16,9 @@ public class MonthItemWidget extends AbstractWidget {
 	//
 	private int month;
 	
+	/**
+	 * 
+	 */
 	public int getMonth() { return month; }
 
 	/**
@@ -27,8 +30,7 @@ public class MonthItemWidget extends AbstractWidget {
 	
 	@Override
 	protected void paintFigure(Graphics g) {
-		super.paintFigure(g);
-		Rectangle r = getBounds();
+		super.paintFigure(g); final Rectangle r = getBounds();
 		Dimension d1 = TextUtilities.INSTANCE.getTextExtents(text, g.getFont());
 		if(selected) {
 			g.setBackgroundColor(Colors.COLOR_CYAN);

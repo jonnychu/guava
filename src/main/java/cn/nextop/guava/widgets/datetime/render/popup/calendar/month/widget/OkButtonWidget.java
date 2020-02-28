@@ -24,7 +24,7 @@ public class OkButtonWidget extends AbstractWidget {
 	@Override
 	protected void paintFigure(Graphics g) {
 		super.paintFigure(g);
-		Rectangle r = getBounds(); g.setFont(Fonts.size(g.getFont(), 2));
+		final Rectangle r = getBounds(); g.setFont(Fonts.size(g.getFont(), 2));
 		Dimension d1 = TextUtilities.INSTANCE.getTextExtents(text, g.getFont());
 		if(selected) {
 			g.setBackgroundColor(Colors.COLOR_CYAN);
