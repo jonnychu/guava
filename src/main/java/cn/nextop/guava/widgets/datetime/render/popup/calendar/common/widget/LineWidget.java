@@ -1,4 +1,4 @@
-package cn.nextop.guava.widgets.datetime.render.popup.calendar.common;
+package cn.nextop.guava.widgets.datetime.render.popup.calendar.common.widget;
 
 import org.eclipse.draw2d.Graphics;
 import org.eclipse.draw2d.geometry.Rectangle;
