@@ -14,9 +14,8 @@ import java.util.stream.Collectors;
  */
 public class DummyCalendar {
 	//
-	private int year, month, day;
 	private Calendar calendar;
-	//
+	private int year, month, day;
 	private DateFormatSymbols symbols;
 	
 	/**
@@ -72,6 +71,17 @@ public class DummyCalendar {
 		return getMonthSymbol();
 	}
 	
+	/**
+	 * 
+	 */
+	public String[] getYearSymbols() {
+		int y = this.year; 
+		final String[] r = new String[12];
+		for (int i = 0; i < r.length; i++, y++) {
+			r[i] = String.valueOf(y);
+		}
+		return r;
+	}
 	/**
 	 * 
 	 */

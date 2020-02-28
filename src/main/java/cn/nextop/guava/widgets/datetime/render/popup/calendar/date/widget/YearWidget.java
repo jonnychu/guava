@@ -55,6 +55,6 @@ public class YearWidget extends AbstractWidget {
 	
 	@Override
 	public void handleMouseReleased(MouseEvent event) {
-		super.handleMouseReleased(event); YearClickAction action = new YearClickAction(type); action.onAction(getParent());
+		super.handleMouseReleased(event); new YearClickAction(type).onAction(getParent());
 	}
 }

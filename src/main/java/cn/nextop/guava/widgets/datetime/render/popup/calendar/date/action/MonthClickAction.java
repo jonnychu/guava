@@ -4,6 +4,7 @@ import static java.lang.String.valueOf;
 
 import org.eclipse.draw2d.IFigure;
 
+import cn.nextop.guava.widgets.datetime.glossary.PanelType;
 import cn.nextop.guava.widgets.datetime.glossary.Type;
 import cn.nextop.guava.widgets.datetime.model.DummyCalendar;
 import cn.nextop.guava.widgets.datetime.model.DummyModel;
@@ -39,9 +40,8 @@ public class MonthClickAction {
 		
 		// get data
 		if(this.type == Type.SELECT) {
+			calendarPanel.panel(PanelType.MONTH);
 			monthPanel.getSelectYear().setText(valueOf(calendar.getYear()));
-			datePanel.setVisible(false);
-			monthPanel.setVisible(true);
 		} else {
 			String m = "", y = "";
 			if(this.type == Type.DOWN) {

@@ -26,7 +26,6 @@ import cn.nextop.guava.widgets.datetime.render.popup.calendar.month.widget.YearW
  */
 public class MonthPanel extends AbstractPanel {
 	//
-	private MonthPanel monthPanel;
 	private CalendarPanel calendarPanel;
 	private DummyCalendar dummyCalendar;
 	//
@@ -43,7 +42,6 @@ public class MonthPanel extends AbstractPanel {
 	public MonthItemWidget[][] getDates() {	return dates; }
 	public YearWidget getRollUpYear() { return rollUpYear; }
 	public YearWidget getSelectYear() { return selectYear; }
-	public MonthPanel getMonthPanel() { return monthPanel; }
 	public TimeButtonWidget getBtnTime() { return btnTime; }
 	public YearWidget getRollDownYear() { return rollDownYear; }
 	public CalendarPanel getalendarPanel() { return calendarPanel; }
