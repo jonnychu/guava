@@ -5,12 +5,12 @@ import static java.lang.String.valueOf;
 import org.eclipse.draw2d.Figure;
 
 import cn.nextop.guava.widgets.datetime.glossary.Type;
+import cn.nextop.guava.widgets.datetime.model.DummyCalendar;
+import cn.nextop.guava.widgets.datetime.model.DummyModel;
 import cn.nextop.guava.widgets.datetime.render.popup.calendar.date.DatePanel;
 import cn.nextop.guava.widgets.datetime.render.popup.calendar.date.widget.DateItemWidget;
 import cn.nextop.guava.widgets.datetime.render.popup.calendar.date.widget.MonthWidget;
 import cn.nextop.guava.widgets.datetime.render.popup.calendar.date.widget.YearWidget;
-import cn.nextop.guava.widgets.datetime.utils.DummyCalendar;
-import cn.nextop.guava.widgets.datetime.utils.DummyModel;
 
 /**
  * @author jonny

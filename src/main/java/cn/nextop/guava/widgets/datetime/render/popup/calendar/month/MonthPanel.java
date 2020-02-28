@@ -11,6 +11,7 @@ import org.eclipse.draw2d.geometry.Rectangle;
 
 import cn.nextop.guava.utils.Colors;
 import cn.nextop.guava.widgets.datetime.glossary.Type;
+import cn.nextop.guava.widgets.datetime.model.DummyCalendar;
 import cn.nextop.guava.widgets.datetime.model.XDateTimeModel;
 import cn.nextop.guava.widgets.datetime.render.AbstractPanel;
 import cn.nextop.guava.widgets.datetime.render.popup.calendar.CalendarPanel;
@@ -19,7 +20,6 @@ import cn.nextop.guava.widgets.datetime.render.popup.calendar.month.widget.Month
 import cn.nextop.guava.widgets.datetime.render.popup.calendar.month.widget.OkButtonWidget;
 import cn.nextop.guava.widgets.datetime.render.popup.calendar.month.widget.TimeButtonWidget;
 import cn.nextop.guava.widgets.datetime.render.popup.calendar.month.widget.YearWidget;
-import cn.nextop.guava.widgets.datetime.utils.DummyCalendar;
 
 /**
  * @author jonny
