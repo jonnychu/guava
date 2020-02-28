@@ -41,7 +41,7 @@ public class MonthClickAction {
 		
 		// get data
 		if(this.type == Type.SELECT) {
-			monthPanel.getTopPanel().getSelectYear().setText(valueOf(calendar.getYear()));
+			monthPanel.getSelectYear().setText(valueOf(calendar.getYear()));
 			datePanel.setVisible(false);
 			monthPanel.setVisible(true);
 		} else {

@@ -1,4 +1,4 @@
-package cn.nextop.guava.widgets.datetime.render.popup.calendar.month.bottom.widget;
+package cn.nextop.guava.widgets.datetime.render.popup.calendar.month.widget;
 
 import org.eclipse.draw2d.Graphics;
 import org.eclipse.draw2d.TextUtilities;
@@ -13,11 +13,11 @@ import cn.nextop.guava.widgets.datetime.render.AbstractWidget;
 /**
  * @author jonny
  */
-public class TimeButtonWidget extends AbstractWidget {
+public class OkButtonWidget extends AbstractWidget {
 	/**
 	 * 
 	 */
-	public TimeButtonWidget(String text) {
+	public OkButtonWidget(String text) {
 		this.text = text;
 	}
 	
