@@ -9,8 +9,8 @@ import cn.nextop.guava.widgets.datetime.render.AbstractPanel;
 import cn.nextop.guava.widgets.datetime.render.popup.calendar.date.DatePanel;
 import cn.nextop.guava.widgets.datetime.render.popup.calendar.date.mid.widget.DateItem;
 import cn.nextop.guava.widgets.datetime.render.popup.calendar.date.mid.widget.WeekItem;
-import cn.nextop.guava.widgets.datetime.render.utils.DummyCalendar;
-import cn.nextop.guava.widgets.datetime.render.utils.DummyModel;
+import cn.nextop.guava.widgets.datetime.utils.DummyCalendar;
+import cn.nextop.guava.widgets.datetime.utils.DummyModel;
 
 /**
  * @author jonny

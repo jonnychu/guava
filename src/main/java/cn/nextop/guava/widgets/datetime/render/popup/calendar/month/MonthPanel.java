@@ -11,7 +11,7 @@ import cn.nextop.guava.widgets.datetime.render.popup.calendar.CalendarPanel;
 import cn.nextop.guava.widgets.datetime.render.popup.calendar.month.bottom.BottomPanel;
 import cn.nextop.guava.widgets.datetime.render.popup.calendar.month.mid.MidPanel;
 import cn.nextop.guava.widgets.datetime.render.popup.calendar.month.top.TopPanel;
-import cn.nextop.guava.widgets.datetime.render.utils.DummyCalendar;
+import cn.nextop.guava.widgets.datetime.utils.DummyCalendar;
 
 public class MonthPanel extends AbstractPanel {
 	//

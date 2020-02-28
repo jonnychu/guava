@@ -12,8 +12,8 @@ import cn.nextop.guava.widgets.datetime.render.popup.calendar.date.top.TopPanel;
 import cn.nextop.guava.widgets.datetime.render.popup.calendar.date.top.widgets.MonthWidget;
 import cn.nextop.guava.widgets.datetime.render.popup.calendar.date.top.widgets.YearWidget;
 import cn.nextop.guava.widgets.datetime.render.popup.calendar.month.MonthPanel;
-import cn.nextop.guava.widgets.datetime.render.utils.DummyCalendar;
-import cn.nextop.guava.widgets.datetime.render.utils.DummyModel;
+import cn.nextop.guava.widgets.datetime.utils.DummyCalendar;
+import cn.nextop.guava.widgets.datetime.utils.DummyModel;
 
 /**
  * @author jonny
