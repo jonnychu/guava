@@ -1,8 +1,8 @@
-package cn.nextop.guava.widgets.datetime.action;
+package cn.nextop.guava.widgets.datetime.render.popup.calendar.date.action;
 
 import static java.lang.String.valueOf;
 
-import org.eclipse.draw2d.Figure;
+import org.eclipse.draw2d.IFigure;
 
 import cn.nextop.guava.widgets.datetime.glossary.Type;
 import cn.nextop.guava.widgets.datetime.model.DummyCalendar;
@@ -31,7 +31,7 @@ public class MonthClickAction {
 	/**
 	 * 
 	 */
-	public void onAction(Figure container) {
+	public void onAction(IFigure container) {
 		final DatePanel datePanel = (DatePanel)container;
 		final DummyCalendar calendar = datePanel.getDummyCalendar();
 		final CalendarPanel calendarPanel = datePanel.getCalendar();

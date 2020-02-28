@@ -12,6 +12,7 @@ import cn.nextop.guava.utils.Colors;
 import cn.nextop.guava.utils.Fonts;
 import cn.nextop.guava.widgets.datetime.glossary.Type;
 import cn.nextop.guava.widgets.datetime.render.AbstractWidget;
+import cn.nextop.guava.widgets.datetime.render.popup.calendar.date.action.YearClickAction;
 
 /**
  * @author jonny
@@ -54,6 +55,6 @@ public class YearWidget extends AbstractWidget {
 	
 	@Override
 	public void handleMouseReleased(MouseEvent event) {
-//		super.handleMouseReleased(event); YearClickAction action = new YearClickAction(type); action.onAction(this.topPanel);
+		super.handleMouseReleased(event); YearClickAction action = new YearClickAction(type); action.onAction(getParent());
 	}
 }
