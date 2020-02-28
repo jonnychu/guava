@@ -75,12 +75,12 @@ public class DummyCalendar {
 	/**
 	 * 
 	 */
-	public String getMonthSymbol() {
-		return this.symbols.getShortMonths()[this.month];
-	}
-	
 	public String getMonthSymbol(int index) {
 		return this.symbols.getShortMonths()[index];
+	}
+	
+	public String getMonthSymbol() {
+		return this.symbols.getShortMonths()[this.month];
 	}
 	
 	public String[] getWeekSymbols() {

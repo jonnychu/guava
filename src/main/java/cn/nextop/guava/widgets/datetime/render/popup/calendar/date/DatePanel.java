@@ -13,6 +13,9 @@ import cn.nextop.guava.widgets.datetime.render.popup.calendar.date.mid.MidPanel;
 import cn.nextop.guava.widgets.datetime.render.popup.calendar.date.top.TopPanel;
 import cn.nextop.guava.widgets.datetime.render.utils.DummyCalendar;
 
+/**
+ * @author jonny
+ */
 public class DatePanel extends AbstractPanel {
 	//
 	private TopPanel topPanel;

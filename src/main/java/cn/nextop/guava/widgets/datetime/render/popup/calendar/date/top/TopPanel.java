@@ -23,7 +23,7 @@ import cn.nextop.guava.widgets.datetime.render.utils.DummyCalendar;
  */
 public class TopPanel extends AbstractPanel {
 	//
-	DatePanel datePanel;
+	private DatePanel datePanel;
 	private DummyCalendar dummyCalendar;
 	private YearWidget rollDownYear, rollUpYear, selectYear;
 	private MonthWidget rollDownMonth, rollUpMonth, selectMonth;

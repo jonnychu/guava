@@ -1,5 +1,7 @@
 package cn.nextop.guava.widgets.datetime.render.popup.calendar.date.mid;
 
+import static java.lang.Math.min;
+
 import org.eclipse.draw2d.IFigure;
 import org.eclipse.draw2d.geometry.Rectangle;
 
@@ -56,18 +58,18 @@ public class MidPanel extends AbstractPanel {
 		MidPanel parent = (MidPanel)container;
 		final Rectangle r = parent.getBounds();
 		final int x = r.x, y = r.y, w = r.width, h = r.height;
-		int aw = w / 7, ah = h / 7;
-		int amin = aw < ah ? aw : ah, amax = aw > ah ? aw : ah;
+		final int w1 = min( h / 7, w / 7), margin1 = (w - w1 * 7) / 8;
+		
 		// title
 		for (int i = 0; i < weeks.length; i++) {
-			weeks[i].setBounds(new Rectangle(x + i * amax, y, amin, amin));
+			weeks[i].setBounds(new Rectangle(margin1 * (i + 1) + x + i * w1, margin1 + y, w1, w1));
 			
 		}
 		// 
-		int ty = y + amax;
+		int ty = y + w1 + margin1;
 		for (int i = 0; i < dates.length; i++) {
 			for (int j = 0; j < dates[i].length; j++) {
-				dates[i][j].setBounds(new Rectangle(x + j * amax, ty + amin * i, amin, amin));
+				dates[i][j].setBounds(new Rectangle(margin1 * (j + 1) + x + j * w1, margin1 * (i + 1) + ty + w1 * i, w1, w1));
 			}
 		}
 	}

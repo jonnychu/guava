@@ -58,6 +58,5 @@ public class PopupPanel extends AbstractPanel {
 		int w1 = (int)(r.width * 0.3), w2 = r.width - w1;
 		Rectangle r1 = new Rectangle(r.x, r.y, w1, r.height); shortcut.setBounds(r1);
 		Rectangle r2 = new Rectangle(r.x + w1, r.y, w2, r.height); calendar.setBounds(r2);
-//		System.out.println("1 " + shortcut.getBounds() + ", 2 " + calendar.getBounds());
 	}
 }
