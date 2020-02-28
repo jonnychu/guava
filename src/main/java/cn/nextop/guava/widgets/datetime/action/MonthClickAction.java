@@ -7,10 +7,9 @@ import org.eclipse.draw2d.Figure;
 import cn.nextop.guava.widgets.datetime.glossary.Type;
 import cn.nextop.guava.widgets.datetime.render.popup.calendar.CalendarPanel;
 import cn.nextop.guava.widgets.datetime.render.popup.calendar.date.DatePanel;
-import cn.nextop.guava.widgets.datetime.render.popup.calendar.date.mid.widget.DateItem;
-import cn.nextop.guava.widgets.datetime.render.popup.calendar.date.top.TopPanel;
-import cn.nextop.guava.widgets.datetime.render.popup.calendar.date.top.widgets.MonthWidget;
-import cn.nextop.guava.widgets.datetime.render.popup.calendar.date.top.widgets.YearWidget;
+import cn.nextop.guava.widgets.datetime.render.popup.calendar.date.widget.DateItemWidget;
+import cn.nextop.guava.widgets.datetime.render.popup.calendar.date.widget.MonthWidget;
+import cn.nextop.guava.widgets.datetime.render.popup.calendar.date.widget.YearWidget;
 import cn.nextop.guava.widgets.datetime.render.popup.calendar.month.MonthPanel;
 import cn.nextop.guava.widgets.datetime.utils.DummyCalendar;
 import cn.nextop.guava.widgets.datetime.utils.DummyModel;
@@ -33,8 +32,7 @@ public class MonthClickAction {
 	 * 
 	 */
 	public void onAction(Figure container) {
-		final TopPanel topPanel = (TopPanel)container;
-		final DatePanel datePanel = topPanel.getDatePanel();
+		final DatePanel datePanel = (DatePanel)container;
 		final DummyCalendar calendar = datePanel.getDummyCalendar();
 		final CalendarPanel calendarPanel = datePanel.getCalendar();
 		final MonthPanel monthPanel = calendarPanel.getMonthPanel();
@@ -55,12 +53,12 @@ public class MonthClickAction {
 			}
 			
 			// update ui
-			final YearWidget year = topPanel.getSelectYear();
-			final MonthWidget month = topPanel.getSelectMonth();
+			final YearWidget year = datePanel.getSelectYear();
+			final MonthWidget month = datePanel.getSelectMonth();
 			year.setText(y); month.setText(m); year.repaint(); month.repaint();
 			
 			// update date
-			DateItem[][] dates = datePanel.getMidPanel().getDates();
+			DateItemWidget[][] dates = datePanel.getDates();
 			DummyModel[][] models = datePanel.getDummyCalendar().getCalendar();
 			for (int i = 0; i < models.length; i++) {
 				for (int j = 0; j < models[i].length; j++) {

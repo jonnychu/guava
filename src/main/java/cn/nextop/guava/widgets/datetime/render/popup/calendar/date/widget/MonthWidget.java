@@ -1,4 +1,4 @@
-package cn.nextop.guava.widgets.datetime.render.popup.calendar.date.top.widgets;
+package cn.nextop.guava.widgets.datetime.render.popup.calendar.date.widget;
 
 import org.eclipse.draw2d.Graphics;
 import org.eclipse.draw2d.MouseEvent;
@@ -10,23 +10,17 @@ import com.patrikdufresne.fontawesome.FontAwesome;
 
 import cn.nextop.guava.utils.Colors;
 import cn.nextop.guava.utils.Fonts;
-import cn.nextop.guava.widgets.datetime.action.MonthClickAction;
 import cn.nextop.guava.widgets.datetime.glossary.Type;
 import cn.nextop.guava.widgets.datetime.render.AbstractWidget;
-import cn.nextop.guava.widgets.datetime.render.popup.calendar.date.top.TopPanel;
 
 public class MonthWidget extends AbstractWidget {
-	/**
-	 * 
-	 */
+	//
 	private Type type;
-	private TopPanel topPanel;
 	
 	/**
 	 * 
 	 */
-	public MonthWidget(TopPanel topPanel, String text, Type type) {
-		this.topPanel = topPanel;
+	public MonthWidget(String text, Type type) {
 		this.type = type;
 		this.text = text;
 	}
@@ -58,6 +52,6 @@ public class MonthWidget extends AbstractWidget {
 	
 	@Override
 	public void handleMouseReleased(MouseEvent event) {
-		super.handleMouseReleased(event); MonthClickAction action = new MonthClickAction(type); action.onAction(topPanel);
+//		super.handleMouseReleased(event); MonthClickAction action = new MonthClickAction(type); action.onAction(topPanel);
 	}
 }

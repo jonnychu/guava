@@ -6,10 +6,9 @@ import org.eclipse.draw2d.Figure;
 
 import cn.nextop.guava.widgets.datetime.glossary.Type;
 import cn.nextop.guava.widgets.datetime.render.popup.calendar.date.DatePanel;
-import cn.nextop.guava.widgets.datetime.render.popup.calendar.date.mid.widget.DateItem;
-import cn.nextop.guava.widgets.datetime.render.popup.calendar.date.top.TopPanel;
-import cn.nextop.guava.widgets.datetime.render.popup.calendar.date.top.widgets.MonthWidget;
-import cn.nextop.guava.widgets.datetime.render.popup.calendar.date.top.widgets.YearWidget;
+import cn.nextop.guava.widgets.datetime.render.popup.calendar.date.widget.DateItemWidget;
+import cn.nextop.guava.widgets.datetime.render.popup.calendar.date.widget.MonthWidget;
+import cn.nextop.guava.widgets.datetime.render.popup.calendar.date.widget.YearWidget;
 import cn.nextop.guava.widgets.datetime.utils.DummyCalendar;
 import cn.nextop.guava.widgets.datetime.utils.DummyModel;
 
@@ -31,9 +30,8 @@ public class YearClickAction {
 	 * 
 	 */
 	public void onAction(Figure container) {
-		final TopPanel topPanel = (TopPanel)container;
-		final DatePanel panel = topPanel.getDatePanel();
-		final DummyCalendar calendar = panel.getDummyCalendar();
+		final DatePanel datePanel = (DatePanel)container;
+		final DummyCalendar calendar = datePanel.getDummyCalendar();
 		
 		// get data
 		String m = "", y = "";
@@ -46,13 +44,13 @@ public class YearClickAction {
 		}
 		
 		// update top ui
-		final YearWidget year = topPanel.getSelectYear();
-		final MonthWidget month = topPanel.getSelectMonth();
+		final YearWidget year = datePanel.getSelectYear();
+		final MonthWidget month = datePanel.getSelectMonth();
 		year.setText(y); month.setText(m); year.repaint(); month.repaint();
 		
 		// update date
-		DateItem[][] dates = panel.getMidPanel().getDates();
-		DummyModel[][] models = panel.getDummyCalendar().getCalendar();
+		DateItemWidget[][] dates = datePanel.getDates();
+		DummyModel[][] models = datePanel.getDummyCalendar().getCalendar();
 		for (int i = 0; i < models.length; i++) {
 			for (int j = 0; j < models[i].length; j++) {
 				DummyModel dm = models[i][j];

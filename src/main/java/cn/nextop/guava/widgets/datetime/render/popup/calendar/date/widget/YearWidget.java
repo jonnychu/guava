@@ -1,4 +1,4 @@
-package cn.nextop.guava.widgets.datetime.render.popup.calendar.date.top.widgets;
+package cn.nextop.guava.widgets.datetime.render.popup.calendar.date.widget;
 
 import org.eclipse.draw2d.Graphics;
 import org.eclipse.draw2d.MouseEvent;
@@ -10,10 +10,8 @@ import com.patrikdufresne.fontawesome.FontAwesome;
 
 import cn.nextop.guava.utils.Colors;
 import cn.nextop.guava.utils.Fonts;
-import cn.nextop.guava.widgets.datetime.action.YearClickAction;
 import cn.nextop.guava.widgets.datetime.glossary.Type;
 import cn.nextop.guava.widgets.datetime.render.AbstractWidget;
-import cn.nextop.guava.widgets.datetime.render.popup.calendar.date.top.TopPanel;
 
 /**
  * @author jonny
@@ -21,15 +19,12 @@ import cn.nextop.guava.widgets.datetime.render.popup.calendar.date.top.TopPanel;
 public class YearWidget extends AbstractWidget {
 	//
 	private Type type;
-	private final TopPanel topPanel;
 	
 	/**
 	 * 
 	 */
-	public YearWidget(TopPanel topPanel, String text, Type type) {
-		this.topPanel = topPanel;
-		this.type = type;
-		this.text = text;
+	public YearWidget(String text, Type type) {
+		this.type = type; this.text = text;
 	}
 	
 	@Override
@@ -59,6 +54,6 @@ public class YearWidget extends AbstractWidget {
 	
 	@Override
 	public void handleMouseReleased(MouseEvent event) {
-		super.handleMouseReleased(event); YearClickAction action = new YearClickAction(type); action.onAction(this.topPanel);
+//		super.handleMouseReleased(event); YearClickAction action = new YearClickAction(type); action.onAction(this.topPanel);
 	}
 }
