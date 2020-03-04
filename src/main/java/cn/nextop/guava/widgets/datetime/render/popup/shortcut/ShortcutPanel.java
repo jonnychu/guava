@@ -1,8 +1,6 @@
 package cn.nextop.guava.widgets.datetime.render.popup.shortcut;
 
 import org.eclipse.draw2d.IFigure;
-import org.eclipse.draw2d.ScrollBar;
-import org.eclipse.draw2d.Viewport;
 import org.eclipse.draw2d.geometry.Rectangle;
 
 import cn.nextop.guava.draw2d.ScrollEvent;
@@ -17,6 +15,7 @@ import cn.nextop.guava.widgets.datetime.render.popup.shortcut.widget.Item;
 public class ShortcutPanel extends AbstractScrollPanel {
 	//
 	private PopupPanel popupPanel;
+	private final int itemHeight = 24;
 	
 	/**
 	 * 
@@ -28,30 +27,18 @@ public class ShortcutPanel extends AbstractScrollPanel {
 	 */
 	public ShortcutPanel(PopupPanel popupPanel) {
 		this.popupPanel = popupPanel;
-		setVerticalScrollBarVisibility(ALWAYS);
+		setVerticalScrollStep(itemHeight);
 		setHorizontalScrollBarVisibility(NEVER);
-		Viewport viewport = getViewport();
-		viewport.setContentsTracksWidth(true);
-		viewport.setContentsTracksHeight(true);
-		
-		Item[] r = new Item[] {new Item("NOW"), new Item("SOD"), new Item("EOD")
-				,new Item("NOW"), new Item("SOD"), new Item("EOD1")
-				,new Item("NOW"), new Item("SOD"), new Item("EOD2")
-				,new Item("NOW"), new Item("SOD"), new Item("EOD3")
-				,new Item("NOW"), new Item("SOD"), new Item("EOD4")
-				,new Item("NOW"), new Item("SOD"), new Item("EOD5")
-				,new Item("NOW"), new Item("SOD"), new Item("EOD6")
-				,new Item("NOW"), new Item("SOD"), new Item("EOD7")
-				,new Item("NOW"), new Item("SOD"), new Item("EOD8")};
-		Content content = new Content(r); setContents(content);
+		setVerticalScrollBarVisibility(AUTOMATIC);
+		//
+		Item i1 = new Item("NOW"), i2 = new Item("SOD"), i3 =  new Item("EOD");
+		Content content = new Content(new Item[] {i1, i2, i3}); setContents(content);
 	}
 	
 	@Override
 	public void handleMouseWheel(ScrollEvent event) {
 		super.handleMouseWheel(event);
-		ScrollBar vsb = getVerticalScrollBar(); if(!vsb.isVisible()) return;
-		if(event.count > 0) vsb.setValue(vsb.getValue() - vsb.getPageIncrement());
-		else vsb.setValue(vsb.getValue() + vsb.getPageIncrement());
+		if(event.count > 0) pageUp(true); else pageDown(true);
 	}
 	
 	/**
@@ -65,16 +52,18 @@ public class ShortcutPanel extends AbstractScrollPanel {
 		 * 
 		 */
 		public Content(Item[] items) {
-			this.items = items;
-			for (Item item : items) { add(item); }
+			this.items = items;	for (Item item : items) { add(item); }
 		}
+		
+		@Override
+		protected boolean useLocalCoordinates() { return true; }
 		
 		@Override
 		protected void layoutManager(IFigure container) {
 			Content parent = (Content)container;
 			Rectangle r = parent.getBounds();
 			//
-			int p = 0, h = 24; for (Item item : this.items) {
+			int p = 0, h = itemHeight; for (Item item : this.items) {
 				item.setBounds(new Rectangle(r.x, p++ * h, r.width, h));
 			}
 			parent.setBounds(new Rectangle(0, 0, r.width, p * h));
