@@ -1,4 +1,4 @@
-package cn.nextop.guava.widgets.datetime.render.popup.calendar.date.action;
+package cn.nextop.guava.widgets.datetime.render.popup.calendar.month.action;
 
 import static java.lang.String.valueOf;
 
@@ -6,7 +6,6 @@ import org.eclipse.draw2d.IFigure;
 
 import cn.nextop.guava.widgets.datetime.model.DummyCalendar;
 import cn.nextop.guava.widgets.datetime.model.DummyModel;
-import cn.nextop.guava.widgets.datetime.render.IAction;
 import cn.nextop.guava.widgets.datetime.render.popup.calendar.date.DatePanel;
 import cn.nextop.guava.widgets.datetime.render.popup.calendar.date.widget.DateItemWidget;
 import cn.nextop.guava.widgets.datetime.render.popup.calendar.date.widget.MonthWidget;
@@ -15,14 +14,13 @@ import cn.nextop.guava.widgets.datetime.render.popup.calendar.date.widget.YearWi
 /**
  * @author jonny
  */
-public abstract class AbstractDateAction implements IAction {
+public abstract class AbstractMonthAction {
 	
 	protected abstract boolean updateData(IFigure container, IFigure widget);
 	
 	/**
 	 * 
 	 */
-	@Override
 	public void onAction(IFigure container, IFigure widget) {
 		if(updateData(container, widget)) updateUI(container, widget);
 	}
