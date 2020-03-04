@@ -11,7 +11,7 @@ import cn.nextop.guava.widgets.datetime.render.popup.calendar.date.DatePanel;
 /**
  * @author jonny
  */
-public class YearAction extends AbstractAction {
+public class YearAction extends AbstractDateAction {
 	//
 	private final Type type;
 	

@@ -14,7 +14,7 @@ import cn.nextop.guava.widgets.datetime.render.popup.calendar.date.widget.YearWi
 /**
  * @author jonny
  */
-public abstract class AbstractAction {
+public abstract class AbstractDateAction {
 	
 	protected abstract boolean updateData(IFigure container, IFigure widget);
 	

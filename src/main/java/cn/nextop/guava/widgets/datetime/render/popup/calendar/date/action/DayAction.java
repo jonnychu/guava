@@ -9,7 +9,7 @@ import cn.nextop.guava.widgets.datetime.render.popup.calendar.date.widget.DateIt
 /**
  * @author jonny
  */
-public class DayAction extends AbstractAction {
+public class DayAction extends AbstractDateAction {
 	
 	@Override
 	protected boolean updateData(IFigure container, IFigure widget) {
