@@ -17,7 +17,7 @@ public abstract class AbstractWidget extends Figure {
 	protected boolean editable = true;
 	protected boolean selected = false;
 	//
-	protected final int margin = 2, arc = 3, oval = 3;
+	protected final int margin = 2, arc = 3, oval = 5;
 	
 	/**
 	 * 
@@ -66,5 +66,5 @@ public abstract class AbstractWidget extends Figure {
 	public void handleMouseExited(MouseEvent event) { super.handleMouseExited(event); this.enter = false; repaint(); }
 	
 	@Override
-	public void handleMouseEntered(MouseEvent event) { super.handleMouseEntered(event); this.enter = true; if(editable) setCursor(HAND); repaint(); }
+	public void handleMouseEntered(MouseEvent event) { super.handleMouseEntered(event); this.enter = true; if(this.isEnabled()) setCursor(HAND); repaint(); }
 }

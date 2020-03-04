@@ -9,12 +9,12 @@ import cn.nextop.guava.utils.Colors;
 import cn.nextop.guava.widgets.datetime.render.AbstractWidget;
 
 /**
- * 
+ * @author jonny
  */
 public class WeekItemWidget extends AbstractWidget {
 	
 	public WeekItemWidget(String text) {
-		this.text = text; this.editable = false;
+		this.text = text; this.editable = false; setEnabled(false);
 	}
 	
 	@Override

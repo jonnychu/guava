@@ -4,7 +4,6 @@ import static com.patrikdufresne.fontawesome.FontAwesome.angle_double_left;
 import static com.patrikdufresne.fontawesome.FontAwesome.angle_double_right;
 import static java.lang.Integer.parseInt;
 import static java.lang.Math.min;
-import static java.lang.String.valueOf;
 
 import org.eclipse.draw2d.Graphics;
 import org.eclipse.draw2d.IFigure;
@@ -63,11 +62,13 @@ public class YearPanel extends AbstractPanel {
 		add(btnOk = new OkButtonWidget("Select Time"));
 		add(rollUpYear = new YearWidget(angle_double_right, Type.UP));
 		add(rollDownYear = new YearWidget(angle_double_left, Type.DOWN));
-		add(selectYear = new YearWidget(valueOf(dummyCalendar.getYear()), Type.SELECT));
+		add(selectYear = new YearWidget(dummyCalendar.getYearSymbol(), Type.SELECT));
+		//
 		final String[] years = dummyCalendar.getYearSymbols();
 		int index = 0; for (int i = 0; i < dates.length; i++) {
 			for (int j = 0; j < dates[i].length; j++) {
-				add(dates[i][j] = new YearItemWidget(parseInt(years[index]), years[index])); index++;
+				final String name = years[index];
+				add(dates[i][j] = new YearItemWidget(parseInt(name), name)); index++;
 			}
 		}
 	}

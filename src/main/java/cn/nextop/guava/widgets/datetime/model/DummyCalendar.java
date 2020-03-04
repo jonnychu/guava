@@ -1,6 +1,12 @@
 package cn.nextop.guava.widgets.datetime.model;
 
+import static java.lang.String.valueOf;
+import static java.lang.System.currentTimeMillis;
 import static java.util.Arrays.stream;
+import static java.util.Calendar.DATE;
+import static java.util.Calendar.DAY_OF_WEEK;
+import static java.util.Calendar.MONTH;
+import static java.util.Calendar.YEAR;
 
 import java.text.DateFormatSymbols;
 import java.util.Calendar;
@@ -14,74 +20,64 @@ import java.util.stream.Collectors;
  */
 public class DummyCalendar {
 	//
-	private Calendar calendar;
-	private int year, month, day;
 	private DateFormatSymbols symbols;
+	private Calendar now, dummy, select;
+	private Locale locale = Locale.ENGLISH;
 	
-	/**
-	 * 
-	 */
-	public int getYear() { return year; }
-	public void setYear(int year) {	this.year = year; }
-	public int getMonth() { return month; }
-	public void setMonth(int month) { this.month = month; }
-	public int getDay() { return day; }
-	public void setDay(int day) { this.day = day; }
 	
 	/**
 	 * 
 	 */
 	public DummyCalendar(long date) {
-		this.symbols = new DateFormatSymbols(Locale.ENGLISH);
-		this.calendar = new GregorianCalendar(Locale.ENGLISH);
-		calendar.setTime(new Date(date));
-		this.day = calendar.get(Calendar.DATE);
-		this.year = calendar.get(Calendar.YEAR); 
-		this.month = calendar.get(Calendar.MONTH); 
-	}
-	
-	public DummyCalendar(int year, int month, int day) {
-		this.year = year; this.month = month; this.day = day;
+		this.now = new GregorianCalendar(locale);
+		this.dummy = new GregorianCalendar(locale);
+		this.select = new GregorianCalendar(locale);
+		this.symbols = new DateFormatSymbols(locale);
+		//
+		this.dummy.setTime(new Date(date));
+		this.select.setTime(new Date(date));
+		this.now.setTime(new Date(currentTimeMillis()));
 	}
 	
 	/**
 	 * 
 	 */
 	public int nextYear() {
-		calendar.add(Calendar.YEAR, 1);
-		return this.year = calendar.get(Calendar.YEAR);
+		dummy.add(YEAR, 1);
+		return dummy.get(YEAR);
 	}
 
 	public int prevYear() {
-		calendar.add(Calendar.YEAR, -1);
-		return this.year = calendar.get(Calendar.YEAR);
+		dummy.add(YEAR, -1);
+		return dummy.get(YEAR);
 	}
 
 	public String nextMonth() {
-		calendar.add(Calendar.MONTH, 1);
-		this.year = calendar.get(Calendar.YEAR);
-		this.month = calendar.get(Calendar.MONTH);
+		dummy.add(MONTH, 1);
 		return getMonthSymbol();
 	}
 
 	public String prevMonth() {
-		calendar.add(Calendar.MONTH, -1);
-		this.year = calendar.get(Calendar.YEAR);
-		this.month = calendar.get(Calendar.MONTH);
+		dummy.add(MONTH, -1);
 		return getMonthSymbol();
 	}
 	
 	/**
 	 * 
 	 */
+	public String getYearSymbol() {
+		return valueOf(dummy.get(YEAR));
+	}
+	
 	public String[] getYearSymbols() {
-		int y = this.year; 
+		int y = dummy.get(Calendar.YEAR);
 		final String[] r = new String[12];
 		for (int i = 0; i < r.length; i++, y++) {
 			r[i] = String.valueOf(y);
 		}
 		return r;
 	}
+	
 	/**
 	 * 
 	 */
@@ -90,7 +86,8 @@ public class DummyCalendar {
 	}
 	
 	public String getMonthSymbol() {
-		return this.symbols.getShortMonths()[this.month];
+		int month = dummy.get(MONTH);
+		return this.symbols.getShortMonths()[month];
 	}
 	
 	public String[] getWeekSymbols() {
@@ -103,37 +100,58 @@ public class DummyCalendar {
 	 * 
 	 */
 	public DummyModel[][] getCalendar() {
+		final int dYear = this.dummy.get(YEAR);
+		final int dMonth = this.dummy.get(MONTH);
 		final DummyModel[][] r = new DummyModel[6][7];
-		Calendar c = new GregorianCalendar(Locale.ENGLISH);
-		c.set(Calendar.DATE, 1);
-		c.set(Calendar.YEAR, year);
-		c.set(Calendar.MONTH, month);
-		int firstDayOfWeek = c.get(Calendar.DAY_OF_WEEK);
+		final Calendar c = new GregorianCalendar(locale);
+		c.set(DATE, 1); c.set(YEAR, dYear); c.set(MONTH, dMonth);
+		//
+		int firstDayOfWeek = c.get(DAY_OF_WEEK);
 		int prevDayOfMonth = firstDayOfWeek == 1 ? 0 : (firstDayOfWeek - 1);
 		// first day
-		if(prevDayOfMonth == 0) { c.set(Calendar.DATE, 1); } 
-		else { c.add(Calendar.DATE, -prevDayOfMonth); }
+		if(prevDayOfMonth == 0) c.set(DATE, 1); else c.add(DATE, -prevDayOfMonth);
 		// iterator
 		for (int i = 0; i < r.length; i++) {
 			for (int j = 0; j < r[i].length; j++) {
-				int day = c.get(Calendar.DATE);
-				int year = c.get(Calendar.YEAR);
-				int month = c.get(Calendar.MONTH);
-				boolean editable = month == this.month ? true : false;
-				r[i][j] = new DummyModel(year, month, day, editable); 
-				c.add(Calendar.DATE, 1); // roll next day
+				int day = c.get(DATE), month = c.get(MONTH), year = c.get(YEAR);
+				r[i][j] = new DummyModel(year, month, day); c.add(DATE, 1); // roll next day
 			}
 		}
 		return r;
 	}
 	
+	/**
+	 * 
+	 */
+	public boolean isCurMonth(int year, int month) {
+		final int y = this.dummy.get(YEAR);
+		final int m = this.dummy.get(MONTH);
+		return (y == year && m == month);
+	}
+	
+	public boolean isNow(int year, int month, int day) {
+		final int d = this.now.get(DATE);
+		final int y = this.now.get(YEAR);
+		final int m = this.now.get(MONTH);
+		return (y == year && m == month && d == day);
+	}
+	
+	public void select(int year, int month, int day) {
+		this.select.set(DATE, day);	this.select.set(YEAR, year);
+		this.select.set(MONTH, month);this.dummy.set(DATE, day);
+		this.dummy.set(YEAR, year);this.dummy.set(MONTH, month);
+	}
+	
+	public boolean isSelectedDate(int year, int month, int day) {
+		final int d = this.select.get(DATE);
+		final int y = this.select.get(YEAR);
+		final int m = this.select.get(MONTH);
+		return (y == year && m == month && d == day);
+	}
+	
+	/**
+	 * 
+	 */
 	public static void main(String[] args) {
-		DummyModel[][] model = new DummyCalendar(2020, 0, 1).getCalendar();
-		for (int i = 0; i < 6; i++) {
-			for (int j = 0; j < 7; j++) {
-				System.out.print(model[i][j].getDay()); System.out.print("\t");
-			}
-			System.out.println();
-		}
 	}
 }

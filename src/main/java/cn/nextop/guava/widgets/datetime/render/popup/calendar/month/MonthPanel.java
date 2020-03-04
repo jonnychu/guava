@@ -3,7 +3,6 @@ package cn.nextop.guava.widgets.datetime.render.popup.calendar.month;
 import static com.patrikdufresne.fontawesome.FontAwesome.angle_double_left;
 import static com.patrikdufresne.fontawesome.FontAwesome.angle_double_right;
 import static java.lang.Math.min;
-import static java.lang.String.valueOf;
 
 import org.eclipse.draw2d.Graphics;
 import org.eclipse.draw2d.IFigure;
@@ -62,7 +61,8 @@ public class MonthPanel extends AbstractPanel {
 		add(btnOk = new OkButtonWidget("Select Time"));
 		add(rollUpYear = new YearWidget(angle_double_right, Type.UP));
 		add(rollDownYear = new YearWidget(angle_double_left, Type.DOWN));
-		add(selectYear = new YearWidget(valueOf(dummyCalendar.getYear()), Type.SELECT));
+		add(selectYear = new YearWidget(dummyCalendar.getYearSymbol(), Type.SELECT));
+		//
 		int month = 0; for (int i = 0; i < dates.length; i++) {
 			for (int j = 0; j < dates[i].length; j++) {
 				String name = dummyCalendar.getMonthSymbol(month);

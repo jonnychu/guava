@@ -1,10 +1,10 @@
 package cn.nextop.guava.widgets.datetime.render.popup.calendar.date.widget;
 
 import static java.lang.String.valueOf;
+import static org.eclipse.draw2d.TextUtilities.INSTANCE;
 
 import org.eclipse.draw2d.Graphics;
 import org.eclipse.draw2d.MouseEvent;
-import org.eclipse.draw2d.TextUtilities;
 import org.eclipse.draw2d.geometry.Dimension;
 import org.eclipse.draw2d.geometry.Rectangle;
 
@@ -15,6 +15,7 @@ import cn.nextop.guava.widgets.datetime.render.popup.calendar.date.action.DayAct
 
 public class DateItemWidget extends AbstractWidget {
 	//
+	private boolean now;
 	private int year, month, day;
 	
 	/**
@@ -27,27 +28,45 @@ public class DateItemWidget extends AbstractWidget {
 	/**
 	 * 
 	 */
-	public DateItemWidget(int year, int month, int day, boolean editable) {
-		this.text = valueOf(day); this.editable = editable;
-		this.year = year; this.month = month; this.day = day; 
+	public DateItemWidget(int year, int month, int day, boolean editable, boolean selected, boolean now) {
+		this.text = valueOf(day); this.year = year; this.month = month; this.day = day; 
+		this.editable = editable; this.selected = selected; this.now = now; 
 	}
 	
-	public void setValue(int year, int month, int day, boolean editable) {
-		this.text = valueOf(day); this.editable = editable;
-		this.year = year; this.month = month; this.day = day; 
+	public void setValue(int year, int month, int day, boolean editable, boolean selected, boolean now) {
+		this.text = valueOf(day); this.year = year; this.month = month; this.day = day; 
+		this.editable = editable; this.selected = selected; this.now = now; 
 	}
 	
 	@Override	
 	protected void paintFigure(Graphics g) {
 		super.paintFigure(g);
-		Rectangle r = getBounds();
-		if(!editable) g.setForegroundColor(Colors.COLOR_DARK_GRAY);
-		Dimension d1 = TextUtilities.INSTANCE.getTextExtents(text, g.getFont());
-		if(enter && editable) {
-			g.setBackgroundColor(Colors.COLOR_CYAN);
-			g.fillRoundRectangle(CGUtils.scaleRect(r, -2), arc, arc);
+		final Rectangle r = getBounds();
+		Dimension d1 = INSTANCE.getTextExtents(text, g.getFont());
+		final int shrink = 2, space = 2; Rectangle r1 = CGUtils.scaleRect(r, -shrink);
+		//
+		if(selected && editable || selected && !editable) {
+			g.setBackgroundColor(Colors.COLOR_LIGHT_BLUE);
+			g.fillRoundRectangle(r1, arc, arc);
+			g.setForegroundColor(Colors.COLOR_WHITE);
+		} else if(!selected && editable) {
+			if(enter && editable) {
+				g.setBackgroundColor(Colors.COLOR_CYAN);
+				g.fillRoundRectangle(r1, arc, arc);
+			}
+		} else if(!selected && !editable) {
+			g.setForegroundColor(Colors.COLOR_DARK_GRAY);
 		}
 		g.drawString(text, r.x + (r.width - d1.width) / 2, r.y + (r.height - d1.height) / 2);
+		
+		if(selected && now) {
+			g.setBackgroundColor(Colors.COLOR_WHITE);
+			g.fillOval(r1.x + r1.width - oval - space, r1.y + space, oval, oval);
+		}
+		else if(!selected && now) {
+			g.setBackgroundColor(Colors.COLOR_LIGHT_BLUE);
+			g.fillOval(r1.x + r1.width - oval - space, r1.y + space, oval, oval);
+		}
 	}
 	
 	@Override

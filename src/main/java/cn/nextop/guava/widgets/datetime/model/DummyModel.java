@@ -5,27 +5,17 @@ package cn.nextop.guava.widgets.datetime.model;
  */
 public class DummyModel {
 	//
-	private boolean editable;
 	private int year, month, day;
 
-	public DummyModel(int year, int month, int day, boolean editable) {
+	public DummyModel(int year, int month, int day) {
 		this.year = year;
 		this.month = month;
 		this.day = day;
-		this.editable = editable;
 	}
 	
 	/**
 	 * 
 	 */
-	public boolean isEditable() {
-		return editable;
-	}
-
-	public void setEditable(boolean editable) {
-		this.editable = editable;
-	}
-
 	public int getYear() {
 		return year;
 	}

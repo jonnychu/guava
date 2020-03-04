@@ -1,7 +1,5 @@
 package cn.nextop.guava.widgets.datetime.render.popup.calendar.month.action;
 
-import static java.lang.String.valueOf;
-
 import org.eclipse.draw2d.IFigure;
 
 import cn.nextop.guava.widgets.datetime.model.DummyCalendar;
@@ -30,22 +28,27 @@ public abstract class AbstractMonthAction {
 	 */
 	protected void updateUI(IFigure container, IFigure widget) {
 		final DatePanel datePanel = (DatePanel)container;
-		final DummyCalendar calendar = datePanel.getDummyCalendar();
+		final DummyCalendar dummyCalendar = datePanel.getDummyCalendar();
 		
 		// update top ui
 		final YearWidget yearWidget = datePanel.getSelectYear();
 		final MonthWidget monthWidget = datePanel.getSelectMonth();
-		yearWidget.setText(valueOf(calendar.getYear())); yearWidget.repaint();
-		monthWidget.setText(calendar.getMonthSymbol()); monthWidget.repaint();
+		yearWidget.setText(dummyCalendar.getYearSymbol()); yearWidget.repaint();
+		monthWidget.setText(dummyCalendar.getMonthSymbol()); monthWidget.repaint();
 		
 		// update date
-		final DummyModel[][] models = calendar.getCalendar();
 		final DateItemWidget[][] dates = datePanel.getDates();
+		final DummyModel[][] models = dummyCalendar.getCalendar();
 		for (int i = 0; i < models.length; i++) {
 			for (int j = 0; j < models[i].length; j++) {
-				final DummyModel dm = models[i][j];  boolean editable = dm.isEditable();
-				final int month = dm.getMonth(), year = dm.getYear(), day = dm.getDay();
-				dates[i][j].setValue(year, month, day, editable); dates[i][j].repaint();
+				DummyModel dm = models[i][j]; 
+				int month = dm.getMonth(), year = dm.getYear(), day = dm.getDay();
+				final boolean isNow = dummyCalendar.isNow(year, month, day);
+				final boolean editable = dummyCalendar.isCurMonth(year, month);
+				boolean isSelected = dummyCalendar.isSelectedDate(year, month, day);
+				dates[i][j].setValue(year, month, day, editable, isSelected, isNow); 
+				//
+				dates[i][j].repaint();
 			}
 		}
 	}

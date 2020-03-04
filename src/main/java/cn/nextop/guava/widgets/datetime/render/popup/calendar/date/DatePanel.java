@@ -5,7 +5,6 @@ import static com.patrikdufresne.fontawesome.FontAwesome.angle_double_right;
 import static com.patrikdufresne.fontawesome.FontAwesome.angle_left;
 import static com.patrikdufresne.fontawesome.FontAwesome.angle_right;
 import static java.lang.Math.min;
-import static java.lang.String.valueOf;
 
 import org.eclipse.draw2d.Graphics;
 import org.eclipse.draw2d.IFigure;
@@ -73,8 +72,8 @@ public class DatePanel extends AbstractPanel {
 		add(rollDownMonth = new MonthWidget(angle_left, Type.DOWN));
 		add(rollUpYear = new YearWidget(angle_double_right, Type.UP));
 		add(rollDownYear = new YearWidget(angle_double_left, Type.DOWN));
+		add(selectYear = new YearWidget(dummyCalendar.getYearSymbol(), Type.SELECT));
 		add(selectMonth = new MonthWidget(dummyCalendar.getMonthSymbol(), Type.SELECT));
-		add(selectYear = new YearWidget(valueOf(dummyCalendar.getYear()), Type.SELECT));
 		
 		// week symbols
 		String[] symbols = this.dummyCalendar.getWeekSymbols();
@@ -86,8 +85,12 @@ public class DatePanel extends AbstractPanel {
 		DummyModel[][] models = this.dummyCalendar.getCalendar();
 		for (int i = 0; i < models.length; i++) {
 			for (int j = 0; j < models[i].length; j++) {
-				DummyModel m = models[i][j];
-				add(dates[i][j] = new DateItemWidget(m.getYear(), m.getMonth(), m.getDay(), m.isEditable()));
+				final DummyModel dm = models[i][j];
+				int year = dm.getYear(), month = dm.getMonth(), day = dm.getDay();
+				final boolean now = this.dummyCalendar.isNow(year, month, day);
+				final boolean editable = this.dummyCalendar.isCurMonth(year, month);
+				final boolean selected = this.dummyCalendar.isSelectedDate(year, month, day);
+				add(dates[i][j] = new DateItemWidget(year, month, day, editable, selected, now));
 			}
 		}
 		
