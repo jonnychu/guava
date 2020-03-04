@@ -13,6 +13,7 @@ import org.eclipse.swt.widgets.Event;
 import org.eclipse.swt.widgets.Listener;
 import org.eclipse.swt.widgets.Shell;
 
+import cn.nextop.guava.draw2d.ScrollEventDispatcher;
 import cn.nextop.guava.widgets.datetime.render.popup.PopupPanel;
 
 /**
@@ -21,12 +22,14 @@ import cn.nextop.guava.widgets.datetime.render.popup.PopupPanel;
 public class XDateTimePopup extends Canvas {
 	//
 	private Layout layout;
+	private PopupPanel popup;
 	private XDateTime dateTime;
 	private LightweightSystem lws;
 	
 	/**
 	 * 
 	 */
+	public PopupPanel getPopup() { return popup; }
 	public XDateTime getDateTime() { return dateTime; }
 
 	/**
@@ -37,7 +40,8 @@ public class XDateTimePopup extends Canvas {
 		this.dateTime = dateTime; 
 		this.layout = new Layout();
 		this.lws = new LightweightSystem(this);
-		this.lws.setContents(new PopupPanel(this));
+		this.lws.setContents(popup = new PopupPanel(this));
+		this.lws.setEventDispatcher(new ScrollEventDispatcher());
 		
 		//
 		getShell().addListener(SWT.Deactivate, new DeactivateListener());
@@ -57,9 +61,9 @@ public class XDateTimePopup extends Canvas {
 	private class DeactivateListener implements Listener { @Override public void handleEvent(Event event) { hide(); }}
 	
 	/**
-	 * 
+	 * popup shell layout
 	 */
-	private class Layout {
+	private final class Layout {
 		/**
 		 * 
 		 */
