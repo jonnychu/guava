@@ -87,10 +87,11 @@ public class DatePanel extends AbstractPanel {
 		for (int i = 0; i < models.length; i++) {
 			for (int j = 0; j < models[i].length; j++) {
 				DummyModel m = models[i][j];
-				add(dates[i][j] = new DateItemWidget(m.getDay(), m.isEditable()));
+				add(dates[i][j] = new DateItemWidget(m.getYear(), m.getMonth(), m.getDay(), m.isEditable()));
 			}
 		}
 		
+		// button
 		add(btnTime = new TimeButtonWidget("OK"));
 		add(btnOk = new OkButtonWidget("Select Time"));
 	}
