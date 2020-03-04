@@ -33,19 +33,19 @@ public class YearWidget extends AbstractWidget {
 		super.paintFigure(g);
 		Rectangle r = getBounds();
 		if(this.type == Type.DOWN) {
-			if (this.selected) g.setForegroundColor(Colors.COLOR_BLUE);
+			if (this.enter) g.setForegroundColor(Colors.COLOR_BLUE);
 			else g.setForegroundColor(Colors.COLOR_DARK_GRAY);
 			g.setFont(FontAwesome.getFont(12));
 			Dimension d1 = TextUtilities.INSTANCE.getStringExtents(text, g.getFont());
 			g.drawString(text, r.x + (r.width - d1.width) / 2, r.y + (r.height - d1.height) / 2);
 		} else if(this.type == Type.UP) {
-			if(this.selected) g.setForegroundColor(Colors.COLOR_BLUE);
+			if(this.enter) g.setForegroundColor(Colors.COLOR_BLUE);
 			else g.setForegroundColor(Colors.COLOR_DARK_GRAY);
 			g.setFont(FontAwesome.getFont(12));
 			Dimension d1 = TextUtilities.INSTANCE.getStringExtents(text, g.getFont());
 			g.drawString(text, r.x + (r.width - d1.width) / 2, r.y + (r.height - d1.height) / 2);
 		} else if(this.type == Type.SELECT) {
-			if (this.selected) g.setForegroundColor(Colors.COLOR_BLUE);
+			if (this.enter) g.setForegroundColor(Colors.COLOR_BLUE);
 			else g.setForegroundColor(Colors.COLOR_BLACK);
 			g.setFont(Fonts.size(g.getFont(), 3));
 			Dimension d1 = TextUtilities.INSTANCE.getTextExtents(text, g.getFont());

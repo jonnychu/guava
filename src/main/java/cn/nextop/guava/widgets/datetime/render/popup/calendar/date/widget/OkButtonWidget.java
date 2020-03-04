@@ -26,7 +26,7 @@ public class OkButtonWidget extends AbstractWidget {
 		super.paintFigure(g);
 		Rectangle r = getBounds(); g.setFont(Fonts.size(g.getFont(), 2));
 		Dimension d1 = TextUtilities.INSTANCE.getTextExtents(text, g.getFont());
-		if(selected) {
+		if(enter) {
 			g.setBackgroundColor(Colors.COLOR_CYAN);
 			g.fillRoundRectangle(CGUtils.scaleRect(r, -3), arc, arc);
 		}

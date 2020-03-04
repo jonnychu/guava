@@ -32,7 +32,7 @@ public class YearItemWidget extends AbstractWidget {
 	protected void paintFigure(Graphics g) {
 		super.paintFigure(g); final Rectangle r = getBounds();
 		Dimension d1 = TextUtilities.INSTANCE.getTextExtents(text, g.getFont());
-		if(selected) {
+		if(enter) {
 			g.setBackgroundColor(Colors.COLOR_CYAN);
 			g.fillRoundRectangle(CGUtils.scaleRect(r, -5), arc, arc);
 		}

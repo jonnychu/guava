@@ -25,7 +25,7 @@ public class Item extends AbstractWidget {
 	protected void paintFigure(Graphics g) {
 		super.paintFigure(g);
 		Rectangle rect = getBounds();
-		if(selected) g.setBackgroundColor(Colors.COLOR_CYAN);
+		if(enter) g.setBackgroundColor(Colors.COLOR_CYAN);
 		g.fillRectangle(rect);
 		
 		//

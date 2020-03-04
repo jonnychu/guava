@@ -13,10 +13,11 @@ import org.eclipse.draw2d.MouseMotionListener;
 public abstract class AbstractWidget extends Figure {
 	// Default Value
 	protected String text = "";
+	protected boolean enter = false;
 	protected boolean editable = true;
 	protected boolean selected = false;
 	//
-	protected final int margin = 2, arc = 3;
+	protected final int margin = 2, arc = 3, oval = 3;
 	
 	/**
 	 * 
@@ -37,12 +38,12 @@ public abstract class AbstractWidget extends Figure {
 		this.text = text;
 	}
 	
-	public boolean isEditable() {
-		return editable;
+	public boolean isEnter() {
+		return enter;
 	}
 
-	public void setEditable(boolean editable) {
-		this.editable = editable;
+	public void setEnter(boolean enter) {
+		this.enter = enter;
 	}
 
 	public boolean isSelected() {
@@ -53,9 +54,17 @@ public abstract class AbstractWidget extends Figure {
 		this.selected = selected;
 	}
 	
-	@Override
-	public void handleMouseExited(MouseEvent event) { super.handleMouseExited(event); this.selected = false; repaint(); }
+	public boolean isEditable() {
+		return editable;
+	}
+
+	public void setEditable(boolean editable) {
+		this.editable = editable;
+	}
 	
 	@Override
-	public void handleMouseEntered(MouseEvent event) { super.handleMouseEntered(event); this.selected = true; if(editable) setCursor(HAND); repaint(); }
+	public void handleMouseExited(MouseEvent event) { super.handleMouseExited(event); this.enter = false; repaint(); }
+	
+	@Override
+	public void handleMouseEntered(MouseEvent event) { super.handleMouseEntered(event); this.enter = true; if(editable) setCursor(HAND); repaint(); }
 }

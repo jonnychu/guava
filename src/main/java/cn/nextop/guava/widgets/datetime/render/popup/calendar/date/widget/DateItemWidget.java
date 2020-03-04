@@ -43,7 +43,7 @@ public class DateItemWidget extends AbstractWidget {
 		Rectangle r = getBounds();
 		if(!editable) g.setForegroundColor(Colors.COLOR_DARK_GRAY);
 		Dimension d1 = TextUtilities.INSTANCE.getTextExtents(text, g.getFont());
-		if(selected && editable) {
+		if(enter && editable) {
 			g.setBackgroundColor(Colors.COLOR_CYAN);
 			g.fillRoundRectangle(CGUtils.scaleRect(r, -2), arc, arc);
 		}
