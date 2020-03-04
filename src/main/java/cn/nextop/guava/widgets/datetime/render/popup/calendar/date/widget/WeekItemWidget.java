@@ -14,7 +14,7 @@ import cn.nextop.guava.widgets.datetime.render.AbstractWidget;
 public class WeekItemWidget extends AbstractWidget {
 	
 	public WeekItemWidget(String text) {
-		this.text = text;
+		this.text = text; this.editable = false;
 	}
 	
 	@Override
