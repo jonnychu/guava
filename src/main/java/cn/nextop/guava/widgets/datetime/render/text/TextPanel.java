@@ -19,13 +19,14 @@ import cn.nextop.guava.widgets.datetime.render.text.widget.TextWidget;
 public class TextPanel extends AbstractPanel {
 	//
 	private boolean focus;
-	private XDateTime dateTime;
 	private IconWidget icon;
 	private TextWidget text;
+	private XDateTime dateTime;
 	
 	//
+	public TextWidget getText() { return text; }
 	public XDateTime getDateTime() { return dateTime; }
-
+	
 	/**
 	 * 
 	 */

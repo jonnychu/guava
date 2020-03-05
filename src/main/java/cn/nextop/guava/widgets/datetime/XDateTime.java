@@ -25,6 +25,7 @@ public class XDateTime extends Canvas {
 	 */
 	public XDateTimeModel getModel() { return model; }
 	public XDateTimePopup getPopup() { return popup; }
+	public TextPanel getTextPanel() { return textPanel; }
 	public void setModel(XDateTimeModel model) { this.model = model; }
 	public void setPopup(XDateTimePopup popup) { this.popup = popup; }
 	

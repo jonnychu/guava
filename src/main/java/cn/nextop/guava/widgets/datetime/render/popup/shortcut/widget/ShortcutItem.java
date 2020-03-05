@@ -10,18 +10,22 @@ import org.eclipse.draw2d.geometry.Rectangle;
 import cn.nextop.guava.utils.Colors;
 import cn.nextop.guava.widgets.datetime.glossary.Shortcut;
 import cn.nextop.guava.widgets.datetime.render.AbstractWidget;
+import cn.nextop.guava.widgets.datetime.render.popup.shortcut.Content;
+import cn.nextop.guava.widgets.datetime.render.popup.shortcut.ShortcutScrollPanel;
+import cn.nextop.guava.widgets.datetime.render.popup.shortcut.action.ShortcutAction;
+import cn.nextop.guava.widgets.datetime.render.text.acton.TextAction;
 
 /**
  * @author jonny
  */
-public class Item extends AbstractWidget {
+public class ShortcutItem extends AbstractWidget {
 	//
 	private Shortcut shortcut;
 	
 	/**
 	 * 
 	 */
-	public Item(Shortcut shortcut) {
+	public ShortcutItem(Shortcut shortcut) {
 		this.shortcut = shortcut;
 		this.text = shortcut.name();
 	}
@@ -42,6 +46,10 @@ public class Item extends AbstractWidget {
 	
 	@Override
 	public void handleMouseReleased(MouseEvent event) {
-		super.handleMouseReleased(event);
+		super.handleMouseReleased(event); 
+		Content content = (Content) getParent();
+		ShortcutScrollPanel ssp = content.getShortcutScrollPanel();
+		new ShortcutAction().onAction(content, this);
+		new TextAction().onAction(ssp.getDateTime().getTextPanel(), null);
 	}
 }

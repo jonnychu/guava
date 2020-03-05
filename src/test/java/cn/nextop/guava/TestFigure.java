@@ -59,7 +59,6 @@ public class TestFigure {
 				System.out.println("f3");
 			}
 		};
-		
 		f2.setBounds(new Rectangle(0, 0, 100, 100));
 		f3.setBounds(new Rectangle(100, 0, 100, 100));
 		f1.add(f2); f1.add(f3);

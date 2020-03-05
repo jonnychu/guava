@@ -4,21 +4,28 @@ import org.eclipse.draw2d.IFigure;
 import org.eclipse.draw2d.geometry.Rectangle;
 
 import cn.nextop.guava.widgets.datetime.render.AbstractPanel;
-import cn.nextop.guava.widgets.datetime.render.popup.shortcut.widget.Item;
+import cn.nextop.guava.widgets.datetime.render.popup.shortcut.widget.ShortcutItem;
 
 /**
  * @author jonny
  */
 public class Content extends AbstractPanel {
 	//
-	private Item[] items;
+	private ShortcutItem[] items;
+	private ShortcutScrollPanel shortcutScrollPanel;
 	private final int itemHeight = ShortcutScrollPanel.itemHeight;
 	
 	/**
 	 * 
 	 */
-	public Content(Item[] items) {
-		this.items = items;	for (Item item : items) { add(item); }
+	public ShortcutScrollPanel getShortcutScrollPanel() { return shortcutScrollPanel; }
+
+	/**
+	 * 
+	 */
+	public Content(ShortcutItem[] items, ShortcutScrollPanel shortcutScrollPanel) {
+		this.shortcutScrollPanel = shortcutScrollPanel;
+		this.items = items;	for (ShortcutItem item : items) { add(item); }
 	}
 	
 	@Override
@@ -29,7 +36,7 @@ public class Content extends AbstractPanel {
 		Content parent = (Content)container;
 		Rectangle r = parent.getBounds();
 		//
-		int p = 0, h = itemHeight; for (Item item : this.items) {
+		int p = 0, h = itemHeight; for (ShortcutItem item : this.items) {
 			item.setBounds(new Rectangle(r.x, p++ * h, r.width, h));
 		}
 		parent.setBounds(new Rectangle(0, 0, r.width, p * h));

@@ -8,7 +8,7 @@ import cn.nextop.guava.widgets.datetime.model.DummyCalendar;
 import cn.nextop.guava.widgets.datetime.model.XDateTimeModel;
 import cn.nextop.guava.widgets.datetime.render.AbstractScrollPanel;
 import cn.nextop.guava.widgets.datetime.render.popup.PopupPanel;
-import cn.nextop.guava.widgets.datetime.render.popup.shortcut.widget.Item;
+import cn.nextop.guava.widgets.datetime.render.popup.shortcut.widget.ShortcutItem;
 
 /**
  * @author jonny
@@ -47,11 +47,11 @@ public class ShortcutScrollPanel extends AbstractScrollPanel {
 		setVerticalScrollBarVisibility(AUTOMATIC);
 		//
 		Shortcut[] scs = Shortcut.values();
-		Item[] items = new Item[scs.length];
+		ShortcutItem[] items = new ShortcutItem[scs.length];
 		for (int i = 0; i < scs.length; i++) {
-			items[i] = new Item(scs[i]);
+			items[i] = new ShortcutItem(scs[i]);
 		}
-		Content content = new Content(items); setContents(content);
+		Content content = new Content(items, this); setContents(content);
 	}
 	
 	@Override

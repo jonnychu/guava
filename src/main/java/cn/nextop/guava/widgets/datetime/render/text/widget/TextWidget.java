@@ -1,7 +1,8 @@
 package cn.nextop.guava.widgets.datetime.render.text.widget;
 
+import static org.eclipse.draw2d.TextUtilities.INSTANCE;
+
 import org.eclipse.draw2d.Graphics;
-import org.eclipse.draw2d.TextUtilities;
 import org.eclipse.draw2d.geometry.Dimension;
 import org.eclipse.draw2d.geometry.Rectangle;
 
@@ -29,7 +30,7 @@ public class TextWidget extends AbstractWidget {
 		XDateTimeModel timeModel = dateTime.getModel();
 		//
 		this.text = timeModel.getTime();
-		Dimension d1 = TextUtilities.INSTANCE.getStringExtents(this.text, g.getFont());
+		Dimension d1 = INSTANCE.getStringExtents(this.text, g.getFont());
 		g.drawString(this.text, rect.x, rect.y + (rect.height - d1.height) / 2);
 	}
 }
