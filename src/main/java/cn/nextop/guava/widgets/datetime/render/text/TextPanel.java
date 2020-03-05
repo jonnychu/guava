@@ -1,24 +1,17 @@
 package cn.nextop.guava.widgets.datetime.render.text;
 
-import static com.patrikdufresne.fontawesome.FontAwesome.calendar_minus_o;
-import static com.patrikdufresne.fontawesome.FontAwesome.calendar_plus_o;
-import static org.eclipse.draw2d.TextUtilities.INSTANCE;
-
 import org.eclipse.draw2d.Graphics;
 import org.eclipse.draw2d.IFigure;
 import org.eclipse.draw2d.MouseEvent;
 import org.eclipse.draw2d.MouseMotionListener;
-import org.eclipse.draw2d.TextUtilities;
-import org.eclipse.draw2d.geometry.Dimension;
 import org.eclipse.draw2d.geometry.Rectangle;
-
-import com.patrikdufresne.fontawesome.FontAwesome;
 
 import cn.nextop.guava.utils.CGUtils;
 import cn.nextop.guava.utils.Colors;
 import cn.nextop.guava.widgets.datetime.XDateTime;
-import cn.nextop.guava.widgets.datetime.model.XDateTimeModel;
 import cn.nextop.guava.widgets.datetime.render.AbstractPanel;
+import cn.nextop.guava.widgets.datetime.render.text.widget.IconWidget;
+import cn.nextop.guava.widgets.datetime.render.text.widget.TextWidget;
 
 /**
  * @author jonny
@@ -27,15 +20,20 @@ public class TextPanel extends AbstractPanel {
 	//
 	private boolean focus;
 	private XDateTime dateTime;
-	private XDateTimeModel timeModel;
+	private IconWidget icon;
+	private TextWidget text;
 	
+	//
+	public XDateTime getDateTime() { return dateTime; }
+
 	/**
 	 * 
 	 */
 	public TextPanel(XDateTime dateTime) {
 		this.dateTime = dateTime;
-		this.timeModel = this.dateTime.getModel();
+		//
 		addMouseMotionListener(new MouseMotionListener.Stub());
+		add(text = new TextWidget()); add(icon = new IconWidget());
 	}
 	
 	@Override
@@ -53,19 +51,16 @@ public class TextPanel extends AbstractPanel {
 		super.paintFigure(g);
 		g.setBackgroundColor(Colors.COLOR_WHITE);
 		g.fillRoundRectangle(getBounds(), arc, arc);
-		// text
-		Rectangle rect = getBounds(); String text = this.timeModel.getTime();
-		Dimension d1 = TextUtilities.INSTANCE.getStringExtents(text, g.getFont());
-		g.drawString(text, rect.x + margin, rect.y + (rect.height - d1.height) / 2);
-		// icon
-		String icon = dateTime.getPopup() != null ? calendar_minus_o : calendar_plus_o; 
-		g.setFont(FontAwesome.getFont(10)); Dimension d2 = INSTANCE.getStringExtents(icon, g.getFont());
-		g.fillRectangle(rect.x + rect.width - d2.width - margin * 2, rect.y + (rect.height - d2.height) / 2,
-				d2.width + margin * 2, d2.height);
-		g.drawString(icon, rect.x + rect.width - d2.width - margin, rect.y + (rect.height - d2.height) / 2);
+	}
+	
+	@Override protected void layoutManager(IFigure container) {
+		TextPanel parent = (TextPanel) container;
+		final Rectangle r = parent.getBounds();
+		final int x = r.x, y = r.y, w = r.width, h = r.height;
+		Rectangle r1 = new Rectangle(x + margin, y, w - 22, h); text.setBounds(r1);
+		Rectangle r2 = new Rectangle(r1.x + r1.width - margin - 2, r1.y, 22, h); icon.setBounds(r2);
 	}
 	
 	@Override public void handleMouseExited(MouseEvent event) { focus = false; repaint(); }
 	@Override public void handleMouseEntered(MouseEvent event) { focus = true; repaint(); }
-	@Override protected void layoutManager(IFigure container) {} // no need implement layout;
 }

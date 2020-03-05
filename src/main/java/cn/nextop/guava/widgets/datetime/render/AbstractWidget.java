@@ -23,8 +23,12 @@ public abstract class AbstractWidget extends Figure {
 	 * 
 	 */
 	public AbstractWidget() {
-		addMouseListener(new MouseListener.Stub());
-		addMouseMotionListener(new MouseMotionListener.Stub());
+		this(true, true);
+	}
+	
+	public AbstractWidget(boolean m1, boolean m2) {
+		if(m1) addMouseListener(new MouseListener.Stub());
+		if(m2) addMouseMotionListener(new MouseMotionListener.Stub());
 	}
 
 	/**

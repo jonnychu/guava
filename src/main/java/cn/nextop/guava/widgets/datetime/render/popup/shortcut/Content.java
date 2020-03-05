@@ -12,7 +12,7 @@ import cn.nextop.guava.widgets.datetime.render.popup.shortcut.widget.Item;
 public class Content extends AbstractPanel {
 	//
 	private Item[] items;
-	private final int itemHeight = ShortcutPanel.itemHeight;
+	private final int itemHeight = ShortcutScrollPanel.itemHeight;
 	
 	/**
 	 * 

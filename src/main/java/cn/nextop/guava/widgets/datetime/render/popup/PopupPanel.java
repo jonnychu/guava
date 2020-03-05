@@ -12,7 +12,7 @@ import cn.nextop.guava.widgets.datetime.model.DummyCalendar;
 import cn.nextop.guava.widgets.datetime.model.XDateTimeModel;
 import cn.nextop.guava.widgets.datetime.render.AbstractPanel;
 import cn.nextop.guava.widgets.datetime.render.popup.calendar.CalendarPanel;
-import cn.nextop.guava.widgets.datetime.render.popup.shortcut.ShortcutPanel;
+import cn.nextop.guava.widgets.datetime.render.popup.shortcut.ShortcutScrollPanel;
 
 /**
  * @author jonny
@@ -21,7 +21,7 @@ public class PopupPanel extends AbstractPanel {
 	//
 	private XDateTime dateTime;
 	private CalendarPanel calendar;
-	private ShortcutPanel shortcut;
+	private ShortcutScrollPanel shortcut;
 	private DummyCalendar dummyCalendar;
 	private XDateTimeModel dateTimeModel;
 	private XDateTimePopup dateTimePopup;
@@ -31,7 +31,7 @@ public class PopupPanel extends AbstractPanel {
 	 */
 	public XDateTimePopup getPopup() { return dateTimePopup; }
 	public CalendarPanel getCalendar() { return calendar; }
-	public ShortcutPanel getShortcut() { return shortcut; }
+	public ShortcutScrollPanel getShortcut() { return shortcut; }
 	public DummyCalendar getDummyCalendar() { return dummyCalendar; }
 	
 	/**
@@ -43,7 +43,7 @@ public class PopupPanel extends AbstractPanel {
 		this.dateTimeModel = this.dateTime.getModel();
 		this.dummyCalendar = new DummyCalendar(dateTimeModel.getTime1());
 		//
-		add(shortcut = new ShortcutPanel(this));
+		add(shortcut = new ShortcutScrollPanel(this));
 		add(calendar = new CalendarPanel(this));
 	}
 	
@@ -63,7 +63,7 @@ public class PopupPanel extends AbstractPanel {
 	protected void layoutManager(IFigure container) {
 		PopupPanel parent = (PopupPanel)container;
 		Rectangle r = container.getBounds();
-		ShortcutPanel shortcut = parent.getShortcut();
+		ShortcutScrollPanel shortcut = parent.getShortcut();
 		CalendarPanel calendar = parent.getCalendar();
 		//
 		int w1 = (int)(r.width * 0.3), w2 = r.width - w1;
