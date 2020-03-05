@@ -1,4 +1,4 @@
-package cn.nextop.guava.draw2d;
+package cn.nextop.guava.draw2d.scroll;
 
 import org.eclipse.draw2d.IFigure;
 import org.eclipse.draw2d.SWTEventDispatcher;

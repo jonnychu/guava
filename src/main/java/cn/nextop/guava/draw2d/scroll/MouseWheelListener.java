@@ -1,4 +1,4 @@
-package cn.nextop.guava.draw2d;
+package cn.nextop.guava.draw2d.scroll;
 
 /**
  * @author jonny

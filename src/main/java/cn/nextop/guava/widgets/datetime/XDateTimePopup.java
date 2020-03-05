@@ -13,7 +13,7 @@ import org.eclipse.swt.widgets.Event;
 import org.eclipse.swt.widgets.Listener;
 import org.eclipse.swt.widgets.Shell;
 
-import cn.nextop.guava.draw2d.ScrollEventDispatcher;
+import cn.nextop.guava.draw2d.scroll.ScrollEventDispatcher;
 import cn.nextop.guava.widgets.datetime.render.popup.PopupPanel;
 
 /**
