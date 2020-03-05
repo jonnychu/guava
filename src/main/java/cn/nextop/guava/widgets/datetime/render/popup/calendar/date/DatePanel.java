@@ -14,7 +14,6 @@ import cn.nextop.guava.utils.Colors;
 import cn.nextop.guava.widgets.datetime.glossary.Type;
 import cn.nextop.guava.widgets.datetime.model.DummyCalendar;
 import cn.nextop.guava.widgets.datetime.model.DummyModel;
-import cn.nextop.guava.widgets.datetime.model.XDateTimeModel;
 import cn.nextop.guava.widgets.datetime.render.AbstractPanel;
 import cn.nextop.guava.widgets.datetime.render.popup.calendar.CalendarPanel;
 import cn.nextop.guava.widgets.datetime.render.popup.calendar.common.widget.LineWidget;
@@ -64,8 +63,7 @@ public class DatePanel extends AbstractPanel {
 		this.calendar = calendar;
 		this.weeks = new WeekItemWidget[7];
 		this.dates = new DateItemWidget[6][7];
-		XDateTimeModel model = getXDateTimeModel();
-		this.dummyCalendar = new DummyCalendar(model.getTime1());
+		this.dummyCalendar = calendar.getDummyCalendar();
 		//
 		add(line1 = new LineWidget());add(line2 = new LineWidget());
 		add(rollUpMonth = new MonthWidget(angle_right, Type.UP));
@@ -156,9 +154,5 @@ public class DatePanel extends AbstractPanel {
 			line2.setBounds(new Rectangle(x, h - bh, w, space));
 		}
 
-	}
-	
-	private XDateTimeModel getXDateTimeModel() {
-		return this.calendar.getPopupPanel().getPopup().getDateTime().getModel();
 	}
 }

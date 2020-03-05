@@ -11,7 +11,6 @@ import org.eclipse.draw2d.geometry.Rectangle;
 import cn.nextop.guava.utils.Colors;
 import cn.nextop.guava.widgets.datetime.glossary.Type;
 import cn.nextop.guava.widgets.datetime.model.DummyCalendar;
-import cn.nextop.guava.widgets.datetime.model.XDateTimeModel;
 import cn.nextop.guava.widgets.datetime.render.AbstractPanel;
 import cn.nextop.guava.widgets.datetime.render.popup.calendar.CalendarPanel;
 import cn.nextop.guava.widgets.datetime.render.popup.calendar.common.widget.LineWidget;
@@ -31,19 +30,19 @@ public class MonthPanel extends AbstractPanel {
 	private OkButtonWidget btnOk;
 	private LineWidget line1, line2;
 	private TimeButtonWidget btnTime;
-	private MonthItemWidget[][] dates;
+	private MonthItemWidget[][] months;
 	private YearWidget rollDownYear, rollUpYear, selectYear;
 	
 	/**
 	 * 
 	 */
 	public OkButtonWidget getBtnOk() { return btnOk; }
-	public MonthItemWidget[][] getDates() {	return dates; }
+	public MonthItemWidget[][] getMonths() {return months; }
 	public YearWidget getRollUpYear() { return rollUpYear; }
 	public YearWidget getSelectYear() { return selectYear; }
 	public TimeButtonWidget getBtnTime() { return btnTime; }
 	public YearWidget getRollDownYear() { return rollDownYear; }
-	public CalendarPanel getalendarPanel() { return calendarPanel; }
+	public CalendarPanel getCalendarPanel() { return calendarPanel; }
 	public DummyCalendar getDummyCalendar() { return dummyCalendar; }
 	
 	/**
@@ -51,9 +50,8 @@ public class MonthPanel extends AbstractPanel {
 	 */
 	public MonthPanel(CalendarPanel calendar) {
 		this.calendarPanel = calendar;
-		this.dates = new MonthItemWidget[4][3];
-		final XDateTimeModel model = getXDateTimeModel();
-		this.dummyCalendar = new DummyCalendar(model.getTime1());
+		this.months = new MonthItemWidget[4][3];
+		this.dummyCalendar = calendar.getDummyCalendar();
 		// add widgets
 		add(line1 = new LineWidget());
 		add(line2 = new LineWidget());
@@ -63,10 +61,12 @@ public class MonthPanel extends AbstractPanel {
 		add(rollDownYear = new YearWidget(angle_double_left, Type.DOWN));
 		add(selectYear = new YearWidget(dummyCalendar.getYearSymbol(), Type.SELECT));
 		//
-		int month = 0; for (int i = 0; i < dates.length; i++) {
-			for (int j = 0; j < dates[i].length; j++) {
+		int month = 0; for (int i = 0; i < months.length; i++) {
+			for (int j = 0; j < months[i].length; j++) {
+				int year = dummyCalendar.getYear();
 				String name = dummyCalendar.getMonthSymbol(month);
-				add(dates[i][j] = new MonthItemWidget(month, name)); month++;
+				boolean selected = dummyCalendar.isSelectedMonth(year, month);
+				add(months[i][j] = new MonthItemWidget(month, year, name, selected)); month++;
 			}
 		}
 	}
@@ -97,9 +97,9 @@ public class MonthPanel extends AbstractPanel {
 		final int sy1 = th + space;
 		{
 			final int w1 = min( mh / 4, w / 3), mgn1 = (w - w1 * 3) / 4, mgn2 = (mh - w1 * 4) / 5 ;
-			for (int i = 0; i < dates.length; i++) {
-				for (int j = 0; j < dates[i].length; j++) {
-					dates[i][j].setBounds(new Rectangle(mgn1 * (j + 1) + x + j * w1, mgn2 * (i + 1) + sy1 + w1 * i, w1, w1));
+			for (int i = 0; i < months.length; i++) {
+				for (int j = 0; j < months[i].length; j++) {
+					months[i][j].setBounds(new Rectangle(mgn1 * (j + 1) + x + j * w1, mgn2 * (i + 1) + sy1 + w1 * i, w1, w1));
 				}
 			}
 		}
@@ -117,9 +117,5 @@ public class MonthPanel extends AbstractPanel {
 			line1.setBounds(new Rectangle(x, th, w, space));
 			line2.setBounds(new Rectangle(x, h - bh, w, space));
 		}
-	}
-	
-	private XDateTimeModel getXDateTimeModel() {
-		return this.calendarPanel.getPopupPanel().getPopup().getDateTime().getModel();
 	}
 }

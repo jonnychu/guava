@@ -12,7 +12,6 @@ import org.eclipse.draw2d.geometry.Rectangle;
 import cn.nextop.guava.utils.Colors;
 import cn.nextop.guava.widgets.datetime.glossary.Type;
 import cn.nextop.guava.widgets.datetime.model.DummyCalendar;
-import cn.nextop.guava.widgets.datetime.model.XDateTimeModel;
 import cn.nextop.guava.widgets.datetime.render.AbstractPanel;
 import cn.nextop.guava.widgets.datetime.render.popup.calendar.CalendarPanel;
 import cn.nextop.guava.widgets.datetime.render.popup.calendar.common.widget.LineWidget;
@@ -53,8 +52,7 @@ public class YearPanel extends AbstractPanel {
 	public YearPanel(CalendarPanel calendar) {
 		this.calendarPanel = calendar;
 		this.dates = new YearItemWidget[4][3];
-		final XDateTimeModel model = getXDateTimeModel();
-		this.dummyCalendar = new DummyCalendar(model.getTime1());
+		this.dummyCalendar = calendar.getDummyCalendar();
 		// add widgets
 		add(line1 = new LineWidget());
 		add(line2 = new LineWidget());
@@ -119,9 +117,5 @@ public class YearPanel extends AbstractPanel {
 			line1.setBounds(new Rectangle(x, th, w, space));
 			line2.setBounds(new Rectangle(x, h - bh, w, space));
 		}
-	}
-	
-	private XDateTimeModel getXDateTimeModel() {
-		return this.calendarPanel.getPopupPanel().getPopup().getDateTime().getModel();
 	}
 }

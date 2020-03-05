@@ -12,7 +12,7 @@ import cn.nextop.guava.widgets.datetime.render.popup.calendar.date.widget.DateIt
 public class DayAction extends AbstractDateAction {
 	
 	@Override
-	protected boolean updateData(IFigure container, IFigure widget) {
+	public boolean updateData(IFigure container, IFigure widget) {
 		final DateItemWidget w = (DateItemWidget)widget;
 		final DatePanel datePanel = (DatePanel)container;
 		final DummyCalendar calendar = datePanel.getDummyCalendar();

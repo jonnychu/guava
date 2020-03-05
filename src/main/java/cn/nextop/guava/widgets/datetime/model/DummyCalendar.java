@@ -104,7 +104,7 @@ public class DummyCalendar {
 		final int dMonth = this.dummy.get(MONTH);
 		final DummyModel[][] r = new DummyModel[6][7];
 		final Calendar c = new GregorianCalendar(locale);
-		c.set(DATE, 1); c.set(YEAR, dYear); c.set(MONTH, dMonth);
+		c.set(DATE, 1); c.set(MONTH, dMonth); c.set(YEAR, dYear);
 		//
 		int firstDayOfWeek = c.get(DAY_OF_WEEK);
 		int prevDayOfMonth = firstDayOfWeek == 1 ? 0 : (firstDayOfWeek - 1);
@@ -123,6 +123,32 @@ public class DummyCalendar {
 	/**
 	 * 
 	 */
+	public int getDay() { return this.dummy.get(DATE); }
+	
+	public int getYear() { return this.dummy.get(YEAR); }
+	
+	public int getMonth() {	return this.dummy.get(MONTH); }
+	
+	/**
+	 * 
+	 */
+	public void select(int year) {
+		this.select.set(YEAR, year); this.dummy.set(YEAR, year);
+	}
+	
+	public void select(int year, int month) {
+		this.dummy.set(YEAR, year); this.dummy.set(MONTH, month);
+	}
+	
+	public void select(int year, int month, int day) {
+		this.select.set(DATE, day);	this.select.set(YEAR, year);
+		this.select.set(MONTH, month);this.dummy.set(DATE, day);
+		this.dummy.set(YEAR, year);this.dummy.set(MONTH, month);
+	}
+	
+	/**
+	 * 
+	 */
 	public boolean isCurMonth(int year, int month) {
 		final int y = this.dummy.get(YEAR);
 		final int m = this.dummy.get(MONTH);
@@ -136,10 +162,10 @@ public class DummyCalendar {
 		return (y == year && m == month && d == day);
 	}
 	
-	public void select(int year, int month, int day) {
-		this.select.set(DATE, day);	this.select.set(YEAR, year);
-		this.select.set(MONTH, month);this.dummy.set(DATE, day);
-		this.dummy.set(YEAR, year);this.dummy.set(MONTH, month);
+	public boolean isSelectedMonth(int year, int month) {
+		final int y = this.select.get(YEAR);
+		final int m = this.select.get(MONTH);
+		return (y == year && m == month);
 	}
 	
 	public boolean isSelectedDate(int year, int month, int day) {

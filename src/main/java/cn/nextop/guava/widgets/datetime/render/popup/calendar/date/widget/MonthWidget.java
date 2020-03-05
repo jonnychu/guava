@@ -12,7 +12,10 @@ import cn.nextop.guava.utils.Colors;
 import cn.nextop.guava.utils.Fonts;
 import cn.nextop.guava.widgets.datetime.glossary.Type;
 import cn.nextop.guava.widgets.datetime.render.AbstractWidget;
+import cn.nextop.guava.widgets.datetime.render.popup.calendar.date.DatePanel;
 import cn.nextop.guava.widgets.datetime.render.popup.calendar.date.action.MonthAction;
+import cn.nextop.guava.widgets.datetime.render.popup.calendar.month.MonthPanel;
+import cn.nextop.guava.widgets.datetime.render.popup.calendar.month.action.ShowMonthAction;
 
 /**
  * @author jonny
@@ -55,6 +58,10 @@ public class MonthWidget extends AbstractWidget {
 	
 	@Override
 	public void handleMouseReleased(MouseEvent event) {
-		super.handleMouseReleased(event); new MonthAction(type).onAction(getParent(), this);
+		super.handleMouseReleased(event); 
+		DatePanel dp = (DatePanel)getParent();
+		MonthPanel mp = dp.getCalendar().getMonthPanel();
+		new MonthAction(type).onAction(getParent(), this);
+		if(type == Type.SELECT) new ShowMonthAction().onAction(mp, null);
 	}
 }

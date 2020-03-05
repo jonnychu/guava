@@ -23,7 +23,7 @@ public class MonthAction extends AbstractDateAction {
 	}
 
 	@Override
-	protected boolean updateData(IFigure container, IFigure widget) {
+	public boolean updateData(IFigure container, IFigure widget) {
 		final DatePanel datePanel = (DatePanel)container;
 		final DummyCalendar calendar = datePanel.getDummyCalendar();
 		if (this.type == Type.SELECT) {	return true; }

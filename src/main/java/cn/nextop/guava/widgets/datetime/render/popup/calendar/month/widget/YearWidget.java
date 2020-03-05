@@ -1,6 +1,7 @@
 package cn.nextop.guava.widgets.datetime.render.popup.calendar.month.widget;
 
 import org.eclipse.draw2d.Graphics;
+import org.eclipse.draw2d.MouseEvent;
 import org.eclipse.draw2d.TextUtilities;
 import org.eclipse.draw2d.geometry.Dimension;
 import org.eclipse.draw2d.geometry.Rectangle;
@@ -11,6 +12,7 @@ import cn.nextop.guava.utils.Colors;
 import cn.nextop.guava.utils.Fonts;
 import cn.nextop.guava.widgets.datetime.glossary.Type;
 import cn.nextop.guava.widgets.datetime.render.AbstractWidget;
+import cn.nextop.guava.widgets.datetime.render.popup.calendar.month.action.YearAction;
 
 /**
  * @author jonny
@@ -48,5 +50,10 @@ public class YearWidget extends AbstractWidget {
 			Dimension d1 = TextUtilities.INSTANCE.getTextExtents(text, g.getFont());
 			g.drawString(text, r.x + (r.width - d1.width) / 2, r.y + (r.height - d1.height) / 2);
 		}
+	}
+	
+	@Override
+	public void handleMouseReleased(MouseEvent event) {
+		super.handleMouseReleased(event); new YearAction(type).onAction(getParent(), this);
 	}
 }
