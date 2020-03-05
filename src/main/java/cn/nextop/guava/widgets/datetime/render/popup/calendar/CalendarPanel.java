@@ -19,12 +19,12 @@ import cn.nextop.guava.widgets.datetime.render.popup.calendar.year.YearPanel;
 public class CalendarPanel extends AbstractPanel {
 	//
 	private XDateTime dateTime;
-	private XDateTimeModel dateTimeModel;
-	private XDateTimePopup dateTimePopup;
 	private DatePanel datePanel;
 	private YearPanel yearPanel;
 	private MonthPanel monthPanel;
 	private PopupPanel popupPanel;
+	private XDateTimeModel dateTimeModel;
+	private XDateTimePopup dateTimePopup;
 	private DummyCalendar dummyCalendar;
 	
 	/**
@@ -45,8 +45,8 @@ public class CalendarPanel extends AbstractPanel {
 		this.popupPanel = popupPanel;
 		this.dateTimePopup = popupPanel.getPopup();
 		this.dateTime = dateTimePopup.getDateTime();
-		this.dateTimeModel = dateTime.getModel();
-		this.dummyCalendar = new DummyCalendar(dateTimeModel.getTime1());
+		this.dateTimeModel = this.dateTime.getModel();
+		this.dummyCalendar = popupPanel.getDummyCalendar();
 		//
 		add(datePanel = new DatePanel(this)); add(yearPanel = new YearPanel(this));
 		add(monthPanel = new MonthPanel(this));	panel(PanelType.DATE); // switch first panel
