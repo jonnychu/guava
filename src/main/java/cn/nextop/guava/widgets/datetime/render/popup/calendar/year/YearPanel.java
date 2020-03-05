@@ -37,12 +37,8 @@ public class YearPanel extends AbstractPanel {
 	/**
 	 * 
 	 */
-	public OkButtonWidget getBtnOk() { return btnOk; }
-	public YearWidget getRollUpYear() { return rollUpYear; }
 	public YearWidget getSelectYear() { return selectYear; }
-	public TimeButtonWidget getBtnTime() { return btnTime; }
 	public YearItemWidget[][] getYears() { return yearItems; }
-	public YearWidget getRollDownYear() { return rollDownYear; }
 	public CalendarPanel getCalendarPanel() { return calendarPanel; }
 	public DummyCalendar getDummyCalendar() { return dummyCalendar; }
 	

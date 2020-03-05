@@ -31,7 +31,7 @@ public class DatePanel extends AbstractPanel {
 	//
 	private CalendarPanel calendar;
 	private DummyCalendar dummyCalendar;
-	
+	//
 	private OkButtonWidget btnOk;
 	private WeekItemWidget[] weeks;
 	private LineWidget line1, line2;
@@ -43,17 +43,10 @@ public class DatePanel extends AbstractPanel {
 	/**
 	 * 
 	 */
-	public WeekItemWidget[] getWeeks() {return weeks;}
-	public DateItemWidget[][] getDates() {return dates;}
-	public OkButtonWidget getBtnOk() {return btnOk;}
-	public TimeButtonWidget getBtnTime() {return btnTime;}
-	public YearWidget getRollUpYear() {return rollUpYear;}
-	public YearWidget getSelectYear() {return selectYear;}
-	public CalendarPanel getCalendar() { return calendar; }
-	public MonthWidget getRollUpMonth() {return rollUpMonth;}
-	public MonthWidget getSelectMonth() {return selectMonth;}
-	public YearWidget getRollDownYear() {return rollDownYear;}
-	public MonthWidget getRollDownMonth() {return rollDownMonth;}
+	public DateItemWidget[][] getDates() { return dates; }
+	public YearWidget getSelectYear() { return selectYear; }
+	public MonthWidget getSelectMonth() { return selectMonth; }
+	public CalendarPanel getCalendarPanel() { return calendar; }
 	public DummyCalendar getDummyCalendar() { return dummyCalendar; }
 	
 	/**
@@ -153,6 +146,5 @@ public class DatePanel extends AbstractPanel {
 			line1.setBounds(new Rectangle(x, th, w, space));
 			line2.setBounds(new Rectangle(x, h - bh, w, space));
 		}
-
 	}
 }

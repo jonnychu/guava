@@ -26,10 +26,10 @@ public class YearAction extends AbstractMonthAction {
 	public boolean updateData(IFigure container, IFigure widget) {
 		final MonthPanel monthPanel = (MonthPanel)container;
 		final DummyCalendar calendar = monthPanel.getDummyCalendar();
+		//
 		if (this.type == Type.SELECT) {	return true; }
 		else if(this.type == Type.UP) { calendar.nextYear(); }
-		else if(this.type == Type.DOWN) { calendar.prevYear(); } 
-		return true;
+		else if(this.type == Type.DOWN) { calendar.prevYear(); } return true;
 	}
 	
 	@Override

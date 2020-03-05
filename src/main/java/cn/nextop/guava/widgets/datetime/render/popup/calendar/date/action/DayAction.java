@@ -16,8 +16,7 @@ public class DayAction extends AbstractDateAction {
 		final DateItemWidget w = (DateItemWidget)widget;
 		final DatePanel datePanel = (DatePanel)container;
 		final DummyCalendar calendar = datePanel.getDummyCalendar();
-		
-		calendar.select(w.getYear(), w.getMonth(), w.getDay());
-		return true;
+		//
+		calendar.select(w.getYear(), w.getMonth(), w.getDay());	return true;
 	}
 }

@@ -36,12 +36,8 @@ public class MonthPanel extends AbstractPanel {
 	/**
 	 * 
 	 */
-	public OkButtonWidget getBtnOk() { return btnOk; }
 	public MonthItemWidget[][] getMonths() {return months; }
-	public YearWidget getRollUpYear() { return rollUpYear; }
 	public YearWidget getSelectYear() { return selectYear; }
-	public TimeButtonWidget getBtnTime() { return btnTime; }
-	public YearWidget getRollDownYear() { return rollDownYear; }
 	public CalendarPanel getCalendarPanel() { return calendarPanel; }
 	public DummyCalendar getDummyCalendar() { return dummyCalendar; }
 	

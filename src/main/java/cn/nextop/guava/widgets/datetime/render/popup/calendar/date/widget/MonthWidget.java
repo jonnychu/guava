@@ -60,7 +60,7 @@ public class MonthWidget extends AbstractWidget {
 	public void handleMouseReleased(MouseEvent event) {
 		super.handleMouseReleased(event); 
 		DatePanel dp = (DatePanel)getParent();
-		MonthPanel mp = dp.getCalendar().getMonthPanel();
+		MonthPanel mp = dp.getCalendarPanel().getMonthPanel();
 		new MonthAction(type).onAction(getParent(), this);
 		if(type == Type.SELECT) new ShowMonthAction().onAction(mp, null);
 	}

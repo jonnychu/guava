@@ -26,17 +26,17 @@ public class MonthAction extends AbstractDateAction {
 	public boolean updateData(IFigure container, IFigure widget) {
 		final DatePanel datePanel = (DatePanel)container;
 		final DummyCalendar calendar = datePanel.getDummyCalendar();
+		//
 		if (this.type == Type.SELECT) {	return true; }
 		else if(this.type == Type.UP) { calendar.nextMonth(); }
-		else if(this.type == Type.DOWN) { calendar.prevMonth(); } 
-		return true;
+		else if(this.type == Type.DOWN) { calendar.prevMonth(); } return true;
 	}
 	
 	@Override
 	public void onAction(IFigure container, IFigure widget) {
 		super.onAction(container, widget);
 		final DatePanel datePanel = (DatePanel)container;
-		final CalendarPanel calendarPanel = datePanel.getCalendar();
+		final CalendarPanel calendarPanel = datePanel.getCalendarPanel();
 		if (this.type == Type.SELECT) calendarPanel.panel(PanelType.MONTH);
 	}
 }

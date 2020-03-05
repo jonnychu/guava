@@ -18,25 +18,23 @@ public class YearAction extends AbstractDateAction {
 	/**
 	 * 
 	 */
-	public YearAction(Type type) {
-		this.type = type;
-	}
+	public YearAction(Type type) { this.type = type; }
 
 	@Override
 	public boolean updateData(IFigure container, IFigure widget) {
 		final DatePanel datePanel = (DatePanel)container;
 		final DummyCalendar calendar = datePanel.getDummyCalendar();
+		//
 		if (this.type == Type.SELECT) {	return true; }
 		else if(this.type == Type.UP) { calendar.nextYear(); }
-		else if(this.type == Type.DOWN) { calendar.prevYear(); } 
-		return true;
+		else if(this.type == Type.DOWN) { calendar.prevYear(); } return true;
 	}
 	
 	@Override
 	public void onAction(IFigure container, IFigure widget) {
 		super.onAction(container, widget);
 		final DatePanel datePanel = (DatePanel)container;
-		final CalendarPanel calendarPanel = datePanel.getCalendar();
+		final CalendarPanel calendarPanel = datePanel.getCalendarPanel();
 		if (this.type == Type.SELECT) calendarPanel.panel(PanelType.YEAR);
 	}
 }

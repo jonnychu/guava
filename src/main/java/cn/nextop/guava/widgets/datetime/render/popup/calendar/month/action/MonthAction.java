@@ -18,15 +18,15 @@ public class MonthAction extends AbstractMonthAction {
 		final MonthItemWidget w = (MonthItemWidget)widget;
 		final MonthPanel monthPanel = (MonthPanel)container;
 		final DummyCalendar calendar = monthPanel.getDummyCalendar();
-		
-		calendar.select(w.getYear(), w.getMonth());
-		return true;
+		//
+		calendar.select(w.getYear(), w.getMonth()); return true;
 	}
 	
 	public void onAction(IFigure container, IFigure widget) {
 		super.onAction(container, widget);
 		final MonthPanel monthPanel = (MonthPanel)container;
 		final CalendarPanel calendarPanel = monthPanel.getCalendarPanel();
+		//
 		calendarPanel.panel(PanelType.DATE); 
 	}
 }

@@ -18,7 +18,7 @@ public class Year2Action extends AbstractYearAction {
 		final YearItemWidget w = (YearItemWidget)widget;
 		final YearPanel yearPanel = (YearPanel)container;
 		final DummyCalendar calendar = yearPanel.getDummyCalendar();
-		
+		//
 		calendar.select(w.getYear()); return true;
 	}
 	
@@ -26,6 +26,7 @@ public class Year2Action extends AbstractYearAction {
 		super.onAction(container, widget);
 		final YearPanel yearPanel = (YearPanel)container;
 		final CalendarPanel calendarPanel = yearPanel.getCalendarPanel();
+		//
 		calendarPanel.panel(PanelType.MONTH); // switch month panel
 	}
 }
