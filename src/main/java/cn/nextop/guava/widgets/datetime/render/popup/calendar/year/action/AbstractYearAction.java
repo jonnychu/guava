@@ -25,13 +25,13 @@ public abstract class AbstractYearAction extends AbstractAction {
 		yearPanel.getSelectYear().setText(dummyCalendar.getYearSymbol());
 		
 		// update year ui
-		final String[] years = dummyCalendar.getYearSymbols();
+		final String[] years = dummyCalendar.getYears();
 		final YearItemWidget[][] yearItems = yearPanel.getYears();
 		int index = 0; for (int i = 0; i < yearItems.length; i++) {
 			for (int j = 0; j < yearItems[i].length; j++) {
 				String name = years[index]; int year = parseInt(name);
 				boolean selected = dummyCalendar.isSelectedYear(year);
-				yearItems[i][j] = new YearItemWidget(year, name, selected); index++;
+				yearItems[i][j].setValue(year, name, selected); index++;
 			}
 		}
 		

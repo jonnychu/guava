@@ -9,6 +9,7 @@ import static java.util.Calendar.MONTH;
 import static java.util.Calendar.YEAR;
 
 import java.text.DateFormatSymbols;
+import java.util.Arrays;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
@@ -46,12 +47,22 @@ public class DummyCalendar {
 		dummy.add(YEAR, 1);
 		return dummy.get(YEAR);
 	}
-
+	
 	public int prevYear() {
 		dummy.add(YEAR, -1);
 		return dummy.get(YEAR);
 	}
-
+	
+	public int next12Year() {
+		dummy.add(YEAR, 12);
+		return dummy.get(YEAR);
+	}
+	
+	public int prev12Year() {
+		dummy.add(YEAR, -12);
+		return dummy.get(YEAR);
+	}
+	
 	public String nextMonth() {
 		dummy.add(MONTH, 1);
 		return getMonthSymbol();
@@ -67,15 +78,6 @@ public class DummyCalendar {
 	 */
 	public String getYearSymbol() {
 		return valueOf(dummy.get(YEAR));
-	}
-	
-	public String[] getYearSymbols() {
-		int y = dummy.get(Calendar.YEAR);
-		final String[] r = new String[12];
-		for (int i = 0; i < r.length; i++, y++) {
-			r[i] = String.valueOf(y);
-		}
-		return r;
 	}
 	
 	/**
@@ -99,6 +101,21 @@ public class DummyCalendar {
 	/**
 	 * 
 	 */
+	public String[] getYears() {
+		int nYear = now.get(Calendar.YEAR);
+		int dYear = dummy.get(Calendar.YEAR);
+		
+		int v0 = dYear - nYear;
+		int v1 = nYear + (v0 / 12) * 12;
+		if(v0 < 0) v1 = v1 - 12; // prev
+		
+		final String[] r = new String[12];
+		for (int i = 0; i < r.length; i++) {
+			r[i] = valueOf(v1++);
+		}
+		return r;
+	}
+	
 	public DummyModel[][] getCalendar() {
 		final int dYear = this.dummy.get(YEAR);
 		final int dMonth = this.dummy.get(MONTH);
@@ -106,7 +123,7 @@ public class DummyCalendar {
 		final Calendar c = new GregorianCalendar(locale);
 		c.set(DATE, 1); c.set(MONTH, dMonth); c.set(YEAR, dYear);
 		//
-		int firstDayOfWeek = c.get(DAY_OF_WEEK);
+		final int firstDayOfWeek = c.get(DAY_OF_WEEK);
 		int prevDayOfMonth = firstDayOfWeek == 1 ? 0 : (firstDayOfWeek - 1);
 		// first day
 		if(prevDayOfMonth == 0) c.set(DATE, 1); else c.add(DATE, -prevDayOfMonth);
@@ -133,7 +150,7 @@ public class DummyCalendar {
 	 * 
 	 */
 	public void select(int year) {
-		this.select.set(YEAR, year); this.dummy.set(YEAR, year);
+		this.dummy.set(YEAR, year);
 	}
 	
 	public void select(int year, int month) {
@@ -166,8 +183,7 @@ public class DummyCalendar {
 	 * 
 	 */
 	public boolean isSelectedYear(int year) {
-		final int y = this.select.get(YEAR);
-		return (y == year);
+		return (this.select.get(YEAR) == year);
 	}
 	
 	public boolean isSelectedMonth(int year, int month) {
@@ -187,5 +203,36 @@ public class DummyCalendar {
 	 * 
 	 */
 	public static void main(String[] args) {
+		{
+			Calendar c = new GregorianCalendar(Locale.ENGLISH);
+			c.set(Calendar.DATE, 1); c.set(Calendar.MONTH, 1); c.set(Calendar.YEAR, 2023);
+			DummyCalendar dc = new DummyCalendar(c.getTimeInMillis());
+			Arrays.stream(dc.getYears()).forEach(e->{System.out.print(e + " ,");});
+			System.out.println();
+		}
+		
+		{
+			Calendar c = new GregorianCalendar(Locale.ENGLISH);
+			c.set(Calendar.DATE, 1); c.set(Calendar.MONTH, 1); c.set(Calendar.YEAR, 2033);
+			DummyCalendar dc = new DummyCalendar(c.getTimeInMillis());
+			Arrays.stream(dc.getYears()).forEach(e->{System.out.print(e + " ,");});
+			System.out.println();
+		}
+		
+		{
+			Calendar c = new GregorianCalendar(Locale.ENGLISH);
+			c.set(Calendar.DATE, 1); c.set(Calendar.MONTH, 1); c.set(Calendar.YEAR, 2045);
+			DummyCalendar dc = new DummyCalendar(c.getTimeInMillis());
+			Arrays.stream(dc.getYears()).forEach(e->{System.out.print(e + " ,");});
+			System.out.println();
+		}
+		
+		{
+			Calendar c = new GregorianCalendar(Locale.ENGLISH);
+			c.set(Calendar.DATE, 1); c.set(Calendar.MONTH, 1); c.set(Calendar.YEAR, 2007);
+			DummyCalendar dc = new DummyCalendar(c.getTimeInMillis());
+			Arrays.stream(dc.getYears()).forEach(e->{System.out.print(e + " ,");});
+			System.out.println();
+		}
 	}
 }

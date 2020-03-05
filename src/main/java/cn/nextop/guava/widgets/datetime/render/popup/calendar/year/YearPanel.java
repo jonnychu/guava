@@ -62,7 +62,7 @@ public class YearPanel extends AbstractPanel {
 		add(rollDownYear = new YearWidget(angle_double_left, Type.DOWN));
 		add(selectYear = new YearWidget(dummyCalendar.getYearSymbol(), Type.SELECT));
 		//
-		final String[] years = dummyCalendar.getYearSymbols();
+		final String[] years = dummyCalendar.getYears();
 		int index = 0; for (int i = 0; i < yearItems.length; i++) {
 			for (int j = 0; j < yearItems[i].length; j++) {
 				String name = years[index]; int year = parseInt(name);

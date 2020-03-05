@@ -25,8 +25,8 @@ public class YearAction extends AbstractYearAction {
 		final YearPanel monthPanel = (YearPanel)container;
 		final DummyCalendar calendar = monthPanel.getDummyCalendar();
 		//
-		if (this.type == Type.DOWN) { calendar.prevYear(); }
-		else if(this.type == Type.UP) { calendar.nextYear(); }
+		if (this.type == Type.DOWN) { calendar.prev12Year(); }
+		else if(this.type == Type.UP) { calendar.next12Year(); }
 		else if(this.type == Type.SELECT) { return false; } return true;
 	}
 }
