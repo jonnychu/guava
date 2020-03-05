@@ -162,6 +162,14 @@ public class DummyCalendar {
 		return (y == year && m == month && d == day);
 	}
 	
+	/**
+	 * 
+	 */
+	public boolean isSelectedYear(int year) {
+		final int y = this.select.get(YEAR);
+		return (y == year);
+	}
+	
 	public boolean isSelectedMonth(int year, int month) {
 		final int y = this.select.get(YEAR);
 		final int m = this.select.get(MONTH);
