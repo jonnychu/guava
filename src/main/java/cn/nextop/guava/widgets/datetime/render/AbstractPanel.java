@@ -73,7 +73,7 @@ public abstract class AbstractPanel extends Figure {
 		return dp.getDateTime().getModel();
 	}
 	
-	public XDateTimeModel getXDateTimeModelFontContent() {
+	public XDateTimeModel getXDateTimeModelFromContent() {
 		final ShortcutPanel cp = ((Content)this).getShortcutPanel();
 		final XDateTimePopup dp = cp.getPopupPanel().getXDateTimePopup();
 		return dp.getDateTime().getModel();

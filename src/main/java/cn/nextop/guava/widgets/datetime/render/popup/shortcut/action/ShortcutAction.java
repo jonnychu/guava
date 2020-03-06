@@ -20,7 +20,7 @@ public class ShortcutAction extends AbstractShortcutAction {
 		final Content content = (Content) container;
 		final ShortcutItem item = (ShortcutItem) widget;
 		final DummyCalendar dc = content.getDummyCalendarFromContent();
-		final XDateTimeModel model = content.getXDateTimeModelFontContent();
+		final XDateTimeModel model = content.getXDateTimeModelFromContent();
 		
 		
 		Shortcut shortcut = item.getShortcut();
