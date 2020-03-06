@@ -46,6 +46,19 @@ public abstract class AbstractPanel extends Figure {
 	public List<IFigure> getChildren() { return super.getChildren(); }
 	
 	/**
+	 * 
+	 */
+	protected class CustomLayout extends AbstractHintLayout {
+
+		@Override public void layout(IFigure container) { layoutManager(container); }
+
+		@Override
+		protected Dimension calculatePreferredSize(IFigure container, int wHint, int hHint) {
+			return calPreferredSize(container, wHint, hHint);
+		}
+	}
+	
+	/**
 	 * Faster helper
 	 */
 	public TextPanel getTextPanelFromDate() {
@@ -88,18 +101,5 @@ public abstract class AbstractPanel extends Figure {
 		if(this instanceof Content) 
 			return ((Content)this).getShortcutPanel().getPopupPanel().getXDateTimePopup().getDummyCalendar();
 		return null;
-	}
-	
-	/**
-	 * 
-	 */
-	protected class CustomLayout extends AbstractHintLayout {
-
-		@Override public void layout(IFigure container) { layoutManager(container); }
-
-		@Override
-		protected Dimension calculatePreferredSize(IFigure container, int wHint, int hHint) {
-			return calPreferredSize(container, wHint, hHint);
-		}
 	}
 }
