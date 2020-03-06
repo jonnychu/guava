@@ -32,11 +32,10 @@ public class SecPanel extends AbstractScrollPanel {
 		setHorizontalScrollBarVisibility(NEVER);
 		setVerticalScrollBarVisibility(AUTOMATIC);
 		//
-		this.items = new SecWidet[60];
+		this.items = new SecWidet[59];
 		for (int i = 0; i < items.length; i++) {
-			final int v1 = i + 1;
-			final int v2 = dc.getSelectedSecond();
-			items[i] = new SecWidet(v1, v1 == v2);
+			final int v = dc.getSelectedSecond();
+			items[i] = new SecWidet(i, v == i);
 		}
 		setContents(new SecContent(items));
 	}

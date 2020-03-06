@@ -32,11 +32,10 @@ public class MinPanel extends AbstractScrollPanel {
 		setHorizontalScrollBarVisibility(NEVER);
 		setVerticalScrollBarVisibility(AUTOMATIC);
 		//
-		this.items = new MinWidet[60];
+		this.items = new MinWidet[59];
 		for (int i = 0; i < items.length; i++) {
-			final int v1 = i + 1;
-			final int v2 = dc.getSelectedMintue();
-			items[i] = new MinWidet(v1, v1 == v2);
+			final int v = dc.getSelectedMintue();
+			items[i] = new MinWidet(i, v == i);
 		}
 		setContents(new MinContent(items));
 	}

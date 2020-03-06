@@ -34,21 +34,18 @@ public abstract class AbstractTimeAction extends AbstractAction {
 		
 		int y1 = 0, y2 = 0, y3 = 0, h = 24;
 		for (int i = 0; i < hours.length; i++) {
-			final int v1 = i + 1;
-			final boolean selected = dc.getSelectedHour() == v1;
-			if(selected) y1 = i * h; hours[i].setValue(v1, selected);
+			final boolean selected = dc.getSelectedHour() == i;
+			if(selected) y1 = i * h; hours[i].setValue(i, selected);
 		}
 		
 		for (int i = 0; i < minutes.length; i++) {
-			final int v1 = i + 1;
-			final boolean selected = dc.getSelectedMintue() == v1;
-			if(selected) y2 = i * h; minutes[i].setValue(v1, selected);
+			final boolean selected = dc.getSelectedMintue() == i;
+			if(selected) y2 = i * h; minutes[i].setValue(i, selected);
 		}
 		
 		for (int i = 0; i < seconds.length; i++) {
-			final int v1 = i + 1;
-			final boolean selected = dc.getSelectedSecond() == v1;
-			if(selected) y3 = i * h; seconds[i].setValue(v1, selected);
+			final boolean selected = dc.getSelectedSecond() == i;
+			if(selected) y3 = i * h; seconds[i].setValue(i, selected);
 		}
 		
 		//
