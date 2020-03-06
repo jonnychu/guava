@@ -24,8 +24,8 @@ public class PopupPanel extends AbstractPanel {
 	 * 
 	 */
 	public ShortcutPanel getShortcut() { return shortcut; }
-	public XDateTimePopup getXDateTimePopup() { return dateTimePopup; }
 	public CalendarPanel getCalendarPanel() { return calendar; }
+	public XDateTimePopup getXDateTimePopup() { return dateTimePopup; }
 	
 	/**
 	 * 

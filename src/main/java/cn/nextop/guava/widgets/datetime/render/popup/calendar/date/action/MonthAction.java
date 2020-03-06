@@ -18,9 +18,7 @@ public class MonthAction extends AbstractDateAction {
 	/**
 	 * 
 	 */
-	public MonthAction(Type type) {
-		this.type = type;
-	}
+	public MonthAction(Type type) { this.type = type; }
 
 	@Override
 	public boolean updateData(IFigure container, IFigure widget) {

@@ -35,8 +35,8 @@ public class MonthPanel extends AbstractPanel {
 	/**
 	 * 
 	 */
-	public MonthItemWidget[][] getMonths() {return months; }
 	public YearWidget getSelectYear() { return selectYear; }
+	public MonthItemWidget[][] getMonths() {return months; }
 	public CalendarPanel getCalendarPanel() { return calendarPanel; }
 	
 	/**

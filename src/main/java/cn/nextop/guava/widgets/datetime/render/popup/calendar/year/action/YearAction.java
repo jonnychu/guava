@@ -16,14 +16,12 @@ public class YearAction extends AbstractYearAction {
 	/**
 	 * 
 	 */
-	public YearAction(Type type) {
-		this.type = type;
-	}
+	public YearAction(Type type) { this.type = type; }
 
 	@Override
 	public boolean updateData(IFigure container, IFigure widget) {
-		final YearPanel monthPanel = (YearPanel)container;
-		final DummyCalendar calendar = monthPanel.getDummyCalendarFromYear();
+		final YearPanel yearPanel = (YearPanel)container;
+		final DummyCalendar calendar = yearPanel.getDummyCalendarFromYear();
 		//
 		if (this.type == Type.DOWN) { calendar.prev12Year(); }
 		else if(this.type == Type.UP) { calendar.next12Year(); }

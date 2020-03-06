@@ -75,9 +75,7 @@ public class DateItemWidget extends AbstractWidget {
 	@Override
 	public void handleMouseReleased(MouseEvent event) {
 		super.handleMouseReleased(event);
-		DatePanel dp = (DatePanel)getParent();
-		TextPanel tp = dp.getTextPanelFromDate();
-		new DateAction().onAction(getParent(), this);
-		new ShowTextAction().onAction(tp, null);
+		DatePanel dp = (DatePanel)getParent(); TextPanel tp = dp.getTextPanelFromDate();
+		new DateAction().onAction(getParent(), this); new ShowTextAction().onAction(tp, null);
 	}
 }

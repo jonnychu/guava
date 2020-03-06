@@ -59,7 +59,7 @@ public class YearWidget extends AbstractWidget {
 	@Override
 	public void handleMouseReleased(MouseEvent event) {
 		super.handleMouseReleased(event); 
-		DatePanel dp = (DatePanel)getParent();
+		DatePanel dp = (DatePanel)getParent(); 
 		YearPanel yp = dp.getCalendarPanel().getYearPanel();
 		new YearAction(type).onAction(dp, this); new ShowYearAction().onAction(yp, null);
 	}

@@ -2,7 +2,6 @@ package cn.nextop.guava.widgets.datetime.render.popup.calendar;
 
 import org.eclipse.draw2d.IFigure;
 
-import cn.nextop.guava.widgets.datetime.XDateTime;
 import cn.nextop.guava.widgets.datetime.glossary.PanelType;
 import cn.nextop.guava.widgets.datetime.render.AbstractPanel;
 import cn.nextop.guava.widgets.datetime.render.popup.PopupPanel;
@@ -15,7 +14,6 @@ import cn.nextop.guava.widgets.datetime.render.popup.calendar.year.YearPanel;
  */
 public class CalendarPanel extends AbstractPanel {
 	//
-	private XDateTime dateTime;
 	private DatePanel datePanel;
 	private YearPanel yearPanel;
 	private MonthPanel monthPanel;
@@ -24,7 +22,6 @@ public class CalendarPanel extends AbstractPanel {
 	/**
 	 * 
 	 */
-	public XDateTime getDateTime() { return dateTime; }
 	public DatePanel getDatePanel() { return datePanel; }
 	public YearPanel getYearPanel() { return yearPanel; }
 	public PopupPanel getPopupPanel() { return popupPanel; }

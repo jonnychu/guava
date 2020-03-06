@@ -11,10 +11,9 @@ import cn.nextop.guava.widgets.datetime.render.popup.shortcut.widget.ShortcutIte
  */
 public class ShortcutPanel extends AbstractScrollPanel {
 	//
-	public static final int itemHeight = 24;
-	//
 	private PopupPanel popupPanel;
-	
+	public static final int itemHeight = 24;
+
 	/**
 	 * 
 	 */
