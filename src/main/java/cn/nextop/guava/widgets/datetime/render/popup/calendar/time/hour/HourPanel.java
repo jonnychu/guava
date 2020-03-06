@@ -32,7 +32,7 @@ public class HourPanel extends AbstractScrollPanel {
 		setHorizontalScrollBarVisibility(NEVER);
 		setVerticalScrollBarVisibility(AUTOMATIC);
 		//
-		this.items = new HourWidet[23];
+		this.items = new HourWidet[24];
 		for (int i = 0; i < items.length; i++) {
 			final int v = dc.getSelectedHour();
 			items[i] = new HourWidet(i, v == i);

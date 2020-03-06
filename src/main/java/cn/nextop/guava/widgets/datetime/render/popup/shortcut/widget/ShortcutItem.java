@@ -13,6 +13,7 @@ import cn.nextop.guava.widgets.datetime.glossary.Shortcut;
 import cn.nextop.guava.widgets.datetime.render.AbstractWidget;
 import cn.nextop.guava.widgets.datetime.render.popup.calendar.CalendarPanel;
 import cn.nextop.guava.widgets.datetime.render.popup.calendar.date.action.ShowDateAction;
+import cn.nextop.guava.widgets.datetime.render.popup.calendar.time.action.ShowTimeAction;
 import cn.nextop.guava.widgets.datetime.render.popup.shortcut.ShortcutContent;
 import cn.nextop.guava.widgets.datetime.render.popup.shortcut.ShortcutPanel;
 import cn.nextop.guava.widgets.datetime.render.popup.shortcut.action.ShortcutAction;
@@ -57,6 +58,7 @@ public class ShortcutItem extends AbstractWidget {
 		//
 		new ShortcutAction().onAction(content, this);
 		new ShowDateAction().onAction(cp.getDatePanel(), null);
+		new ShowTimeAction().onAction(cp.getTimePanel(), null);
 		new ShowTextAction().onAction(dateTime.getTextPanel(), null);
 	}
 }
