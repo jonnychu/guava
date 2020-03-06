@@ -98,15 +98,16 @@ public abstract class AbstractPanel extends Figure {
 		return null;
 	}
 	
+	public DummyCalendar getDummyCalendarFromTime() {
+		if(this instanceof TimePanel) 
+			return ((TimePanel)this).getCalendarPanel().getPopupPanel().getXDateTimePopup().getDummyCalendar();
+		return null;
+	}
+	
 	public DummyCalendar getDummyCalendarFromShortCutContent() {
 		if(this instanceof ShortcutContent) 
 			return ((ShortcutContent)this).getShortcutPanel().getPopupPanel().getXDateTimePopup().getDummyCalendar();
 		return null;
 	}
 	
-	public DummyCalendar getDummyCalendarFromTime() {
-		if(this instanceof MonthPanel) 
-			return ((TimePanel)this).getCalendarPanel().getPopupPanel().getXDateTimePopup().getDummyCalendar();
-		return null;
-	}
 }

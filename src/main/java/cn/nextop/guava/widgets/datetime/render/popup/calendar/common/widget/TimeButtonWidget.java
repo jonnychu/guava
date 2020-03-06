@@ -12,6 +12,7 @@ import cn.nextop.guava.utils.Fonts;
 import cn.nextop.guava.widgets.datetime.glossary.PanelType;
 import cn.nextop.guava.widgets.datetime.render.AbstractWidget;
 import cn.nextop.guava.widgets.datetime.render.popup.calendar.CalendarPanel;
+import cn.nextop.guava.widgets.datetime.render.popup.calendar.time.action.ShowTimeAction;
 
 /**
  * @author jonny
@@ -39,6 +40,7 @@ public class TimeButtonWidget extends AbstractWidget {
 	@Override
 	public void handleMouseReleased(MouseEvent event) {
 		super.handleMouseReleased(event);
-		CalendarPanel cp = (CalendarPanel)getParent().getParent(); cp.panel(PanelType.TIME);
+		CalendarPanel cp = (CalendarPanel)getParent().getParent(); 
+		cp.panel(PanelType.TIME); new ShowTimeAction().onAction(cp.getTimePanel(), null);
 	}
 }
