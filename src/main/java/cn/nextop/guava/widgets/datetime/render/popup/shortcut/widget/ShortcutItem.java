@@ -10,8 +10,10 @@ import org.eclipse.draw2d.geometry.Rectangle;
 import cn.nextop.guava.utils.Colors;
 import cn.nextop.guava.widgets.datetime.glossary.Shortcut;
 import cn.nextop.guava.widgets.datetime.render.AbstractWidget;
+import cn.nextop.guava.widgets.datetime.render.popup.calendar.CalendarPanel;
+import cn.nextop.guava.widgets.datetime.render.popup.calendar.date.action.ShowDateAction;
 import cn.nextop.guava.widgets.datetime.render.popup.shortcut.Content;
-import cn.nextop.guava.widgets.datetime.render.popup.shortcut.ShortcutScrollPanel;
+import cn.nextop.guava.widgets.datetime.render.popup.shortcut.ShortcutPanel;
 import cn.nextop.guava.widgets.datetime.render.popup.shortcut.action.ShortcutAction;
 import cn.nextop.guava.widgets.datetime.render.text.acton.ShowTextAction;
 
@@ -47,9 +49,12 @@ public class ShortcutItem extends AbstractWidget {
 	@Override
 	public void handleMouseReleased(MouseEvent event) {
 		super.handleMouseReleased(event); 
-		Content content = (Content) getParent();
-		ShortcutScrollPanel ssp = content.getShortcutScrollPanel();
+		final Content content = (Content) getParent();
+		final ShortcutPanel ssp = content.getShortcutPanel();
+		final CalendarPanel cp = ssp.getPopupPanel().getCalendarPanel();
+		//
 		new ShortcutAction().onAction(content, this);
+		new ShowDateAction().onAction(cp.getDatePanel(), null);
 		new ShowTextAction().onAction(ssp.getDateTime().getTextPanel(), null);
 	}
 }

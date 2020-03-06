@@ -163,6 +163,12 @@ public class DummyCalendar {
 		this.dummy.set(YEAR, year);this.dummy.set(MONTH, month);
 	}
 	
+	public void select(long now) {
+		this.now.setTimeInMillis(now);
+		this.dummy.setTimeInMillis(now);
+		this.select.setTimeInMillis(now);
+	}
+	
 	/**
 	 * 
 	 */

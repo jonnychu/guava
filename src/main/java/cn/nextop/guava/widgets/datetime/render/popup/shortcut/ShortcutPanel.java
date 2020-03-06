@@ -13,7 +13,7 @@ import cn.nextop.guava.widgets.datetime.render.popup.shortcut.widget.ShortcutIte
 /**
  * @author jonny
  */
-public class ShortcutScrollPanel extends AbstractScrollPanel {
+public class ShortcutPanel extends AbstractScrollPanel {
 	//
 	public static final int itemHeight = 24;
 	//
@@ -35,7 +35,7 @@ public class ShortcutScrollPanel extends AbstractScrollPanel {
 	/**
 	 * 
 	 */
-	public ShortcutScrollPanel(PopupPanel popupPanel) {
+	public ShortcutPanel(PopupPanel popupPanel) {
 		this.popupPanel = popupPanel;
 		this.dateTimePopup = popupPanel.getPopup();
 		this.dateTime = dateTimePopup.getDateTime();

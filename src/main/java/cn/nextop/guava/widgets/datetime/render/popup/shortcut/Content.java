@@ -12,19 +12,19 @@ import cn.nextop.guava.widgets.datetime.render.popup.shortcut.widget.ShortcutIte
 public class Content extends AbstractPanel {
 	//
 	private ShortcutItem[] items;
-	private ShortcutScrollPanel shortcutScrollPanel;
-	private final int itemHeight = ShortcutScrollPanel.itemHeight;
+	private ShortcutPanel shortcutPanel;
+	private final int itemHeight = ShortcutPanel.itemHeight;
 	
 	/**
 	 * 
 	 */
-	public ShortcutScrollPanel getShortcutScrollPanel() { return shortcutScrollPanel; }
+	public ShortcutPanel getShortcutPanel() { return shortcutPanel; }
 
 	/**
 	 * 
 	 */
-	public Content(ShortcutItem[] items, ShortcutScrollPanel shortcutScrollPanel) {
-		this.shortcutScrollPanel = shortcutScrollPanel;
+	public Content(ShortcutItem[] items, ShortcutPanel shortcutPanel) {
+		this.shortcutPanel = shortcutPanel;
 		this.items = items;	for (ShortcutItem item : items) { add(item); }
 	}
 	
