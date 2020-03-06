@@ -25,8 +25,12 @@ public class HourWidet extends AbstractWidget {
 	/**
 	 * 
 	 */
-	public HourWidet(int hour) {
-		this.hour = hour; this.text = valueOf(hour);
+	public HourWidet(int hour, boolean selected) {
+		this.hour = hour; this.text = valueOf(hour); this.selected = selected;
+	}
+	
+	public void setValue(int hour, boolean selected) {
+		this.hour = hour; this.text = valueOf(hour); this.selected = selected;
 	}
 	
 	@Override
@@ -34,7 +38,9 @@ public class HourWidet extends AbstractWidget {
 		super.paintFigure(g);
 		Rectangle rect = getBounds();
 		if(enter) g.setBackgroundColor(Colors.COLOR_CYAN);
-		else g.setBackgroundColor(Colors.COLOR_WHITE); g.fillRectangle(rect);
+		else g.setBackgroundColor(Colors.COLOR_WHITE);
+		if(selected) g.setBackgroundColor(Colors.COLOR_LIGHT_BLUE);
+		g.fillRectangle(rect);
 		
 		//
 		Dimension d1 = INSTANCE.getStringExtents(text, g.getFont());

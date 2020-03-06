@@ -25,8 +25,12 @@ public class MinWidet extends AbstractWidget {
 	/**
 	 * 
 	 */
-	public MinWidet(int minute) {
-		this.minute = minute; this.text = valueOf(minute);
+	public MinWidet(int minute, boolean selected) {
+		this.minute = minute; this.text = valueOf(minute); this.selected = selected;
+	}
+	
+	public void setValue(int minute, boolean selected) {
+		this.minute = minute; this.text = valueOf(minute); this.selected = selected;
 	}
 	
 	@Override
@@ -34,8 +38,9 @@ public class MinWidet extends AbstractWidget {
 		super.paintFigure(g);
 		Rectangle rect = getBounds();
 		if(enter) g.setBackgroundColor(Colors.COLOR_CYAN);
-		else g.setBackgroundColor(Colors.COLOR_WHITE); g.fillRectangle(rect);
-		
+		else g.setBackgroundColor(Colors.COLOR_WHITE); 		
+		if(selected) g.setBackgroundColor(Colors.COLOR_LIGHT_BLUE);
+		g.fillRectangle(rect);
 		//
 		Dimension d1 = INSTANCE.getStringExtents(text, g.getFont());
 		g.drawString(text, rect.x + 10, rect.y + (rect.height - d1.height) / 2);

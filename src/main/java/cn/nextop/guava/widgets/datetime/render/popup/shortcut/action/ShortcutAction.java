@@ -19,7 +19,7 @@ public class ShortcutAction extends AbstractShortcutAction {
 	protected boolean updateData(IFigure container, IFigure widget) {
 		final ShortcutContent content = (ShortcutContent) container;
 		final ShortcutItem item = (ShortcutItem) widget;
-		final DummyCalendar dc = content.getDummyCalendarFromContent();
+		final DummyCalendar dc = content.getDummyCalendarFromShortCutContent();
 		final XDateTimeModel model = content.getXDateTimeModelFromContent();
 		
 		

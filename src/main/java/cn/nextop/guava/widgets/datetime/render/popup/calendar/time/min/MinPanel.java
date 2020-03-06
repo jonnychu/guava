@@ -1,6 +1,7 @@
 package cn.nextop.guava.widgets.datetime.render.popup.calendar.time.min;
 
 import cn.nextop.guava.draw2d.scroll.ScrollEvent;
+import cn.nextop.guava.widgets.datetime.model.DummyCalendar;
 import cn.nextop.guava.widgets.datetime.render.AbstractScrollPanel;
 import cn.nextop.guava.widgets.datetime.render.popup.calendar.time.TimePanel;
 import cn.nextop.guava.widgets.datetime.render.popup.calendar.time.min.widget.MinWidet;
@@ -10,12 +11,14 @@ import cn.nextop.guava.widgets.datetime.render.popup.calendar.time.min.widget.Mi
  */
 public class MinPanel extends AbstractScrollPanel {
 	//
+	private MinWidet[] items;
 	private TimePanel timePanel;
 	public static final int itemHeight = 24;
 	
 	/**
 	 * 
 	 */
+	public MinWidet[] getItems() { return items; }
 	public TimePanel getTimePanel() { return timePanel; }
 	
 	/**
@@ -23,14 +26,17 @@ public class MinPanel extends AbstractScrollPanel {
 	 */
 	public MinPanel(TimePanel timePanel) {
 		super("minute"); this.timePanel = timePanel;
+		DummyCalendar dc = getDummyCalendarFromMinute();
 		//
 		setVerticalScrollStep(itemHeight);
 		setHorizontalScrollBarVisibility(NEVER);
 		setVerticalScrollBarVisibility(AUTOMATIC);
 		//
-		MinWidet[] items = new MinWidet[60];
+		this.items = new MinWidet[60];
 		for (int i = 0; i < items.length; i++) {
-			items[i] = new MinWidet(i+1);
+			final int v1 = i + 1;
+			final int v2 = dc.getSelectedMintue();
+			items[i] = new MinWidet(v1, v1 == v2);
 		}
 		setContents(new MinContent(items));
 	}

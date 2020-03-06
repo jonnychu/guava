@@ -172,8 +172,20 @@ public class DummyCalendar {
 	/**
 	 * 
 	 */
-	public long getSelectTime() {
+	public long getSelectedTime() {
 		return select.getTimeInMillis();
+	}
+	
+	public int getSelectedSecond() {
+		return select.get(Calendar.SECOND);
+	}
+	
+	public int getSelectedMintue() {
+		return select.get(Calendar.MINUTE);
+	}
+	
+	public int getSelectedHour() {
+		return select.get(Calendar.HOUR_OF_DAY);
 	}
 	
 	/**

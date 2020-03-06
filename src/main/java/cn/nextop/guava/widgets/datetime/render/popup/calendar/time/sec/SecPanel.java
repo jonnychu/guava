@@ -1,6 +1,7 @@
 package cn.nextop.guava.widgets.datetime.render.popup.calendar.time.sec;
 
 import cn.nextop.guava.draw2d.scroll.ScrollEvent;
+import cn.nextop.guava.widgets.datetime.model.DummyCalendar;
 import cn.nextop.guava.widgets.datetime.render.AbstractScrollPanel;
 import cn.nextop.guava.widgets.datetime.render.popup.calendar.time.TimePanel;
 import cn.nextop.guava.widgets.datetime.render.popup.calendar.time.sec.widget.SecWidet;
@@ -10,12 +11,14 @@ import cn.nextop.guava.widgets.datetime.render.popup.calendar.time.sec.widget.Se
  */
 public class SecPanel extends AbstractScrollPanel {
 	//
+	private SecWidet[] items;
 	private TimePanel timePanel;
 	public static final int itemHeight = 24;
 	
 	/**
 	 * 
 	 */
+	public SecWidet[] getItems() { return items; }
 	public TimePanel getTimePanel() { return timePanel; }
 	
 	/**
@@ -23,14 +26,17 @@ public class SecPanel extends AbstractScrollPanel {
 	 */
 	public SecPanel(TimePanel timePanel) {
 		super("second"); this.timePanel = timePanel;
+		DummyCalendar dc = getDummyCalendarFromSecond();
 		//
 		setVerticalScrollStep(itemHeight);
 		setHorizontalScrollBarVisibility(NEVER);
 		setVerticalScrollBarVisibility(AUTOMATIC);
 		//
-		SecWidet[] items = new SecWidet[60];
+		this.items = new SecWidet[60];
 		for (int i = 0; i < items.length; i++) {
-			items[i] = new SecWidet(i+1);
+			final int v1 = i + 1;
+			final int v2 = dc.getSelectedSecond();
+			items[i] = new SecWidet(v1, v1 == v2);
 		}
 		setContents(new SecContent(items));
 	}

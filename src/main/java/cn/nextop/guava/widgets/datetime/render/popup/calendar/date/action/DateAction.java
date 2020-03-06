@@ -20,6 +20,6 @@ public class DateAction extends AbstractDateAction {
 		final XDateTimeModel model = datePanel.getXDateTimeModelFromDate();
 		//
 		dc.select(w.getYear(), w.getMonth(), w.getDay());
-		model.setTime(dc.getSelectTime()); return true;
+		model.setTime(dc.getSelectedTime()); return true;
 	}
 }

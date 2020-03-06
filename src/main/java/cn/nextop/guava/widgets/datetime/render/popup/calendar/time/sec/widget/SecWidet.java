@@ -25,8 +25,12 @@ public class SecWidet extends AbstractWidget {
 	/**
 	 * 
 	 */
-	public SecWidet(int second) {
-		this.second = second; this.text = valueOf(second);
+	public SecWidet(int second, boolean selected) {
+		this.second = second; this.text = valueOf(second); this.selected = selected;
+	}
+	
+	public void setValue(int second, boolean selected) {
+		this.second = second; this.text = valueOf(second); this.selected = selected;
 	}
 	
 	@Override
@@ -34,7 +38,9 @@ public class SecWidet extends AbstractWidget {
 		super.paintFigure(g);
 		Rectangle rect = getBounds();
 		if(enter) g.setBackgroundColor(Colors.COLOR_CYAN);
-		else g.setBackgroundColor(Colors.COLOR_WHITE); g.fillRectangle(rect);
+		else g.setBackgroundColor(Colors.COLOR_WHITE);
+		if(selected) g.setBackgroundColor(Colors.COLOR_LIGHT_BLUE);
+		g.fillRectangle(rect);
 		
 		//
 		Dimension d1 = INSTANCE.getStringExtents(text, g.getFont());

@@ -30,6 +30,9 @@ public class TimePanel extends AbstractPanel {
 	private DateButtonWidget btnDate;
 	
 	//
+	public SecPanel getSecPanel() { return secPanel; }
+	public MinPanel getMinPanel() { return minPanel; }
+	public HourPanel getHourPanel() { return hourPanel; }
 	public CalendarPanel getCalendarPanel() { return calendar; }
 
 	/**
