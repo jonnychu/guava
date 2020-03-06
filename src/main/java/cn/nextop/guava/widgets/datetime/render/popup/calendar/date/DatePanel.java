@@ -30,7 +30,6 @@ import cn.nextop.guava.widgets.datetime.render.popup.calendar.date.widget.YearWi
 public class DatePanel extends AbstractPanel {
 	//
 	private CalendarPanel calendar;
-	private DummyCalendar dummyCalendar;
 	//
 	private OkButtonWidget btnOk;
 	private WeekItemWidget[] weeks;
@@ -47,40 +46,40 @@ public class DatePanel extends AbstractPanel {
 	public YearWidget getSelectYear() { return selectYear; }
 	public MonthWidget getSelectMonth() { return selectMonth; }
 	public CalendarPanel getCalendarPanel() { return calendar; }
-	public DummyCalendar getDummyCalendar() { return dummyCalendar; }
 	
 	/**
 	 * 
 	 */
 	public DatePanel(CalendarPanel calendar) {
+		super("datepanel");
 		this.calendar = calendar;
 		this.weeks = new WeekItemWidget[7];
 		this.dates = new DateItemWidget[6][7];
-		this.dummyCalendar = calendar.getDummyCalendar();
+		DummyCalendar dc = this.getDummyCalendarFromDate();
 		//
 		add(line1 = new LineWidget());add(line2 = new LineWidget());
 		add(rollUpMonth = new MonthWidget(angle_right, Type.UP));
 		add(rollDownMonth = new MonthWidget(angle_left, Type.DOWN));
 		add(rollUpYear = new YearWidget(angle_double_right, Type.UP));
 		add(rollDownYear = new YearWidget(angle_double_left, Type.DOWN));
-		add(selectYear = new YearWidget(dummyCalendar.getYearSymbol(), Type.SELECT));
-		add(selectMonth = new MonthWidget(dummyCalendar.getMonthSymbol(), Type.SELECT));
+		add(selectYear = new YearWidget(dc.getYearSymbol(), Type.SELECT));
+		add(selectMonth = new MonthWidget(dc.getMonthSymbol(), Type.SELECT));
 		
 		// week symbols
-		String[] symbols = this.dummyCalendar.getWeekSymbols();
+		String[] symbols = dc.getWeekSymbols();
 		for (int i = 0; i < symbols.length; i++) {
 			add(weeks[i] = new WeekItemWidget(symbols[i]));
 		}
 		
 		// day of month
-		DummyModel[][] models = this.dummyCalendar.getCalendar();
+		DummyModel[][] models = dc.getCalendar();
 		for (int i = 0; i < models.length; i++) {
 			for (int j = 0; j < models[i].length; j++) {
 				final DummyModel dm = models[i][j];
 				int year = dm.getYear(), month = dm.getMonth(), day = dm.getDay();
-				final boolean now = this.dummyCalendar.isNow(year, month, day);
-				final boolean editable = this.dummyCalendar.isCurMonth(year, month);
-				final boolean selected = this.dummyCalendar.isSelectedDate(year, month, day);
+				final boolean now = dc.isNow(year, month, day);
+				final boolean editable = dc.isCurMonth(year, month);
+				final boolean selected = dc.isSelectedDate(year, month, day);
 				add(dates[i][j] = new DateItemWidget(year, month, day, editable, selected, now));
 			}
 		}

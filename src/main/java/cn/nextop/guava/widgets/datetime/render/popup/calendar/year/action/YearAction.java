@@ -23,7 +23,7 @@ public class YearAction extends AbstractYearAction {
 	@Override
 	public boolean updateData(IFigure container, IFigure widget) {
 		final YearPanel monthPanel = (YearPanel)container;
-		final DummyCalendar calendar = monthPanel.getDummyCalendar();
+		final DummyCalendar calendar = monthPanel.getDummyCalendarFromYear();
 		//
 		if (this.type == Type.DOWN) { calendar.prev12Year(); }
 		else if(this.type == Type.UP) { calendar.next12Year(); }

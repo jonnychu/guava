@@ -8,6 +8,7 @@ import org.eclipse.draw2d.geometry.Dimension;
 import org.eclipse.draw2d.geometry.Rectangle;
 
 import cn.nextop.guava.utils.Colors;
+import cn.nextop.guava.widgets.datetime.XDateTime;
 import cn.nextop.guava.widgets.datetime.glossary.Shortcut;
 import cn.nextop.guava.widgets.datetime.render.AbstractWidget;
 import cn.nextop.guava.widgets.datetime.render.popup.calendar.CalendarPanel;
@@ -52,9 +53,10 @@ public class ShortcutItem extends AbstractWidget {
 		final Content content = (Content) getParent();
 		final ShortcutPanel ssp = content.getShortcutPanel();
 		final CalendarPanel cp = ssp.getPopupPanel().getCalendarPanel();
+		final XDateTime dateTime = ssp.getPopupPanel().getXDateTimePopup().getDateTime();
 		//
 		new ShortcutAction().onAction(content, this);
 		new ShowDateAction().onAction(cp.getDatePanel(), null);
-		new ShowTextAction().onAction(ssp.getDateTime().getTextPanel(), null);
+		new ShowTextAction().onAction(dateTime.getTextPanel(), null);
 	}
 }

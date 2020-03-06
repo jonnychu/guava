@@ -12,8 +12,17 @@ import cn.nextop.guava.draw2d.scroll.ScrollEvent;
  * @author jonny
  */
 public class AbstractScrollPanel extends ScrollPane {
+	//
+	private final String name;
 	
-	public AbstractScrollPanel() {
+	//
+	public String getName() { return name; }
+
+	/**
+	 * 
+	 */
+	public AbstractScrollPanel(String name) {
+		this.name = name;
 		addListener(MouseWheelListener.class, new MouseWheelListener.Stub());
 	}
 	

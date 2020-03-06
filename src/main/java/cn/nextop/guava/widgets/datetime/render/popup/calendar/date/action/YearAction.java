@@ -23,7 +23,7 @@ public class YearAction extends AbstractDateAction {
 	@Override
 	public boolean updateData(IFigure container, IFigure widget) {
 		final DatePanel datePanel = (DatePanel)container;
-		final DummyCalendar calendar = datePanel.getDummyCalendar();
+		final DummyCalendar calendar = datePanel.getDummyCalendarFromDate();
 		//
 		if (this.type == Type.SELECT) {	return true; }
 		else if(this.type == Type.UP) { calendar.nextYear(); }

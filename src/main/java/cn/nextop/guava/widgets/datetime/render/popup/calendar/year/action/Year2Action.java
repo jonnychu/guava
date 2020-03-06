@@ -17,7 +17,7 @@ public class Year2Action extends AbstractYearAction {
 	public boolean updateData(IFigure container, IFigure widget) {
 		final YearItemWidget w = (YearItemWidget)widget;
 		final YearPanel yearPanel = (YearPanel)container;
-		final DummyCalendar calendar = yearPanel.getDummyCalendar();
+		final DummyCalendar calendar = yearPanel.getDummyCalendarFromYear();
 		//
 		calendar.select(w.getYear()); return true;
 	}

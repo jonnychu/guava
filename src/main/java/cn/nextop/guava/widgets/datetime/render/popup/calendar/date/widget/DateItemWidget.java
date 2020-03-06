@@ -11,7 +11,10 @@ import org.eclipse.draw2d.geometry.Rectangle;
 import cn.nextop.guava.utils.CGUtils;
 import cn.nextop.guava.utils.Colors;
 import cn.nextop.guava.widgets.datetime.render.AbstractWidget;
+import cn.nextop.guava.widgets.datetime.render.popup.calendar.date.DatePanel;
 import cn.nextop.guava.widgets.datetime.render.popup.calendar.date.action.DateAction;
+import cn.nextop.guava.widgets.datetime.render.text.TextPanel;
+import cn.nextop.guava.widgets.datetime.render.text.acton.ShowTextAction;
 
 public class DateItemWidget extends AbstractWidget {
 	//
@@ -71,6 +74,10 @@ public class DateItemWidget extends AbstractWidget {
 	
 	@Override
 	public void handleMouseReleased(MouseEvent event) {
-		super.handleMouseReleased(event); new DateAction().onAction(getParent(), this);
+		super.handleMouseReleased(event);
+		DatePanel dp = (DatePanel)getParent();
+		TextPanel tp = dp.getTextPanelFromDate();
+		new DateAction().onAction(getParent(), this);
+		new ShowTextAction().onAction(tp, null);
 	}
 }

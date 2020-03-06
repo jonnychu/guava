@@ -25,7 +25,6 @@ import cn.nextop.guava.widgets.datetime.render.popup.calendar.month.widget.YearW
 public class MonthPanel extends AbstractPanel {
 	//
 	private CalendarPanel calendarPanel;
-	private DummyCalendar dummyCalendar;
 	//
 	private OkButtonWidget btnOk;
 	private LineWidget line1, line2;
@@ -39,15 +38,15 @@ public class MonthPanel extends AbstractPanel {
 	public MonthItemWidget[][] getMonths() {return months; }
 	public YearWidget getSelectYear() { return selectYear; }
 	public CalendarPanel getCalendarPanel() { return calendarPanel; }
-	public DummyCalendar getDummyCalendar() { return dummyCalendar; }
 	
 	/**
 	 * 
 	 */
 	public MonthPanel(CalendarPanel calendar) {
+		super("monthpanel");
 		this.calendarPanel = calendar;
 		this.months = new MonthItemWidget[4][3];
-		this.dummyCalendar = calendar.getDummyCalendar();
+		DummyCalendar dc = this.getDummyCalendarFromMonth();
 		// add widgets
 		add(line1 = new LineWidget());
 		add(line2 = new LineWidget());
@@ -55,13 +54,13 @@ public class MonthPanel extends AbstractPanel {
 		add(btnOk = new OkButtonWidget("Select Time"));
 		add(rollUpYear = new YearWidget(angle_double_right, Type.UP));
 		add(rollDownYear = new YearWidget(angle_double_left, Type.DOWN));
-		add(selectYear = new YearWidget(dummyCalendar.getYearSymbol(), Type.SELECT));
+		add(selectYear = new YearWidget(dc.getYearSymbol(), Type.SELECT));
 		//
 		int month = 0; for (int i = 0; i < months.length; i++) {
 			for (int j = 0; j < months[i].length; j++) {
-				int year = dummyCalendar.getYear();
-				String name = dummyCalendar.getMonthSymbol(month);
-				boolean selected = dummyCalendar.isSelectedMonth(year, month);
+				int year = dc.getYear(); 
+				String name = dc.getMonthSymbol(month);
+				boolean selected = dc.isSelectedMonth(year, month);
 				add(months[i][j] = new MonthItemWidget(month, year, name, selected)); month++;
 			}
 		}

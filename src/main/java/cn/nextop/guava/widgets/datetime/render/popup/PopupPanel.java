@@ -6,10 +6,7 @@ import org.eclipse.draw2d.geometry.Rectangle;
 
 import cn.nextop.guava.utils.CGUtils;
 import cn.nextop.guava.utils.Colors;
-import cn.nextop.guava.widgets.datetime.XDateTime;
 import cn.nextop.guava.widgets.datetime.XDateTimePopup;
-import cn.nextop.guava.widgets.datetime.model.DummyCalendar;
-import cn.nextop.guava.widgets.datetime.model.XDateTimeModel;
 import cn.nextop.guava.widgets.datetime.render.AbstractPanel;
 import cn.nextop.guava.widgets.datetime.render.popup.calendar.CalendarPanel;
 import cn.nextop.guava.widgets.datetime.render.popup.shortcut.ShortcutPanel;
@@ -19,29 +16,23 @@ import cn.nextop.guava.widgets.datetime.render.popup.shortcut.ShortcutPanel;
  */
 public class PopupPanel extends AbstractPanel {
 	//
-	private XDateTime dateTime;
 	private CalendarPanel calendar;
 	private ShortcutPanel shortcut;
-	private DummyCalendar dummyCalendar;
-	private XDateTimeModel dateTimeModel;
 	private XDateTimePopup dateTimePopup;
 	
 	/**
 	 * 
 	 */
-	public XDateTimePopup getPopup() { return dateTimePopup; }
-	public CalendarPanel getCalendarPanel() { return calendar; }
 	public ShortcutPanel getShortcut() { return shortcut; }
-	public DummyCalendar getDummyCalendar() { return dummyCalendar; }
+	public XDateTimePopup getXDateTimePopup() { return dateTimePopup; }
+	public CalendarPanel getCalendarPanel() { return calendar; }
 	
 	/**
 	 * 
 	 */
 	public PopupPanel(XDateTimePopup dateTimePopup) {
+		super("popuppanel");
 		this.dateTimePopup = dateTimePopup;
-		this.dateTime = dateTimePopup.getDateTime();
-		this.dateTimeModel = this.dateTime.getModel();
-		this.dummyCalendar = new DummyCalendar(dateTimeModel.getTime1());
 		//
 		add(shortcut = new ShortcutPanel(this));
 		add(calendar = new CalendarPanel(this));

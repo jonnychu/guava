@@ -17,7 +17,7 @@ public abstract class AbstractMonthAction extends AbstractAction {
 	 */
 	public void updateUI(IFigure container, IFigure widget) {
 		final MonthPanel monthPanel = (MonthPanel)container;
-		final DummyCalendar dummyCalendar = monthPanel.getDummyCalendar();
+		final DummyCalendar dummyCalendar = monthPanel.getDummyCalendarFromMonth();
 		
 		// update top ui
 		monthPanel.getSelectYear().setText(dummyCalendar.getYearSymbol());

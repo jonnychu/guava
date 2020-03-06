@@ -17,7 +17,7 @@ public class MonthAction extends AbstractMonthAction {
 	public boolean updateData(IFigure container, IFigure widget) {
 		final MonthItemWidget w = (MonthItemWidget)widget;
 		final MonthPanel monthPanel = (MonthPanel)container;
-		final DummyCalendar calendar = monthPanel.getDummyCalendar();
+		final DummyCalendar calendar = monthPanel.getDummyCalendarFromMonth();
 		//
 		calendar.select(w.getYear(), w.getMonth()); return true;
 	}

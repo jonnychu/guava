@@ -149,6 +149,12 @@ public class DummyCalendar {
 	/**
 	 * 
 	 */
+	public void select(long now) {
+		this.now.setTimeInMillis(now);
+		this.dummy.setTimeInMillis(now);
+		this.select.setTimeInMillis(now);
+	}
+	
 	public void select(int year) {
 		this.dummy.set(YEAR, year);
 	}
@@ -163,10 +169,11 @@ public class DummyCalendar {
 		this.dummy.set(YEAR, year);this.dummy.set(MONTH, month);
 	}
 	
-	public void select(long now) {
-		this.now.setTimeInMillis(now);
-		this.dummy.setTimeInMillis(now);
-		this.select.setTimeInMillis(now);
+	/**
+	 * 
+	 */
+	public long getSelectTime() {
+		return select.getTimeInMillis();
 	}
 	
 	/**

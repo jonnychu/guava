@@ -18,7 +18,7 @@ public abstract class AbstractDateAction extends AbstractAction {
 	 */
 	public void updateUI(IFigure container, IFigure widget) {
 		final DatePanel datePanel = (DatePanel)container;
-		final DummyCalendar dummyCalendar = datePanel.getDummyCalendar();
+		final DummyCalendar dummyCalendar = datePanel.getDummyCalendarFromDate();
 		
 		// update top ui
 		datePanel.getSelectYear().setText(dummyCalendar.getYearSymbol());

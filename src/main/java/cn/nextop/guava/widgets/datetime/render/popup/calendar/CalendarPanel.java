@@ -3,10 +3,7 @@ package cn.nextop.guava.widgets.datetime.render.popup.calendar;
 import org.eclipse.draw2d.IFigure;
 
 import cn.nextop.guava.widgets.datetime.XDateTime;
-import cn.nextop.guava.widgets.datetime.XDateTimePopup;
 import cn.nextop.guava.widgets.datetime.glossary.PanelType;
-import cn.nextop.guava.widgets.datetime.model.DummyCalendar;
-import cn.nextop.guava.widgets.datetime.model.XDateTimeModel;
 import cn.nextop.guava.widgets.datetime.render.AbstractPanel;
 import cn.nextop.guava.widgets.datetime.render.popup.PopupPanel;
 import cn.nextop.guava.widgets.datetime.render.popup.calendar.date.DatePanel;
@@ -23,9 +20,6 @@ public class CalendarPanel extends AbstractPanel {
 	private YearPanel yearPanel;
 	private MonthPanel monthPanel;
 	private PopupPanel popupPanel;
-	private XDateTimeModel dateTimeModel;
-	private XDateTimePopup dateTimePopup;
-	private DummyCalendar dummyCalendar;
 	
 	/**
 	 * 
@@ -35,18 +29,12 @@ public class CalendarPanel extends AbstractPanel {
 	public YearPanel getYearPanel() { return yearPanel; }
 	public PopupPanel getPopupPanel() { return popupPanel; }
 	public MonthPanel getMonthPanel() { return monthPanel; }
-	public DummyCalendar getDummyCalendar() { return dummyCalendar;	}
-	public XDateTimeModel getDateTimeModel() { return dateTimeModel; }
-	public XDateTimePopup getDateTimePopup() { return dateTimePopup; }
 	/**
 	 * 
 	 */
 	public CalendarPanel(PopupPanel popupPanel) {
+		super("calendarpanel");
 		this.popupPanel = popupPanel;
-		this.dateTimePopup = popupPanel.getPopup();
-		this.dateTime = dateTimePopup.getDateTime();
-		this.dateTimeModel = this.dateTime.getModel();
-		this.dummyCalendar = popupPanel.getDummyCalendar();
 		//
 		add(datePanel = new DatePanel(this)); add(yearPanel = new YearPanel(this));
 		add(monthPanel = new MonthPanel(this));	panel(PanelType.DATE); // switch first panel

@@ -31,6 +31,7 @@ public class TextPanel extends AbstractPanel {
 	 * 
 	 */
 	public TextPanel(XDateTime dateTime) {
+		super("textpanel");
 		this.dateTime = dateTime;
 		//
 		addMouseMotionListener(new MouseMotionListener.Stub());

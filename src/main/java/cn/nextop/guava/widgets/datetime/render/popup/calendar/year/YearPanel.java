@@ -26,7 +26,6 @@ import cn.nextop.guava.widgets.datetime.render.popup.calendar.year.widget.YearWi
 public class YearPanel extends AbstractPanel {
 	//
 	private CalendarPanel calendarPanel;
-	private DummyCalendar dummyCalendar;
 	//
 	private OkButtonWidget btnOk;
 	private LineWidget line1, line2;
@@ -40,15 +39,15 @@ public class YearPanel extends AbstractPanel {
 	public YearWidget getSelectYear() { return selectYear; }
 	public YearItemWidget[][] getYears() { return yearItems; }
 	public CalendarPanel getCalendarPanel() { return calendarPanel; }
-	public DummyCalendar getDummyCalendar() { return dummyCalendar; }
 	
 	/**
 	 * 
 	 */
 	public YearPanel(CalendarPanel calendar) {
+		super("yearpanel");
 		this.calendarPanel = calendar;
 		this.yearItems = new YearItemWidget[4][3];
-		this.dummyCalendar = calendar.getDummyCalendar();
+		DummyCalendar dc = this.getDummyCalendarFromYear();
 		// add widgets
 		add(line1 = new LineWidget());
 		add(line2 = new LineWidget());
@@ -56,13 +55,13 @@ public class YearPanel extends AbstractPanel {
 		add(btnOk = new OkButtonWidget("Select Time"));
 		add(rollUpYear = new YearWidget(angle_double_right, Type.UP));
 		add(rollDownYear = new YearWidget(angle_double_left, Type.DOWN));
-		add(selectYear = new YearWidget(dummyCalendar.getYearSymbol(), Type.SELECT));
+		add(selectYear = new YearWidget(dc.getYearSymbol(), Type.SELECT));
 		//
-		final String[] years = dummyCalendar.getYears();
+		final String[] years = dc.getYears();
 		int index = 0; for (int i = 0; i < yearItems.length; i++) {
 			for (int j = 0; j < yearItems[i].length; j++) {
 				String name = years[index]; int year = parseInt(name);
-				boolean selected = dummyCalendar.isSelectedYear(year);
+				boolean selected = dc.isSelectedYear(year);
 				add(yearItems[i][j] = new YearItemWidget(year, name, selected)); index++;
 			}
 		}

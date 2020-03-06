@@ -25,7 +25,7 @@ public class YearAction extends AbstractMonthAction {
 	@Override
 	public boolean updateData(IFigure container, IFigure widget) {
 		final MonthPanel monthPanel = (MonthPanel)container;
-		final DummyCalendar calendar = monthPanel.getDummyCalendar();
+		final DummyCalendar calendar = monthPanel.getDummyCalendarFromMonth();
 		//
 		if (this.type == Type.SELECT) {	return true; }
 		else if(this.type == Type.UP) { calendar.nextYear(); }
