@@ -14,7 +14,7 @@ import cn.nextop.guava.widgets.datetime.render.popup.calendar.CalendarPanel;
 import cn.nextop.guava.widgets.datetime.render.popup.calendar.date.DatePanel;
 import cn.nextop.guava.widgets.datetime.render.popup.calendar.month.MonthPanel;
 import cn.nextop.guava.widgets.datetime.render.popup.calendar.year.YearPanel;
-import cn.nextop.guava.widgets.datetime.render.popup.shortcut.Content;
+import cn.nextop.guava.widgets.datetime.render.popup.shortcut.ShortcutContent;
 import cn.nextop.guava.widgets.datetime.render.popup.shortcut.ShortcutPanel;
 import cn.nextop.guava.widgets.datetime.render.text.TextPanel;
 
@@ -74,7 +74,7 @@ public abstract class AbstractPanel extends Figure {
 	}
 	
 	public XDateTimeModel getXDateTimeModelFromContent() {
-		final ShortcutPanel cp = ((Content)this).getShortcutPanel();
+		final ShortcutPanel cp = ((ShortcutContent)this).getShortcutPanel();
 		final XDateTimePopup dp = cp.getPopupPanel().getXDateTimePopup();
 		return dp.getDateTime().getModel();
 	}
@@ -98,8 +98,8 @@ public abstract class AbstractPanel extends Figure {
 	}
 	
 	public DummyCalendar getDummyCalendarFromContent() {
-		if(this instanceof Content) 
-			return ((Content)this).getShortcutPanel().getPopupPanel().getXDateTimePopup().getDummyCalendar();
+		if(this instanceof ShortcutContent) 
+			return ((ShortcutContent)this).getShortcutPanel().getPopupPanel().getXDateTimePopup().getDummyCalendar();
 		return null;
 	}
 }

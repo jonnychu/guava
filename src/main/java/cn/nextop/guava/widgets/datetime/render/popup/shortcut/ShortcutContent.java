@@ -9,7 +9,7 @@ import cn.nextop.guava.widgets.datetime.render.popup.shortcut.widget.ShortcutIte
 /**
  * @author jonny
  */
-public class Content extends AbstractPanel {
+public class ShortcutContent extends AbstractPanel {
 	//
 	private ShortcutItem[] items;
 	private ShortcutPanel shortcutPanel;
@@ -23,7 +23,7 @@ public class Content extends AbstractPanel {
 	/**
 	 * 
 	 */
-	public Content(ShortcutItem[] items, ShortcutPanel shortcutPanel) {
+	public ShortcutContent(ShortcutItem[] items, ShortcutPanel shortcutPanel) {
 		super("contentpanel");
 		this.shortcutPanel = shortcutPanel;
 		this.items = items;	for (ShortcutItem item : items) { add(item); }
@@ -34,7 +34,7 @@ public class Content extends AbstractPanel {
 	
 	@Override
 	protected void layoutManager(IFigure container) {
-		Content parent = (Content)container;
+		ShortcutContent parent = (ShortcutContent)container;
 		Rectangle r = parent.getBounds();
 		//
 		int p = 0, h = itemHeight; for (ShortcutItem item : this.items) {

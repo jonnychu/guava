@@ -30,12 +30,12 @@ public class ShortcutPanel extends AbstractScrollPanel {
 		setHorizontalScrollBarVisibility(NEVER);
 		setVerticalScrollBarVisibility(AUTOMATIC);
 		//
-		Shortcut[] scs = Shortcut.values();
+		final Shortcut[] scs = Shortcut.values();
 		ShortcutItem[] items = new ShortcutItem[scs.length];
 		for (int i = 0; i < scs.length; i++) {
 			items[i] = new ShortcutItem(scs[i]);
 		}
-		Content content = new Content(items, this); setContents(content);
+		setContents(new ShortcutContent(items, this));
 	}
 	
 	@Override

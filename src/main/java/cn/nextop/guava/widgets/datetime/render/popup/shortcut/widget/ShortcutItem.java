@@ -13,7 +13,7 @@ import cn.nextop.guava.widgets.datetime.glossary.Shortcut;
 import cn.nextop.guava.widgets.datetime.render.AbstractWidget;
 import cn.nextop.guava.widgets.datetime.render.popup.calendar.CalendarPanel;
 import cn.nextop.guava.widgets.datetime.render.popup.calendar.date.action.ShowDateAction;
-import cn.nextop.guava.widgets.datetime.render.popup.shortcut.Content;
+import cn.nextop.guava.widgets.datetime.render.popup.shortcut.ShortcutContent;
 import cn.nextop.guava.widgets.datetime.render.popup.shortcut.ShortcutPanel;
 import cn.nextop.guava.widgets.datetime.render.popup.shortcut.action.ShortcutAction;
 import cn.nextop.guava.widgets.datetime.render.text.acton.ShowTextAction;
@@ -50,7 +50,7 @@ public class ShortcutItem extends AbstractWidget {
 	@Override
 	public void handleMouseReleased(MouseEvent event) {
 		super.handleMouseReleased(event); 
-		final Content content = (Content) getParent();
+		final ShortcutContent content = (ShortcutContent) getParent();
 		final ShortcutPanel ssp = content.getShortcutPanel();
 		final CalendarPanel cp = ssp.getPopupPanel().getCalendarPanel();
 		final XDateTime dateTime = ssp.getPopupPanel().getXDateTimePopup().getDateTime();
