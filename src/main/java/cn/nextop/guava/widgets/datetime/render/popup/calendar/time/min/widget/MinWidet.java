@@ -4,11 +4,16 @@ import static java.lang.String.valueOf;
 import static org.eclipse.draw2d.TextUtilities.INSTANCE;
 
 import org.eclipse.draw2d.Graphics;
+import org.eclipse.draw2d.MouseEvent;
 import org.eclipse.draw2d.geometry.Dimension;
 import org.eclipse.draw2d.geometry.Rectangle;
 
 import cn.nextop.guava.utils.Colors;
 import cn.nextop.guava.widgets.datetime.render.AbstractWidget;
+import cn.nextop.guava.widgets.datetime.render.popup.calendar.time.TimePanel;
+import cn.nextop.guava.widgets.datetime.render.popup.calendar.time.action.MinuteAction;
+import cn.nextop.guava.widgets.datetime.render.popup.calendar.time.min.MinContent;
+import cn.nextop.guava.widgets.datetime.render.text.acton.ShowTextAction;
 
 /**
  * @author jonny
@@ -44,5 +49,13 @@ public class MinWidet extends AbstractWidget {
 		//
 		Dimension d1 = INSTANCE.getStringExtents(text, g.getFont());
 		g.drawString(text, rect.x + 10, rect.y + (rect.height - d1.height) / 2);
+	}
+	
+	@Override
+	public void handleMouseReleased(MouseEvent event) {
+		super.handleMouseReleased(event);
+		MinContent content = (MinContent)getParent();
+		TimePanel tp = content.getMinPanel().getTimePanel();
+		new MinuteAction().onAction(tp, this); new ShowTextAction().onAction(tp.getTextPanelFromTime(), null);
 	}
 }

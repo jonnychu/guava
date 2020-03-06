@@ -38,7 +38,7 @@ public class DateButtonWidget extends AbstractWidget {
 	
 	@Override
 	public void handleMouseReleased(MouseEvent event) {
-		super.handleMouseReleased(event); System.out.println(111);
+		super.handleMouseReleased(event);
 		CalendarPanel cp = (CalendarPanel)getParent().getParent(); cp.panel(PanelType.DATE);
 	}
 }
