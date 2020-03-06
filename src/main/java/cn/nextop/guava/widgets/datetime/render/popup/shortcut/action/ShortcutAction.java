@@ -25,7 +25,6 @@ public class ShortcutAction extends AbstractShortcutAction {
 		Shortcut shortcut = item.getShortcut();
 		if(shortcut == Shortcut.NOW) {
 			model.setTime(System.currentTimeMillis());
-			System.out.println(model.getTime());
 		} else if(shortcut == Shortcut.EOD) {
 			
 		} else if(shortcut == Shortcut.SOD) {
