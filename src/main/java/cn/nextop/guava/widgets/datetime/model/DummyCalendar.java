@@ -149,6 +149,18 @@ public class DummyCalendar {
 	/**
 	 * 
 	 */
+	public void selectMintue(int min) {
+		this.select.set(Calendar.MINUTE, min);
+	}
+	
+	public void selectSecond(int sec) {
+		this.select.set(Calendar.SECOND, sec);
+	}
+	
+	public void selectHour(int hour) {
+		this.select.set(Calendar.HOUR_OF_DAY, hour);
+	}
+	
 	public void select(long now) {
 		this.now.setTimeInMillis(now);
 		this.dummy.setTimeInMillis(now);
@@ -176,12 +188,12 @@ public class DummyCalendar {
 		return select.getTimeInMillis();
 	}
 	
-	public int getSelectedSecond() {
-		return select.get(Calendar.SECOND);
-	}
-	
 	public int getSelectedMintue() {
 		return select.get(Calendar.MINUTE);
+	}
+	
+	public int getSelectedSecond() {
+		return select.get(Calendar.SECOND);
 	}
 	
 	public int getSelectedHour() {
@@ -258,6 +270,13 @@ public class DummyCalendar {
 			DummyCalendar dc = new DummyCalendar(c.getTimeInMillis());
 			Arrays.stream(dc.getYears()).forEach(e->{System.out.print(e + " ,");});
 			System.out.println();
+		}
+		
+		{
+			Calendar c = new GregorianCalendar(Locale.ENGLISH);
+			c.set(Calendar.DATE, 1); c.set(Calendar.MONTH, 1); c.set(Calendar.YEAR, 2007);
+			c.set(Calendar.HOUR_OF_DAY, 18); c.set(Calendar.MINUTE, 1); c.set(Calendar.SECOND, 10);
+			System.out.println(c.get(Calendar.HOUR_OF_DAY));
 		}
 	}
 }

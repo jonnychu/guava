@@ -12,13 +12,19 @@ import cn.nextop.guava.widgets.datetime.render.popup.calendar.time.sec.widget.Se
 public class SecContent extends AbstractPanel {
 	//
 	private SecWidet[] items;
+	private SecPanel secPanel;
 	private final int itemHeight = SecPanel.itemHeight;
 	
 	/**
 	 * 
 	 */
-	public SecContent(SecWidet[] items) {
-		super("second.content");
+	public SecPanel getSecPanel() { return secPanel; }
+
+	/**
+	 * 
+	 */
+	public SecContent(SecWidet[] items, SecPanel secPanel) {
+		super("second.content"); this.secPanel = secPanel;
 		this.items = items;	for (SecWidet item : items) { add(item); }
 	}
 	

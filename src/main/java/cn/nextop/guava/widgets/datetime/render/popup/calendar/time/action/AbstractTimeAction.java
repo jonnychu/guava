@@ -22,10 +22,10 @@ public abstract class AbstractTimeAction extends AbstractAction {
 	 */
 	public void updateUI(IFigure container, IFigure widget) {
 		final TimePanel timePanel = (TimePanel) container;
-		final DummyCalendar dc = timePanel.getDummyCalendarFromTime();
 		final HourPanel hour = timePanel.getHourPanel();
 		final MinPanel minute = timePanel.getMinPanel();
 		final SecPanel second = timePanel.getSecPanel();
+		final DummyCalendar dc = timePanel.getDummyCalendarFromTime();
 		
 		//
 		final HourWidet[] hours = hour.getItems();

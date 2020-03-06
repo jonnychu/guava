@@ -37,7 +37,7 @@ public class HourPanel extends AbstractScrollPanel {
 			final int v = dc.getSelectedHour();
 			items[i] = new HourWidet(i, v == i);
 		}
-		setContents(new HourContent(items));
+		setContents(new HourContent(items, this));
 	}
 	
 	@Override

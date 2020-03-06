@@ -4,11 +4,14 @@ import static java.lang.String.valueOf;
 import static org.eclipse.draw2d.TextUtilities.INSTANCE;
 
 import org.eclipse.draw2d.Graphics;
+import org.eclipse.draw2d.MouseEvent;
 import org.eclipse.draw2d.geometry.Dimension;
 import org.eclipse.draw2d.geometry.Rectangle;
 
 import cn.nextop.guava.utils.Colors;
 import cn.nextop.guava.widgets.datetime.render.AbstractWidget;
+import cn.nextop.guava.widgets.datetime.render.popup.calendar.time.action.HourAction;
+import cn.nextop.guava.widgets.datetime.render.popup.calendar.time.hour.HourContent;
 
 /**
  * @author jonny
@@ -45,5 +48,12 @@ public class HourWidet extends AbstractWidget {
 		//
 		Dimension d1 = INSTANCE.getStringExtents(text, g.getFont());
 		g.drawString(text, rect.x + 10, rect.y + (rect.height - d1.height) / 2);
+	}
+	
+	@Override
+	public void handleMouseReleased(MouseEvent event) {
+		super.handleMouseReleased(event);
+		HourContent content = (HourContent)getParent();
+		new HourAction().onAction(content.getHourPanel().getTimePanel(), this);
 	}
 }

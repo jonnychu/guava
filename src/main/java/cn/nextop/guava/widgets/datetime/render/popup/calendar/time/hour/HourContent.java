@@ -13,13 +13,19 @@ import cn.nextop.guava.widgets.datetime.render.popup.shortcut.ShortcutPanel;
 public class HourContent extends AbstractPanel {
 	//
 	private HourWidet[] items;
+	private HourPanel hourPanel;
 	private final int itemHeight = ShortcutPanel.itemHeight;
 	
 	/**
 	 * 
 	 */
-	public HourContent(HourWidet[] items) {
-		super("hour.content");
+	public HourPanel getHourPanel() { return hourPanel; }
+
+	/**
+	 * 
+	 */
+	public HourContent(HourWidet[] items, HourPanel hourPanel) {
+		super("hour.content"); this.hourPanel = hourPanel;
 		this.items = items;	for (HourWidet item : items) { add(item); }
 	}
 	

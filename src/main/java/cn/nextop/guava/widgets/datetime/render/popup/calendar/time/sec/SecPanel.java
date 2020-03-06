@@ -37,7 +37,7 @@ public class SecPanel extends AbstractScrollPanel {
 			final int v = dc.getSelectedSecond();
 			items[i] = new SecWidet(i, v == i);
 		}
-		setContents(new SecContent(items));
+		setContents(new SecContent(items, this));
 	}
 	
 	@Override

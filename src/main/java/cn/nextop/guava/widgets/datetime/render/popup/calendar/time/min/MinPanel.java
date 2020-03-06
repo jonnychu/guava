@@ -37,7 +37,7 @@ public class MinPanel extends AbstractScrollPanel {
 			final int v = dc.getSelectedMintue();
 			items[i] = new MinWidet(i, v == i);
 		}
-		setContents(new MinContent(items));
+		setContents(new MinContent(items, this));
 	}
 	
 	@Override
