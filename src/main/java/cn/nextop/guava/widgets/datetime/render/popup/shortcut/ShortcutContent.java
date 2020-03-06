@@ -30,9 +30,6 @@ public class ShortcutContent extends AbstractPanel {
 	}
 	
 	@Override
-	protected boolean useLocalCoordinates() { return true; }
-	
-	@Override
 	protected void layoutManager(IFigure container) {
 		ShortcutContent parent = (ShortcutContent)container;
 		Rectangle r = parent.getBounds();

@@ -16,11 +16,11 @@ import cn.nextop.guava.widgets.datetime.render.popup.calendar.CalendarPanel;
 /**
  * @author jonny
  */
-public class TimeButtonWidget extends AbstractWidget {
+public class DateButtonWidget extends AbstractWidget {
 	/**
 	 * 
 	 */
-	public TimeButtonWidget(String text) {
+	public DateButtonWidget(String text) {
 		this.text = text;
 	}
 	
@@ -38,7 +38,7 @@ public class TimeButtonWidget extends AbstractWidget {
 	
 	@Override
 	public void handleMouseReleased(MouseEvent event) {
-		super.handleMouseReleased(event);
-		CalendarPanel cp = (CalendarPanel)getParent().getParent(); cp.panel(PanelType.TIME);
+		super.handleMouseReleased(event); System.out.println(111);
+		CalendarPanel cp = (CalendarPanel)getParent().getParent(); cp.panel(PanelType.DATE);
 	}
 }

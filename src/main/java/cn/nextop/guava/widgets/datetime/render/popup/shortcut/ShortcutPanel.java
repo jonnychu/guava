@@ -39,6 +39,9 @@ public class ShortcutPanel extends AbstractScrollPanel {
 	}
 	
 	@Override
+	protected boolean useLocalCoordinates() { return true; }
+	
+	@Override
 	public void handleMouseWheel(ScrollEvent event) {
 		super.handleMouseWheel(event);
 		if(event.count > 0) pageUp(true); else pageDown(true);
