@@ -13,7 +13,7 @@ import cn.nextop.guava.widgets.datetime.render.AbstractWidget;
 import cn.nextop.guava.widgets.datetime.render.popup.shortcut.Content;
 import cn.nextop.guava.widgets.datetime.render.popup.shortcut.ShortcutScrollPanel;
 import cn.nextop.guava.widgets.datetime.render.popup.shortcut.action.ShortcutAction;
-import cn.nextop.guava.widgets.datetime.render.text.acton.TextAction;
+import cn.nextop.guava.widgets.datetime.render.text.acton.ShowTextAction;
 
 /**
  * @author jonny
@@ -50,6 +50,6 @@ public class ShortcutItem extends AbstractWidget {
 		Content content = (Content) getParent();
 		ShortcutScrollPanel ssp = content.getShortcutScrollPanel();
 		new ShortcutAction().onAction(content, this);
-		new TextAction().onAction(ssp.getDateTime().getTextPanel(), null);
+		new ShowTextAction().onAction(ssp.getDateTime().getTextPanel(), null);
 	}
 }

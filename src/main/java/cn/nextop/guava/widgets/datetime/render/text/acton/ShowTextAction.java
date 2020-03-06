@@ -5,7 +5,7 @@ import org.eclipse.draw2d.IFigure;
 /**
  * @author jonny
  */
-public class TextAction extends AbstractTextAction {
+public class ShowTextAction extends AbstractTextAction {
 
 	@Override
 	protected boolean updateData(IFigure container, IFigure widget) {
