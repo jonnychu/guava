@@ -24,7 +24,7 @@ public class ShortcutContent extends AbstractPanel {
 	 * 
 	 */
 	public ShortcutContent(ShortcutItem[] items, ShortcutPanel shortcutPanel) {
-		super("contentpanel");
+		super("shortcut.content.panel");
 		this.shortcutPanel = shortcutPanel;
 		this.items = items;	for (ShortcutItem item : items) { add(item); }
 	}
