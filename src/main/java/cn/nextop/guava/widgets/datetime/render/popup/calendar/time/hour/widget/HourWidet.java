@@ -10,8 +10,10 @@ import org.eclipse.draw2d.geometry.Rectangle;
 
 import cn.nextop.guava.utils.Colors;
 import cn.nextop.guava.widgets.datetime.render.AbstractWidget;
+import cn.nextop.guava.widgets.datetime.render.popup.calendar.time.TimePanel;
 import cn.nextop.guava.widgets.datetime.render.popup.calendar.time.action.HourAction;
 import cn.nextop.guava.widgets.datetime.render.popup.calendar.time.hour.HourContent;
+import cn.nextop.guava.widgets.datetime.render.text.acton.ShowTextAction;
 
 /**
  * @author jonny
@@ -54,6 +56,7 @@ public class HourWidet extends AbstractWidget {
 	public void handleMouseReleased(MouseEvent event) {
 		super.handleMouseReleased(event);
 		HourContent content = (HourContent)getParent();
-		new HourAction().onAction(content.getHourPanel().getTimePanel(), this);
+		TimePanel tp = content.getHourPanel().getTimePanel();
+		new HourAction().onAction(tp, this); new ShowTextAction().onAction(tp.getTextPanelFromTime(), null);
 	}
 }

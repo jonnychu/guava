@@ -68,6 +68,12 @@ public abstract class AbstractPanel extends Figure {
 		return dp.getDateTime().getTextPanel();
 	}
 	
+	public TextPanel getTextPanelFromTime() {
+		final CalendarPanel cp = ((TimePanel)this).getCalendarPanel();
+		final XDateTimePopup dp = cp.getPopupPanel().getXDateTimePopup();
+		return dp.getDateTime().getTextPanel();
+	}
+	
 	public XDateTimeModel getXDateTimeModelFromDate() {
 		final CalendarPanel cp = ((DatePanel)this).getCalendarPanel();
 		final XDateTimePopup dp = cp.getPopupPanel().getXDateTimePopup();

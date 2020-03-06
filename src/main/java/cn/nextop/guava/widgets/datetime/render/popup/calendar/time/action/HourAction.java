@@ -20,9 +20,6 @@ public class HourAction extends AbstractTimeAction {
 		final XDateTimeModel model = tp.getXDateTimeModelFromTime();
 		
 		//
-		
-		dc.selectHour(w.getHour()); model.setTime(dc.getSelectedTime()); 
-		System.out.println(w.getHour() + "" + dc.getSelectedHour());
-		return true;
+		dc.selectHour(w.getHour()); model.setTime(dc.getSelectedTime()); return true;
 	}
 }
