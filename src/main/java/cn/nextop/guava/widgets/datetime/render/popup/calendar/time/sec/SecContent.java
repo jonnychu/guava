@@ -1,10 +1,8 @@
 package cn.nextop.guava.widgets.datetime.render.popup.calendar.time.sec;
 
-import org.eclipse.draw2d.Graphics;
 import org.eclipse.draw2d.IFigure;
 import org.eclipse.draw2d.geometry.Rectangle;
 
-import cn.nextop.guava.utils.Colors;
 import cn.nextop.guava.widgets.datetime.render.AbstractPanel;
 import cn.nextop.guava.widgets.datetime.render.popup.calendar.time.sec.widget.SecWidet;
 
