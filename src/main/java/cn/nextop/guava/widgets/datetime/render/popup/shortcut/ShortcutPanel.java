@@ -23,7 +23,7 @@ public class ShortcutPanel extends AbstractScrollPanel {
 	 * 
 	 */
 	public ShortcutPanel(PopupPanel popupPanel) {
-		super("shortcutpanel");
+		super("shortcut.panel");
 		this.popupPanel = popupPanel;
 		//
 		setVerticalScrollStep(itemHeight);

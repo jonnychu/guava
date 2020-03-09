@@ -54,11 +54,11 @@ public class ShortcutItem extends AbstractWidget {
 		final ShortcutContent content = (ShortcutContent) getParent();
 		final ShortcutPanel ssp = content.getShortcutPanel();
 		final CalendarPanel cp = ssp.getPopupPanel().getCalendarPanel();
-		final XDateTime dateTime = ssp.getPopupPanel().getXDateTimePopup().getDateTime();
+		final XDateTime xdt = ssp.getPopupPanel().getXDateTimePopup().getDateTime();
 		//
 		new ShortcutAction().onAction(content, this);
 		new ShowDateAction().onAction(cp.getDatePanel(), null);
 		new ShowTimeAction().onAction(cp.getTimePanel(), null);
-		new ShowTextAction().onAction(dateTime.getTextPanel(), null);
+		new ShowTextAction().onAction(xdt.getTextPanel(), null);
 	}
 }

@@ -24,9 +24,8 @@ public class ShortcutContent extends AbstractPanel {
 	 * 
 	 */
 	public ShortcutContent(ShortcutItem[] items, ShortcutPanel shortcutPanel) {
-		super("shortcut.content.panel");
-		this.shortcutPanel = shortcutPanel;
-		this.items = items;	for (ShortcutItem item : items) { add(item); }
+		super("shortcut.content.panel"); this.shortcutPanel = shortcutPanel;
+		this.items = items;	for (ShortcutItem item : items) { add(item); } // all
 	}
 	
 	@Override
@@ -34,7 +33,8 @@ public class ShortcutContent extends AbstractPanel {
 		ShortcutContent parent = (ShortcutContent)container;
 		Rectangle r = parent.getBounds();
 		//
-		int p = 0, h = itemHeight; for (ShortcutItem item : this.items) {
+		int p = 0, h = itemHeight; 
+		for (ShortcutItem item : this.items) {
 			item.setBounds(new Rectangle(r.x, p++ * h, r.width, h));
 		}
 		parent.setBounds(new Rectangle(0, 0, r.width, p * h));

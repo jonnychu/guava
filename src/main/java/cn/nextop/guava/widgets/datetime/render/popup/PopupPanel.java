@@ -23,7 +23,7 @@ public class PopupPanel extends AbstractPanel {
 	/**
 	 * 
 	 */
-	public ShortcutPanel getShortcut() { return shortcut; }
+	public ShortcutPanel getShortcutPanel() { return shortcut; }
 	public CalendarPanel getCalendarPanel() { return calendar; }
 	public XDateTimePopup getXDateTimePopup() { return dateTimePopup; }
 	
@@ -31,7 +31,7 @@ public class PopupPanel extends AbstractPanel {
 	 * 
 	 */
 	public PopupPanel(XDateTimePopup dateTimePopup) {
-		super("popuppanel");
+		super("popup.panel");
 		this.dateTimePopup = dateTimePopup;
 		//
 		add(shortcut = new ShortcutPanel(this));
@@ -53,7 +53,7 @@ public class PopupPanel extends AbstractPanel {
 		final Rectangle r = container.getBounds();
 		final PopupPanel parent = (PopupPanel)container;
 		final CalendarPanel calendar = parent.getCalendarPanel();
-		final ShortcutPanel shortcut = parent.getShortcut();
+		final ShortcutPanel shortcut = parent.getShortcutPanel();
 		//
 		int w1 = (int)(r.width * 0.3), w2 = r.width - w1;
 		Rectangle r1 = new Rectangle(r.x, r.y, w1, r.height); shortcut.setBounds(r1);
