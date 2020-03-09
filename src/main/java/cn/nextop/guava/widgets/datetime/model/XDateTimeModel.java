@@ -3,6 +3,9 @@ package cn.nextop.guava.widgets.datetime.model;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
+/**
+ * @author jonny
+ */
 public class XDateTimeModel {
 	//
 	private long time;
