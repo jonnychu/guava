@@ -29,7 +29,7 @@ public class TextWidget extends AbstractWidget {
 		XDateTime dateTime = textPanel.getDateTime();
 		XDateTimeModel timeModel = dateTime.getModel();
 		//
-		this.text = timeModel.getTime();
+		this.text = timeModel.getTimeByPattern();
 		Dimension d1 = INSTANCE.getStringExtents(this.text, g.getFont());
 		g.drawString(this.text, rect.x, rect.y + (rect.height - d1.height) / 2);
 	}

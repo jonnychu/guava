@@ -19,7 +19,7 @@ public abstract class AbstractTextAction extends AbstractAction {
 		XDateTimeModel dateTimeModel = dateTime.getModel();
 		
 		//
-		textPanel.getText().setText(dateTimeModel.getTime());
+		textPanel.getText().setText(dateTimeModel.getTimeByPattern());
 		
 		//
 		textPanel.repaint();

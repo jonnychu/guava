@@ -41,7 +41,7 @@ public class XDateTimePopup extends Canvas {
 	public XDateTimePopup(XDateTime dateTime) {
 		super(shell(dateTime.getShell()), SWT.DOUBLE_BUFFERED);
 		this.dateTime = dateTime;
-		this.dummyCalendar = new DummyCalendar(dateTime.getModel().getTime1());
+		this.dummyCalendar = new DummyCalendar(dateTime.getModel().getTime());
 		//
 		this.layout = new Layout();	this.lws = new LightweightSystem(this);
 		this.lws.setContents(popup = new PopupPanel(this));

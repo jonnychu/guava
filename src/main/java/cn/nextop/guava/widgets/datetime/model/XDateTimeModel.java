@@ -6,27 +6,27 @@ import java.util.Date;
 public class XDateTimeModel {
 	//
 	private long time;
-	private SimpleDateFormat formater_1;
+	private SimpleDateFormat formater;
 	
 	/**
 	 * 
 	 */
 	public XDateTimeModel() {
-		formater_1 = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
+		formater = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
 	}
 	
 	/**
 	 * 
 	 */
-	public String getTime() {
-		return formater_1.format(new Date(time));
-	}
-	
-	public long getTime1() {
+	public long getTime() {
 		return this.time;
 	}
 	
 	public void setTime(long time) {
 		this.time = time;
+	}
+	
+	public String getTimeByPattern() {
+		return formater.format(new Date(time));
 	}
 }
