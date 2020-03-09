@@ -1,5 +1,6 @@
 package cn.nextop.guava.widgets.datetime.render.popup.calendar.date;
 
+import static cn.nextop.guava.widgets.datetime.render.util.Faster.getDummyCalendarFromDate;
 import static com.patrikdufresne.fontawesome.FontAwesome.angle_double_left;
 import static com.patrikdufresne.fontawesome.FontAwesome.angle_double_right;
 import static com.patrikdufresne.fontawesome.FontAwesome.angle_left;
@@ -53,7 +54,7 @@ public class DatePanel extends AbstractPanel {
 		this.calendar = calendar;
 		this.weeks = new WeekItemWidget[7];
 		this.dates = new DateItemWidget[6][7];
-		DummyCalendar dc = this.getDummyCalendarFromDate();
+		DummyCalendar dc = getDummyCalendarFromDate(this);
 		//
 		add(line1 = new LineWidget());add(line2 = new LineWidget());
 		add(rollUpMonth = new MonthWidget(angle_right, Type.UP));

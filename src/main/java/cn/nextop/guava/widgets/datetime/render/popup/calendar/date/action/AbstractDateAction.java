@@ -1,5 +1,7 @@
 package cn.nextop.guava.widgets.datetime.render.popup.calendar.date.action;
 
+import static cn.nextop.guava.widgets.datetime.render.util.Faster.getDummyCalendarFromDate;
+
 import org.eclipse.draw2d.IFigure;
 
 import cn.nextop.guava.widgets.datetime.model.DummyCalendar;
@@ -17,15 +19,15 @@ public abstract class AbstractDateAction extends AbstractAction {
 	 * 
 	 */
 	public void updateUI(IFigure container, IFigure widget) {
-		final DatePanel datePanel = (DatePanel)container;
-		final DummyCalendar dummyCalendar = datePanel.getDummyCalendarFromDate();
+		final DatePanel dp = (DatePanel)container;
+		final DummyCalendar dummyCalendar = getDummyCalendarFromDate(dp);
 		
 		// update top ui
-		datePanel.getSelectYear().setText(dummyCalendar.getYearSymbol());
-		datePanel.getSelectMonth().setText(dummyCalendar.getMonthSymbol());
+		dp.getSelectYear().setText(dummyCalendar.getYearSymbol());
+		dp.getSelectMonth().setText(dummyCalendar.getMonthSymbol());
 		
 		// update date
-		final DateItemWidget[][] dates = datePanel.getDates();
+		final DateItemWidget[][] dates = dp.getDates();
 		final DummyModel[][] models = dummyCalendar.getCalendar();
 		for (int i = 0; i < models.length; i++) {
 			for (int j = 0; j < models[i].length; j++) {
@@ -39,6 +41,6 @@ public abstract class AbstractDateAction extends AbstractAction {
 		}
 		
 		// update ui
-		datePanel.repaint();
+		dp.repaint();
 	}
 }

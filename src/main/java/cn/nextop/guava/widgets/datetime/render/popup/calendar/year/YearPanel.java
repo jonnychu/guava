@@ -1,5 +1,6 @@
 package cn.nextop.guava.widgets.datetime.render.popup.calendar.year;
 
+import static cn.nextop.guava.widgets.datetime.render.util.Faster.getDummyCalendarFromYear;
 import static com.patrikdufresne.fontawesome.FontAwesome.angle_double_left;
 import static com.patrikdufresne.fontawesome.FontAwesome.angle_double_right;
 import static java.lang.Integer.parseInt;
@@ -45,7 +46,7 @@ public class YearPanel extends AbstractPanel {
 		super("yearpanel");
 		this.calendarPanel = calendar;
 		this.yearItems = new YearItemWidget[4][3];
-		DummyCalendar dc = this.getDummyCalendarFromYear();
+		DummyCalendar dc = getDummyCalendarFromYear(this);
 		// add widgets
 		add(btnTime = new TimeButtonWidget("Select Time"));
 		add(line1 = new LineWidget()); add(line2 = new LineWidget());

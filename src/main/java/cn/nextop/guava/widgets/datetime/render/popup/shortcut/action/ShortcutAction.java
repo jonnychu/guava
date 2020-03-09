@@ -1,5 +1,7 @@
 package cn.nextop.guava.widgets.datetime.render.popup.shortcut.action;
 
+import static cn.nextop.guava.widgets.datetime.render.util.Faster.getDummyCalendarFromShortCut;
+import static cn.nextop.guava.widgets.datetime.render.util.Faster.getXDateTimeModelFromShortcut;
 import static java.lang.System.currentTimeMillis;
 
 import org.eclipse.draw2d.IFigure;
@@ -19,8 +21,8 @@ public class ShortcutAction extends AbstractShortcutAction {
 	protected boolean updateData(IFigure container, IFigure widget) {
 		final ShortcutContent content = (ShortcutContent) container;
 		final ShortcutItem item = (ShortcutItem) widget;
-		final DummyCalendar dc = content.getDummyCalendarFromShortCut();
-		final XDateTimeModel model = content.getXDateTimeModelFromShortcut();
+		final DummyCalendar dc = getDummyCalendarFromShortCut(content);
+		final XDateTimeModel model = getXDateTimeModelFromShortcut(content);
 		
 		
 		Shortcut shortcut = item.getShortcut();

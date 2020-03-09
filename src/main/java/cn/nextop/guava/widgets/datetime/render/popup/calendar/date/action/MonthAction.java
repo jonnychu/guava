@@ -1,5 +1,7 @@
 package cn.nextop.guava.widgets.datetime.render.popup.calendar.date.action;
 
+import static cn.nextop.guava.widgets.datetime.render.util.Faster.getDummyCalendarFromDate;
+
 import org.eclipse.draw2d.IFigure;
 
 import cn.nextop.guava.widgets.datetime.glossary.PanelType;
@@ -23,7 +25,7 @@ public class MonthAction extends AbstractDateAction {
 	@Override
 	public boolean updateData(IFigure container, IFigure widget) {
 		final DatePanel datePanel = (DatePanel)container;
-		final DummyCalendar calendar = datePanel.getDummyCalendarFromDate();
+		final DummyCalendar calendar = getDummyCalendarFromDate(datePanel);
 		//
 		if (this.type == Type.SELECT) {	return true; }
 		else if(this.type == Type.UP) { calendar.nextMonth(); }
