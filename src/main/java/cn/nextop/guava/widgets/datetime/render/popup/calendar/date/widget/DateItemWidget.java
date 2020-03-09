@@ -15,7 +15,7 @@ import cn.nextop.guava.widgets.datetime.render.popup.calendar.date.DatePanel;
 import cn.nextop.guava.widgets.datetime.render.popup.calendar.date.action.DateAction;
 import cn.nextop.guava.widgets.datetime.render.text.TextPanel;
 import cn.nextop.guava.widgets.datetime.render.text.acton.ShowTextAction;
-import cn.nextop.guava.widgets.datetime.render.util.Faster;
+import cn.nextop.guava.widgets.datetime.support.tuil.Faster;
 
 public class DateItemWidget extends AbstractWidget {
 	//

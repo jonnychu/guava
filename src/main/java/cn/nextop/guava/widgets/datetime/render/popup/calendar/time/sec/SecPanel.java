@@ -1,6 +1,6 @@
 package cn.nextop.guava.widgets.datetime.render.popup.calendar.time.sec;
 
-import static cn.nextop.guava.widgets.datetime.render.util.Faster.getDummyCalendar;
+import static cn.nextop.guava.widgets.datetime.support.tuil.Faster.getDummyCalendar;
 
 import cn.nextop.guava.draw2d.scroll.ScrollEvent;
 import cn.nextop.guava.widgets.AbstractScrollPanel;

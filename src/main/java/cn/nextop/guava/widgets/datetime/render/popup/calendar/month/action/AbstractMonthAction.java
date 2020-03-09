@@ -1,6 +1,6 @@
 package cn.nextop.guava.widgets.datetime.render.popup.calendar.month.action;
 
-import static cn.nextop.guava.widgets.datetime.render.util.Faster.getDummyCalendar;
+import static cn.nextop.guava.widgets.datetime.support.tuil.Faster.getDummyCalendar;
 
 import org.eclipse.draw2d.IFigure;
 

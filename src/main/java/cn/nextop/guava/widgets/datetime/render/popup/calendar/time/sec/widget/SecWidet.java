@@ -14,7 +14,7 @@ import cn.nextop.guava.widgets.datetime.render.popup.calendar.time.TimePanel;
 import cn.nextop.guava.widgets.datetime.render.popup.calendar.time.action.SecondAction;
 import cn.nextop.guava.widgets.datetime.render.popup.calendar.time.sec.SecContent;
 import cn.nextop.guava.widgets.datetime.render.text.acton.ShowTextAction;
-import cn.nextop.guava.widgets.datetime.render.util.Faster;
+import cn.nextop.guava.widgets.datetime.support.tuil.Faster;
 
 /**
  * @author jonny

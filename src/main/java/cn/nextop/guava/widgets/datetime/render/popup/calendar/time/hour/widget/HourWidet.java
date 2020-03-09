@@ -1,6 +1,6 @@
 package cn.nextop.guava.widgets.datetime.render.popup.calendar.time.hour.widget;
 
-import static cn.nextop.guava.widgets.datetime.render.util.Faster.getTextPanel;
+import static cn.nextop.guava.widgets.datetime.support.tuil.Faster.getTextPanel;
 import static java.lang.String.valueOf;
 import static org.eclipse.draw2d.TextUtilities.INSTANCE;
 

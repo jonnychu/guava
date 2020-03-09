@@ -1,16 +1,16 @@
 package cn.nextop.guava.widgets.datetime.render.popup.shortcut.action;
 
-import static cn.nextop.guava.widgets.datetime.render.util.Faster.getDummyCalendar;
-import static cn.nextop.guava.widgets.datetime.render.util.Faster.getXDateTimeModel;
+import static cn.nextop.guava.widgets.datetime.support.tuil.Faster.getDummyCalendar;
+import static cn.nextop.guava.widgets.datetime.support.tuil.Faster.getXDateTimeModel;
 import static java.lang.System.currentTimeMillis;
 
 import org.eclipse.draw2d.IFigure;
 
-import cn.nextop.guava.widgets.datetime.glossary.Shortcut;
 import cn.nextop.guava.widgets.datetime.model.DummyCalendar;
 import cn.nextop.guava.widgets.datetime.model.XDateTimeModel;
 import cn.nextop.guava.widgets.datetime.render.popup.shortcut.ShortcutContent;
 import cn.nextop.guava.widgets.datetime.render.popup.shortcut.widget.ShortcutItem;
+import cn.nextop.guava.widgets.datetime.support.glossary.Shortcut;
 
 /**
  * @author jonny

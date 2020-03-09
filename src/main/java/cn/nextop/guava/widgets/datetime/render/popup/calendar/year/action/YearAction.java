@@ -1,12 +1,12 @@
 package cn.nextop.guava.widgets.datetime.render.popup.calendar.year.action;
 
-import static cn.nextop.guava.widgets.datetime.render.util.Faster.getDummyCalendar;
+import static cn.nextop.guava.widgets.datetime.support.tuil.Faster.getDummyCalendar;
 
 import org.eclipse.draw2d.IFigure;
 
-import cn.nextop.guava.widgets.datetime.glossary.Type;
 import cn.nextop.guava.widgets.datetime.model.DummyCalendar;
 import cn.nextop.guava.widgets.datetime.render.popup.calendar.year.YearPanel;
+import cn.nextop.guava.widgets.datetime.support.glossary.Type;
 
 /**
  * @author jonny

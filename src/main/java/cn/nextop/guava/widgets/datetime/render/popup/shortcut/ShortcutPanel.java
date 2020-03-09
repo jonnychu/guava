@@ -2,9 +2,9 @@ package cn.nextop.guava.widgets.datetime.render.popup.shortcut;
 
 import cn.nextop.guava.draw2d.scroll.ScrollEvent;
 import cn.nextop.guava.widgets.AbstractScrollPanel;
-import cn.nextop.guava.widgets.datetime.glossary.Shortcut;
 import cn.nextop.guava.widgets.datetime.render.popup.PopupPanel;
 import cn.nextop.guava.widgets.datetime.render.popup.shortcut.widget.ShortcutItem;
+import cn.nextop.guava.widgets.datetime.support.glossary.Shortcut;
 
 /**
  * @author jonny

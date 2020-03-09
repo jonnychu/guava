@@ -1,6 +1,6 @@
 package cn.nextop.guava.widgets.datetime.render.popup.calendar.date;
 
-import static cn.nextop.guava.widgets.datetime.render.util.Faster.getDummyCalendar;
+import static cn.nextop.guava.widgets.datetime.support.tuil.Faster.getDummyCalendar;
 import static com.patrikdufresne.fontawesome.FontAwesome.angle_double_left;
 import static com.patrikdufresne.fontawesome.FontAwesome.angle_double_right;
 import static com.patrikdufresne.fontawesome.FontAwesome.angle_left;
@@ -13,7 +13,6 @@ import org.eclipse.draw2d.geometry.Rectangle;
 
 import cn.nextop.guava.utils.Colors;
 import cn.nextop.guava.widgets.AbstractPanel;
-import cn.nextop.guava.widgets.datetime.glossary.Type;
 import cn.nextop.guava.widgets.datetime.model.DummyCalendar;
 import cn.nextop.guava.widgets.datetime.model.DummyModel;
 import cn.nextop.guava.widgets.datetime.render.popup.calendar.CalendarPanel;
@@ -23,6 +22,7 @@ import cn.nextop.guava.widgets.datetime.render.popup.calendar.date.widget.DateIt
 import cn.nextop.guava.widgets.datetime.render.popup.calendar.date.widget.MonthWidget;
 import cn.nextop.guava.widgets.datetime.render.popup.calendar.date.widget.WeekItemWidget;
 import cn.nextop.guava.widgets.datetime.render.popup.calendar.date.widget.YearWidget;
+import cn.nextop.guava.widgets.datetime.support.glossary.Type;
 
 /**
  * @author jonny

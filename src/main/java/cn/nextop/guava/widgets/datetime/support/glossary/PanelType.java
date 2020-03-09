@@ -1,4 +1,4 @@
-package cn.nextop.guava.widgets.datetime.glossary;
+package cn.nextop.guava.widgets.datetime.support.glossary;
 
 /**
  * @author jonny

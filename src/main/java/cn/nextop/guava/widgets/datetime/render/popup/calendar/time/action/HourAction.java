@@ -1,7 +1,7 @@
 package cn.nextop.guava.widgets.datetime.render.popup.calendar.time.action;
 
-import static cn.nextop.guava.widgets.datetime.render.util.Faster.getDummyCalendar;
-import static cn.nextop.guava.widgets.datetime.render.util.Faster.getXDateTimeModel;
+import static cn.nextop.guava.widgets.datetime.support.tuil.Faster.getDummyCalendar;
+import static cn.nextop.guava.widgets.datetime.support.tuil.Faster.getXDateTimeModel;
 
 import org.eclipse.draw2d.IFigure;
 
