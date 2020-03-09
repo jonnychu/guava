@@ -1,6 +1,6 @@
 package cn.nextop.guava.widgets.datetime.render.popup.calendar.time.sec;
 
-import static cn.nextop.guava.widgets.datetime.render.util.Faster.getDummyCalendarFromTime;
+import static cn.nextop.guava.widgets.datetime.render.util.Faster.getDummyCalendar;
 
 import cn.nextop.guava.draw2d.scroll.ScrollEvent;
 import cn.nextop.guava.widgets.datetime.model.DummyCalendar;
@@ -28,7 +28,7 @@ public class SecPanel extends AbstractScrollPanel {
 	 */
 	public SecPanel(TimePanel tp) {
 		super("second"); this.timePanel = tp;
-		DummyCalendar dc = getDummyCalendarFromTime(tp);
+		DummyCalendar dc = getDummyCalendar(tp);
 		//
 		setVerticalScrollStep(itemHeight);
 		setHorizontalScrollBarVisibility(NEVER);

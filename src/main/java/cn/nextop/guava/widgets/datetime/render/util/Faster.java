@@ -29,26 +29,26 @@ public class Faster {
 	/**
 	 * 
 	 */
-	public static TextPanel getTextPanelFromDate(DatePanel dp) {
+	public static TextPanel getTextPanel(DatePanel dp) {
 		return getXDateTime(dp.getCalendarPanel().getPopupPanel()).getTextPanel();
 	}
 	
-	public static TextPanel getTextPanelFromTime(TimePanel tp) {
+	public static TextPanel getTextPanel(TimePanel tp) {
 		return getXDateTime(tp.getCalendarPanel().getPopupPanel()).getTextPanel();
 	}
 	
 	/**
 	 * 
 	 */
-	public static XDateTimeModel getXDateTimeModelFromDate(DatePanel dp) {
+	public static XDateTimeModel getXDateTimeModel(DatePanel dp) {
 		return getXDateTime(dp.getCalendarPanel().getPopupPanel()).getModel();
 	}
 	
-	public static XDateTimeModel getXDateTimeModelFromTime(TimePanel tp) {
+	public static XDateTimeModel getXDateTimeModel(TimePanel tp) {
 		return getXDateTime(tp.getCalendarPanel().getPopupPanel()).getModel();
 	}
 	
-	public static XDateTimeModel getXDateTimeModelFromShortcut(ShortcutContent scp) {
+	public static XDateTimeModel getXDateTimeModel(ShortcutContent scp) {
 		return getXDateTime(scp.getShortcutPanel().getPopupPanel()).getModel();
 	}
 	
@@ -59,19 +59,19 @@ public class Faster {
 		return getXDateTimePopup(dp.getCalendarPanel().getPopupPanel()).getDummyCalendar();
 	}
 	
-	public static DummyCalendar getDummyCalendarFromYear(YearPanel yp) {
+	public static DummyCalendar getDummyCalendar(YearPanel yp) {
 		return getXDateTimePopup(yp.getCalendarPanel().getPopupPanel()).getDummyCalendar();
 	}
 	
-	public static DummyCalendar getDummyCalendarFromMonth(MonthPanel mp) {
+	public static DummyCalendar getDummyCalendar(MonthPanel mp) {
 		return getXDateTimePopup(mp.getCalendarPanel().getPopupPanel()).getDummyCalendar();
 	}
 	
-	public static DummyCalendar getDummyCalendarFromTime(TimePanel tp) {
+	public static DummyCalendar getDummyCalendar(TimePanel tp) {
 		return getXDateTimePopup(tp.getCalendarPanel().getPopupPanel()).getDummyCalendar();
 	}
 	
-	public static DummyCalendar getDummyCalendarFromShortCut(ShortcutContent scp) {
+	public static DummyCalendar getDummyCalendar(ShortcutContent scp) {
 		return getXDateTimePopup(scp.getShortcutPanel().getPopupPanel()).getDummyCalendar();
 	}
 }

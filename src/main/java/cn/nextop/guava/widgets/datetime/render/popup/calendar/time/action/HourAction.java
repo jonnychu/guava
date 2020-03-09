@@ -1,7 +1,7 @@
 package cn.nextop.guava.widgets.datetime.render.popup.calendar.time.action;
 
-import static cn.nextop.guava.widgets.datetime.render.util.Faster.getDummyCalendarFromTime;
-import static cn.nextop.guava.widgets.datetime.render.util.Faster.getXDateTimeModelFromTime;
+import static cn.nextop.guava.widgets.datetime.render.util.Faster.getDummyCalendar;
+import static cn.nextop.guava.widgets.datetime.render.util.Faster.getXDateTimeModel;
 
 import org.eclipse.draw2d.IFigure;
 
@@ -19,8 +19,8 @@ public class HourAction extends AbstractTimeAction {
 	protected boolean updateData(IFigure container, IFigure widget) {
 		final HourWidet w = (HourWidet) widget;
 		final TimePanel tp = (TimePanel) container;
-		final DummyCalendar dc = getDummyCalendarFromTime(tp);
-		final XDateTimeModel model = getXDateTimeModelFromTime(tp);
+		final DummyCalendar dc = getDummyCalendar(tp);
+		final XDateTimeModel model = getXDateTimeModel(tp);
 		
 		//
 		dc.selectHour(w.getHour()); model.setTime(dc.getSelectedTime()); return true;

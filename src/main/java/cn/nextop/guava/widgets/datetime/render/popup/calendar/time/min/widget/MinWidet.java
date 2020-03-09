@@ -1,6 +1,6 @@
 package cn.nextop.guava.widgets.datetime.render.popup.calendar.time.min.widget;
 
-import static cn.nextop.guava.widgets.datetime.render.util.Faster.getTextPanelFromTime;
+import static cn.nextop.guava.widgets.datetime.render.util.Faster.getTextPanel;
 import static java.lang.String.valueOf;
 import static org.eclipse.draw2d.TextUtilities.INSTANCE;
 
@@ -57,6 +57,6 @@ public class MinWidet extends AbstractWidget {
 		super.handleMouseReleased(event);
 		MinContent content = (MinContent)getParent();
 		TimePanel tp = content.getMinPanel().getTimePanel();
-		new MinuteAction().onAction(tp, this); new ShowTextAction().onAction(getTextPanelFromTime(tp), null);
+		new MinuteAction().onAction(tp, this); new ShowTextAction().onAction(getTextPanel(tp), null);
 	}
 }

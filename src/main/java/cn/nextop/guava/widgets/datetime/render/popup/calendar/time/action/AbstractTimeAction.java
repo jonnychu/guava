@@ -1,6 +1,6 @@
 package cn.nextop.guava.widgets.datetime.render.popup.calendar.time.action;
 
-import static cn.nextop.guava.widgets.datetime.render.util.Faster.getDummyCalendarFromTime;
+import static cn.nextop.guava.widgets.datetime.render.util.Faster.getDummyCalendar;
 
 import org.eclipse.draw2d.IFigure;
 
@@ -27,7 +27,7 @@ public abstract class AbstractTimeAction extends AbstractAction {
 		final HourPanel hour = timePanel.getHourPanel();
 		final MinPanel minute = timePanel.getMinPanel();
 		final SecPanel second = timePanel.getSecPanel();
-		final DummyCalendar dc = getDummyCalendarFromTime(timePanel);
+		final DummyCalendar dc = getDummyCalendar(timePanel);
 		
 		//
 		final HourWidet[] hours = hour.getItems();

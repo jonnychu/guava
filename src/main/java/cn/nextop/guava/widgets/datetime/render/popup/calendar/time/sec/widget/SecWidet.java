@@ -58,6 +58,6 @@ public class SecWidet extends AbstractWidget {
 		super.handleMouseReleased(event);
 		SecContent content = (SecContent)getParent();
 		TimePanel tp = content.getSecPanel().getTimePanel();
-		new SecondAction().onAction(tp, this); new ShowTextAction().onAction(Faster.getTextPanelFromTime(tp), null);
+		new SecondAction().onAction(tp, this); new ShowTextAction().onAction(Faster.getTextPanel(tp), null);
 	}
 }

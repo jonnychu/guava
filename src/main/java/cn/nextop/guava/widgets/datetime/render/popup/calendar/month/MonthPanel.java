@@ -1,6 +1,6 @@
 package cn.nextop.guava.widgets.datetime.render.popup.calendar.month;
 
-import static cn.nextop.guava.widgets.datetime.render.util.Faster.getDummyCalendarFromMonth;
+import static cn.nextop.guava.widgets.datetime.render.util.Faster.getDummyCalendar;
 import static com.patrikdufresne.fontawesome.FontAwesome.angle_double_left;
 import static com.patrikdufresne.fontawesome.FontAwesome.angle_double_right;
 import static java.lang.Math.min;
@@ -45,7 +45,7 @@ public class MonthPanel extends AbstractPanel {
 		super("monthpanel");
 		this.calendarPanel = calendar;
 		this.months = new MonthItemWidget[4][3];
-		DummyCalendar dc = getDummyCalendarFromMonth(this);
+		DummyCalendar dc = getDummyCalendar(this);
 		// add widgets
 		add(line1 = new LineWidget());
 		add(line2 = new LineWidget());

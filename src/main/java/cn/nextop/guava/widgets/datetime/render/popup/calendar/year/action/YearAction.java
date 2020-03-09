@@ -1,6 +1,6 @@
 package cn.nextop.guava.widgets.datetime.render.popup.calendar.year.action;
 
-import static cn.nextop.guava.widgets.datetime.render.util.Faster.getDummyCalendarFromYear;
+import static cn.nextop.guava.widgets.datetime.render.util.Faster.getDummyCalendar;
 
 import org.eclipse.draw2d.IFigure;
 
@@ -23,7 +23,7 @@ public class YearAction extends AbstractYearAction {
 	@Override
 	public boolean updateData(IFigure container, IFigure widget) {
 		final YearPanel yearPanel = (YearPanel)container;
-		final DummyCalendar calendar = getDummyCalendarFromYear(yearPanel);
+		final DummyCalendar calendar = getDummyCalendar(yearPanel);
 		//
 		if (this.type == Type.DOWN) { calendar.prev12Year(); }
 		else if(this.type == Type.UP) { calendar.next12Year(); }
