@@ -24,7 +24,7 @@ public class TextPanel extends AbstractPanel {
 	private XDateTime dateTime;
 	
 	//
-	public TextWidget getText() { return text; }
+	public TextWidget getTextWidget() { return text; }
 	public XDateTime getDateTime() { return dateTime; }
 	
 	/**
