@@ -69,7 +69,7 @@ public class TimePanel extends AbstractPanel {
 		
 		line.setBounds(new Rectangle(x, y + h1, w, space));
 		
-		final int sy2 = h1 - space;
+		final int sy2 = h1;
 		{
 			int w1 = w , h2 = bh - 4;
 			Rectangle r1 = new Rectangle(x, sy2 + (bh - h2) / 2, w1, h2); btnDate.setBounds(r1);

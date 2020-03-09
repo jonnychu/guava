@@ -98,7 +98,7 @@ public class MonthPanel extends AbstractPanel {
 		}
 		
 		// h = 40
-		final int sy2 = th + mh - space;
+		final int sy2 = th + mh;
 		{
 			int w1 = w , h1 = bh - 4;
 			Rectangle r1 = new Rectangle(x, sy2 + (bh - h1) / 2, w1, h1); btnTime.setBounds(r1);
