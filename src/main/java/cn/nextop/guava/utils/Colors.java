@@ -47,6 +47,10 @@ public final class Colors {
 	public static final Color COLOR_LIGHT_GRAY = getColor(192, 192, 192);
 	public static final Color COLOR_LIGHT_BLUE = getColor(127, 127, 255);
 	
+	//
+	public static final Color COLOR_WIDGET_SELECTED = getColor(0, 168, 243);
+	public static final Color COLOR_WIDGET_MOTION_ENTER = getColor(140, 255, 251);
+	
 	/**
 	 * Color
 	 */

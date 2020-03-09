@@ -49,7 +49,7 @@ public class YearItemWidget extends AbstractWidget {
 			g.fillRoundRectangle(r1, arc, arc);
 		} else {
 			if(enter) {
-				g.setBackgroundColor(Colors.COLOR_CYAN);
+				g.setBackgroundColor(Colors.COLOR_WIDGET_MOTION_ENTER);
 				g.fillRoundRectangle(r1, arc, arc);
 			}
 		}

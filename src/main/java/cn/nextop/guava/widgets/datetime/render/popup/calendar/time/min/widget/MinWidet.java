@@ -42,7 +42,7 @@ public class MinWidet extends AbstractWidget {
 	protected void paintFigure(Graphics g) {
 		super.paintFigure(g);
 		Rectangle rect = getBounds();
-		if(enter) g.setBackgroundColor(Colors.COLOR_CYAN);
+		if(enter) g.setBackgroundColor(Colors.COLOR_WIDGET_MOTION_ENTER);
 		else g.setBackgroundColor(Colors.COLOR_WHITE); 		
 		if(selected) g.setBackgroundColor(Colors.COLOR_LIGHT_BLUE);
 		g.fillRectangle(rect);

@@ -120,7 +120,7 @@ public class XList extends Canvas {
 			Rectangle rect = getBounds(); g.setFont(FontAwesome.getFont(12));
 			final Dimension d = INSTANCE.getStringExtents(icon, g.getFont());
 			if(enter) {
-				g.setBackgroundColor(Colors.COLOR_CYAN);
+				g.setBackgroundColor(Colors.COLOR_WIDGET_MOTION_ENTER);
 			} else {
 				g.setBackgroundColor(Colors.COLOR_WHITE);
 			}

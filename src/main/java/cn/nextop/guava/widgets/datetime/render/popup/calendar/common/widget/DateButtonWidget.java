@@ -31,7 +31,7 @@ public class DateButtonWidget extends AbstractWidget {
 		final Rectangle r = getBounds(); g.setFont(Fonts.size(g.getFont(), 2));
 		Dimension d1 = TextUtilities.INSTANCE.getTextExtents(text, g.getFont());
 		if(enter) {
-			g.setBackgroundColor(Colors.COLOR_CYAN);
+			g.setBackgroundColor(Colors.COLOR_WIDGET_MOTION_ENTER);
 			g.fillRoundRectangle(CGUtils.scaleRect(r, -3), arc, arc);
 		}
 		g.drawString(text, r.x + (r.width - d1.width) / 2, r.y + (r.height - d1.height) / 2);

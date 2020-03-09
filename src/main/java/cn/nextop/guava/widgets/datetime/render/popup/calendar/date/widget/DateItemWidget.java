@@ -54,7 +54,7 @@ public class DateItemWidget extends AbstractWidget {
 			g.setForegroundColor(Colors.COLOR_WHITE);
 		} else if(!selected && editable) {
 			if(enter && editable) {
-				g.setBackgroundColor(Colors.COLOR_CYAN);
+				g.setBackgroundColor(Colors.COLOR_WIDGET_MOTION_ENTER);
 				g.fillRoundRectangle(r1, arc, arc);
 			}
 		} else if(!selected && !editable) {
