@@ -9,7 +9,6 @@ import cn.nextop.guava.widgets.datetime.render.AbstractPanel;
 import cn.nextop.guava.widgets.datetime.render.popup.calendar.CalendarPanel;
 import cn.nextop.guava.widgets.datetime.render.popup.calendar.common.widget.DateButtonWidget;
 import cn.nextop.guava.widgets.datetime.render.popup.calendar.common.widget.LineWidget;
-import cn.nextop.guava.widgets.datetime.render.popup.calendar.common.widget.OkButtonWidget;
 import cn.nextop.guava.widgets.datetime.render.popup.calendar.time.hour.HourPanel;
 import cn.nextop.guava.widgets.datetime.render.popup.calendar.time.min.MinPanel;
 import cn.nextop.guava.widgets.datetime.render.popup.calendar.time.sec.SecPanel;
@@ -26,7 +25,6 @@ public class TimePanel extends AbstractPanel {
 	private SecPanel secPanel;
 	private MinPanel minPanel;
 	private HourPanel hourPanel;
-	private OkButtonWidget btnOk;
 	private DateButtonWidget btnDate;
 	
 	//
@@ -45,7 +43,6 @@ public class TimePanel extends AbstractPanel {
 		add(secPanel = new SecPanel(this));
 		add(minPanel = new MinPanel(this));
 		add(hourPanel = new HourPanel(this));
-		add(btnOk = new OkButtonWidget("OK"));
 		add(btnDate = new DateButtonWidget("Select Date"));
 	}
 	
@@ -74,9 +71,8 @@ public class TimePanel extends AbstractPanel {
 		
 		final int sy2 = h1 - space;
 		{
-			int w1 = w / 2 , h2 = bh - 4;
+			int w1 = w , h2 = bh - 4;
 			Rectangle r1 = new Rectangle(x, sy2 + (bh - h2) / 2, w1, h2); btnDate.setBounds(r1);
-			Rectangle r2 = new Rectangle(x + r1.width, sy2 + (bh - h2) / 2, w1, h2); btnOk.setBounds(r2);
 		}
 	}
 }

@@ -15,7 +15,6 @@ import cn.nextop.guava.widgets.datetime.model.DummyCalendar;
 import cn.nextop.guava.widgets.datetime.render.AbstractPanel;
 import cn.nextop.guava.widgets.datetime.render.popup.calendar.CalendarPanel;
 import cn.nextop.guava.widgets.datetime.render.popup.calendar.common.widget.LineWidget;
-import cn.nextop.guava.widgets.datetime.render.popup.calendar.common.widget.OkButtonWidget;
 import cn.nextop.guava.widgets.datetime.render.popup.calendar.common.widget.TimeButtonWidget;
 import cn.nextop.guava.widgets.datetime.render.popup.calendar.year.widget.YearItemWidget;
 import cn.nextop.guava.widgets.datetime.render.popup.calendar.year.widget.YearWidget;
@@ -27,7 +26,6 @@ public class YearPanel extends AbstractPanel {
 	//
 	private CalendarPanel calendarPanel;
 	//
-	private OkButtonWidget btnOk;
 	private LineWidget line1, line2;
 	private TimeButtonWidget btnTime;
 	private YearItemWidget[][] yearItems;
@@ -49,10 +47,8 @@ public class YearPanel extends AbstractPanel {
 		this.yearItems = new YearItemWidget[4][3];
 		DummyCalendar dc = this.getDummyCalendarFromYear();
 		// add widgets
-		add(line1 = new LineWidget());
-		add(line2 = new LineWidget());
-		add(btnOk = new OkButtonWidget("OK"));
 		add(btnTime = new TimeButtonWidget("Select Time"));
+		add(line1 = new LineWidget()); add(line2 = new LineWidget());
 		add(rollUpYear = new YearWidget(angle_double_right, Type.UP));
 		add(rollDownYear = new YearWidget(angle_double_left, Type.DOWN));
 		add(selectYear = new YearWidget(dc.getYearSymbol(), Type.SELECT));
@@ -103,9 +99,8 @@ public class YearPanel extends AbstractPanel {
 		// h = 40
 		final int sy2 = th + mh - space;
 		{
-			int w1 = w / 2 , h1 = bh - 4;
+			int w1 = w , h1 = bh - 4;
 			Rectangle r1 = new Rectangle(x, sy2 + (bh - h1) / 2, w1, h1); btnTime.setBounds(r1);
-			Rectangle r2 = new Rectangle(x + r1.width, sy2 + (bh - h1) / 2, w1, h1); btnOk.setBounds(r2);
 		}
 		
 		// line
