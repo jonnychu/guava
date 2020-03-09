@@ -2,7 +2,7 @@ package cn.nextop.guava.widgets.datetime.render.popup.calendar;
 
 import org.eclipse.draw2d.IFigure;
 
-import cn.nextop.guava.widgets.datetime.AbstractPanel;
+import cn.nextop.guava.widgets.datetime.render.AbstractPanel;
 import cn.nextop.guava.widgets.datetime.render.popup.PopupPanel;
 import cn.nextop.guava.widgets.datetime.render.popup.calendar.date.DatePanel;
 import cn.nextop.guava.widgets.datetime.render.popup.calendar.month.MonthPanel;

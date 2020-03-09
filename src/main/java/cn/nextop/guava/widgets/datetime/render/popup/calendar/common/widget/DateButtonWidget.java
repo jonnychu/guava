@@ -9,7 +9,7 @@ import org.eclipse.draw2d.geometry.Rectangle;
 import cn.nextop.guava.utils.CGUtils;
 import cn.nextop.guava.utils.Colors;
 import cn.nextop.guava.utils.Fonts;
-import cn.nextop.guava.widgets.datetime.AbstractWidget;
+import cn.nextop.guava.widgets.datetime.render.AbstractWidget;
 import cn.nextop.guava.widgets.datetime.render.popup.calendar.CalendarPanel;
 import cn.nextop.guava.widgets.datetime.render.popup.calendar.date.action.ShowDateAction;
 import cn.nextop.guava.widgets.datetime.support.glossary.PanelType;

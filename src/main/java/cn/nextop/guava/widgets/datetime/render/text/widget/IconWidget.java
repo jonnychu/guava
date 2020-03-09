@@ -10,8 +10,8 @@ import org.eclipse.draw2d.geometry.Rectangle;
 
 import com.patrikdufresne.fontawesome.FontAwesome;
 
-import cn.nextop.guava.widgets.datetime.AbstractWidget;
 import cn.nextop.guava.widgets.datetime.XDateTime;
+import cn.nextop.guava.widgets.datetime.render.AbstractWidget;
 import cn.nextop.guava.widgets.datetime.render.text.TextPanel;
 
 /**

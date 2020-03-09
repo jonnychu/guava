@@ -30,6 +30,6 @@ public class XTable extends Canvas {
 		super(parent, SWT.DOUBLE_BUFFERED | style);
 		this.model = new XTableModel();
 		this.lws = new LightweightSystem(this);
-		this.lws.setContents(tablePanel = new XTablePanel());
+		this.lws.setContents(tablePanel = new XTablePanel(this));
 	}
 }
