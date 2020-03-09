@@ -24,7 +24,7 @@ public class Example {
 		// date time
 		date.setInput(System.currentTimeMillis());
 		
-		XTableBuilder r = new XTableBuilder(cmp, SWT.BORDER);
+		XTableBuilder r = new XTableBuilder(cmp);
 		r.column().text("no1").pixel(50).build();
 		r.column().text("no2").pixel(50).build();
 		r.column().text("no3").pixel(50).build();

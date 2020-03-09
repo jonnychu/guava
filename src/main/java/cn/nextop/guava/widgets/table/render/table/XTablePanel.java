@@ -1,18 +1,16 @@
 package cn.nextop.guava.widgets.table.render.table;
 
-import org.eclipse.draw2d.IFigure;
-import org.eclipse.draw2d.geometry.Rectangle;
-
 import cn.nextop.guava.widgets.table.XTable;
-import cn.nextop.guava.widgets.table.render.AbstractPanel;
+import cn.nextop.guava.widgets.table.render.AbstractScrollPanel;
 
 
 /**
  * @author jonny
  */
-public class XTablePanel extends AbstractPanel {
+public class XTablePanel extends AbstractScrollPanel {
 	//
 	protected XTable table;
+	protected ContentPanel headerPanel;
 	
 	/**
 	 * 
@@ -23,13 +21,11 @@ public class XTablePanel extends AbstractPanel {
 	 * 
 	 */
 	public XTablePanel(XTable table) {
-		super("table.panel");
-	}
-
-	@Override
-	protected void layoutManager(IFigure container) {
-		XTablePanel parent = (XTablePanel) container;
-		final Rectangle r = parent.getBounds();
+		super("table.panel"); this.table = table;
+		add(headerPanel = new ContentPanel(this));
 		
+		setVerticalScrollStep(22);
+		setHorizontalScrollBarVisibility(AUTOMATIC);
+		setVerticalScrollBarVisibility(AUTOMATIC);
 	}
 }

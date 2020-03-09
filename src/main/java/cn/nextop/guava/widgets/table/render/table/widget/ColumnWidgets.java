@@ -1,4 +1,4 @@
-package cn.nextop.guava.widgets.table.render.table.header.widget;
+package cn.nextop.guava.widgets.table.render.table.widget;
 
 import org.eclipse.draw2d.Graphics;
 import org.eclipse.draw2d.geometry.Rectangle;
@@ -7,12 +7,6 @@ import org.eclipse.draw2d.geometry.Rectangle;
  * @author jonny
  */
 public class ColumnWidgets extends AbstractColumnWidget {
-	/**
-	 * 
-	 */
-	public ColumnWidgets() {
-		// TODO Auto-generated constructor stub
-	}
 	
 	@Override
 	protected void paintBorder(Graphics g) {
@@ -22,7 +16,7 @@ public class ColumnWidgets extends AbstractColumnWidget {
 	
 	@Override
 	protected void paintFigure(Graphics g) {
-		super.paintFigure(g);
+		super.paintFigure(g); System.out.println("1");
 		Rectangle r = getBounds();
 		g.drawText(this.text, r.x + margin, r.y);
 	}

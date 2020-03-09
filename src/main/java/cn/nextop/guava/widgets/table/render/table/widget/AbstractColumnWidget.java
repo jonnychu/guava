@@ -1,4 +1,4 @@
-package cn.nextop.guava.widgets.table.render.table.header.widget;
+package cn.nextop.guava.widgets.table.render.table.widget;
 
 import static org.eclipse.draw2d.Cursors.HAND;
 
