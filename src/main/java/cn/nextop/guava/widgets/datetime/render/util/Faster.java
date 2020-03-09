@@ -26,6 +26,9 @@ public class Faster {
 		return pp.getXDateTimePopup();
 	}
 	
+	/**
+	 * 
+	 */
 	public static TextPanel getTextPanelFromDate(DatePanel dp) {
 		return getXDateTime(dp.getCalendarPanel().getPopupPanel()).getTextPanel();
 	}
@@ -34,6 +37,9 @@ public class Faster {
 		return getXDateTime(tp.getCalendarPanel().getPopupPanel()).getTextPanel();
 	}
 	
+	/**
+	 * 
+	 */
 	public static XDateTimeModel getXDateTimeModelFromDate(DatePanel dp) {
 		return getXDateTime(dp.getCalendarPanel().getPopupPanel()).getModel();
 	}
@@ -46,6 +52,9 @@ public class Faster {
 		return getXDateTime(scp.getShortcutPanel().getPopupPanel()).getModel();
 	}
 	
+	/**
+	 * 
+	 */
 	public static DummyCalendar getDummyCalendarFromDate(DatePanel dp) {
 		return getXDateTimePopup(dp.getCalendarPanel().getPopupPanel()).getDummyCalendar();
 	}
