@@ -20,8 +20,14 @@ public class XTable extends Canvas {
 	/**
 	 * 
 	 */
-	public XTable(Composite parent) {
-		super(parent, SWT.DOUBLE_BUFFERED);
+	public XTableModel getModel() { return model; }
+	public XTablePanel getTablePanel() { return tablePanel; }
+	
+	/**
+	 * 
+	 */
+	public XTable(Composite parent, int style) {
+		super(parent, SWT.DOUBLE_BUFFERED | style);
 		this.model = new XTableModel();
 		this.lws = new LightweightSystem(this);
 		this.lws.setContents(tablePanel = new XTablePanel());
