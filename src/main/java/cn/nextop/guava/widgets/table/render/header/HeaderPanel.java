@@ -1,21 +1,19 @@
-package cn.nextop.guava.widgets.table.render;
+package cn.nextop.guava.widgets.table.render.header;
 
 import org.eclipse.draw2d.IFigure;
 
 import cn.nextop.guava.widgets.table.AbstractPanel;
 
-
 /**
  * @author jonny
  */
-public class XTablePanel extends AbstractPanel {
-	
-	
+public class HeaderPanel extends AbstractPanel {
+
 	/**
-	 * 
+	 * @param name
 	 */
-	public XTablePanel() {
-		super("table.panel");
+	public HeaderPanel(String name) {
+		super("table.header");
 	}
 
 	@Override

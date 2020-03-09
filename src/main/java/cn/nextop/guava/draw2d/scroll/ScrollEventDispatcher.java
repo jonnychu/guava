@@ -4,7 +4,7 @@ import org.eclipse.draw2d.IFigure;
 import org.eclipse.draw2d.SWTEventDispatcher;
 import org.eclipse.swt.widgets.Event;
 
-import cn.nextop.guava.widgets.AbstractScrollPanel;
+import cn.nextop.guava.widgets.datetime.AbstractScrollPanel;
 
 /**
  * add scroll mouse event

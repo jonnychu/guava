@@ -12,7 +12,7 @@ import org.eclipse.draw2d.IFigure;
 import org.eclipse.draw2d.geometry.Rectangle;
 
 import cn.nextop.guava.utils.Colors;
-import cn.nextop.guava.widgets.AbstractPanel;
+import cn.nextop.guava.widgets.datetime.AbstractPanel;
 import cn.nextop.guava.widgets.datetime.model.DummyCalendar;
 import cn.nextop.guava.widgets.datetime.model.DummyModel;
 import cn.nextop.guava.widgets.datetime.render.popup.calendar.CalendarPanel;

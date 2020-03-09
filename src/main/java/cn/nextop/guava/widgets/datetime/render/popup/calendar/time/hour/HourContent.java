@@ -3,7 +3,7 @@ package cn.nextop.guava.widgets.datetime.render.popup.calendar.time.hour;
 import org.eclipse.draw2d.IFigure;
 import org.eclipse.draw2d.geometry.Rectangle;
 
-import cn.nextop.guava.widgets.AbstractPanel;
+import cn.nextop.guava.widgets.datetime.AbstractPanel;
 import cn.nextop.guava.widgets.datetime.render.popup.calendar.time.hour.widget.HourWidet;
 import cn.nextop.guava.widgets.datetime.render.popup.shortcut.ShortcutPanel;
 

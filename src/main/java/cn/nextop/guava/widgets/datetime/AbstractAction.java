@@ -1,4 +1,4 @@
-package cn.nextop.guava.widgets;
+package cn.nextop.guava.widgets.datetime;
 
 import org.eclipse.draw2d.IFigure;
 
