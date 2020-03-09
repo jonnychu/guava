@@ -55,7 +55,7 @@ public class Faster {
 	/**
 	 * 
 	 */
-	public static DummyCalendar getDummyCalendarFromDate(DatePanel dp) {
+	public static DummyCalendar getDummyCalendar(DatePanel dp) {
 		return getXDateTimePopup(dp.getCalendarPanel().getPopupPanel()).getDummyCalendar();
 	}
 	
