@@ -1,4 +1,4 @@
-package cn.nextop.guava.widgets.table.render;
+package cn.nextop.guava.widgets;
 
 import org.eclipse.draw2d.IFigure;
 

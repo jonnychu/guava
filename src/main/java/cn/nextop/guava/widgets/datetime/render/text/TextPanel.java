@@ -8,8 +8,8 @@ import org.eclipse.draw2d.geometry.Rectangle;
 
 import cn.nextop.guava.utils.CGUtils;
 import cn.nextop.guava.utils.Colors;
+import cn.nextop.guava.widgets.AbstractPanel;
 import cn.nextop.guava.widgets.datetime.XDateTime;
-import cn.nextop.guava.widgets.datetime.render.AbstractPanel;
 import cn.nextop.guava.widgets.datetime.render.text.widget.IconWidget;
 import cn.nextop.guava.widgets.datetime.render.text.widget.TextWidget;
 
