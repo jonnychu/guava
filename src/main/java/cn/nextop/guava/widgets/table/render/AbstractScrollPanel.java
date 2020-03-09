@@ -23,6 +23,8 @@ public class AbstractScrollPanel extends ScrollPane {
 	 */
 	public AbstractScrollPanel(String name) {
 		this.name = name;
+		getViewport().setContentsTracksWidth(true);
+		getViewport().setContentsTracksHeight(true);
 		addListener(MouseWheelListener.class, new MouseWheelListener.Stub());
 	}
 	

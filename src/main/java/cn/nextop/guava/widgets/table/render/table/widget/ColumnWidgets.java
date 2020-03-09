@@ -16,7 +16,7 @@ public class ColumnWidgets extends AbstractColumnWidget {
 	
 	@Override
 	protected void paintFigure(Graphics g) {
-		super.paintFigure(g); System.out.println("1");
+		super.paintFigure(g);
 		Rectangle r = getBounds();
 		g.drawText(this.text, r.x + margin, r.y);
 	}

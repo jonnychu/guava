@@ -10,7 +10,14 @@ import cn.nextop.guava.widgets.table.render.AbstractScrollPanel;
 public class XTablePanel extends AbstractScrollPanel {
 	//
 	protected XTable table;
-	protected ContentPanel headerPanel;
+	protected ContentPanel contentPanel;
+	
+	/**
+	 * 
+	 */
+	public ContentPanel getContentPanel() {
+		return contentPanel;
+	}
 	
 	/**
 	 * 
@@ -22,10 +29,11 @@ public class XTablePanel extends AbstractScrollPanel {
 	 */
 	public XTablePanel(XTable table) {
 		super("table.panel"); this.table = table;
-		add(headerPanel = new ContentPanel(this));
 		
 		setVerticalScrollStep(22);
 		setHorizontalScrollBarVisibility(AUTOMATIC);
 		setVerticalScrollBarVisibility(AUTOMATIC);
+		add(contentPanel = new ContentPanel(this));
+		
 	}
 }

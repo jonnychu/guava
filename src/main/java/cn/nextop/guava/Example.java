@@ -24,7 +24,7 @@ public class Example {
 		// date time
 		date.setInput(System.currentTimeMillis());
 		
-		XTableBuilder r = new XTableBuilder(cmp);
+		XTableBuilder r = new XTableBuilder(cmp, SWT.BORDER);
 		r.column().text("no1").pixel(50).build();
 		r.column().text("no2").pixel(50).build();
 		r.column().text("no3").pixel(50).build();
@@ -34,7 +34,7 @@ public class Example {
 		r.column().text("no7").pixel(50).build();
 		r.column().text("no8").pixel(50).build();
 		
-		XTable table = r.builder(); table.setLayoutData("cell 0 1, width 10:150:");
+		XTable table = r.builder(); table.setLayoutData("cell 0 1");
 		
 		
 		shell.open(); dispatch(() -> shell.isDisposed());

@@ -44,11 +44,11 @@ public class ContentPanel extends AbstractPanel {
 		XTableModel model = parent.getXTablePanel().getXTable().getModel();
 		final List<ColumnWidgets> columns = model.getColumns().getColumns();
 		//
+		parent.setBounds(tablePanel.getBounds());
 		final Rectangle r = parent.getBounds();
 		for (int i = 0; i < columns.size(); i++) {
 			ColumnWidgets cw = columns.get(i); int w = cw.getWidth();
 			Rectangle r1 = new Rectangle(r.x + i * w, r.y, w, 22); cw.setBounds(r1);
-			System.out.println(r1);
 		}
 	}
 }
