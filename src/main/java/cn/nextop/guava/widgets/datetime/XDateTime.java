@@ -38,7 +38,7 @@ public class XDateTime extends Canvas {
 		this.lws = new LightweightSystem(this);
 		this.lws.setContents(textPanel = new TextPanel(this));
 		//
-		this.textPanel.addMouseListener(new ShowAction());
+		this.textPanel.addMouseListener(new ShowPopupAction());
 	}
 	
 	/**
@@ -50,10 +50,10 @@ public class XDateTime extends Canvas {
 	/**
 	 * 
 	 */
-	private class ShowAction extends MouseListener.Stub {
+	private class ShowPopupAction extends MouseListener.Stub {
 		@Override public void mouseReleased(MouseEvent me) {
-			XDateTime xTime = XDateTime.this;
 			if(me.button != 1) return;
+			XDateTime xTime = XDateTime.this; 
 			TextPanel textPanel = (TextPanel)me.getSource();
 			XDateTimePopup next = new XDateTimePopup(xTime);
 			xTime.setPopup(next); next.show(); textPanel.repaint();

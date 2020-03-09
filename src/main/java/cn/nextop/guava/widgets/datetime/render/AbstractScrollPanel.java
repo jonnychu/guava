@@ -33,31 +33,27 @@ public class AbstractScrollPanel extends ScrollPane {
 	/**
 	 * 
 	 */
-	public void setVerticalScrollStep(int step) {
-		ScrollBar vsb = getVerticalScrollBar();
-		vsb.setStepIncrement(step);
-	}
-	
-	public void setHorizontalScrollStep(int step) {
-		ScrollBar vsb = getVerticalScrollBar();
-		vsb.setStepIncrement(step);
-	}
-	
-	/**
-	 * 
-	 */
 	public void pageUp(boolean isVertical) {
-		ScrollBar vsb = null;
-		if(isVertical) vsb = getVerticalScrollBar(); 
+		ScrollBar vsb = null;if(isVertical) vsb = getVerticalScrollBar(); 
 		else vsb = getHorizontalScrollBar(); if(!vsb.isVisible()) return;
 		vsb.setValue(vsb.getValue() - vsb.getStepIncrement());
 	}
 	
 	public void pageDown(boolean isVertical) {
-		ScrollBar vsb = null;
-		if(isVertical) vsb = getVerticalScrollBar(); 
+		ScrollBar vsb = null;if(isVertical) vsb = getVerticalScrollBar(); 
 		else vsb = getHorizontalScrollBar(); if(!vsb.isVisible()) return;
 		vsb.setValue(vsb.getValue() + vsb.getStepIncrement());
+	}
+	
+	/**
+	 * 
+	 */
+	public void setVerticalScrollStep(int step) {
+		ScrollBar vsb = getVerticalScrollBar(); vsb.setStepIncrement(step);
+	}
+	
+	public void setHorizontalScrollStep(int step) {
+		ScrollBar vsb = getVerticalScrollBar(); vsb.setStepIncrement(step);
 	}
 	
 	/**

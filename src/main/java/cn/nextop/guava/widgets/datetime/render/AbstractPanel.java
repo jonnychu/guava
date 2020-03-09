@@ -80,14 +80,14 @@ public abstract class AbstractPanel extends Figure {
 		return dp.getDateTime().getModel();
 	}
 	
-	public XDateTimeModel getXDateTimeModelFromContent() {
-		final ShortcutPanel cp = ((ShortcutContent)this).getShortcutPanel();
+	public XDateTimeModel getXDateTimeModelFromTime() {
+		final CalendarPanel cp = ((TimePanel)this).getCalendarPanel();
 		final XDateTimePopup dp = cp.getPopupPanel().getXDateTimePopup();
 		return dp.getDateTime().getModel();
 	}
 	
-	public XDateTimeModel getXDateTimeModelFromTime() {
-		final CalendarPanel cp = ((TimePanel)this).getCalendarPanel();
+	public XDateTimeModel getXDateTimeModelFromShortcut() {
+		final ShortcutPanel cp = ((ShortcutContent)this).getShortcutPanel();
 		final XDateTimePopup dp = cp.getPopupPanel().getXDateTimePopup();
 		return dp.getDateTime().getModel();
 	}
@@ -116,7 +116,7 @@ public abstract class AbstractPanel extends Figure {
 		return null;
 	}
 	
-	public DummyCalendar getDummyCalendarFromShortCutContent() {
+	public DummyCalendar getDummyCalendarFromShortCut() {
 		if(this instanceof ShortcutContent) 
 			return ((ShortcutContent)this).getShortcutPanel().getPopupPanel().getXDateTimePopup().getDummyCalendar();
 		return null;
