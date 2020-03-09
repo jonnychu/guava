@@ -1,4 +1,4 @@
-package cn.nextop.guava.widgets.table.render.header.widget;
+package cn.nextop.guava.widgets.table.render;
 
 import static org.eclipse.draw2d.Cursors.HAND;
 
@@ -6,29 +6,27 @@ import org.eclipse.draw2d.Figure;
 import org.eclipse.draw2d.MouseEvent;
 import org.eclipse.draw2d.MouseListener;
 import org.eclipse.draw2d.MouseMotionListener;
-import org.eclipse.swt.SWT;
 
 /**
  * @author jonny
  */
-public abstract class AbstractColumnWidget extends Figure {
+public abstract class AbstractWidget extends Figure {
 	// Default Value
 	protected String text = "";
 	protected boolean enter = false;
 	protected boolean editable = true;
 	protected boolean selected = false;
 	//
-	protected final int margin = 2;
-	protected int width = 20, align = SWT.LEFT;
+	protected final int margin = 2, arc = 3, oval = 5;
 	
 	/**
 	 * 
 	 */
-	public AbstractColumnWidget() {
+	public AbstractWidget() {
 		this(true, true);
 	}
 	
-	public AbstractColumnWidget(boolean m1, boolean m2) {
+	public AbstractWidget(boolean m1, boolean m2) {
 		if(m1) addMouseListener(new MouseListener.Stub());
 		if(m2) addMouseMotionListener(new MouseMotionListener.Stub());
 	}
@@ -42,22 +40,6 @@ public abstract class AbstractColumnWidget extends Figure {
 
 	public void setText(String text) {
 		this.text = text;
-	}
-	
-	public int getWidth() {
-		return width;
-	}
-
-	public void setWidth(int width) {
-		this.width = width;
-	}
-
-	public int getAlign() {
-		return align;
-	}
-
-	public void setAlign(int align) {
-		this.align = align;
 	}
 	
 	public boolean isEnter() {

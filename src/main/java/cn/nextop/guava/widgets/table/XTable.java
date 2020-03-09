@@ -6,7 +6,7 @@ import org.eclipse.swt.widgets.Canvas;
 import org.eclipse.swt.widgets.Composite;
 
 import cn.nextop.guava.widgets.table.model.XTableModel;
-import cn.nextop.guava.widgets.table.render.XTablePanel;
+import cn.nextop.guava.widgets.table.render.table.XTablePanel;
 
 /**
  * @author jonny

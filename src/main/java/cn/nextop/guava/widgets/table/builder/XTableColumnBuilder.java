@@ -3,7 +3,7 @@ package cn.nextop.guava.widgets.table.builder;
 import cn.nextop.guava.widgets.table.XTable;
 import cn.nextop.guava.widgets.table.model.XTableColumns;
 import cn.nextop.guava.widgets.table.model.XTableModel;
-import cn.nextop.guava.widgets.table.render.header.widget.ColumnWidgets;
+import cn.nextop.guava.widgets.table.render.table.header.widget.ColumnWidgets;
 
 /**
  * @author jonny

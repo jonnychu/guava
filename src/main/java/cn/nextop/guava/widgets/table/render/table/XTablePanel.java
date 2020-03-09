@@ -1,10 +1,10 @@
-package cn.nextop.guava.widgets.table.render;
+package cn.nextop.guava.widgets.table.render.table;
 
 import org.eclipse.draw2d.IFigure;
 import org.eclipse.draw2d.geometry.Rectangle;
 
-import cn.nextop.guava.widgets.table.AbstractPanel;
 import cn.nextop.guava.widgets.table.XTable;
+import cn.nextop.guava.widgets.table.render.AbstractPanel;
 
 
 /**

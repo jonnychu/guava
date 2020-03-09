@@ -1,4 +1,4 @@
-package cn.nextop.guava.widgets.table;
+package cn.nextop.guava.widgets.table.render;
 
 import java.util.List;
 
