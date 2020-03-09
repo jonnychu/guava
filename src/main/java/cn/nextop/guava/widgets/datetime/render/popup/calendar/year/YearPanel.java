@@ -34,8 +34,8 @@ public class YearPanel extends AbstractPanel {
 	/**
 	 * 
 	 */
-	public YearWidget getSelectYear() { return selectYear; }
-	public YearItemWidget[][] getYears() { return yearItems; }
+	public YearWidget getYearWidget() { return selectYear; }
+	public YearItemWidget[][] getYearsWidget() { return yearItems; }
 	public CalendarPanel getCalendarPanel() { return calendarPanel; }
 	
 	/**
@@ -57,7 +57,7 @@ public class YearPanel extends AbstractPanel {
 		int index = 0; for (int i = 0; i < yearItems.length; i++) {
 			for (int j = 0; j < yearItems[i].length; j++) {
 				String name = years[index]; int year = parseInt(name);
-				boolean selected = dc.isSelectedYear(year);
+				final boolean selected = dc.isSelectedYear(year);
 				add(yearItems[i][j] = new YearItemWidget(year, name, selected)); index++;
 			}
 		}
@@ -91,7 +91,8 @@ public class YearPanel extends AbstractPanel {
 			final int w1 = min( mh / 4, w / 3), mgn1 = (w - w1 * 3) / 4, mgn2 = (mh - w1 * 4) / 5 ;
 			for (int i = 0; i < yearItems.length; i++) {
 				for (int j = 0; j < yearItems[i].length; j++) {
-					yearItems[i][j].setBounds(new Rectangle(mgn1 * (j + 1) + x + j * w1, mgn2 * (i + 1) + sy1 + w1 * i, w1, w1));
+					yearItems[i][j].setBounds(
+							new Rectangle(mgn1 * (j + 1) + x + j * w1, mgn2 * (i + 1) + sy1 + w1 * i, w1, w1));
 				}
 			}
 		}
