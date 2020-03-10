@@ -12,7 +12,7 @@ import org.eclipse.draw2d.geometry.Point;
 import org.eclipse.draw2d.geometry.Rectangle;
 import org.eclipse.draw2d.geometry.Translatable;
 
-import cn.nextop.guava.widgets.datetime.render.AbstractPanel;
+import cn.nextop.guava.widgets.AbstractPanel;
 
 /**
  * @author jonny

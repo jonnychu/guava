@@ -10,7 +10,7 @@ import org.eclipse.draw2d.MouseMotionListener;
 /**
  * @author jonny
  */
-public abstract class AbstractWidget extends Figure {
+public abstract class AbstractTimeWidget extends Figure {
 	// Default Value
 	protected String text = "";
 	protected boolean enter = false;
@@ -22,11 +22,11 @@ public abstract class AbstractWidget extends Figure {
 	/**
 	 * 
 	 */
-	public AbstractWidget() {
+	public AbstractTimeWidget() {
 		this(true, true);
 	}
 	
-	public AbstractWidget(boolean m1, boolean m2) {
+	public AbstractTimeWidget(boolean m1, boolean m2) {
 		if(m1) addMouseListener(new MouseListener.Stub());
 		if(m2) addMouseMotionListener(new MouseMotionListener.Stub());
 	}
