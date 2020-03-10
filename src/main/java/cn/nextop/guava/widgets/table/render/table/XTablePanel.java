@@ -1,13 +1,13 @@
 package cn.nextop.guava.widgets.table.render.table;
 
 import cn.nextop.guava.widgets.table.XTable;
-import cn.nextop.guava.widgets.table.render.AbstractScrollPanel;
+import cn.nextop.guava.widgets.table.render.AbstractTableScrollPanel;
 
 
 /**
  * @author jonny
  */
-public class XTablePanel extends AbstractScrollPanel {
+public class XTablePanel extends AbstractTableScrollPanel {
 	//
 	protected XTable table;
 	protected ContentPanel contentPanel;

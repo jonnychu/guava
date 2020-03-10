@@ -3,14 +3,14 @@ package cn.nextop.guava.widgets.datetime.render.popup.calendar.time.hour;
 import org.eclipse.draw2d.IFigure;
 import org.eclipse.draw2d.geometry.Rectangle;
 
-import cn.nextop.guava.widgets.datetime.render.AbstractPanel;
+import cn.nextop.guava.widgets.datetime.render.AbstractTimePanel;
 import cn.nextop.guava.widgets.datetime.render.popup.calendar.time.hour.widget.HourWidet;
 import cn.nextop.guava.widgets.datetime.render.popup.shortcut.ShortcutPanel;
 
 /**
  * @author jonny
  */
-public class HourContent extends AbstractPanel {
+public class HourContent extends AbstractTimePanel {
 	//
 	private HourWidet[] items;
 	private HourPanel hourPanel;

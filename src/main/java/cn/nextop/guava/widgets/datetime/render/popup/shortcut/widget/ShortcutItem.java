@@ -9,7 +9,7 @@ import org.eclipse.draw2d.geometry.Rectangle;
 
 import cn.nextop.guava.utils.Colors;
 import cn.nextop.guava.widgets.datetime.XDateTime;
-import cn.nextop.guava.widgets.datetime.render.AbstractWidget;
+import cn.nextop.guava.widgets.datetime.render.AbstractTimeWidget;
 import cn.nextop.guava.widgets.datetime.render.popup.calendar.CalendarPanel;
 import cn.nextop.guava.widgets.datetime.render.popup.calendar.date.action.ShowDateAction;
 import cn.nextop.guava.widgets.datetime.render.popup.calendar.time.action.ShowTimeAction;
@@ -22,7 +22,7 @@ import cn.nextop.guava.widgets.datetime.support.glossary.Shortcut;
 /**
  * @author jonny
  */
-public class ShortcutItem extends AbstractWidget {
+public class ShortcutItem extends AbstractTimeWidget {
 	//
 	private Shortcut shortcut;
 	

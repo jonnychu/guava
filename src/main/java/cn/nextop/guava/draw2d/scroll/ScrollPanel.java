@@ -10,12 +10,12 @@ import org.eclipse.draw2d.geometry.Point;
 import org.eclipse.draw2d.geometry.Rectangle;
 
 import cn.nextop.guava.draw2d.scroll.support.glossary.Type;
-import cn.nextop.guava.widgets.table.render.AbstractPanel;
+import cn.nextop.guava.widgets.table.render.AbstractTablePanel;
 
 /**
  * @author jonny
  */
-public class ScrollPanel extends AbstractPanel {
+public class ScrollPanel extends AbstractTablePanel {
 	//
 	protected Viewport viewport;
 	protected ScrollBar hBar, vBar;

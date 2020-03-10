@@ -10,7 +10,7 @@ import com.patrikdufresne.fontawesome.FontAwesome;
 
 import cn.nextop.guava.utils.Colors;
 import cn.nextop.guava.utils.Fonts;
-import cn.nextop.guava.widgets.datetime.render.AbstractWidget;
+import cn.nextop.guava.widgets.datetime.render.AbstractTimeWidget;
 import cn.nextop.guava.widgets.datetime.render.popup.calendar.month.MonthPanel;
 import cn.nextop.guava.widgets.datetime.render.popup.calendar.month.action.YearAction;
 import cn.nextop.guava.widgets.datetime.render.popup.calendar.year.YearPanel;
@@ -20,7 +20,7 @@ import cn.nextop.guava.widgets.datetime.support.glossary.Type;
 /**
  * @author jonny
  */
-public class YearWidget extends AbstractWidget {
+public class YearWidget extends AbstractTimeWidget {
 	//
 	private Type type;
 	

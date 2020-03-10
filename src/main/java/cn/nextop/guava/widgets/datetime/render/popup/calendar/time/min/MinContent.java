@@ -3,14 +3,14 @@ package cn.nextop.guava.widgets.datetime.render.popup.calendar.time.min;
 import org.eclipse.draw2d.IFigure;
 import org.eclipse.draw2d.geometry.Rectangle;
 
-import cn.nextop.guava.widgets.datetime.render.AbstractPanel;
+import cn.nextop.guava.widgets.datetime.render.AbstractTimePanel;
 import cn.nextop.guava.widgets.datetime.render.popup.calendar.time.min.widget.MinWidet;
 import cn.nextop.guava.widgets.datetime.render.popup.shortcut.ShortcutPanel;
 
 /**
  * @author jonny
  */
-public class MinContent extends AbstractPanel {
+public class MinContent extends AbstractTimePanel {
 	//
 	private MinWidet[] items;
 	private MinPanel minPanel;

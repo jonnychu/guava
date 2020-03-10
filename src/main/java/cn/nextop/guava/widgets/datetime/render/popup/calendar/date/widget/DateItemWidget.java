@@ -10,14 +10,14 @@ import org.eclipse.draw2d.geometry.Rectangle;
 
 import cn.nextop.guava.utils.CGUtils;
 import cn.nextop.guava.utils.Colors;
-import cn.nextop.guava.widgets.datetime.render.AbstractWidget;
+import cn.nextop.guava.widgets.datetime.render.AbstractTimeWidget;
 import cn.nextop.guava.widgets.datetime.render.popup.calendar.date.DatePanel;
 import cn.nextop.guava.widgets.datetime.render.popup.calendar.date.action.DateAction;
 import cn.nextop.guava.widgets.datetime.render.text.TextPanel;
 import cn.nextop.guava.widgets.datetime.render.text.acton.ShowTextAction;
 import cn.nextop.guava.widgets.datetime.support.tuil.Faster;
 
-public class DateItemWidget extends AbstractWidget {
+public class DateItemWidget extends AbstractTimeWidget {
 	//
 	private boolean now;
 	private int year, month, day;

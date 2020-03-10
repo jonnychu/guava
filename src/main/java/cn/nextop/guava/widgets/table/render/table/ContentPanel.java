@@ -9,13 +9,13 @@ import org.eclipse.draw2d.geometry.Rectangle;
 
 import cn.nextop.guava.utils.Colors;
 import cn.nextop.guava.widgets.table.model.XTableModel;
-import cn.nextop.guava.widgets.table.render.AbstractPanel;
+import cn.nextop.guava.widgets.table.render.AbstractTablePanel;
 import cn.nextop.guava.widgets.table.render.table.widget.ColumnWidgets;
 
 /**
  * @author jonny
  */
-public class ContentPanel extends AbstractPanel {
+public class ContentPanel extends AbstractTablePanel {
 	//
 	protected XTablePanel tablePanel;
 	

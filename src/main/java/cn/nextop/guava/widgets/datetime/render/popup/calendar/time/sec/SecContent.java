@@ -3,13 +3,13 @@ package cn.nextop.guava.widgets.datetime.render.popup.calendar.time.sec;
 import org.eclipse.draw2d.IFigure;
 import org.eclipse.draw2d.geometry.Rectangle;
 
-import cn.nextop.guava.widgets.datetime.render.AbstractPanel;
+import cn.nextop.guava.widgets.datetime.render.AbstractTimePanel;
 import cn.nextop.guava.widgets.datetime.render.popup.calendar.time.sec.widget.SecWidet;
 
 /**
  * @author jonny
  */
-public class SecContent extends AbstractPanel {
+public class SecContent extends AbstractTimePanel {
 	//
 	private SecWidet[] items;
 	private SecPanel secPanel;

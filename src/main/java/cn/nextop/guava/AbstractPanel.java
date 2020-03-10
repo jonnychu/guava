@@ -1,4 +1,4 @@
-package cn.nextop.guava.widgets.table.render;
+package cn.nextop.guava;
 
 import java.util.List;
 
@@ -13,7 +13,6 @@ import org.eclipse.draw2d.geometry.Dimension;
 public abstract class AbstractPanel extends Figure {
 	//
 	private final String name;
-	protected final int margin = 8, arc = 5;
 	
 	//
 	public String getName() { return name; }

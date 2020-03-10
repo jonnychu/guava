@@ -1,4 +1,4 @@
-package cn.nextop.guava.widgets.datetime.render;
+package cn.nextop.guava.widgets.table.render;
 
 import java.util.List;
 
@@ -10,7 +10,7 @@ import org.eclipse.draw2d.geometry.Dimension;
 /**
  * @author jonny
  */
-public abstract class AbstractPanel extends Figure {
+public abstract class AbstractTablePanel extends Figure {
 	//
 	private final String name;
 	protected final int margin = 8, arc = 5;
@@ -25,7 +25,7 @@ public abstract class AbstractPanel extends Figure {
 	/**
 	 * 
 	 */
-	public AbstractPanel(String name) {
+	public AbstractTablePanel(String name) {
 		this.name = name;
 		if(getLayoutManager() == null) setLayoutManager(new CustomLayout());
 	}

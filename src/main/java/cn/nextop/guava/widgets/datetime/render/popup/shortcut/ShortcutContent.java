@@ -3,13 +3,13 @@ package cn.nextop.guava.widgets.datetime.render.popup.shortcut;
 import org.eclipse.draw2d.IFigure;
 import org.eclipse.draw2d.geometry.Rectangle;
 
-import cn.nextop.guava.widgets.datetime.render.AbstractPanel;
+import cn.nextop.guava.widgets.datetime.render.AbstractTimePanel;
 import cn.nextop.guava.widgets.datetime.render.popup.shortcut.widget.ShortcutItem;
 
 /**
  * @author jonny
  */
-public class ShortcutContent extends AbstractPanel {
+public class ShortcutContent extends AbstractTimePanel {
 	//
 	private ShortcutItem[] items;
 	private ShortcutPanel shortcutPanel;
