@@ -49,7 +49,7 @@ public class XTableBuilder {
 		for (ColumnWidgets cw : all) {
 			content.add(cw);
 		}
-		content.invalidate();
+		System.out.println("builder");
 		return this.table;
 	}
 }

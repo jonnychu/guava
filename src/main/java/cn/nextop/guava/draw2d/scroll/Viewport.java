@@ -111,10 +111,8 @@ public class Viewport extends AbstractPanel implements PropertyChangeListener {
 
 	@Override
 	protected void layoutManager(IFigure container) {
-		System.out.println("viewport layout 1");
 		final Viewport viewport = (Viewport) container;
 		final IFigure contents = viewport.getContents(); if(contents == null) return;
-		System.out.println("viewport layout 2");
 		
 		//
 		Point p = viewport.getClientArea().getLocation();
@@ -126,11 +124,10 @@ public class Viewport extends AbstractPanel implements PropertyChangeListener {
 		r2.height = Math.max(r2.height, min.height);
 		r2.width = Math.max(r2.width, min.width);
 
-		contents.setBounds(new Rectangle(p, r2));
+		contents.setBounds(new Rectangle(p, r2)); System.out.println("viewport layout " + contents.getBounds());
 	}
 	
 	public void propertyChange(PropertyChangeEvent event) {
-		System.out.println(event);
 		if (event.getSource() instanceof RangeModel) {
 			if (RangeModel.PROPERTY_VALUE.equals(event.getPropertyName())) {
 				localRevalidate(); repaint();

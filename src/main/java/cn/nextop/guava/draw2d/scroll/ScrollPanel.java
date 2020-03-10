@@ -84,7 +84,6 @@ public class ScrollPanel extends AbstractPanel {
 	
 	@Override
 	protected void layoutManager(IFigure container) {
-		System.out.println("scroll panel layout");
 		ScrollPanel scrollpane = (ScrollPanel) container;
 		final Type hVis = scrollpane.getHorzType();
 		final Type vVis = scrollpane.getVertType();
@@ -142,5 +141,7 @@ public class ScrollPanel extends AbstractPanel {
 		final int hStepInc = hBar.getStepIncrement();
 		int hPageInc = hBar.getRangeModel().getExtent() - hStepInc;
 		if (hPageInc < hStepInc) hPageInc = hStepInc; hBar.setPageIncrement(hPageInc);
+		
+		System.out.println("scrollpane layout");
 	}
 }
