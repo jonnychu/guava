@@ -10,12 +10,12 @@ import org.eclipse.draw2d.geometry.Point;
 import org.eclipse.draw2d.geometry.Rectangle;
 
 import cn.nextop.guava.draw2d.scroll.support.glossary.Type;
-import cn.nextop.guava.widgets.table.render.AbstractTablePanel;
+import cn.nextop.guava.widgets.AbstractPanel;
 
 /**
  * @author jonny
  */
-public class ScrollPanel extends AbstractTablePanel {
+public class ScrollPanel extends AbstractPanel {
 	//
 	protected Viewport viewport;
 	protected ScrollBar hBar, vBar;
@@ -141,7 +141,5 @@ public class ScrollPanel extends AbstractTablePanel {
 		final int hStepInc = hBar.getStepIncrement();
 		int hPageInc = hBar.getRangeModel().getExtent() - hStepInc;
 		if (hPageInc < hStepInc) hPageInc = hStepInc; hBar.setPageIncrement(hPageInc);
-		
-		System.out.println("scrollpane layout");
 	}
 }

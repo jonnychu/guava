@@ -1,5 +1,7 @@
 package cn.nextop.guava.draw2d.scroll;
 
+import static java.lang.Math.max;
+
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
 
@@ -12,12 +14,12 @@ import org.eclipse.draw2d.geometry.Point;
 import org.eclipse.draw2d.geometry.Rectangle;
 import org.eclipse.draw2d.geometry.Translatable;
 
-import cn.nextop.guava.widgets.datetime.render.AbstractTimePanel;
+import cn.nextop.guava.widgets.AbstractPanel;
 
 /**
  * @author jonny
  */
-public class Viewport extends AbstractTimePanel implements PropertyChangeListener {
+public class Viewport extends AbstractPanel implements PropertyChangeListener {
 
 	private IFigure view;
 	private RangeModel hRangeModel, vRangeModel;
@@ -112,19 +114,21 @@ public class Viewport extends AbstractTimePanel implements PropertyChangeListene
 	@Override
 	protected void layoutManager(IFigure container) {
 		final Viewport viewport = (Viewport) container;
-		final IFigure contents = viewport.getContents(); if(contents == null) return;
+		final IFigure contents = viewport.getContents(); 
+		if(contents == null) return; // no contents add
 		
 		//
 		Point p = viewport.getClientArea().getLocation();
 		p.translate(viewport.getViewLocation().getNegated());
-
+		//
 		Rectangle r1 = viewport.getClientArea();
-		Dimension min = contents.getMinimumSize(r1.width, r1.height);
+		final int w = r1.width, h = r1.height;
+		Dimension min = contents.getMinimumSize(w, h);
+		//
 		Dimension r2 = r1.getSize();
-		r2.height = Math.max(r2.height, min.height);
+		r2.height = max(r2.height, min.height);
 		r2.width = Math.max(r2.width, min.width);
-
-		contents.setBounds(new Rectangle(p, r2)); System.out.println("viewport layout " + contents.getBounds());
+		contents.setBounds(new Rectangle(p, r2));
 	}
 	
 	public void propertyChange(PropertyChangeEvent event) {
