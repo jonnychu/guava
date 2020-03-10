@@ -6,15 +6,15 @@ import org.eclipse.draw2d.geometry.Rectangle;
 
 import cn.nextop.guava.utils.CGUtils;
 import cn.nextop.guava.utils.Colors;
-import cn.nextop.guava.widgets.AbstractPanel;
 import cn.nextop.guava.widgets.datetime.XDateTimePopup;
+import cn.nextop.guava.widgets.datetime.render.AbstractTimePanel;
 import cn.nextop.guava.widgets.datetime.render.popup.calendar.CalendarPanel;
 import cn.nextop.guava.widgets.datetime.render.popup.shortcut.ShortcutPanel;
 
 /**
  * @author jonny
  */
-public class PopupPanel extends AbstractPanel {
+public class PopupPanel extends AbstractTimePanel {
 	//
 	private CalendarPanel calendar;
 	private ShortcutPanel shortcut;

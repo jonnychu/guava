@@ -1,18 +1,18 @@
-package cn.nextop.guava.widgets.table.render;
+package cn.nextop.guava.widgets.datetime.render;
 
 import cn.nextop.guava.widgets.AbstractPanel;
 
 /**
  * @author jonny
  */
-public abstract class AbstractTablePanel extends AbstractPanel {
+public abstract class AbstractTimePanel extends AbstractPanel {
 	//
 	protected final int margin = 8, arc = 5;
 	
 	/**
 	 * 
 	 */
-	public AbstractTablePanel(String name) {
+	public AbstractTimePanel(String name) {
 		super(name);
 	}
 }

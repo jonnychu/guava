@@ -5,7 +5,7 @@ import org.eclipse.draw2d.IFigure;
 import org.eclipse.draw2d.geometry.Rectangle;
 
 import cn.nextop.guava.utils.Colors;
-import cn.nextop.guava.widgets.AbstractPanel;
+import cn.nextop.guava.widgets.datetime.render.AbstractTimePanel;
 import cn.nextop.guava.widgets.datetime.render.popup.calendar.CalendarPanel;
 import cn.nextop.guava.widgets.datetime.render.popup.calendar.common.widget.DateButtonWidget;
 import cn.nextop.guava.widgets.datetime.render.popup.calendar.common.widget.LineWidget;
@@ -16,7 +16,7 @@ import cn.nextop.guava.widgets.datetime.render.popup.calendar.time.sec.SecPanel;
 /**
  * @author jonny
  */
-public class TimePanel extends AbstractPanel {
+public class TimePanel extends AbstractTimePanel {
 	//
 	private CalendarPanel calendar;
 	

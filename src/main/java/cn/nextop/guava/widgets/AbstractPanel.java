@@ -1,7 +1,5 @@
 package cn.nextop.guava.widgets;
 
-import java.util.List;
-
 import org.eclipse.draw2d.AbstractHintLayout;
 import org.eclipse.draw2d.Figure;
 import org.eclipse.draw2d.IFigure;
@@ -13,7 +11,6 @@ import org.eclipse.draw2d.geometry.Dimension;
 public abstract class AbstractPanel extends Figure {
 	//
 	private final String name;
-	protected final int margin = 8, arc = 5;
 	
 	//
 	public String getName() { return name; }
@@ -29,10 +26,6 @@ public abstract class AbstractPanel extends Figure {
 		this.name = name;
 		if(getLayoutManager() == null) setLayoutManager(new CustomLayout());
 	}
-	
-	@Override
-	@SuppressWarnings("unchecked")
-	public List<IFigure> getChildren() { return super.getChildren(); }
 	
 	/**
 	 * 
