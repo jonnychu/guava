@@ -8,7 +8,7 @@ import org.eclipse.draw2d.geometry.Rectangle;
 
 import cn.nextop.guava.utils.CGUtils;
 import cn.nextop.guava.utils.Colors;
-import cn.nextop.guava.widgets.datetime.render.AbstractTimeWidget;
+import cn.nextop.guava.widgets.datetime.render.AbstractWidget;
 import cn.nextop.guava.widgets.datetime.render.popup.calendar.month.MonthPanel;
 import cn.nextop.guava.widgets.datetime.render.popup.calendar.month.action.ShowMonthAction;
 import cn.nextop.guava.widgets.datetime.render.popup.calendar.year.YearPanel;
@@ -17,7 +17,7 @@ import cn.nextop.guava.widgets.datetime.render.popup.calendar.year.action.Year2A
 /**
  * @author jonny
  */
-public class YearItemWidget extends AbstractTimeWidget {
+public class YearItemWidget extends AbstractWidget {
 	//
 	private int year;
 	

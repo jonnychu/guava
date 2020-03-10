@@ -12,12 +12,12 @@ import org.eclipse.draw2d.geometry.Point;
 import org.eclipse.draw2d.geometry.Rectangle;
 import org.eclipse.draw2d.geometry.Translatable;
 
-import cn.nextop.guava.widgets.datetime.render.AbstractTimePanel;
+import cn.nextop.guava.widgets.datetime.render.AbstractPanel;
 
 /**
  * @author jonny
  */
-public class Viewport extends AbstractTimePanel implements PropertyChangeListener {
+public class Viewport extends AbstractPanel implements PropertyChangeListener {
 
 	private IFigure view;
 	private RangeModel hRangeModel, vRangeModel;

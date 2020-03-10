@@ -3,12 +3,12 @@ package cn.nextop.guava.widgets.datetime.render.popup.calendar.common.widget;
 import org.eclipse.draw2d.Graphics;
 import org.eclipse.draw2d.geometry.Rectangle;
 
-import cn.nextop.guava.widgets.datetime.render.AbstractTimeWidget;
+import cn.nextop.guava.widgets.datetime.render.AbstractWidget;
 
 /**
  * @author jonny
  */
-public class LineWidget extends AbstractTimeWidget {
+public class LineWidget extends AbstractWidget {
 	
 	@Override
 	protected void paintBorder(Graphics g) {

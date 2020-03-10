@@ -9,7 +9,7 @@ import org.eclipse.draw2d.geometry.Dimension;
 import org.eclipse.draw2d.geometry.Rectangle;
 
 import cn.nextop.guava.utils.Colors;
-import cn.nextop.guava.widgets.datetime.render.AbstractTimeWidget;
+import cn.nextop.guava.widgets.datetime.render.AbstractWidget;
 import cn.nextop.guava.widgets.datetime.render.popup.calendar.time.TimePanel;
 import cn.nextop.guava.widgets.datetime.render.popup.calendar.time.action.SecondAction;
 import cn.nextop.guava.widgets.datetime.render.popup.calendar.time.sec.SecContent;
@@ -19,7 +19,7 @@ import cn.nextop.guava.widgets.datetime.support.tuil.Faster;
 /**
  * @author jonny
  */
-public class SecWidet extends AbstractTimeWidget {
+public class SecWidet extends AbstractWidget {
 	//
 	private int second;
 	

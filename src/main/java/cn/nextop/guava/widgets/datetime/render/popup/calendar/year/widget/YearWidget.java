@@ -10,14 +10,14 @@ import com.patrikdufresne.fontawesome.FontAwesome;
 
 import cn.nextop.guava.utils.Colors;
 import cn.nextop.guava.utils.Fonts;
-import cn.nextop.guava.widgets.datetime.render.AbstractTimeWidget;
+import cn.nextop.guava.widgets.datetime.render.AbstractWidget;
 import cn.nextop.guava.widgets.datetime.render.popup.calendar.year.action.YearAction;
 import cn.nextop.guava.widgets.datetime.support.glossary.Type;
 
 /**
  * @author jonny
  */
-public class YearWidget extends AbstractTimeWidget {
+public class YearWidget extends AbstractWidget {
 	//
 	private Type type;
 	

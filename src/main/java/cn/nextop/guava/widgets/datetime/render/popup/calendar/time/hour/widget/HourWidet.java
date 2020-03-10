@@ -10,7 +10,7 @@ import org.eclipse.draw2d.geometry.Dimension;
 import org.eclipse.draw2d.geometry.Rectangle;
 
 import cn.nextop.guava.utils.Colors;
-import cn.nextop.guava.widgets.datetime.render.AbstractTimeWidget;
+import cn.nextop.guava.widgets.datetime.render.AbstractWidget;
 import cn.nextop.guava.widgets.datetime.render.popup.calendar.time.TimePanel;
 import cn.nextop.guava.widgets.datetime.render.popup.calendar.time.action.HourAction;
 import cn.nextop.guava.widgets.datetime.render.popup.calendar.time.hour.HourContent;
@@ -19,7 +19,7 @@ import cn.nextop.guava.widgets.datetime.render.text.acton.ShowTextAction;
 /**
  * @author jonny
  */
-public class HourWidet extends AbstractTimeWidget {
+public class HourWidet extends AbstractWidget {
 	//
 	private int hour;
 	

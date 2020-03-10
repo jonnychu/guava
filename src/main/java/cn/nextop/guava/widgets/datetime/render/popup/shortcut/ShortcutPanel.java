@@ -1,7 +1,7 @@
 package cn.nextop.guava.widgets.datetime.render.popup.shortcut;
 
 import cn.nextop.guava.draw2d.scroll.support.event.ScrollEvent;
-import cn.nextop.guava.widgets.datetime.render.AbstractTimeScrollPanel;
+import cn.nextop.guava.widgets.datetime.render.AbstractScrollPanel;
 import cn.nextop.guava.widgets.datetime.render.popup.PopupPanel;
 import cn.nextop.guava.widgets.datetime.render.popup.shortcut.widget.ShortcutItem;
 import cn.nextop.guava.widgets.datetime.support.glossary.Shortcut;
@@ -9,7 +9,7 @@ import cn.nextop.guava.widgets.datetime.support.glossary.Shortcut;
 /**
  * @author jonny
  */
-public class ShortcutPanel extends AbstractTimeScrollPanel {
+public class ShortcutPanel extends AbstractScrollPanel {
 	//
 	private PopupPanel popupPanel;
 	public static final int itemHeight = 24;

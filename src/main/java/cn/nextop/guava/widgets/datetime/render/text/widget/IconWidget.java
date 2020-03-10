@@ -11,13 +11,13 @@ import org.eclipse.draw2d.geometry.Rectangle;
 import com.patrikdufresne.fontawesome.FontAwesome;
 
 import cn.nextop.guava.widgets.datetime.XDateTime;
-import cn.nextop.guava.widgets.datetime.render.AbstractTimeWidget;
+import cn.nextop.guava.widgets.datetime.render.AbstractWidget;
 import cn.nextop.guava.widgets.datetime.render.text.TextPanel;
 
 /**
  * @author jonny
  */
-public class IconWidget extends AbstractTimeWidget {
+public class IconWidget extends AbstractWidget {
 	
 	/**
 	 * 

@@ -4,14 +4,14 @@ import static cn.nextop.guava.widgets.datetime.support.tuil.Faster.getDummyCalen
 
 import cn.nextop.guava.draw2d.scroll.support.event.ScrollEvent;
 import cn.nextop.guava.widgets.datetime.model.DummyCalendar;
-import cn.nextop.guava.widgets.datetime.render.AbstractTimeScrollPanel;
+import cn.nextop.guava.widgets.datetime.render.AbstractScrollPanel;
 import cn.nextop.guava.widgets.datetime.render.popup.calendar.time.TimePanel;
 import cn.nextop.guava.widgets.datetime.render.popup.calendar.time.sec.widget.SecWidet;
 
 /**
  * @author jonny
  */
-public class SecPanel extends AbstractTimeScrollPanel {
+public class SecPanel extends AbstractScrollPanel {
 	//
 	private SecWidet[] items;
 	private TimePanel timePanel;
