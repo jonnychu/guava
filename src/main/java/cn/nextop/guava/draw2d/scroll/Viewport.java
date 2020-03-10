@@ -37,15 +37,20 @@ public class Viewport extends AbstractPanel implements PropertyChangeListener {
 		hRangeModel.addPropertyChangeListener(this);
 	}
 	
-	
+	/**
+	 * 
+	 */
 	public IFigure getContents() { return view; }
 	public RangeModel getHorzRangeModel() { return hRangeModel; }
 	public RangeModel getVertRangeModel() { return vRangeModel; }
 	
-	
-
+	/**
+	 * 
+	 */
 	public Point getViewLocation() {
-		return new Point(this.hRangeModel.getValue(), this.vRangeModel.getValue());
+		int w = this.hRangeModel.getValue();
+		int h = this.vRangeModel.getValue();
+		return new Point(w, h);
 	}
 
 	private void localRevalidate() {
@@ -56,30 +61,34 @@ public class Viewport extends AbstractPanel implements PropertyChangeListener {
 	}
 	
 	protected void readjustScrollBars() {
-		if(getContents() == null) return;
-		this.hRangeModel.setAll(0, getClientArea().width, getContents().getBounds().width);
-		this.vRangeModel.setAll(0, getClientArea().height,getContents().getBounds().height);
+		if(this.view == null) return;
+		int extent1 = getClientArea().width;
+		int extent2 = getClientArea().height;
+		int max1 = this.view.getBounds().width;
+		int max2 = this.view.getBounds().height;
+		this.hRangeModel.setAll(0, extent1, max1);
+		this.vRangeModel.setAll(0, extent2, max2);
 	}
 
 	public void setContents(IFigure figure) {
 		if (view == figure) return;
 		if (view != null) remove(view);
-		view = figure; if (view != null) add(figure);
-	}
-
-	public void setHorizontalLocation(int value) {
-		setViewLocation(value, this.vRangeModel.getValue());
+		view = figure; if(view != null) add(figure);
 	}
 	
-	public void setVerticalLocation(int value) {
-		setViewLocation(this.hRangeModel.getValue(), value);
-	}
-
 	public void setViewLocation(int x, int y) {
 		if (this.hRangeModel.getValue() != x)
 			this.hRangeModel.setValue(x);
 		if (this.vRangeModel.getValue() != y)
 			this.vRangeModel.setValue(y);
+	}
+	
+	public void setHorizontalLocation(int value) {
+		setViewLocation(value, vRangeModel.getValue());
+	}
+	
+	public void setVerticalLocation(int value) {
+		setViewLocation(hRangeModel.getValue(), value);
 	}
 
 	@Override
@@ -99,18 +108,6 @@ public class Viewport extends AbstractPanel implements PropertyChangeListener {
 		}
 	}
 	
-	public void translateFromParent(Translatable t) {
-		t.performTranslate(this.hRangeModel.getValue(), this.vRangeModel.getValue());
-		super.translateFromParent(t);
-	}
-
-	public void translateToParent(Translatable t) {
-		t.performTranslate(-this.vRangeModel.getValue(), -this.vRangeModel.getValue());
-		super.translateToParent(t);
-	}
-
-	public void validate() { super.validate(); readjustScrollBars(); }
-
 	@Override
 	protected void layoutManager(IFigure container) {
 		final Viewport viewport = (Viewport) container;
@@ -131,6 +128,22 @@ public class Viewport extends AbstractPanel implements PropertyChangeListener {
 		contents.setBounds(new Rectangle(p, r2));
 	}
 	
+	@Override
+	public void validate() { super.validate(); readjustScrollBars(); }
+	
+	@Override
+	public void translateFromParent(Translatable t) {
+		t.performTranslate(this.hRangeModel.getValue(), this.vRangeModel.getValue());
+		super.translateFromParent(t);
+	}
+	
+	@Override
+	public void translateToParent(Translatable t) {
+		t.performTranslate(-this.vRangeModel.getValue(), -this.vRangeModel.getValue());
+		super.translateToParent(t);
+	}
+
+	@Override
 	public void propertyChange(PropertyChangeEvent event) {
 		if (event.getSource() instanceof RangeModel) {
 			if (RangeModel.PROPERTY_VALUE.equals(event.getPropertyName())) {
