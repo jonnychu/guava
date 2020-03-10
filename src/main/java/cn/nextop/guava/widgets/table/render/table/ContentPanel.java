@@ -40,15 +40,15 @@ public class ContentPanel extends AbstractPanel {
 	
 	@Override
 	protected void layoutManager(IFigure container) {
-		ContentPanel parent = (ContentPanel) container;
-		XTableModel model = parent.getXTablePanel().getXTable().getModel();
+		ContentPanel content = (ContentPanel) container;
+		XTableModel model = content.getXTablePanel().getXTable().getModel();
 		final List<ColumnWidgets> columns = model.getColumns().getColumns();
 		//
-		parent.setBounds(tablePanel.getBounds());
-		final Rectangle r = parent.getBounds();
-		for (int i = 0; i < columns.size(); i++) {
-			ColumnWidgets cw = columns.get(i); int w = cw.getWidth();
+		final Rectangle r = content.getBounds();
+		int w1 = 0; for (int i = 0; i < columns.size(); i++) {
+			ColumnWidgets cw = columns.get(i); int w = cw.getWidth(); w1 = w1 + w;
 			Rectangle r1 = new Rectangle(r.x + i * w, r.y, w, 22); cw.setBounds(r1);
 		}
+		content.setBounds(new Rectangle(r.x, r.y, w1, 100));
 	}
 }

@@ -1,9 +1,10 @@
-package cn.nextop.guava.draw2d.scroll;
+package cn.nextop.guava.draw2d.scroll.support.dispatcher;
 
 import org.eclipse.draw2d.IFigure;
 import org.eclipse.draw2d.SWTEventDispatcher;
 import org.eclipse.swt.widgets.Event;
 
+import cn.nextop.guava.draw2d.scroll.support.event.ScrollEvent;
 import cn.nextop.guava.widgets.datetime.render.AbstractScrollPanel;
 
 /**

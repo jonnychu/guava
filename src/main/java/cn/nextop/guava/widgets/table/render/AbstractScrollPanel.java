@@ -3,15 +3,15 @@ package cn.nextop.guava.widgets.table.render;
 import java.util.Iterator;
 
 import org.eclipse.draw2d.ScrollBar;
-import org.eclipse.draw2d.ScrollPane;
 
-import cn.nextop.guava.draw2d.scroll.MouseWheelListener;
-import cn.nextop.guava.draw2d.scroll.ScrollEvent;
+import cn.nextop.guava.draw2d.scroll.ScrollPanel;
+import cn.nextop.guava.draw2d.scroll.support.event.MouseWheelListener;
+import cn.nextop.guava.draw2d.scroll.support.event.ScrollEvent;
 
 /**
  * @author jonny
  */
-public class AbstractScrollPanel extends ScrollPane {
+public class AbstractScrollPanel extends ScrollPanel {
 	//
 	private final String name;
 	
@@ -23,8 +23,6 @@ public class AbstractScrollPanel extends ScrollPane {
 	 */
 	public AbstractScrollPanel(String name) {
 		this.name = name;
-		getViewport().setContentsTracksWidth(true);
-		getViewport().setContentsTracksHeight(true);
 		addListener(MouseWheelListener.class, new MouseWheelListener.Stub());
 	}
 	
@@ -32,14 +30,14 @@ public class AbstractScrollPanel extends ScrollPane {
 	 * 
 	 */
 	public void pageUp(boolean isVertical) {
-		ScrollBar vsb = null;if(isVertical) vsb = getVerticalScrollBar(); 
-		else vsb = getHorizontalScrollBar(); if(!vsb.isVisible()) return;
+		ScrollBar vsb = null;if(isVertical) vsb = getVertBar();
+		else vsb = getHorzBar(); if(!vsb.isVisible()) return;
 		vsb.setValue(vsb.getValue() - vsb.getStepIncrement());
 	}
 	
 	public void pageDown(boolean isVertical) {
-		ScrollBar vsb = null;if(isVertical) vsb = getVerticalScrollBar(); 
-		else vsb = getHorizontalScrollBar(); if(!vsb.isVisible()) return;
+		ScrollBar vsb = null;if(isVertical) vsb = getVertBar(); 
+		else vsb = getHorzBar(); if(!vsb.isVisible()) return;
 		vsb.setValue(vsb.getValue() + vsb.getStepIncrement());
 	}
 	
@@ -47,11 +45,11 @@ public class AbstractScrollPanel extends ScrollPane {
 	 * 
 	 */
 	public void setVerticalScrollStep(int step) {
-		ScrollBar vsb = getVerticalScrollBar(); vsb.setStepIncrement(step);
+		ScrollBar vsb = getVertBar(); vsb.setStepIncrement(step);
 	}
 	
 	public void setHorizontalScrollStep(int step) {
-		ScrollBar vsb = getVerticalScrollBar(); vsb.setStepIncrement(step);
+		ScrollBar vsb = getHorzBar(); vsb.setStepIncrement(step);
 	}
 	
 	/**

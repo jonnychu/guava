@@ -33,6 +33,5 @@ public class XTable extends Canvas {
 		this.model = new XTableModel();
 		this.lws = new LightweightSystem(this);
 		this.lws.setContents(tablePanel = new XTablePanel(this));
-		System.out.println(getBounds());
 	}
 }

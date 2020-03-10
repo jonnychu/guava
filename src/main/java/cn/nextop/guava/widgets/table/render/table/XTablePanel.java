@@ -31,9 +31,6 @@ public class XTablePanel extends AbstractScrollPanel {
 		super("table.panel"); this.table = table;
 		
 		setVerticalScrollStep(22);
-		setHorizontalScrollBarVisibility(AUTOMATIC);
-		setVerticalScrollBarVisibility(AUTOMATIC);
-		add(contentPanel = new ContentPanel(this));
-		
+		setContents(contentPanel = new ContentPanel(this));
 	}
 }
