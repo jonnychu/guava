@@ -3,7 +3,6 @@ package cn.nextop.guava;
 import static cn.nextop.guava.utils.SwtUtils.creator;
 import static cn.nextop.guava.utils.SwtUtils.dispatch;
 
-import org.eclipse.swt.SWT;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Shell;
 
@@ -24,7 +23,7 @@ public class Example {
 		// date time
 		date.setInput(System.currentTimeMillis());
 		
-		XTableBuilder r = new XTableBuilder(cmp, SWT.BORDER);
+		XTableBuilder r = new XTableBuilder(cmp);
 		r.column().text("no1").pixel(50).build();
 		r.column().text("no2").pixel(50).build();
 		r.column().text("no3").pixel(50).build();

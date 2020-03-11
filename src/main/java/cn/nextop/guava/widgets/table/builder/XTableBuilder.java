@@ -9,7 +9,7 @@ import cn.nextop.guava.widgets.table.XTable;
 import cn.nextop.guava.widgets.table.model.XTableColumns;
 import cn.nextop.guava.widgets.table.model.XTableModel;
 import cn.nextop.guava.widgets.table.render.table.ContentPanel;
-import cn.nextop.guava.widgets.table.render.table.widget.ColumnWidgets;
+import cn.nextop.guava.widgets.table.render.table.column.ColumnWidget;
 
 /**
  * @author jonny
@@ -44,12 +44,11 @@ public class XTableBuilder {
 	public XTable builder() {
 		XTableModel model = this.table.getModel();
 		XTableColumns columns = model.getColumns();
-		List<ColumnWidgets> all = columns.getColumns();
+		List<ColumnWidget> all = columns.getColumns();
 		ContentPanel content = this.table.getTablePanel().getContentPanel();
-		for (ColumnWidgets cw : all) {
+		for (ColumnWidget cw : all) {
 			content.add(cw);
 		}
-		System.out.println("builder");
 		return this.table;
 	}
 }

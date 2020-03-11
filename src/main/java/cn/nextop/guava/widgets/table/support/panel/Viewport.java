@@ -1,4 +1,4 @@
-package cn.nextop.guava.draw2d.scroll;
+package cn.nextop.guava.widgets.table.support.panel;
 
 import static java.lang.Math.max;
 

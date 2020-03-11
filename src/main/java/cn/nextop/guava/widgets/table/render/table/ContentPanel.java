@@ -10,7 +10,7 @@ import org.eclipse.draw2d.geometry.Rectangle;
 import cn.nextop.guava.utils.Colors;
 import cn.nextop.guava.widgets.table.model.XTableModel;
 import cn.nextop.guava.widgets.table.render.AbstractTablePanel;
-import cn.nextop.guava.widgets.table.render.table.widget.ColumnWidgets;
+import cn.nextop.guava.widgets.table.render.table.column.ColumnWidget;
 
 /**
  * @author jonny
@@ -42,28 +42,28 @@ public class ContentPanel extends AbstractTablePanel {
 	@Override
 	public Dimension getMinimumSize(int wHint, int hHint) {
 		XTableModel model = getXTablePanel().getXTable().getModel();
-		final List<ColumnWidgets> columns = model.getColumns().getColumns();
+		final List<ColumnWidget> columns = model.getColumns().getColumns();
 		
 		int total = 0;
-		for (ColumnWidgets c : columns) {
+		for (ColumnWidget c : columns) {
 			total = total + c.getWidth();
 		}
-		return new Dimension(total, hHint);
+		return new Dimension(total, 500);
 	}
 	
 	@Override
 	protected void layoutManager(IFigure container) {
 		ContentPanel content = (ContentPanel) container;
+		System.out.println(content.getClientArea());
 		XTableModel model = content.getXTablePanel().getXTable().getModel();
-		final List<ColumnWidgets> columns = model.getColumns().getColumns();
+		final List<ColumnWidget> columns = model.getColumns().getColumns();
 		//
 		final Rectangle r = content.getBounds();
 		int x = r.x, y = r.y;
 		for (int i = 0; i < columns.size(); i++) {
-			ColumnWidgets cw = columns.get(i); int w = cw.getWidth();
+			ColumnWidget cw = columns.get(i); int w = cw.getWidth();
 			Rectangle r1 = new Rectangle(x, y, w, 22); cw.setBounds(r1);
 			x = x + w;
 		}
-		System.out.println("content layout" + r);
 	}
 }

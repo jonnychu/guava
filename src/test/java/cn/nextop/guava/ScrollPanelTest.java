@@ -16,10 +16,10 @@ import org.eclipse.swt.widgets.Canvas;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Shell;
 
-import cn.nextop.guava.draw2d.scroll.ScrollPanel;
 import cn.nextop.guava.utils.CGUtils;
 import cn.nextop.guava.utils.Colors;
 import cn.nextop.guava.utils.SwtUtils;
+import cn.nextop.guava.widgets.table.support.panel.ScrollPanel;
 import net.miginfocom.swt.MigLayout;
 
 public class ScrollPanelTest {
@@ -31,7 +31,6 @@ public class ScrollPanelTest {
 		Canvas canvas = new Canvas(cmp, SWT.DOUBLE_BUFFERED); canvas.setLayoutData("cell 0 0, width 10:150:");
 		Button btnOk = new Button(cmp, SWT.NONE); btnOk.setText("OK"); btnOk.setLayoutData("cell 0 1, width 10:150:,height 10:22");
 		LightweightSystem lws = new LightweightSystem(canvas);
-		lws.setEventDispatcher(new XSWTEventDispatcher());
 		ScrollPanel panel = new ScrollPanel(); lws.setContents(panel);
 		
 		//
