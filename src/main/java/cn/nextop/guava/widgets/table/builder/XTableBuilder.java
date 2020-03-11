@@ -8,8 +8,8 @@ import org.eclipse.swt.widgets.Composite;
 import cn.nextop.guava.widgets.table.XTable;
 import cn.nextop.guava.widgets.table.model.XTableColumns;
 import cn.nextop.guava.widgets.table.model.XTableModel;
-import cn.nextop.guava.widgets.table.render.table.ContentPanel;
-import cn.nextop.guava.widgets.table.render.table.column.ColumnWidget;
+import cn.nextop.guava.widgets.table.render.panel.header.HeaderContentPanel;
+import cn.nextop.guava.widgets.table.render.widget.internal.column.ColumnWidget;
 
 /**
  * @author jonny
@@ -45,7 +45,9 @@ public class XTableBuilder {
 		XTableModel model = this.table.getModel();
 		XTableColumns columns = model.getColumns();
 		List<ColumnWidget> all = columns.getColumns();
-		ContentPanel content = this.table.getTablePanel().getContentPanel();
+		
+		// all column
+		HeaderContentPanel content = this.table.getTablePanel().getHeaderPanel().getContent();
 		for (ColumnWidget cw : all) {
 			content.add(cw);
 		}

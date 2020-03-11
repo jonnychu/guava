@@ -1,4 +1,4 @@
-package cn.nextop.guava.widgets.table.render.table.column;
+package cn.nextop.guava.widgets.table.render.widget.internal.column;
 
 import org.eclipse.draw2d.Figure;
 import org.eclipse.swt.SWT;

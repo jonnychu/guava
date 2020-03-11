@@ -1,8 +1,10 @@
-package cn.nextop.guava.widgets.table.support.panel;
+package cn.nextop.guava.widgets.table.render.panel.common;
 
 import static cn.nextop.guava.draw2d.scroll.support.glossary.Type.NEVER;
 
+import org.eclipse.draw2d.DefaultRangeModel;
 import org.eclipse.draw2d.IFigure;
+import org.eclipse.draw2d.RangeModel;
 import org.eclipse.draw2d.ScrollBar;
 import org.eclipse.draw2d.geometry.Dimension;
 import org.eclipse.draw2d.geometry.Insets;
@@ -24,21 +26,17 @@ public class ScrollPanel extends AbstractPanel {
 	/**
 	 * 
 	 */
-	public ScrollPanel() {
-		this(Type.AUTO, Type.AUTO);
+	public ScrollPanel(String name) {
+		this(name, Type.AUTO, Type.AUTO, new DefaultRangeModel(), new DefaultRangeModel());
 	}
 	
-	public ScrollPanel(Type horzType, Type vertType) {
-		super("scroll.panel");
-		this.horzType = horzType;
-		this.vertType = vertType;
-		this.hBar = new ScrollBar(); 
-		this.vBar = new ScrollBar();
-		this.viewport = new Viewport();
-		this.hBar.setHorizontal(true );
-		this.vBar.setHorizontal(false);
-		hBar.setRangeModel(viewport.getHorzRangeModel());
-		vBar.setRangeModel(viewport.getVertRangeModel());
+	public ScrollPanel(String name, Type horzType, Type vertType, RangeModel horzRangeModel, RangeModel vertRangeModel) {
+		super(name);
+		this.horzType = horzType; this.vertType = vertType;
+		this.hBar = new ScrollBar(); this.vBar = new ScrollBar();
+		this.viewport = new Viewport(horzRangeModel, vertRangeModel);
+		this.hBar.setHorizontal(true); this.vBar.setHorizontal(false);
+		hBar.setRangeModel(horzRangeModel); vBar.setRangeModel(vertRangeModel);
 		add(this.viewport); add(this.hBar); add(this.vBar);
 	}
 	

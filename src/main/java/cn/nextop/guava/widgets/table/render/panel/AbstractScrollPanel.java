@@ -1,28 +1,24 @@
-package cn.nextop.guava.widgets.table.render;
+package cn.nextop.guava.widgets.table.render.panel;
 
 import java.util.Iterator;
 
+import org.eclipse.draw2d.RangeModel;
 import org.eclipse.draw2d.ScrollBar;
 
 import cn.nextop.guava.draw2d.scroll.support.event.MouseWheelListener;
 import cn.nextop.guava.draw2d.scroll.support.event.ScrollEvent;
-import cn.nextop.guava.widgets.table.support.panel.ScrollPanel;
+import cn.nextop.guava.draw2d.scroll.support.glossary.Type;
+import cn.nextop.guava.widgets.table.render.panel.common.ScrollPanel;
 
 /**
  * @author jonny
  */
-public class AbstractTableScrollPanel extends ScrollPanel {
-	//
-	private final String name;
-	
-	//
-	public String getName() { return name; }
-
+public class AbstractScrollPanel extends ScrollPanel {
 	/**
 	 * 
 	 */
-	public AbstractTableScrollPanel(String name) {
-		this.name = name;
+	public AbstractScrollPanel(String name, Type horzType, Type vertType, RangeModel horzRangModel, RangeModel vertRangeModel) {
+		super(name, horzType, vertType, horzRangModel, vertRangeModel);
 		addListener(MouseWheelListener.class, new MouseWheelListener.Stub());
 	}
 	

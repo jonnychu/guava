@@ -1,4 +1,4 @@
-package cn.nextop.guava.widgets.table.render.table;
+package cn.nextop.guava.widgets.table.render.panel.header;
 
 import java.util.List;
 
@@ -10,26 +10,26 @@ import org.eclipse.draw2d.geometry.Rectangle;
 import cn.nextop.guava.utils.Colors;
 import cn.nextop.guava.widgets.table.model.XTableModel;
 import cn.nextop.guava.widgets.table.render.AbstractTablePanel;
-import cn.nextop.guava.widgets.table.render.table.column.ColumnWidget;
+import cn.nextop.guava.widgets.table.render.widget.internal.column.ColumnWidget;
 
 /**
  * @author jonny
  */
-public class ContentPanel extends AbstractTablePanel {
+public class HeaderContentPanel extends AbstractTablePanel {
 	//
-	protected XTablePanel tablePanel;
+	protected HeaderScrollPanel headerPanel;
 	
 	/**
 	 * 
 	 */
-	public XTablePanel getXTablePanel() { return tablePanel; }
+	public HeaderScrollPanel getHeaderScrollPanel() { return headerPanel; }
 
 	/**
 	 * @param name
 	 */
-	public ContentPanel(XTablePanel tablePanel) {
+	public HeaderContentPanel(HeaderScrollPanel headerPanel) {
 		super("table.header");
-		this.tablePanel = tablePanel;
+		this.headerPanel = headerPanel;
 	}
 
 	@Override
@@ -41,21 +41,21 @@ public class ContentPanel extends AbstractTablePanel {
 	
 	@Override
 	public Dimension getMinimumSize(int wHint, int hHint) {
-		XTableModel model = getXTablePanel().getXTable().getModel();
+		XTableModel model = getHeaderScrollPanel().getXTable().getModel();
 		final List<ColumnWidget> columns = model.getColumns().getColumns();
 		
 		int total = 0;
 		for (ColumnWidget c : columns) {
 			total = total + c.getWidth();
 		}
-		return new Dimension(total, 500);
+		return new Dimension(total, 22);
 	}
 	
 	@Override
 	protected void layoutManager(IFigure container) {
-		ContentPanel content = (ContentPanel) container;
+		HeaderContentPanel content = (HeaderContentPanel) container;
 		System.out.println(content.getClientArea());
-		XTableModel model = content.getXTablePanel().getXTable().getModel();
+		XTableModel model = content.getHeaderScrollPanel().getXTable().getModel();
 		final List<ColumnWidget> columns = model.getColumns().getColumns();
 		//
 		final Rectangle r = content.getBounds();

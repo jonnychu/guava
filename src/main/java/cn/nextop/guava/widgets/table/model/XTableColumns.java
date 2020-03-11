@@ -3,7 +3,7 @@ package cn.nextop.guava.widgets.table.model;
 import java.util.ArrayList;
 import java.util.List;
 
-import cn.nextop.guava.widgets.table.render.table.column.ColumnWidget;
+import cn.nextop.guava.widgets.table.render.widget.internal.column.ColumnWidget;
 
 /**
  * @author jonny

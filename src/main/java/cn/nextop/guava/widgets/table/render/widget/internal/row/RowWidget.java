@@ -1,4 +1,4 @@
-package cn.nextop.guava.widgets.table.render.table.row;
+package cn.nextop.guava.widgets.table.render.widget.internal.row;
 
 import org.eclipse.draw2d.Graphics;
 import org.eclipse.draw2d.geometry.Rectangle;

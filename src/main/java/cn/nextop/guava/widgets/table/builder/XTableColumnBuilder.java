@@ -4,7 +4,7 @@ import cn.nextop.guava.widgets.table.XTable;
 import cn.nextop.guava.widgets.table.model.XTableColumns;
 import cn.nextop.guava.widgets.table.model.XTableModel;
 import cn.nextop.guava.widgets.table.model.basic.column.XTableColumn;
-import cn.nextop.guava.widgets.table.render.table.column.ColumnWidget;
+import cn.nextop.guava.widgets.table.render.widget.internal.column.ColumnWidget;
 
 /**
  * @author jonny
