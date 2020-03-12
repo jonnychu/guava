@@ -1,17 +1,19 @@
 package cn.nextop.guava.widgets.table.render.panel;
 
+import static cn.nextop.guava.draw2d.scroll.support.glossary.Type.AUTO;
+import static cn.nextop.guava.widgets.table.render.panel.common.Resolver.solve;
+
 import org.eclipse.draw2d.DefaultRangeModel;
+import org.eclipse.draw2d.Graphics;
 import org.eclipse.draw2d.IFigure;
 import org.eclipse.draw2d.RangeModel;
 import org.eclipse.draw2d.ScrollBar;
 import org.eclipse.draw2d.geometry.Insets;
 import org.eclipse.draw2d.geometry.Rectangle;
 
-import cn.nextop.guava.draw2d.scroll.support.glossary.Type;
-import cn.nextop.guava.utils.Debug;
+import cn.nextop.guava.utils.CGUtils;
 import cn.nextop.guava.widgets.table.XTable;
 import cn.nextop.guava.widgets.table.render.AbstractTablePanel;
-import cn.nextop.guava.widgets.table.render.panel.common.Resolver;
 import cn.nextop.guava.widgets.table.render.panel.common.Resolver.Result;
 import cn.nextop.guava.widgets.table.render.panel.common.Viewport;
 import cn.nextop.guava.widgets.table.render.panel.content.ContentViewport;
@@ -55,41 +57,45 @@ public class XTablePanel extends AbstractTablePanel {
 		add(vBar);
 	}
 	
+	
+	@Override
+	protected void paintBorder(Graphics g) {
+		super.paintBorder(g);
+		g.drawRectangle(CGUtils.getBorderRect(getClientArea()));
+	}
+	
 	@Override
 	protected void layoutManager(IFigure container) {
 		XTablePanel parent = (XTablePanel) container;
+		//
+		final Rectangle r = parent.getBounds();
+		final ScrollBar hBar = parent.getHorzBar();
+		final ScrollBar vBar = parent.getVertBar();
+		final Viewport header = parent.getHeader();
+		final Viewport content = parent.getContent();
 		{
-			final Rectangle r = parent.getBounds();
 			final int x = r.x, y = r.y, w = r.width, h = r.height;
 			Rectangle r1 = new Rectangle(x, y, w, 22); header.setBounds(r1);
 			Rectangle r2 = new Rectangle(x, y + r1.height, w, h - r1.height); content.setBounds(r2);
-//			Debug.println("XTablePanel : "+r);
-//			Debug.println("HeaderScrollPanel : "+r1);
-//			Debug.println("ContentScrollPanel : "+r2);
 		}
-		
-		
-
-		Viewport header = parent.getHeader();
-		Viewport content = parent.getContent();
-		final ScrollBar hBar = parent.getHorzBar();
-		final ScrollBar vBar = parent.getVertBar();
-		
 		{
-			final Rectangle r = content.getClientArea();
-			final int vBarWidth = vBar.getPreferredSize().width;
-			final int hBarHeight = hBar.getPreferredSize().height;
-			Result result = Resolver.solve(r, content, Type.AUTO, Type.AUTO, vBarWidth, hBarHeight);
-			Insets i1 = result.insets;
-			boolean showV = result.showV, showH = result.showH;
+			final Rectangle hr = header.getClientArea();
+			final Rectangle cr = content.getClientArea();
+			final int vbw = vBar.getPreferredSize().width;
+			final int hbh = hBar.getPreferredSize().height;
+			Result rst = solve(cr, content, AUTO, AUTO, vbw, hbh);
+			//
+			boolean showV = rst.showV, showH = rst.showH;
 			vBar.setVisible(showV); hBar.setVisible(showH);
-			if (!showV) i1.right = 0; if (!showH) i1.bottom = 0;
-			Rectangle r1 = r.getShrinked(i1); content.setBounds(r1);
-			if (showV) vBar.setBounds(new Rectangle(r1.right(), r1.y, i1.right, r1.height));
-			if (showH) hBar.setBounds(new Rectangle(r1.x, r1.bottom(), r1.width, i1.bottom));
+			//
+			final Insets i2 = rst.insets;
+			final Insets i1 = new Insets(0, 0, 0, i2.right);
+			final Insets i3 = new Insets(0, 0, i2.bottom, 0);
+			Rectangle r1 = hr.getShrinked(i1); header.setBounds(r1);
+			Rectangle r2 = cr.getShrinked(i2); content.setBounds(r2);
+			if (showV) vBar.setBounds(new Rectangle(r2.right(), r1.y, i2.right, r1.height));
+			if (showH) hBar.setBounds(new Rectangle(r1.x, r2.bottom(), r2.width, i2.bottom));
 		}
-		
-		
 
 		final int vStepInc = vBar.getStepIncrement();
 		int vPageInc = vBar.getRangeModel().getExtent() - vStepInc;

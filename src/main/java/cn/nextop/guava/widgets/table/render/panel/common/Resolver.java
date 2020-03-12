@@ -35,9 +35,9 @@ public class Resolver {
 	public static Result solve(Rectangle clientArea, Viewport viewport,
 			Type hVis, Type vVis, int vBarWidth, int hBarHeight) {
 		final Result r = new Result();
-		
 		final Insets i1 = new Insets(0, 0, hBarHeight, vBarWidth);
-
+		
+		//
 		Dimension d1 = clientArea.getSize();
 		int s1 = (vVis == NEVER) ? 0 : i1.right;
 		int s2 = (hVis == NEVER) ? 0 : i1.bottom;

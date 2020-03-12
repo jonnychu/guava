@@ -32,7 +32,7 @@ public class Example {
 		r.column().text("no6").pixel(50).build();
 		r.column().text("no7").pixel(50).build();
 		r.column().text("no8").pixel(200).build();
-		r.column().text("no9").pixel(10).build();
+		r.column().text("no9").pixel(30).build();
 		
 		XTable table = r.builder(); table.setLayoutData("cell 0 1");
 		
