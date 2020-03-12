@@ -29,12 +29,12 @@ public class Viewport extends AbstractPanel implements PropertyChangeListener {
 	/**
 	 * 
 	 */
-	public Viewport() {
-		this(new DefaultRangeModel(), new DefaultRangeModel());
+	public Viewport(String name) {
+		this(name, new DefaultRangeModel(), new DefaultRangeModel());
 	}
 	
-	public Viewport(RangeModel hRangeModel, RangeModel vRangeModel) {
-		super("viewport");
+	public Viewport(String name, RangeModel hRangeModel, RangeModel vRangeModel) {
+		super(name);
 		this.hRangeModel = hRangeModel;
 		this.vRangeModel = vRangeModel;
 		vRangeModel.addPropertyChangeListener(this);

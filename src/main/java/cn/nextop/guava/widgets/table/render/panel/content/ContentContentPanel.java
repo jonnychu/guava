@@ -17,19 +17,19 @@ import cn.nextop.guava.widgets.table.render.widget.internal.column.ColumnWidget;
  */
 public class ContentContentPanel extends AbstractTablePanel {
 	//
-	protected ContentScrollPanel tablePanel;
+	protected ContentViewport headerPanel;
 	
 	/**
 	 * 
 	 */
-	public ContentScrollPanel getXTablePanel() { return tablePanel; }
-
+	public ContentViewport getHeaderPanel() { return headerPanel; }
+	
 	/**
-	 * @param name
+	 * 
 	 */
-	public ContentContentPanel(ContentScrollPanel tablePanel) {
+	public ContentContentPanel(ContentViewport headerPanel) {
 		super("table.header");
-		this.tablePanel = tablePanel;
+		this.headerPanel = headerPanel;
 	}
 
 	@Override
@@ -41,21 +41,20 @@ public class ContentContentPanel extends AbstractTablePanel {
 	
 	@Override
 	public Dimension getMinimumSize(int wHint, int hHint) {
-		XTableModel model = getXTablePanel().getXTable().getModel();
+		XTableModel model = getHeaderPanel().getTablePanel().getTable().getModel();
 		final List<ColumnWidget> columns = model.getColumns().getColumns();
 		
 		int total = 0;
 		for (ColumnWidget c : columns) {
 			total = total + c.getWidth();
 		}
-		return new Dimension(total, 500);
+		return new Dimension(total, hHint);
 	}
 	
 	@Override
 	protected void layoutManager(IFigure container) {
 		ContentContentPanel content = (ContentContentPanel) container;
-		System.out.println(content.getClientArea());
-		XTableModel model = content.getXTablePanel().getXTable().getModel();
+		XTableModel model = getHeaderPanel().getTablePanel().getTable().getModel();
 		final List<ColumnWidget> columns = model.getColumns().getColumns();
 		//
 		final Rectangle r = content.getBounds();
