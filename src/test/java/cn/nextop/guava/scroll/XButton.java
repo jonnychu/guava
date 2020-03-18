@@ -58,7 +58,7 @@ public class XButton extends Figure {
 		Dimension d = getTextExtents(text, g.getFont());
 		if(clicked) {
 			g.setForegroundColor(Colors.COLOR_WHITE);
-			g.setBackgroundColor(Colors.COLOR_BLACK);
+			g.setBackgroundColor(Colors.COLOR_WIDGET_PRESS);
 		} else {
 			g.setForegroundColor(Colors.COLOR_BLACK);
 			if(enter) {
@@ -93,12 +93,12 @@ public class XButton extends Figure {
 	
 	@Override
 	public void handleMousePressed(MouseEvent event) {
-		super.handleMousePressed(event); this.clicked = true; repaint(); System.out.println("press");
+		super.handleMousePressed(event); this.clicked = true; repaint();
 	}
 	
 	@Override
 	public void handleMouseReleased(MouseEvent event) {
-		super.handleMouseReleased(event); this.clicked = false; repaint(); System.out.println("release");
+		super.handleMouseReleased(event); this.clicked = false; repaint();
 	}
 	
 	/**

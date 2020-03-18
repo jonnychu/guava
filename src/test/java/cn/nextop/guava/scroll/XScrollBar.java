@@ -5,6 +5,9 @@ import static com.patrikdufresne.fontawesome.FontAwesome.caret_left;
 import static com.patrikdufresne.fontawesome.FontAwesome.caret_right;
 import static com.patrikdufresne.fontawesome.FontAwesome.caret_up;
 
+import java.beans.PropertyChangeEvent;
+import java.beans.PropertyChangeListener;
+
 import org.eclipse.draw2d.Figure;
 import org.eclipse.draw2d.Graphics;
 import org.eclipse.draw2d.IFigure;
@@ -22,7 +25,7 @@ import cn.nextop.guava.widgets.AbstractPanel;
 /**
  * @author jonny
  */
-public class XScrollBar extends AbstractPanel {
+public class XScrollBar extends AbstractPanel implements PropertyChangeListener {
 	
 	protected Thumb thumb;
 	protected boolean horz;
@@ -34,15 +37,17 @@ public class XScrollBar extends AbstractPanel {
 	 */
 	public XScrollBar(String name, boolean horz) {
 		super(name); this.horz = horz;
-		this.model = new XRangeModel();
 		String s1 = horz ? caret_left : caret_up;
 		String s2 = horz ? caret_right : caret_down;
+		//
+		this.model = new XRangeModel();
+		this.model.addPropListener(this);
 		//
 		add(this.thumb = new Thumb());
 		add(this.btnUp = new XButton(s1));
 		add(this.btnDown = new XButton(s2));
 		//
-		Listener listener = new Listener();
+		ThumbListener listener = new ThumbListener();
 		this.thumb.addMouseListener(listener);
 		this.thumb.addMouseMotionListener(listener);
 	}
@@ -51,7 +56,7 @@ public class XScrollBar extends AbstractPanel {
 	 * setter
 	 */
 	public void setValue(int v) {
-		this.model.setValue(v); revalidate();
+		this.model.setValue(v);
 	}
 	
 	/**
@@ -79,6 +84,10 @@ public class XScrollBar extends AbstractPanel {
 	
 	private int getExtent() {
 		return this.model.getExtent();
+	}
+	
+	protected int getValueRange() {
+		return getMaximum() - getExtent() - getMinimum();
 	}
 	
 	private XButton getButtonUp() {
@@ -133,69 +142,100 @@ public class XScrollBar extends AbstractPanel {
 	}
 	
 	@Override
-	protected Dimension calPreferredSize(IFigure container, int wHint, int hHint) {
-		return this.horz ? new Dimension(wHint, 16) : new Dimension(16, hHint);
-	}
-	
-	@Override
 	public void revalidate() {
 		invalidate();
 		getUpdateManager().addInvalidFigure(this);
 	}
+	
+	@Override
+	public void propertyChange(PropertyChangeEvent evt) {
+		setEnabled(this.model.isEnabled()); revalidate();
+	}
+	
+	@Override
+	protected Dimension calPreferredSize(IFigure container, int wHint, int hHint) {
+		return this.horz ? new Dimension(wHint, 16) : new Dimension(16, hHint);
+	}
+	
 	/**
 	 * 
 	 */
 	protected class Thumb extends Figure {
+		//
+		private boolean enter, drag;
+		
 		@Override
 		protected void paintFigure(Graphics g) {
-			super.paintFigure(g); Rectangle r = getClientArea();
-			g.setBackgroundColor(Colors.COLOR_CYAN);
-			g.fillRectangle(r);
+			super.paintFigure(g);
+			if(!enter) {
+				g.setBackgroundColor(Colors.COLOR_WIDGET_THUMB);
+			} else {
+				if(drag) {
+					g.setBackgroundColor(Colors.COLOR_WIDGET_PRESS);
+				} else {
+					g.setBackgroundColor(Colors.COLOR_WIDGET_THUMB_FOCUS);
+				}
+			}
+			g.fillRectangle(getClientArea());
+		}
+		
+		@Override
+		public void handleMouseDragged(MouseEvent event) {
+			super.handleMouseDragged(event); drag = true; repaint();
+		}
+		
+		@Override
+		public void handleMouseEntered(MouseEvent event) {
+			super.handleMouseEntered(event); enter = true; repaint();
+		}
+		
+		@Override
+		public void handleMouseExited(MouseEvent event) {
+			super.handleMouseExited(event); enter = false; repaint();
+		}
+		
+		@Override
+		public void handleMouseReleased(MouseEvent event) {
+			super.handleMouseReleased(event); drag = false; repaint(); 
 		}
 	}
 	
-	protected class Listener extends MouseMotionListener.Stub implements MouseListener {
+	protected class ThumbListener extends MouseMotionListener.Stub implements MouseListener {
+		//
 		protected Point start;
 		protected boolean armed;
-		protected int dragRange;
-		protected int revertValue;
+		protected int dragRange, revertValue;
 		
 		@Override
 		public void mousePressed(MouseEvent me) {
 			Rectangle r = getClientArea();
 			start = me.getLocation(); armed = true;
 			
-			Dimension thumbSize = getThumb().getSize();
-			if(isHorz()) {
-				r.width -= getButtonUp().getSize().width;
-				r.width -= getButtonDown().getSize().width;
-				dragRange = r.width - thumbSize.width;
-			} else {
-				r.height -= getButtonUp().getSize().height;
-				r.height -= getButtonDown().getSize().height;
-				dragRange = r.height - thumbSize.height;
-			}
+			Dimension s1 = getThumb().getSize();
+			Dimension s2 = getButtonUp().getSize();
+			Dimension s3 = getButtonDown().getSize();
+			final int w = s1.width + s2.width + s3.width;
+			final int h = s1.height + s2.height + s3.height;
+			dragRange = isHorz() ? r.width - w : r.height - h;
 			revertValue = getValue(); me.consume();
-		}
-
-		@Override
-		public void mouseReleased(MouseEvent me) {
-			if (!armed) return; armed = false; me.consume();
 		}
 
 		@Override
 		public void mouseDragged(MouseEvent me) {
 			if (!armed) return;
-			Point p1 = me.getLocation(); me.consume();
-			Dimension diff = p1.getDifference(start);
-			if(isHorz()) {
-				setValue(revertValue + getValue() * diff.width / dragRange);
-			} else {
-				setValue(revertValue + getValue() * diff.height / dragRange);
-			}
+			final int vr = getValueRange();
+			final Point p = me.getLocation();
+			final Dimension diff = p.getDifference(start);
+			final int change = isHorz() ? diff.width : diff.height;
+			setValue(revertValue + vr * change / dragRange); me.consume();
 		}
-
+		
 		@Override
 		public void mouseDoubleClicked(MouseEvent me) {}
+		
+		@Override
+		public void mouseReleased(MouseEvent me) {
+			if (!armed) return; armed = false; me.consume();
+		}
 	}
 }
