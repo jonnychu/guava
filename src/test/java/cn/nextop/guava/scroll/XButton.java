@@ -87,13 +87,14 @@ public class XButton extends Figure {
 	}
 	
 	@Override
-	public void handleMouseEntered(MouseEvent event) {
-		super.handleMouseEntered(event); this.enter = true; repaint();
+	public void handleMouseExited(MouseEvent event) {
+		super.handleMouseExited(event); 
+		this.enter = false; this.clicked = false; repaint();
 	}
 	
 	@Override
-	public void handleMouseExited(MouseEvent event) {
-		super.handleMouseExited(event); this.enter = false; this.clicked = false; repaint();
+	public void handleMouseEntered(MouseEvent event) {
+		super.handleMouseEntered(event); this.enter = true; repaint();
 	}
 	
 	@Override
