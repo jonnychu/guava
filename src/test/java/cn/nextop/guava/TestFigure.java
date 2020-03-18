@@ -31,44 +31,48 @@ public class TestFigure {
 		LightweightSystem lws = new LightweightSystem(canvas);
 		Figure f1 = new Figure() {
 			@Override
-			protected void paintFigure(Graphics graphics) {
-				super.paintFigure(graphics);
-				graphics.setBackgroundColor(Colors.COLOR_BLACK);
-				graphics.fillRectangle(getBounds());
+			protected void paintFigure(Graphics g) {
+				super.paintFigure(g);
+				g.setBackgroundColor(Colors.COLOR_BLACK);
+				g.fillRectangle(getBounds());
 				System.out.println("f1");
 			}
 		};
 		
 		
 		Figure f2 = new Figure() {
+
 			@Override
-			protected void paintFigure(Graphics graphics) {
-				super.paintFigure(graphics);
-				graphics.setBackgroundColor(Colors.COLOR_WHITE);
-				graphics.fillRectangle(getBounds());
+			protected void paintFigure(Graphics g) {
+				super.paintFigure(g);
+					g.clipRect(new Rectangle(0,0,100,10));
+					g.setBackgroundColor(Colors.COLOR_RED);
+					g.fillRectangle(getBounds());
+					g.setBackgroundColor(Colors.COLOR_WHITE);
+					g.fillRectangle(getBounds());
 				System.out.println("f2");
 			}
 		};
 		
-		Figure f3 = new Figure() {
-			@Override
-			protected void paintFigure(Graphics graphics) {
-				super.paintFigure(graphics);
-				graphics.setBackgroundColor(Colors.COLOR_BLUE);
-				graphics.fillRectangle(getBounds());
-				System.out.println("f3");
-			}
-		};
+//		Figure f3 = new Figure() {
+//			@Override
+//			protected void paintFigure(Graphics g) {
+//				super.paintFigure(g);
+//				g.setBackgroundColor(Colors.COLOR_BLUE);
+//				g.fillRectangle(getBounds());
+//				System.out.println("f3");
+//			}
+//		};
 		f2.setBounds(new Rectangle(0, 0, 100, 100));
-		f3.setBounds(new Rectangle(100, 0, 100, 100));
-		f1.add(f2); f1.add(f3);
+//		f3.setBounds(new Rectangle(100, 0, 100, 100));
+		f1.add(f2); //f1.add(f3);
 		lws.setContents(f1);
 		
 		btnOk.addSelectionListener(new SelectionListener() {
 			
 			@Override
 			public void widgetSelected(SelectionEvent e) {
-				f2.repaint();
+				 f2.repaint();
 			}
 			
 			@Override

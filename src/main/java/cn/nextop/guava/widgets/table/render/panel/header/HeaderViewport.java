@@ -27,8 +27,6 @@ public class HeaderViewport extends Viewport {
 	public HeaderViewport(XTablePanel tablePanel, RangeModel hRangeModel, RangeModel vRangeModel) {
 		super("header.viewport", hRangeModel, vRangeModel);
 		this.tablePanel = tablePanel;
-		vRangeModel.addPropertyChangeListener(this);
-		hRangeModel.addPropertyChangeListener(this);
 		setContents(this.header = new HeaderContentPanel(this));
 	}
 }

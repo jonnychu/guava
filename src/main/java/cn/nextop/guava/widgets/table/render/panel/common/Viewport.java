@@ -35,10 +35,9 @@ public class Viewport extends AbstractPanel implements PropertyChangeListener {
 	
 	public Viewport(String name, RangeModel hRangeModel, RangeModel vRangeModel) {
 		super(name);
-		this.hRangeModel = hRangeModel;
-		this.vRangeModel = vRangeModel;
-		vRangeModel.addPropertyChangeListener(this);
-		hRangeModel.addPropertyChangeListener(this);
+		this.hRangeModel = hRangeModel; this.vRangeModel = vRangeModel;
+		if(vRangeModel != null)	vRangeModel.addPropertyChangeListener(this);
+		if(hRangeModel != null) hRangeModel.addPropertyChangeListener(this);
 	}
 	
 	/**
@@ -52,8 +51,9 @@ public class Viewport extends AbstractPanel implements PropertyChangeListener {
 	 * 
 	 */
 	public Point getViewLocation() {
-		int w = this.hRangeModel.getValue();
-		int h = this.vRangeModel.getValue();
+		int w = 0, h = 0;
+		if(this.hRangeModel != null) w = this.hRangeModel.getValue();
+		if(this.vRangeModel != null) h = this.vRangeModel.getValue();
 		return new Point(w, h);
 	}
 
@@ -70,8 +70,8 @@ public class Viewport extends AbstractPanel implements PropertyChangeListener {
 		int extent2 = getClientArea().height;
 		int max1 = this.view.getBounds().width;
 		int max2 = this.view.getBounds().height;
-		this.hRangeModel.setAll(0, extent1, max1);
-		this.vRangeModel.setAll(0, extent2, max2);
+		if(this.hRangeModel != null) this.hRangeModel.setAll(0, extent1, max1);
+		if(this.vRangeModel != null) this.vRangeModel.setAll(0, extent2, max2);
 	}
 
 	public void setContents(IFigure figure) {
@@ -137,13 +137,19 @@ public class Viewport extends AbstractPanel implements PropertyChangeListener {
 	
 	@Override
 	public void translateFromParent(Translatable t) {
-		t.performTranslate(this.hRangeModel.getValue(), this.vRangeModel.getValue());
+		int w = 0, h = 0;
+		if(this.hRangeModel != null) w = this.hRangeModel.getValue();
+		if(this.vRangeModel != null) h = this.vRangeModel.getValue();
+		t.performTranslate(w, h);
 		super.translateFromParent(t);
 	}
 	
 	@Override
 	public void translateToParent(Translatable t) {
-		t.performTranslate(-this.vRangeModel.getValue(), -this.vRangeModel.getValue());
+		int w = 0, h = 0;
+		if(this.hRangeModel != null) w = this.hRangeModel.getValue();
+		if(this.vRangeModel != null) h = this.vRangeModel.getValue();
+		t.performTranslate(-h, -w);
 		super.translateToParent(t);
 	}
 

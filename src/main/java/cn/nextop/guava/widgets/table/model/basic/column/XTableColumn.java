@@ -2,6 +2,8 @@ package cn.nextop.guava.widgets.table.model.basic.column;
 
 import org.eclipse.swt.SWT;
 
+import cn.nextop.guava.widgets.table.support.property.Property;
+
 /**
  * @author jonny
  */
@@ -11,6 +13,7 @@ public class XTableColumn {
 	private int width = 30;
 	private int height = 26;
 	private int weight = 0;
+	private Property<?> property;
 	private int align = SWT.CENTER;
 	
 	/**
@@ -60,5 +63,13 @@ public class XTableColumn {
 
 	public void setWeight(int weight) {
 		this.weight = weight;
+	}
+
+	public Property<?> getProperty() {
+		return property;
+	}
+
+	public void setProperty(Property<?> property) {
+		this.property = property;
 	}
 }

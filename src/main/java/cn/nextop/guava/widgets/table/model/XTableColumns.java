@@ -3,24 +3,36 @@ package cn.nextop.guava.widgets.table.model;
 import java.util.ArrayList;
 import java.util.List;
 
-import cn.nextop.guava.widgets.table.render.widget.internal.column.ColumnWidget;
+import cn.nextop.guava.widgets.table.model.basic.column.XTableColumn;
 
 /**
  * @author jonny
  */
 public class XTableColumns {
 	//
-	private List<ColumnWidget> columns;
+	private int height = 22;
+	private List<XTableColumn> columns;
 
-	public List<ColumnWidget> getColumns() {
+	/**
+	 * 
+	 */
+	public int getHeight() {
+		return height;
+	}
+
+	public void setHeight(int height) {
+		this.height = height;
+	}
+
+	public List<XTableColumn> getColumns() {
 		return columns;
 	}
 
-	public void setColumns(List<ColumnWidget> columns) {
+	public void setColumns(List<XTableColumn> columns) {
 		this.columns = columns;
 	}
 	
-	public void addColumns(ColumnWidget col) {
+	public void addColumns(XTableColumn col) {
 		if(columns == null) columns = new ArrayList<>();
 		this.columns.add(col);
 	}

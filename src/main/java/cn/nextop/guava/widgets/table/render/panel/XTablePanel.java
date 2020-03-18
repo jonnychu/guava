@@ -49,7 +49,7 @@ public class XTablePanel extends AbstractTablePanel {
 		this.hBar = new ScrollBar(); this.vBar = new ScrollBar();
 		this.hBar.setHorizontal(true); this.vBar.setHorizontal(false);
 		hBar.setRangeModel(horzRangeModel); vBar.setRangeModel(vertRangeModel);
-		header = new HeaderViewport(this, horzRangeModel, vertRangeModel);
+		header = new HeaderViewport(this, horzRangeModel, null);
 		content = new ContentViewport(this, horzRangeModel, vertRangeModel);
 		add(content);
 		add(header);
@@ -84,16 +84,17 @@ public class XTablePanel extends AbstractTablePanel {
 			final int vbw = vBar.getPreferredSize().width;
 			final int hbh = hBar.getPreferredSize().height;
 			Result rst = solve(cr, content, AUTO, AUTO, vbw, hbh);
+			System.out.println(rst);
 			//
 			boolean showV = rst.showV, showH = rst.showH;
 			vBar.setVisible(showV); hBar.setVisible(showH);
 			//
 			final Insets i2 = rst.insets;
 			final Insets i1 = new Insets(0, 0, 0, i2.right);
-			final Insets i3 = new Insets(0, 0, i2.bottom, 0);
+//			final Insets i3 = new Insets(0, 0, i2.bottom, 0); TODO
 			Rectangle r1 = hr.getShrinked(i1); header.setBounds(r1);
 			Rectangle r2 = cr.getShrinked(i2); content.setBounds(r2);
-			if (showV) vBar.setBounds(new Rectangle(r2.right(), r1.y, i2.right, r1.height));
+			if (showV) vBar.setBounds(new Rectangle(r2.right(), r1.y, i2.right, r1.height + r2.height));
 			if (showH) hBar.setBounds(new Rectangle(r1.x, r2.bottom(), r2.width, i2.bottom));
 		}
 

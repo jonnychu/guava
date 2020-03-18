@@ -1,17 +1,9 @@
 package cn.nextop.guava.widgets.table.builder;
 
-import java.util.List;
-
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.widgets.Composite;
 
 import cn.nextop.guava.widgets.table.XTable;
-import cn.nextop.guava.widgets.table.model.XTableColumns;
-import cn.nextop.guava.widgets.table.model.XTableModel;
-import cn.nextop.guava.widgets.table.render.panel.content.ContentContentPanel;
-import cn.nextop.guava.widgets.table.render.panel.header.HeaderContentPanel;
-import cn.nextop.guava.widgets.table.render.widget.internal.column.ColumnWidget;
-import cn.nextop.guava.widgets.table.render.widget.internal.row.RowWidget;
 
 /**
  * @author jonny
@@ -44,18 +36,15 @@ public class XTableBuilder {
 	}
 	
 	public XTable builder() {
-		XTableModel model = this.table.getModel();
-		XTableColumns columns = model.getColumns();
-		List<ColumnWidget> all = columns.getColumns();
-		
-		// all column
-		ContentContentPanel content = this.table.getTablePanel().getContent().getContent();
-		HeaderContentPanel header = this.table.getTablePanel().getHeader().getHeader();
-		for (ColumnWidget cw : all) {
-			header.add(cw); 
-			RowWidget rw = new RowWidget(); rw.setText("111111");
-			content.add(rw);
-		}
+//		XTableModel model = this.table.getModel();
+//		XTableColumns columns = model.getColumns();
+//		List<XTableColumn> all = columns.getColumns();
+//		XTablePanel tablePanel = this.table.getTablePanel();
+//		HeaderContentPanel header = tablePanel.getHeader().getHeader();
+//		ContentContentPanel content = tablePanel.getContent().getContent();
+//		for (XTableColumn m : all) {
+//			header.add(new ColumnWidget(m)); 
+//		}
 		return this.table;
 	}
 }

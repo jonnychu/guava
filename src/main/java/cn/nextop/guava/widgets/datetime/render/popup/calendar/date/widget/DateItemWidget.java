@@ -63,6 +63,7 @@ public class DateItemWidget extends AbstractTimeWidget {
 		}
 		g.drawString(text, r.x + (r.width - d1.width) / 2, r.y + (r.height - d1.height) / 2);
 		
+		g.setAdvanced(true);
 		if(selected && now) {
 			g.setBackgroundColor(Colors.COLOR_WHITE);
 			g.fillOval(r1.x + r1.width - oval - space, r1.y + space, oval, oval);
@@ -71,6 +72,7 @@ public class DateItemWidget extends AbstractTimeWidget {
 			g.setBackgroundColor(Colors.COLOR_LIGHT_BLUE);
 			g.fillOval(r1.x + r1.width - oval - space, r1.y + space, oval, oval);
 		}
+		g.setAdvanced(true);
 	}
 	
 	@Override
