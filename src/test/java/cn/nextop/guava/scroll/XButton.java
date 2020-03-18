@@ -28,14 +28,14 @@ import cn.nextop.guava.utils.Colors;
  */
 public class XButton extends Figure {
 	//
-	private String text;
+	private String text, name;
 	private XButtonModel model;
 	private boolean clicked = false, enter = false;
 
 	/**
 	 */
-	public XButton(String text) {
-		this.text = text;
+	public XButton(String text, String name) {
+		this.text = text; this.name = name;
 		this.model = new XButtonModel();
 		addMouseListener(new MouseListener.Stub() {
 			@Override
@@ -75,7 +75,7 @@ public class XButton extends Figure {
 	
 	@SuppressWarnings({ "rawtypes" })
 	public void fireActionPerformed(){
-		ActionEvent action = new ActionEvent(this,"Click");
+		ActionEvent action = new ActionEvent(this, name);
 		Iterator iter = getListeners(ActionListener.class);
 		while (iter.hasNext())
 			((ActionListener) iter.next()).actionPerformed(action);

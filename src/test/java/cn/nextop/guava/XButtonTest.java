@@ -41,7 +41,7 @@ public class XButtonTest {
 			}
 		
 		}; lws.setContents(panel);
-		XButton btnOk = new XButton(FontAwesome.caret_up); //btnOk.setBounds(new Rectangle(0,0,16,16));
+		XButton btnOk = new XButton(FontAwesome.caret_up, "btnOK"); //btnOk.setBounds(new Rectangle(0,0,16,16));
 		btnOk.setSize(btnOk.getPreferredSize());
 		panel.add(btnOk);
 		btnOk.addActionListener(new ActionListener() {

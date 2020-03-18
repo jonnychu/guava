@@ -8,6 +8,8 @@ import static com.patrikdufresne.fontawesome.FontAwesome.caret_up;
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
 
+import org.eclipse.draw2d.ActionEvent;
+import org.eclipse.draw2d.ActionListener;
 import org.eclipse.draw2d.Figure;
 import org.eclipse.draw2d.Graphics;
 import org.eclipse.draw2d.IFigure;
@@ -25,12 +27,13 @@ import cn.nextop.guava.widgets.AbstractPanel;
 /**
  * @author jonny
  */
-public class XScrollBar extends AbstractPanel implements PropertyChangeListener {
+public class XScrollBar extends AbstractPanel implements PropertyChangeListener, ActionListener {
 	
 	protected Thumb thumb;
 	protected boolean horz;
 	protected XRangeModel model;
 	protected XButton btnUp, btnDown;
+	protected int stepIncrement = 10;
 	
 	/**
 	 * 
@@ -44,10 +47,12 @@ public class XScrollBar extends AbstractPanel implements PropertyChangeListener 
 		this.model.addPropListener(this);
 		//
 		add(this.thumb = new Thumb());
-		add(this.btnUp = new XButton(s1));
-		add(this.btnDown = new XButton(s2));
-		//
-		ThumbListener listener = new ThumbListener();
+		add(this.btnUp = new XButton(s1, "up"));
+		add(this.btnDown = new XButton(s2, "down"));
+		// Listener
+		this.btnUp.addActionListener(this);
+		this.btnDown.addActionListener(this);
+		DragListener listener = new DragListener();
 		this.thumb.addMouseListener(listener);
 		this.thumb.addMouseMotionListener(listener);
 	}
@@ -101,6 +106,28 @@ public class XScrollBar extends AbstractPanel implements PropertyChangeListener 
 	/**
 	 * 
 	 */
+	public int getStepIncrement() {
+		return stepIncrement;
+	}
+
+	public void setStepIncrement(int stepIncrement) {
+		this.stepIncrement = stepIncrement;
+	}
+
+	/**
+	 * 
+	 */
+	protected void stepDown() {
+		setValue(getValue() + getStepIncrement());
+	}
+
+	protected void stepUp() {
+		setValue(getValue() - getStepIncrement());
+	}
+	
+	/**
+	 * 
+	 */
 	@Override
 	protected void paintFigure(Graphics g) {
 		super.paintFigure(g);
@@ -145,6 +172,16 @@ public class XScrollBar extends AbstractPanel implements PropertyChangeListener 
 	public void revalidate() {
 		invalidate();
 		getUpdateManager().addInvalidFigure(this);
+	}
+	
+	@Override
+	public void actionPerformed(ActionEvent event) {
+		String name = event.getActionName();
+		switch (name) {
+		case "up": stepUp(); break;
+		case "down": stepDown(); break;
+		default : throw new RuntimeException("No name, " + name);
+		}
 	}
 	
 	@Override
@@ -200,7 +237,7 @@ public class XScrollBar extends AbstractPanel implements PropertyChangeListener 
 		}
 	}
 	
-	protected class ThumbListener extends MouseMotionListener.Stub implements MouseListener {
+	protected class DragListener extends MouseMotionListener.Stub implements MouseListener {
 		//
 		protected Point start;
 		protected boolean armed;
