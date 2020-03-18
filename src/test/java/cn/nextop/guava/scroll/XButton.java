@@ -48,7 +48,12 @@ public class XButton extends Figure {
 				super.mouseReleased(me); model.released();
 			}
 		});
-		addMouseMotionListener(new MouseMotionListener.Stub());
+		addMouseMotionListener(new MouseMotionListener.Stub() {
+			@Override
+			public void mouseExited(MouseEvent me) {
+				super.mouseExited(me); model.released();
+			}
+		});
 	}
 	
 	@Override

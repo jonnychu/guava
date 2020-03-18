@@ -14,7 +14,7 @@ public class XRangeModel {
 	private int min, max, value, extent;
 	//
 	private final PropertyChangeSupport listeners;
-	protected final String PROPERTY_VALUE = "VALUE";
+	public static final String PROPERTY_VALUE = "VALUE";
 	
 	/**
 	 * 
@@ -79,8 +79,12 @@ public class XRangeModel {
 	public void addPropListener(PropertyChangeListener listener) {
 		listeners.addPropertyChangeListener(listener);
 	}
-
+	
 	protected void fire(String string, int oldValue, int newValue) {
 		listeners.firePropertyChange(string, oldValue, newValue);
+	}
+	
+	public void removePropListener(PropertyChangeListener listener) {
+		listeners.removePropertyChangeListener(listener);
 	}
 }

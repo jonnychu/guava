@@ -7,6 +7,7 @@ import static com.patrikdufresne.fontawesome.FontAwesome.caret_up;
 
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
+import java.util.Iterator;
 
 import org.eclipse.draw2d.ActionEvent;
 import org.eclipse.draw2d.ActionListener;
@@ -34,6 +35,8 @@ public class XScrollBar extends AbstractPanel implements PropertyChangeListener,
 	protected XRangeModel model;
 	protected XButton btnUp, btnDown;
 	protected int stepIncrement = 10;
+	protected int pageIncrement = 50;
+	protected PageButton pageUp, pageDown;
 	
 	/**
 	 * 
@@ -45,14 +48,18 @@ public class XScrollBar extends AbstractPanel implements PropertyChangeListener,
 		//
 		this.model = new XRangeModel();
 		this.model.addPropListener(this);
+		DragListener listener = new DragListener();
 		//
 		add(this.thumb = new Thumb());
 		add(this.btnUp = new XButton(s1, "up"));
 		add(this.btnDown = new XButton(s2, "down"));
+		add(this.pageUp = new PageButton("pageup"));
+		add(this.pageDown = new PageButton("pagedown"));
 		// Listener
 		this.btnUp.addActionListener(this);
+		this.pageUp.addActionListener(this);
 		this.btnDown.addActionListener(this);
-		DragListener listener = new DragListener();
+		this.pageDown.addActionListener(this);
 		this.thumb.addMouseListener(listener);
 		this.thumb.addMouseMotionListener(listener);
 	}
@@ -106,12 +113,36 @@ public class XScrollBar extends AbstractPanel implements PropertyChangeListener,
 	/**
 	 * 
 	 */
+	public XRangeModel getModel() {
+		return model;
+	}
+
+	public void setModel(XRangeModel model) {
+		if(this.model != null)
+			this.model.removePropListener(this);
+		this.model = model;	this.model.addPropListener(this);
+	}
+	
+	/**
+	 * 
+	 */
 	public int getStepIncrement() {
 		return stepIncrement;
 	}
 
 	public void setStepIncrement(int stepIncrement) {
 		this.stepIncrement = stepIncrement;
+	}
+	
+	/**
+	 * 
+	 */
+	public int getPageIncrement() {
+		return pageIncrement;
+	}
+
+	public void setPageIncrement(int pageIncrement) {
+		this.pageIncrement = pageIncrement;
 	}
 
 	/**
@@ -123,6 +154,14 @@ public class XScrollBar extends AbstractPanel implements PropertyChangeListener,
 
 	protected void stepUp() {
 		setValue(getValue() - getStepIncrement());
+	}
+	
+	protected void pageDown() {
+		setValue(getValue() + getPageIncrement());
+	}
+
+	protected void pageUp() {
+		setValue(getValue() - getPageIncrement());
 	}
 	
 	/**
@@ -165,6 +204,16 @@ public class XScrollBar extends AbstractPanel implements PropertyChangeListener,
 					new Rectangle(thumbXY, r1.y, thumbWH, r1.height) 
 					: new Rectangle(r1.x, thumbXY, r1.width, thumbWH);
 			thumb.setBounds(thumbBounds); thumb.setVisible(v2 > thumbWH);
+			//
+			Rectangle pageUpBounds = this.horz ? 
+					new Rectangle(r1.x, r1.y, thumbXY - r1.x, r1.height) 
+					: new Rectangle(r1.x, r1.y, r1.width, thumbXY - r1.y);
+			//
+			final int p = thumbXY + thumbWH;
+			Rectangle pageDownBounds = this.horz ? 
+					new Rectangle(p, r1.y, r1.right() - p, r1.height)
+					: new Rectangle(r1.x, p, r1.width, r1.bottom() - p);
+			pageUp.setBounds(pageUpBounds); pageDown.setBounds(pageDownBounds);
 		}
 	}
 	
@@ -180,6 +229,8 @@ public class XScrollBar extends AbstractPanel implements PropertyChangeListener,
 		switch (name) {
 		case "up": stepUp(); break;
 		case "down": stepDown(); break;
+		case "pageup": pageUp(); break;
+		case "pagedown": pageDown(); break;
 		default : throw new RuntimeException("No name, " + name);
 		}
 	}
@@ -234,6 +285,34 @@ public class XScrollBar extends AbstractPanel implements PropertyChangeListener,
 		@Override
 		public void handleMouseReleased(MouseEvent event) {
 			super.handleMouseReleased(event); drag = false; repaint(); 
+		}
+	}
+	
+	protected class PageButton extends Figure {
+		//
+		private String name;
+		
+		public PageButton(String name) {
+			this.name = name;
+			addMouseListener(new MouseListener.Stub() {
+				@Override
+				public void mousePressed(MouseEvent me) {
+					super.mousePressed(me);
+					fireActionPerformed();
+				}
+			});
+		}
+		
+		public void addActionListener(ActionListener listener) {
+			addListener(ActionListener.class, listener);
+		}
+		
+		@SuppressWarnings({ "rawtypes" })
+		public void fireActionPerformed(){
+			ActionEvent action = new ActionEvent(this, name);
+			Iterator iter = getListeners(ActionListener.class);
+			while (iter.hasNext())
+				((ActionListener) iter.next()).actionPerformed(action);
 		}
 	}
 	
