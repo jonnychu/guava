@@ -1,4 +1,4 @@
-package cn.nextop.guava.scroll;
+package cn.nextop.guava.scroll.bar;
 
 import static cn.nextop.guava.utils.SwtUtils.sync;
 import static org.eclipse.draw2d.FigureUtilities.getTextExtents;
@@ -26,7 +26,7 @@ import cn.nextop.guava.utils.Colors;
  * FontAwesome.caret_down
  * @author jonny
  */
-public class XButton extends Figure {
+public class StepButton extends Figure {
 	//
 	private String text, name;
 	private XButtonModel model;
@@ -34,7 +34,7 @@ public class XButton extends Figure {
 
 	/**
 	 */
-	public XButton(String text, String name) {
+	public StepButton(String text, String name) {
 		this.text = text; this.name = name;
 		this.model = new XButtonModel();
 		addMouseListener(new MouseListener.Stub() {

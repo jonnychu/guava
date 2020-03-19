@@ -1,4 +1,4 @@
-package cn.nextop.guava.scroll;
+package cn.nextop.guava.scroll.bar;
 
 import static java.lang.Math.max;
 import static java.lang.Math.min;

@@ -13,7 +13,7 @@ import org.eclipse.swt.widgets.Canvas;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Shell;
 
-import cn.nextop.guava.scroll.XScrollBar;
+import cn.nextop.guava.scroll.bar.XScrollBar;
 import cn.nextop.guava.utils.Colors;
 import cn.nextop.guava.utils.SwtUtils;
 import cn.nextop.guava.widgets.AbstractPanel;

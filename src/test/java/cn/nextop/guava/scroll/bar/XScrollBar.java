@@ -1,4 +1,4 @@
-package cn.nextop.guava.scroll;
+package cn.nextop.guava.scroll.bar;
 
 import static com.patrikdufresne.fontawesome.FontAwesome.caret_down;
 import static com.patrikdufresne.fontawesome.FontAwesome.caret_left;
@@ -7,7 +7,6 @@ import static com.patrikdufresne.fontawesome.FontAwesome.caret_up;
 
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
-import java.util.Iterator;
 
 import org.eclipse.draw2d.ActionEvent;
 import org.eclipse.draw2d.ActionListener;
@@ -33,7 +32,7 @@ public class XScrollBar extends AbstractPanel implements PropertyChangeListener,
 	protected Thumb thumb;
 	protected boolean horz;
 	protected XRangeModel model;
-	protected XButton btnUp, btnDown;
+	protected StepButton btnUp, btnDown;
 	protected int stepIncrement = 10;
 	protected int pageIncrement = 50;
 	protected PageButton pageUp, pageDown;
@@ -51,8 +50,8 @@ public class XScrollBar extends AbstractPanel implements PropertyChangeListener,
 		DragListener listener = new DragListener();
 		//
 		add(this.thumb = new Thumb());
-		add(this.btnUp = new XButton(s1, "up"));
-		add(this.btnDown = new XButton(s2, "down"));
+		add(this.btnUp = new StepButton(s1, "up"));
+		add(this.btnDown = new StepButton(s2, "down"));
 		add(this.pageUp = new PageButton("pageup"));
 		add(this.pageDown = new PageButton("pagedown"));
 		// Listener
@@ -102,11 +101,11 @@ public class XScrollBar extends AbstractPanel implements PropertyChangeListener,
 		return getMaximum() - getExtent() - getMinimum();
 	}
 	
-	private XButton getButtonUp() {
+	private StepButton getButtonUp() {
 		return this.btnUp;
 	}
 	
-	private XButton getButtonDown() {
+	private StepButton getButtonDown() {
 		return this.btnDown;
 	}
 	
@@ -285,34 +284,6 @@ public class XScrollBar extends AbstractPanel implements PropertyChangeListener,
 		@Override
 		public void handleMouseReleased(MouseEvent event) {
 			super.handleMouseReleased(event); drag = false; repaint(); 
-		}
-	}
-	
-	protected class PageButton extends Figure {
-		//
-		private String name;
-		
-		public PageButton(String name) {
-			this.name = name;
-			addMouseListener(new MouseListener.Stub() {
-				@Override
-				public void mousePressed(MouseEvent me) {
-					super.mousePressed(me);
-					fireActionPerformed();
-				}
-			});
-		}
-		
-		public void addActionListener(ActionListener listener) {
-			addListener(ActionListener.class, listener);
-		}
-		
-		@SuppressWarnings({ "rawtypes" })
-		public void fireActionPerformed(){
-			ActionEvent action = new ActionEvent(this, name);
-			Iterator iter = getListeners(ActionListener.class);
-			while (iter.hasNext())
-				((ActionListener) iter.next()).actionPerformed(action);
 		}
 	}
 	

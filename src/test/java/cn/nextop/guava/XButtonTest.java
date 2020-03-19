@@ -15,7 +15,7 @@ import org.eclipse.swt.widgets.Shell;
 
 import com.patrikdufresne.fontawesome.FontAwesome;
 
-import cn.nextop.guava.scroll.XButton;
+import cn.nextop.guava.scroll.bar.StepButton;
 import cn.nextop.guava.utils.Colors;
 import cn.nextop.guava.utils.SwtUtils;
 import net.miginfocom.swt.MigLayout;
@@ -41,7 +41,7 @@ public class XButtonTest {
 			}
 		
 		}; lws.setContents(panel);
-		XButton btnOk = new XButton(FontAwesome.caret_up, "btnOK"); //btnOk.setBounds(new Rectangle(0,0,16,16));
+		StepButton btnOk = new StepButton(FontAwesome.caret_up, "btnOK"); //btnOk.setBounds(new Rectangle(0,0,16,16));
 		btnOk.setSize(btnOk.getPreferredSize());
 		panel.add(btnOk);
 		btnOk.addActionListener(new ActionListener() {

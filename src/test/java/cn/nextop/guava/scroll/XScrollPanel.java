@@ -2,6 +2,7 @@ package cn.nextop.guava.scroll;
 
 import org.eclipse.draw2d.IFigure;
 
+import cn.nextop.guava.scroll.bar.XScrollBar;
 import cn.nextop.guava.widgets.AbstractPanel;
 
 /**
