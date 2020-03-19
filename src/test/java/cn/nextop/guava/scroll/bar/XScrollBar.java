@@ -64,104 +64,84 @@ public class XScrollBar extends AbstractPanel implements PropertyChangeListener,
 	}
 	
 	/**
-	 * setter
+	 * 
 	 */
-	public void setValue(int v) {
-		this.model.setValue(v);
-	}
-	
-	/**
-	 * getter
-	 */
-	private boolean isHorz() {
+	public boolean isHorz() {
 		return this.horz;
 	}
 	
-	private Thumb getThumb() {
+	public Thumb getThumb() {
 		return this.thumb;
 	}
 	
-	private int getMinimum() {
+	public int getMinimum() {
 		return this.model.getMin();
 	}
 
-	private int getMaximum() {
+	public int getMaximum() {
 		return this.model.getMax();
 	}
 	
-	private int getValue() {
-		return this.model.getValue();
-	}
-	
-	private int getExtent() {
+	public int getExtent() {
 		return this.model.getExtent();
 	}
 	
-	protected int getValueRange() {
-		return getMaximum() - getExtent() - getMinimum();
-	}
-	
-	private StepButton getButtonUp() {
+	public StepButton getButtonUp() {
 		return this.btnUp;
 	}
 	
-	private StepButton getButtonDown() {
+	public StepButton getButtonDown() {
 		return this.btnDown;
 	}
 	
 	/**
 	 * 
 	 */
-	public XRangeModel getModel() {
-		return model;
+	public int getValueRange() {
+		return getMaximum() - getExtent() - getMinimum();
 	}
+	
+	/**
+	 * 
+	 */
+	public void setValue(int v) { this.model.setValue(v); }
+	
+	public int getValue() { return this.model.getValue(); }
+	
+	/**
+	 * 
+	 */
+	public XRangeModel getModel() { return model; }
 
 	public void setModel(XRangeModel model) {
-		if(this.model != null)
-			this.model.removePropListener(this);
+		if(this.model != null) this.model.removePropListener(this);
 		this.model = model;	this.model.addPropListener(this);
 	}
 	
 	/**
 	 * 
 	 */
-	public int getStepIncrement() {
-		return stepIncrement;
-	}
+	public int getStepIncrement() { return this.stepIncrement; }
 
-	public void setStepIncrement(int stepIncrement) {
-		this.stepIncrement = stepIncrement;
-	}
+	public void setStepIncrement(int v) { this.stepIncrement = v; }
 	
 	/**
 	 * 
 	 */
-	public int getPageIncrement() {
-		return pageIncrement;
-	}
+	public int getPageIncrement() { return this.pageIncrement; }
 
-	public void setPageIncrement(int pageIncrement) {
-		this.pageIncrement = pageIncrement;
-	}
-
+	public void setPageIncrement(int v) { this.pageIncrement = v; }
+	
 	/**
 	 * 
 	 */
-	protected void stepDown() {
-		setValue(getValue() + getStepIncrement());
-	}
-
-	protected void stepUp() {
-		setValue(getValue() - getStepIncrement());
-	}
+	protected void stepUp() { setValue(getValue() - getStepIncrement()); }
 	
-	protected void pageDown() {
-		setValue(getValue() + getPageIncrement());
-	}
-
-	protected void pageUp() {
-		setValue(getValue() - getPageIncrement());
-	}
+	protected void stepDown() { setValue(getValue() + getStepIncrement());}
+	
+	protected void pageUp() { setValue(getValue() - getPageIncrement()); }
+	
+	protected void pageDown() { setValue(getValue() + getPageIncrement()); }
 	
 	/**
 	 * 
