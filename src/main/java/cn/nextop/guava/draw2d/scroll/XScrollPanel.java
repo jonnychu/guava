@@ -10,15 +10,16 @@ import org.eclipse.draw2d.geometry.Rectangle;
 import cn.nextop.guava.draw2d.scroll.bar.XRangeModel;
 import cn.nextop.guava.draw2d.scroll.bar.XScrollBar;
 import cn.nextop.guava.widgets.AbstractPanel;
+import cn.nextop.guava.widgets.table.render.panel.viewport.YViewport;
 
 /**
  * @author jonny
  */
 public class XScrollPanel extends AbstractPanel {
 	
-	protected XScrollBar hBar, vBar;
 	protected XViewport data;
 	protected YViewport header;
+	protected XScrollBar hBar, vBar;
 	protected XRangeModel hRangeModel, vRangeModel;
 	
 	/**
