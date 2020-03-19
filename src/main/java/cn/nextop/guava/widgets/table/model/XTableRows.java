@@ -1,4 +1,4 @@
-package cn.nextop.guava.widgets.table.model.basic.row;
+package cn.nextop.guava.widgets.table.model;
 
 import static java.lang.Math.max;
 import static java.lang.Math.min;
@@ -7,6 +7,8 @@ import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.Iterator;
 import java.util.List;
+
+import cn.nextop.guava.widgets.table.model.basic.row.XTableRow;
 
 
 /**

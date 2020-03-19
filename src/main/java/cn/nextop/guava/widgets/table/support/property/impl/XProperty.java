@@ -27,7 +27,7 @@ public class XProperty<T> implements Property<T> {
 	public XProperty(Class<T> clazz, String name) {
 		this.clazz = clazz; this.name = name;
 		this.field = getField(clazz, name);
-		this.getter = findPublicMethod(clazz, "getName1");
+		this.getter = findPublicMethod(clazz, name);
 		this.setter = findPublicMethod(clazz, name);
 	}
 	

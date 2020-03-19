@@ -1,7 +1,5 @@
 package cn.nextop.guava.widgets.table.model;
 
-import cn.nextop.guava.widgets.table.model.basic.row.XTableRows;
-
 /**
  * @author jonny
  */
