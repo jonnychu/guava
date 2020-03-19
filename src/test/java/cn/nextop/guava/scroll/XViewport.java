@@ -1,4 +1,4 @@
-package cn.nextop.guava.scroll.viewport;
+package cn.nextop.guava.scroll;
 
 import static java.lang.Math.max;
 
@@ -19,7 +19,7 @@ import cn.nextop.guava.widgets.AbstractPanel;
 /**
  * @author jonny
  */
-public class DataViewport extends AbstractPanel implements PropertyChangeListener, IViewport {
+public class XViewport extends AbstractPanel implements PropertyChangeListener {
 
 	private IFigure view;
 	private XRangeModel hRangeModel, vRangeModel;
@@ -27,7 +27,7 @@ public class DataViewport extends AbstractPanel implements PropertyChangeListene
 	/**
 	 * 
 	 */
-	public DataViewport(XRangeModel hRangeModel, XRangeModel vRangeModel) {
+	public XViewport(XRangeModel hRangeModel, XRangeModel vRangeModel) {
 		super("viewport");
 		this.vRangeModel = vRangeModel; this.hRangeModel = hRangeModel;
 		if(this.vRangeModel != null) this.vRangeModel.addPropListener(this);
@@ -117,7 +117,7 @@ public class DataViewport extends AbstractPanel implements PropertyChangeListene
 	
 	@Override
 	protected void layoutManager(IFigure container) {
-		final DataViewport viewport = (DataViewport) container;
+		final XViewport viewport = (XViewport) container;
 		final IFigure contents = viewport.getContents(); 
 		if(contents == null) return; // no contents add
 		
