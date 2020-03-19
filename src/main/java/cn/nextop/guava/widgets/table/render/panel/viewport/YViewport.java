@@ -1,6 +1,5 @@
 package cn.nextop.guava.widgets.table.render.panel.viewport;
 
-import cn.nextop.guava.draw2d.scroll.XViewport;
 import cn.nextop.guava.draw2d.scroll.bar.XRangeModel;
 
 /**

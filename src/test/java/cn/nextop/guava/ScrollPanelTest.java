@@ -13,9 +13,9 @@ import org.eclipse.swt.widgets.Canvas;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Shell;
 
-import cn.nextop.guava.draw2d.scroll.XScrollPanel;
 import cn.nextop.guava.utils.Colors;
 import cn.nextop.guava.utils.SwtUtils;
+import cn.nextop.guava.widgets.table.render.panel.XScrollPanel;
 import net.miginfocom.swt.MigLayout;
 
 public class ScrollPanelTest {
