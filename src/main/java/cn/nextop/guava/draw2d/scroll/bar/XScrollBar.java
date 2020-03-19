@@ -1,4 +1,4 @@
-package cn.nextop.guava.scroll.bar;
+package cn.nextop.guava.draw2d.scroll.bar;
 
 import static com.patrikdufresne.fontawesome.FontAwesome.caret_down;
 import static com.patrikdufresne.fontawesome.FontAwesome.caret_left;
@@ -175,6 +175,7 @@ public class XScrollBar extends AbstractPanel implements PropertyChangeListener,
 			final int totalRange = max - min; if (totalRange == 0) return;
 			
 			final int val = totalRange - extent;
+			if((val < 1) || (!isEnabled())) return;
 			final int v1 = this.horz ? r1.x : r1.y;
 			final int v2 = horz ? r1.width : r1.height;
 			final int thumbWH = v2 * extent / totalRange;

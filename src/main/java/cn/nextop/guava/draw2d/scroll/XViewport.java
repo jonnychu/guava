@@ -5,52 +5,46 @@ import static java.lang.Math.max;
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
 
-import org.eclipse.draw2d.DefaultRangeModel;
 import org.eclipse.draw2d.Graphics;
 import org.eclipse.draw2d.IFigure;
-import org.eclipse.draw2d.RangeModel;
 import org.eclipse.draw2d.geometry.Dimension;
 import org.eclipse.draw2d.geometry.Point;
 import org.eclipse.draw2d.geometry.Rectangle;
 import org.eclipse.draw2d.geometry.Translatable;
 
+import cn.nextop.guava.draw2d.scroll.bar.XRangeModel;
 import cn.nextop.guava.widgets.AbstractPanel;
 
 /**
  * @author jonny
  */
-public class Viewport extends AbstractPanel implements PropertyChangeListener {
+public class XViewport extends AbstractPanel implements PropertyChangeListener {
 
 	private IFigure view;
-	private RangeModel hRangeModel, vRangeModel;
-	//
-	public static final String PROPERTY_VIEW_LOCATION = "viewLocation";
+	private XRangeModel hRangeModel, vRangeModel;
 	
 	/**
 	 * 
 	 */
-	public Viewport() {
-		super("viewport");
-		vRangeModel = new DefaultRangeModel();
-		hRangeModel = new DefaultRangeModel();
-		vRangeModel.addPropertyChangeListener(this);
-		hRangeModel.addPropertyChangeListener(this);
+	public XViewport(String name, XRangeModel hRangeModel, XRangeModel vRangeModel) {
+		super(name);
+		this.vRangeModel = vRangeModel; this.hRangeModel = hRangeModel;
+		if(this.vRangeModel != null) this.vRangeModel.addPropListener(this);
+		if(this.hRangeModel != null) this.hRangeModel.addPropListener(this);
 	}
 	
 	/**
 	 * 
 	 */
 	public IFigure getContents() { return view; }
-	public RangeModel getHorzRangeModel() { return hRangeModel; }
-	public RangeModel getVertRangeModel() { return vRangeModel; }
+	public XRangeModel getHorzRangeModel() { return hRangeModel; }
+	public XRangeModel getVertRangeModel() { return vRangeModel; }
 	
 	/**
 	 * 
 	 */
 	public Point getViewLocation() {
-		int w = this.hRangeModel.getValue();
-		int h = this.vRangeModel.getValue();
-		return new Point(w, h);
+		return new Point(getHorzValue(), getVertValue());
 	}
 
 	private void localRevalidate() {
@@ -66,8 +60,10 @@ public class Viewport extends AbstractPanel implements PropertyChangeListener {
 		int extent2 = getClientArea().height;
 		int max1 = this.view.getBounds().width;
 		int max2 = this.view.getBounds().height;
-		this.hRangeModel.setAll(0, extent1, max1);
-		this.vRangeModel.setAll(0, extent2, max2);
+		if(this.hRangeModel != null) 
+			this.hRangeModel.setAll(0, extent1, max1);
+		if(this.vRangeModel != null)
+			this.vRangeModel.setAll(0, extent2, max2);
 	}
 
 	public void setContents(IFigure figure) {
@@ -77,20 +73,30 @@ public class Viewport extends AbstractPanel implements PropertyChangeListener {
 	}
 	
 	public void setViewLocation(int x, int y) {
-		if (this.hRangeModel.getValue() != x)
+		if (this.hRangeModel != null
+				&& this.hRangeModel.getValue() != x)
 			this.hRangeModel.setValue(x);
-		if (this.vRangeModel.getValue() != y)
+		if (this.vRangeModel != null
+				&& this.vRangeModel.getValue() != y)
 			this.vRangeModel.setValue(y);
 	}
 	
 	public void setHorizontalLocation(int value) {
-		setViewLocation(value, vRangeModel.getValue());
+		setViewLocation(value, getVertValue());
 	}
 	
 	public void setVerticalLocation(int value) {
-		setViewLocation(hRangeModel.getValue(), value);
+		setViewLocation(getHorzValue(), value);
 	}
-
+	
+	protected int getHorzValue() {
+		return hRangeModel == null ? 0 : hRangeModel.getValue();
+	}
+	
+	protected int getVertValue() {
+		return vRangeModel == null ? 0 : vRangeModel.getValue();
+	}
+	
 	@Override
 	public Rectangle getClientArea(Rectangle rect) {
 		super.getClientArea(rect);
@@ -110,7 +116,7 @@ public class Viewport extends AbstractPanel implements PropertyChangeListener {
 	
 	@Override
 	protected void layoutManager(IFigure container) {
-		final Viewport viewport = (Viewport) container;
+		final XViewport viewport = (XViewport) container;
 		final IFigure contents = viewport.getContents(); 
 		if(contents == null) return; // no contents add
 		
@@ -133,23 +139,22 @@ public class Viewport extends AbstractPanel implements PropertyChangeListener {
 	
 	@Override
 	public void translateFromParent(Translatable t) {
-		t.performTranslate(this.hRangeModel.getValue(), this.vRangeModel.getValue());
+		t.performTranslate(getHorzValue(), getVertValue());
 		super.translateFromParent(t);
 	}
 	
 	@Override
 	public void translateToParent(Translatable t) {
-		t.performTranslate(-this.vRangeModel.getValue(), -this.vRangeModel.getValue());
+		t.performTranslate(-getHorzValue(), -getVertValue());
 		super.translateToParent(t);
 	}
 
 	@Override
 	public void propertyChange(PropertyChangeEvent event) {
-		if (event.getSource() instanceof RangeModel) {
-			if (RangeModel.PROPERTY_VALUE.equals(event.getPropertyName())) {
+		if (event.getSource() instanceof XRangeModel) {
+			if (XRangeModel.PROPERTY_VALUE.equals(event.getPropertyName())) {
 				localRevalidate(); repaint();
 				fireFigureMoved(); fireCoordinateSystemChanged();
-				firePropertyChange(PROPERTY_VIEW_LOCATION, event.getOldValue(), event.getNewValue());
 			}
 		}
 	}

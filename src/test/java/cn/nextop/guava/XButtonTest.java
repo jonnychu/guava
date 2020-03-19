@@ -15,7 +15,7 @@ import org.eclipse.swt.widgets.Shell;
 
 import com.patrikdufresne.fontawesome.FontAwesome;
 
-import cn.nextop.guava.scroll.bar.StepButton;
+import cn.nextop.guava.draw2d.scroll.bar.StepButton;
 import cn.nextop.guava.utils.Colors;
 import cn.nextop.guava.utils.SwtUtils;
 import net.miginfocom.swt.MigLayout;
