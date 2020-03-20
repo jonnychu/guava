@@ -14,7 +14,7 @@ import cn.nextop.guava.widgets.datetime.XDateTime;
 import cn.nextop.guava.widgets.table.XTable;
 import cn.nextop.guava.widgets.table.builder.XTableAdapter;
 import cn.nextop.guava.widgets.table.builder.XTableBuilder;
-import cn.nextop.guava.widgets.table.support.row.IRow;
+import cn.nextop.guava.widgets.table.model.basic.row.XTableRow;
 import net.miginfocom.swt.MigLayout;
 
 
@@ -34,7 +34,7 @@ public class Example {
 		ExampleAdapter adapter = example.new ExampleAdapter();
 		XTable table = adapter.build(cmp); table.setLayoutData("cell 0 1");
 		
-		List<IRow> rows = new ArrayList<>(); 
+		List<Row> rows = new ArrayList<>(); 
 		rows.add(example.new Row("name1","name2","name3","name4","name5"));
 		rows.add(example.new Row("name1","name2","name3","name4","name5"));
 		rows.add(example.new Row("name1","name2","name3","name4","name5"));
@@ -63,14 +63,15 @@ public class Example {
 		}
 	}
 	
-	public class Row implements IRow {
+	public class Row implements XTableRow.RowIdAware {
 		private String name1;
 		private String name2;
 		private String name3;
 		private String name4;
 		private String name5;
+		
 		@Override
-		public Object getRowId() {
+		public Object rowId() {
 			return null;
 		}
 		

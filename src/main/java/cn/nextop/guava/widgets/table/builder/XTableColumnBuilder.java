@@ -1,9 +1,9 @@
 package cn.nextop.guava.widgets.table.builder;
 
 import cn.nextop.guava.widgets.table.XTable;
-import cn.nextop.guava.widgets.table.model.XTableColumns;
 import cn.nextop.guava.widgets.table.model.XTableModel;
 import cn.nextop.guava.widgets.table.model.basic.column.XTableColumn;
+import cn.nextop.guava.widgets.table.model.basic.column.XTableColumns;
 import cn.nextop.guava.widgets.table.support.property.impl.XProperty;
 
 /**

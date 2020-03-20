@@ -1,9 +1,7 @@
-package cn.nextop.guava.widgets.table.model;
+package cn.nextop.guava.widgets.table.model.basic.column;
 
 import java.util.ArrayList;
 import java.util.List;
-
-import cn.nextop.guava.widgets.table.model.basic.column.XTableColumn;
 
 /**
  * @author jonny

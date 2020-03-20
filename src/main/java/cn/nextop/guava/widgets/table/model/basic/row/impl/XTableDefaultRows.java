@@ -1,4 +1,4 @@
-package cn.nextop.guava.widgets.table.model;
+package cn.nextop.guava.widgets.table.model.basic.row.impl;
 
 import static java.lang.Math.max;
 import static java.lang.Math.min;
@@ -8,14 +8,12 @@ import java.util.Comparator;
 import java.util.Iterator;
 import java.util.List;
 
-import cn.nextop.guava.widgets.table.model.basic.row.XTableRow;
-
 
 /**
  * @author jonny
  */
-public class XTableRows<T> {
-	protected final List<XTableRow<T>> rows = new ArrayList<>();
+public class XTableDefaultRows<T> {
+	protected final List<XTableDefaultRow<T>> rows = new ArrayList<>();
 	
 	/**
 	 * 
@@ -28,11 +26,11 @@ public class XTableRows<T> {
 		this.rows.clear();
 	}
 	
-	public XTableRow<T> get(int index) {
+	public XTableDefaultRow<T> get(int index) {
 		return this.rows.get(index);
 	}
 	
-	public Iterator<XTableRow<T>> iterator() {
+	public Iterator<XTableDefaultRow<T>> iterator() {
 		return this.rows.iterator();
 	}
 	
@@ -41,18 +39,18 @@ public class XTableRows<T> {
 	 */
 	public void reset(final List<T> rows) {
 		this.rows.clear(); 
-		this.rows.addAll(XTableRow.valueOf(rows));
+		this.rows.addAll(XTableDefaultRow.valueOf(rows));
 	}
 	
 	public void append(final List<T> rows) {
 		if(rows == null) return;
-		this.rows.addAll(XTableRow.valueOf(rows));
+		this.rows.addAll(XTableDefaultRow.valueOf(rows));
 	}
 	
 	/**
 	 * 
 	 */
-	public final void sort(final Comparator<XTableRow<T>> cmp) {
+	public final void sort(final Comparator<XTableDefaultRow<T>> cmp) {
 		//NOP
 	}
 	
@@ -62,7 +60,7 @@ public class XTableRows<T> {
 	public int move(final int index, final int delta) {
 		final int size = this.rows.size();
 		if(index < 0 || index > size) return -1;
-		final XTableRow<T> src = this.rows.get(index);
+		final XTableDefaultRow<T> src = this.rows.get(index);
 		final int dst = min(size - 1, max(0, index + delta));
 		this.rows.remove(index); this.rows.add(dst, src); return dst;
 	}

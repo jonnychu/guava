@@ -1,29 +1,32 @@
 package cn.nextop.guava.widgets.table.model;
 
+import cn.nextop.guava.widgets.table.model.basic.column.XTableColumns;
+import cn.nextop.guava.widgets.table.model.basic.row.impl.XTableDefaultRows;
+
 /**
  * @author jonny
  */
 public class XTableModel<T> {
 	//
-	protected XTableRows<T> rows;
+	protected XTableDefaultRows<T> rows;
 	protected XTableColumns columns;
 	
 	/**
 	 * 
 	 */
 	public XTableModel() {
-		rows = new XTableRows<>();
+		rows = new XTableDefaultRows<>();
 		columns = new XTableColumns();
 	}
 	
 	/**
 	 * 
 	 */
-	public XTableRows<T> getRows() {
+	public XTableDefaultRows<T> getRows() {
 		return rows;
 	}
 
-	public void setRows(XTableRows<T> rows) {
+	public void setRows(XTableDefaultRows<T> rows) {
 		this.rows = rows;
 	}
 	

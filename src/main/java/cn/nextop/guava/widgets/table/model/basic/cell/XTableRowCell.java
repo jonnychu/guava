@@ -1,11 +1,11 @@
-package cn.nextop.guava.widgets.table.model.basic.row;
+package cn.nextop.guava.widgets.table.model.basic.cell;
 
 import org.eclipse.swt.SWT;
 
 /**
  * @author jonny
  */
-public class RowCell {
+public class XTableRowCell {
 	private String text = "";
 	private int width = 30;
 	private int height = 22;
@@ -14,7 +14,7 @@ public class RowCell {
 	/**
 	 * 
 	 */
-	public RowCell() {
+	public XTableRowCell() {
 	}
 
 	public String getText() {
