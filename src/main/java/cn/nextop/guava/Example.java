@@ -3,14 +3,13 @@ package cn.nextop.guava;
 import static cn.nextop.guava.utils.SwtUtils.creator;
 import static cn.nextop.guava.utils.SwtUtils.dispatch;
 
-import java.util.ArrayList;
-import java.util.List;
-
+import org.eclipse.swt.SWT;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Shell;
 
 import cn.nextop.guava.utils.SwtUtils;
 import cn.nextop.guava.widgets.datetime.XDateTime;
+import cn.nextop.guava.widgets.spinner.XSpinner;
 import cn.nextop.guava.widgets.table.XTable;
 import cn.nextop.guava.widgets.table.builder.XTableAdapter;
 import cn.nextop.guava.widgets.table.builder.XTableBuilder;
@@ -25,27 +24,29 @@ public class Example {
 		Composite cmp = SwtUtils.creator(shell);
 		cmp.setLayout(new MigLayout("insets 5, gap 0 0","[fill,grow]","[fill,grow][fill,grow][fill,grow]"));
 		XDateTime date = new XDateTime(cmp); date.setLayoutData("cell 0 0, width 10:150:,height 23!");
+		XSpinner spinner1 = new XSpinner(cmp, SWT.HORIZONTAL); spinner1.setLayoutData("cell 0 1, width 10:150:,height 23!");
+		XSpinner spinner2 = new XSpinner(cmp, SWT.VERTICAL); spinner2.setLayoutData("cell 0 2, width 10:150:,height 23!");
 		// date time
 		date.setInput(System.currentTimeMillis());
 		
 		
 		//
-		Example example = new Example();
-		ExampleAdapter adapter = example.new ExampleAdapter();
-		XTable table = adapter.build(cmp); table.setLayoutData("cell 0 1");
-		
-		List<Row> rows = new ArrayList<>(); 
-		rows.add(example.new Row("name1","name2","name3","name4","name5"));
-		rows.add(example.new Row("name1","name2","name3","name4","name5"));
-		rows.add(example.new Row("name1","name2","name3","name4","name5"));
-		rows.add(example.new Row("name1","name2","name3","name4","name5"));
-		rows.add(example.new Row("name1","name2","name3","name4","name5"));
-		rows.add(example.new Row("name1","name2","name3","name4","name5"));
-		rows.add(example.new Row("name1","name2","name3","name4","name5"));
-		rows.add(example.new Row("name1","name2","name3","name4","name5"));
-		rows.add(example.new Row("name1","name2","name3","name4","name5"));
-		rows.add(example.new Row("name1","name2","name3","name4","name5"));
-		table.inputs(rows);
+//		Example example = new Example();
+//		ExampleAdapter adapter = example.new ExampleAdapter();
+//		XTable table = adapter.build(cmp); table.setLayoutData("cell 0 1");
+//		
+//		List<Row> rows = new ArrayList<>(); 
+//		rows.add(example.new Row("name1","name2","name3","name4","name5"));
+//		rows.add(example.new Row("name1","name2","name3","name4","name5"));
+//		rows.add(example.new Row("name1","name2","name3","name4","name5"));
+//		rows.add(example.new Row("name1","name2","name3","name4","name5"));
+//		rows.add(example.new Row("name1","name2","name3","name4","name5"));
+//		rows.add(example.new Row("name1","name2","name3","name4","name5"));
+//		rows.add(example.new Row("name1","name2","name3","name4","name5"));
+//		rows.add(example.new Row("name1","name2","name3","name4","name5"));
+//		rows.add(example.new Row("name1","name2","name3","name4","name5"));
+//		rows.add(example.new Row("name1","name2","name3","name4","name5"));
+//		table.inputs(rows);
 		shell.open(); dispatch(() -> shell.isDisposed());
 	}
 	
