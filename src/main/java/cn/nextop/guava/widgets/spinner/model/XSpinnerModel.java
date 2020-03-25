@@ -6,26 +6,36 @@ import java.util.concurrent.atomic.AtomicLong;
  * @author jonny
  */
 public class XSpinnerModel {
-	private int lower;
-	private int upper;
+	//
+	private long lower;
+	private long upper;
+	private long step = 1;
 	private AtomicLong value = new AtomicLong(0);
 	
 	/**
 	 * 
 	 */
-	public int getLower() {
+	public long getStep() {
+		return step;
+	}
+
+	public void setStep(long step) {
+		this.step = step;
+	}
+	
+	public long getLower() {
 		return lower;
 	}
 	
-	public void setLower(int lower) {
+	public void setLower(long lower) {
 		this.lower = lower;
 	}
 	
-	public int getUpper() {
+	public long getUpper() {
 		return upper;
 	}
 	
-	public void setUpper(int upper) {
+	public void setUpper(long upper) {
 		this.upper = upper;
 	}
 	
@@ -34,14 +44,24 @@ public class XSpinnerModel {
 	}
 	
 	public void setValue(long val) {
+		if(val >= upper) val = upper;
+		if(val <= lower) val = lower;
 		this.value.set(val);
 	}
 	
 	public void increment() {
-		this.value.getAndIncrement();
+		long val = value.addAndGet(step);
+		if(val > upper) this.value.set(upper);
+		if(val < lower) this.value.set(lower);
 	}
 	
 	public void decrement() {
-		this.value.getAndDecrement();
+		long val = value.addAndGet(-step);
+		if(val > upper) this.value.set(upper);
+		if(val < lower) this.value.set(lower);
+	}
+	
+	public void init(long upper, long lower, long step, long value) {
+		setUpper(upper); setLower(lower); setStep(step); setValue(value);
 	}
 }

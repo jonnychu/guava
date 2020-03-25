@@ -4,7 +4,12 @@ import static java.lang.Long.parseLong;
 import static org.eclipse.swt.SWT.LEFT;
 import static org.eclipse.swt.SWT.RIGHT;
 
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 import org.eclipse.swt.SWT;
+import org.eclipse.swt.events.VerifyEvent;
+import org.eclipse.swt.events.VerifyListener;
 import org.eclipse.swt.layout.FillLayout;
 import org.eclipse.swt.widgets.Event;
 import org.eclipse.swt.widgets.Listener;
@@ -20,6 +25,7 @@ public class XSpinnerText extends Shell {
 	private Text text;
 	private boolean showing;
 	private XSpinner spinner;
+	private Pattern pattern = Pattern.compile("[0-9]\\d*");
 	
 	/**
 	 * 
@@ -32,6 +38,14 @@ public class XSpinnerText extends Shell {
 		this.text = new Text(this, isHorz ? LEFT : RIGHT);
 		this.text.setBackground(Colors.COLOR_WHITE);
 		this.addListener(SWT.Deactivate, new DeactivateListener());
+		this.text.addVerifyListener(new VerifyListener() {
+			public void verifyText(VerifyEvent e) {
+				Matcher matcher = pattern.matcher(e.text);
+				if (matcher.matches()) e.doit = true;
+				else if (e.text.length() > 0) e.doit = false;
+				else e.doit = true;
+			}
+		});
 	}
 
 	

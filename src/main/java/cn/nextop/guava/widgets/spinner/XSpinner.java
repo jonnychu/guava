@@ -59,7 +59,11 @@ public class XSpinner extends Canvas implements ActionListener {
 	public boolean isHorz() {
 		return orientation == HORIZONTAL ? true : false;
 	}
-
+	
+	public void setValue(long max, long min, long step, long value) {
+		model.init(max, min, step, value); this.panel.repaint();
+	}
+	
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		switch (e.getActionName()) {
