@@ -4,6 +4,7 @@ import static java.lang.String.valueOf;
 import static org.eclipse.draw2d.TextUtilities.INSTANCE;
 
 import org.eclipse.draw2d.Graphics;
+import org.eclipse.draw2d.MarginBorder;
 import org.eclipse.draw2d.geometry.Dimension;
 import org.eclipse.draw2d.geometry.Rectangle;
 
@@ -27,20 +28,21 @@ public class XSpinnerText extends AbstractXSpinnerWidget {
 		super(name, false, false); 
 		this.spinner = spinner;
 		this.model = spinner.getModel(); 
+		setBorder(new MarginBorder(0, 3, 0, 2));
 	}
 	
 	@Override
-	protected void paintFigure(Graphics g) {
-		super.paintFigure(g);
-		final Rectangle rect = getBounds();
+	protected void paintClientArea(Graphics g) {
+		super.paintClientArea(g);
+		final Rectangle rect = getClientArea();
 		g.setBackgroundColor(Colors.COLOR_WHITE);
 		g.fillRectangle(getClientArea());
 		this.text = valueOf(this.model.getValue());
 		Dimension d1 = INSTANCE.getStringExtents(this.text, g.getFont());
 		if(spinner.isHorz()) {
-			g.drawString(this.text, rect.x + this.margin, rect.y + (rect.height - d1.height) / 2);
+			g.drawString(this.text, rect.x, rect.y + (rect.height - d1.height) / 2);
 		} else {
-			g.drawString(this.text, rect.width - d1.width - this.margin, rect.y + (rect.height - d1.height) / 2);
+			g.drawString(this.text, rect.width - d1.width, rect.y + (rect.height - d1.height) / 2);
 		}
 	}
 }
