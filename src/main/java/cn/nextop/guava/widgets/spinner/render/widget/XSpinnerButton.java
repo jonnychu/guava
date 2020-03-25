@@ -89,12 +89,15 @@ public class XSpinnerButton extends Figure {
 	@Override
 	public void handleMouseExited(MouseEvent event) {
 		super.handleMouseExited(event); 
+		getParent().handleMouseExited(event);
 		this.enter = false; this.clicked = false; repaint();
 	}
 	
 	@Override
 	public void handleMouseEntered(MouseEvent event) {
-		super.handleMouseEntered(event); this.enter = true; repaint();
+		super.handleMouseEntered(event); 
+		getParent().handleMouseEntered(event);
+		this.enter = true; repaint();
 	}
 	
 	@Override
