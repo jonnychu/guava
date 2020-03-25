@@ -6,7 +6,9 @@ import static cn.nextop.guava.utils.SwtUtils.dispatch;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Shell;
+import org.eclipse.swt.widgets.Text;
 
+import cn.nextop.guava.utils.Colors;
 import cn.nextop.guava.utils.SwtUtils;
 import cn.nextop.guava.widgets.datetime.XDateTime;
 import cn.nextop.guava.widgets.spinner.XSpinner;
@@ -26,7 +28,8 @@ public class Example {
 		XDateTime date = new XDateTime(cmp); date.setLayoutData("cell 0 0, width 10:150:,height 23!");
 		XSpinner spinner1 = new XSpinner(cmp, SWT.HORIZONTAL); spinner1.setLayoutData("cell 0 1, width 10:150:,height 23!");
 		XSpinner spinner2 = new XSpinner(cmp, SWT.VERTICAL); spinner2.setLayoutData("cell 0 2, width 10:150:,height 23!");
-		
+		Text text = new Text(cmp, SWT.RIGHT);  text.setLayoutData("cell 0 3, width 10:150:,height 23!");
+		text.setBackground(Colors.COLOR_WHITE);
 		// date time
 		date.setInput(System.currentTimeMillis());
 		

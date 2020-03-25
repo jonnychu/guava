@@ -5,10 +5,15 @@ import static org.eclipse.draw2d.TextUtilities.INSTANCE;
 
 import org.eclipse.draw2d.Graphics;
 import org.eclipse.draw2d.MarginBorder;
+import org.eclipse.draw2d.MouseEvent;
+import org.eclipse.draw2d.MouseListener;
 import org.eclipse.draw2d.geometry.Dimension;
 import org.eclipse.draw2d.geometry.Rectangle;
+import org.eclipse.swt.widgets.Composite;
+import org.eclipse.swt.widgets.Display;
 
 import cn.nextop.guava.utils.Colors;
+import cn.nextop.guava.utils.SwtUtils;
 import cn.nextop.guava.widgets.spinner.XSpinner;
 import cn.nextop.guava.widgets.spinner.model.XSpinnerModel;
 import cn.nextop.guava.widgets.spinner.render.AbstractXSpinnerWidget;
@@ -16,7 +21,7 @@ import cn.nextop.guava.widgets.spinner.render.AbstractXSpinnerWidget;
 /**
  * @author jonny
  */
-public class XSpinnerText extends AbstractXSpinnerWidget {
+public class XSpinnerTextWidget extends AbstractXSpinnerWidget {
 	//
 	protected XSpinner spinner;
 	protected XSpinnerModel model;
@@ -24,11 +29,27 @@ public class XSpinnerText extends AbstractXSpinnerWidget {
 	/**
 	 * 
 	 */
-	public XSpinnerText(XSpinner spinner, String name) {
+	public XSpinnerTextWidget(XSpinner spinner, String name) {
 		super(name, false, false); 
 		this.spinner = spinner;
 		this.model = spinner.getModel(); 
-		setBorder(new MarginBorder(0, 3, 0, 2));
+		setBorder(new MarginBorder(0, 2, 0, 0));
+		addMouseListener(new MouseListener.Stub() {
+			@Override
+			public void mouseReleased(MouseEvent me) {
+				super.mouseReleased(me);
+				Rectangle r = getBounds();
+				final Composite parent = spinner.getParent();
+				final org.eclipse.swt.graphics.Rectangle bounds = spinner.getBounds();
+				final Display display = SwtUtils.getDisplay();
+				final org.eclipse.swt.graphics.Rectangle r1 = display.map(parent, null, bounds);
+				if(!spinner.isHorz())
+					spinner.getText().setShellBounds(r1.x, r1.y, r.width - 1, r.height);
+				else
+					spinner.getText().setShellBounds(r1.x + 16, r1.y, r.width, r.height);
+				spinner.getText().setText(valueOf(model.getValue())); spinner.getText().show();
+			}
+		});
 	}
 	
 	@Override

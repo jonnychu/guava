@@ -11,17 +11,17 @@ import org.eclipse.swt.widgets.Canvas;
 
 import cn.nextop.guava.widgets.spinner.XSpinner;
 import cn.nextop.guava.widgets.spinner.render.panel.XSpinnerPanel;
-import cn.nextop.guava.widgets.spinner.render.widget.XSpinnerButton;
-import cn.nextop.guava.widgets.spinner.render.widget.XSpinnerText;
+import cn.nextop.guava.widgets.spinner.render.widget.XSpinnerButtonWidget;
+import cn.nextop.guava.widgets.spinner.render.widget.XSpinnerTextWidget;
 
 /**
  * @author jonny
  */
 public class XSpinnerBuilder extends AbstractBuilder {
 	//
-	private XSpinnerText txtSpinner;
 	private XSpinnerPanel spinnerPanel;
-	private XSpinnerButton btnUp, btnDown;
+	private XSpinnerTextWidget txtSpinner;
+	private XSpinnerButtonWidget btnUp, btnDown;
 	
 	@Override
 	public IFigure build(Canvas parent) {
@@ -29,9 +29,9 @@ public class XSpinnerBuilder extends AbstractBuilder {
 		final boolean isHorz = spinner.isHorz();
 		String s1 = isHorz ? caret_right : caret_up;
 		String s2 = isHorz ? caret_left : caret_down;
-		this.btnUp = new XSpinnerButton(s1, "spinner.button.up");
-		this.btnDown = new XSpinnerButton(s2, "spinner.button.down");
-		this.txtSpinner = new XSpinnerText(spinner,  "spinner.text");
+		this.btnUp = new XSpinnerButtonWidget(s1, "button.up");
+		this.btnDown = new XSpinnerButtonWidget(s2, "button.down");
+		this.txtSpinner = new XSpinnerTextWidget(spinner,  "text");
 		this.spinnerPanel = new XSpinnerPanel("spinner.panel", spinner);
 		this.spinnerPanel.add(this.btnUp);
 		this.spinnerPanel.add(this.btnDown);
@@ -46,15 +46,15 @@ public class XSpinnerBuilder extends AbstractBuilder {
 	/**
 	 * 
 	 */
-	public XSpinnerButton getBtnUp() {
+	public XSpinnerButtonWidget getBtnUp() {
 		return btnUp;
 	}
 
-	public XSpinnerButton getBtnDown() {
+	public XSpinnerButtonWidget getBtnDown() {
 		return btnDown;
 	}
 	
-	public XSpinnerText getTxtSpinner() {
+	public XSpinnerTextWidget getTxtSpinner() {
 		return txtSpinner;
 	}
 

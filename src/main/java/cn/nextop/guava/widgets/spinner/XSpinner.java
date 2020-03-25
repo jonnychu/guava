@@ -19,6 +19,7 @@ import cn.nextop.guava.widgets.spinner.render.panel.XSpinnerPanel;
  */
 public class XSpinner extends Canvas implements ActionListener {
 	//
+	private XSpinnerText text;
 	private XSpinnerPanel panel;
 	private XSpinnerModel model;
 	private final int orientation;
@@ -35,12 +36,18 @@ public class XSpinner extends Canvas implements ActionListener {
 		this.builder = new XSpinnerBuilder();
 		this.lws = new LightweightSystem(this);
 		this.panel = cast(this.builder.build(this));
+		//
 		this.lws.setContents(this.panel);
+		this.text = new XSpinnerText(this);
 	}
 	
 	/**
 	 * 
 	 */
+	public XSpinnerText getText() {
+		return text;
+	}
+	
 	public XSpinnerModel getModel() {
 		return model;
 	}
@@ -56,10 +63,10 @@ public class XSpinner extends Canvas implements ActionListener {
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		switch (e.getActionName()) {
-		case "spinner.button.up":
+		case "button.up":
 			model.increment(); builder.getTxtSpinner().repaint();
 			break;
-		case "spinner.button.down":
+		case "button.down":
 			model.decrement(); builder.getTxtSpinner().repaint();
 			break;
 		default:

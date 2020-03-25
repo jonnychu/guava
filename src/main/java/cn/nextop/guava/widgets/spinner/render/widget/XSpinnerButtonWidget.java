@@ -24,7 +24,7 @@ import cn.nextop.guava.utils.Colors;
 /**
  * @author jonny
  */
-public class XSpinnerButton extends Figure {
+public class XSpinnerButtonWidget extends Figure {
 	//
 	private String text, name;
 	private XButtonModel model;
@@ -32,7 +32,7 @@ public class XSpinnerButton extends Figure {
 
 	/**
 	 */
-	public XSpinnerButton(String text, String name) {
+	public XSpinnerButtonWidget(String text, String name) {
 		this.text = text; this.name = name;
 		this.model = new XButtonModel();
 		addMouseListener(new MouseListener.Stub() {
@@ -90,17 +90,8 @@ public class XSpinnerButton extends Figure {
 	}
 	
 	@Override
-	public void handleMouseExited(MouseEvent event) {
-		super.handleMouseExited(event); 
-		getParent().handleMouseExited(event);
-		this.enter = false; this.clicked = false; repaint();
-	}
-	
-	@Override
 	public void handleMouseEntered(MouseEvent event) {
-		super.handleMouseEntered(event); 
-		getParent().handleMouseEntered(event);
-		this.enter = true; repaint();
+		super.handleMouseEntered(event); this.enter = true; repaint();
 	}
 	
 	@Override
@@ -111,6 +102,11 @@ public class XSpinnerButton extends Figure {
 	@Override
 	public void handleMouseReleased(MouseEvent event) {
 		super.handleMouseReleased(event); this.clicked = false; repaint();
+	}
+	
+	@Override
+	public void handleMouseExited(MouseEvent event) {
+		super.handleMouseExited(event); this.enter = false; this.clicked = false; repaint();
 	}
 	
 	/**

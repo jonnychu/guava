@@ -2,7 +2,6 @@ package cn.nextop.guava.widgets.spinner.render.panel;
 
 import org.eclipse.draw2d.Graphics;
 import org.eclipse.draw2d.IFigure;
-import org.eclipse.draw2d.MouseEvent;
 import org.eclipse.draw2d.MouseMotionListener;
 import org.eclipse.draw2d.geometry.Dimension;
 import org.eclipse.draw2d.geometry.Rectangle;
@@ -12,15 +11,14 @@ import cn.nextop.guava.utils.Colors;
 import cn.nextop.guava.widgets.spinner.XSpinner;
 import cn.nextop.guava.widgets.spinner.builder.XSpinnerBuilder;
 import cn.nextop.guava.widgets.spinner.render.AbstractXSpinnerPanel;
-import cn.nextop.guava.widgets.spinner.render.widget.XSpinnerButton;
-import cn.nextop.guava.widgets.spinner.render.widget.XSpinnerText;
+import cn.nextop.guava.widgets.spinner.render.widget.XSpinnerButtonWidget;
+import cn.nextop.guava.widgets.spinner.render.widget.XSpinnerTextWidget;
 
 /**
  * @author jonny
  */
 public class XSpinnerPanel extends AbstractXSpinnerPanel {
 	//
-	private boolean focus;
 	protected XSpinner spinner;
 	
 	/**
@@ -39,27 +37,24 @@ public class XSpinnerPanel extends AbstractXSpinnerPanel {
 	@Override
 	protected void paintBorder(Graphics g) {
 		super.paintBorder(g);
-		if(focus)
-			g.setForegroundColor(Colors.COLOR_BLUE);
-		else
-			g.setForegroundColor(Colors.COLOR_DARK_GRAY);
-		g.drawRoundRectangle(CGUtils.getBorderRect(getBounds()), arc, arc);
+		g.setForegroundColor(Colors.COLOR_DARK_GRAY);
+		g.drawRectangle(CGUtils.getBorderRect(getBounds()));
 	}
 	
 	@Override
 	protected void paintFigure(Graphics g) {
 		super.paintFigure(g);
 		g.setBackgroundColor(Colors.COLOR_WHITE);
-		g.fillRoundRectangle(getBounds(), arc, arc);
+		g.fillRectangle(getBounds());
 	}
 	
 	@Override
 	protected void layoutManager(IFigure container) {
 		XSpinnerPanel parent = (XSpinnerPanel) container;
 		XSpinnerBuilder builder = spinner.getBuilder();
-		final XSpinnerButton btnUp = builder.getBtnUp();
-		final XSpinnerButton btnDown = builder.getBtnDown();
-		final XSpinnerText txtSpinner = builder.getTxtSpinner();
+		final XSpinnerButtonWidget btnUp = builder.getBtnUp();
+		final XSpinnerButtonWidget btnDown = builder.getBtnDown();
+		final XSpinnerTextWidget txtSpinner = builder.getTxtSpinner();
 		//
 		final Rectangle r = parent.getClientArea();
 		final int x = r.x, y = r.y, h = r.height, w = r.width;
@@ -78,15 +73,5 @@ public class XSpinnerPanel extends AbstractXSpinnerPanel {
 			Rectangle r3 = new Rectangle(r1.x + r1.width, y + h / 2, d2.width, h / 2);
 			txtSpinner.setBounds(r1); btnUp.setBounds(r2); btnDown.setBounds(r3);
 		}
-	}
-	
-	@Override
-	public void handleMouseExited(MouseEvent event) {
-		super.handleMouseExited(event);	focus = false; repaint();
-	}
-
-	@Override
-	public void handleMouseEntered(MouseEvent event) {
-		super.handleMouseEntered(event); focus = true; repaint();
 	}
 }
