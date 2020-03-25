@@ -15,6 +15,9 @@ import cn.nextop.guava.widgets.spinner.render.AbstractXSpinnerPanel;
 import cn.nextop.guava.widgets.spinner.render.widget.XSpinnerButton;
 import cn.nextop.guava.widgets.spinner.render.widget.XSpinnerText;
 
+/**
+ * @author jonny
+ */
 public class XSpinnerPanel extends AbstractXSpinnerPanel {
 	//
 	private boolean focus;
@@ -66,7 +69,7 @@ public class XSpinnerPanel extends AbstractXSpinnerPanel {
 			Rectangle r1 = new Rectangle(x, y, d1.width, d1.height); 
 			Rectangle r2 = new Rectangle(r1.x + d1.width, y, w - d1.width - d2.width, h);
 			Rectangle r3 = new Rectangle(x + w - d2.width, y, d2.width, d2.height);
-			btnUp.setBounds(r1); txtSpinner.setBounds(r2); btnDown.setBounds(r3);
+			btnDown.setBounds(r1); txtSpinner.setBounds(r2); btnUp.setBounds(r3);
 		} else {
 			Dimension d1 = btnUp.getPreferredSize(w, h);
 			Dimension d2 = btnDown.getPreferredSize(w, h);
@@ -79,15 +82,11 @@ public class XSpinnerPanel extends AbstractXSpinnerPanel {
 	
 	@Override
 	public void handleMouseExited(MouseEvent event) {
-		super.handleMouseExited(event);
-		focus = false;
-		repaint();
+		super.handleMouseExited(event);	focus = false; repaint();
 	}
 
 	@Override
 	public void handleMouseEntered(MouseEvent event) {
-		super.handleMouseEntered(event);
-		focus = true;
-		repaint();
+		super.handleMouseEntered(event); focus = true; repaint();
 	}
 }

@@ -27,15 +27,19 @@ public class XSpinnerBuilder extends AbstractBuilder {
 	public IFigure build(Canvas parent) {
 		final XSpinner spinner = cast(parent);
 		final boolean isHorz = spinner.isHorz();
-		String s1 = isHorz ? caret_left : caret_up;
-		String s2 = isHorz ? caret_right : caret_down;
-		this.txtSpinner = new XSpinnerText("spinner.text");
+		String s1 = isHorz ? caret_right : caret_up;
+		String s2 = isHorz ? caret_left : caret_down;
 		this.btnUp = new XSpinnerButton(s1, "spinner.button.up");
 		this.btnDown = new XSpinnerButton(s2, "spinner.button.down");
+		this.txtSpinner = new XSpinnerText(spinner,  "spinner.text");
 		this.spinnerPanel = new XSpinnerPanel("spinner.panel", spinner);
 		this.spinnerPanel.add(this.btnUp);
 		this.spinnerPanel.add(this.btnDown);
 		this.spinnerPanel.add(this.txtSpinner);
+		
+		// listener
+		this.btnUp.addActionListener(spinner);
+		this.btnDown.addActionListener(spinner);
 		return this.spinnerPanel;
 	}
 	

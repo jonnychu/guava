@@ -21,6 +21,9 @@ import com.patrikdufresne.fontawesome.FontAwesome;
 
 import cn.nextop.guava.utils.Colors;
 
+/**
+ * @author jonny
+ */
 public class XSpinnerButton extends Figure {
 	//
 	private String text, name;

@@ -24,7 +24,7 @@ public class TextWidget extends AbstractTimeWidget {
 	@Override
 	protected void paintFigure(Graphics g) {
 		super.paintFigure(g);
-		Rectangle rect = getBounds();
+		final Rectangle rect = getBounds();
 		TextPanel textPanel = (TextPanel)getParent();
 		XDateTime dateTime = textPanel.getDateTime();
 		XDateTimeModel timeModel = dateTime.getModel();
