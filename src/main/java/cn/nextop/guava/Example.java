@@ -25,7 +25,7 @@ public class Example {
 		cmp.setLayout(new MigLayout("insets 5, gap 0 0","[fill,grow]","[fill,grow][fill,grow][fill,grow]"));
 		XDateTime date = new XDateTime(cmp); date.setLayoutData("cell 0 0, width 10:150:,height 23!");
 		XSpinner spinner1 = new XSpinner(cmp, SWT.VERTICAL); spinner1.setLayoutData("cell 0 1, width 10:150:,height 23!"); spinner1.setValue(100, -100, 1, 0);
-		XSpinner spinner2 = new XSpinner(cmp, SWT.HORIZONTAL); spinner2.setLayoutData("cell 0 2, width 10:150:,height 23!"); spinner2.setValue(100000, -100000, 100, -100);
+		XSpinner spinner2 = new XSpinner(cmp, SWT.HORIZONTAL); spinner2.setLayoutData("cell 0 2, width 10:150:,height 50!"); spinner2.setValue(100000, -100000, 100, -100);
 		// date time
 		date.setInput(System.currentTimeMillis());
 		

@@ -9,11 +9,8 @@ import org.eclipse.draw2d.MouseEvent;
 import org.eclipse.draw2d.MouseListener;
 import org.eclipse.draw2d.geometry.Dimension;
 import org.eclipse.draw2d.geometry.Rectangle;
-import org.eclipse.swt.widgets.Composite;
-import org.eclipse.swt.widgets.Display;
 
 import cn.nextop.guava.utils.Colors;
-import cn.nextop.guava.utils.SwtUtils;
 import cn.nextop.guava.widgets.spinner.XSpinner;
 import cn.nextop.guava.widgets.spinner.model.XSpinnerModel;
 import cn.nextop.guava.widgets.spinner.render.AbstractXSpinnerWidget;
@@ -37,17 +34,12 @@ public class XSpinnerTextWidget extends AbstractXSpinnerWidget {
 		addMouseListener(new MouseListener.Stub() {
 			@Override
 			public void mouseReleased(MouseEvent me) {
-				super.mouseReleased(me);
-				Rectangle r = getBounds();
-				final Composite parent = spinner.getParent();
-				final org.eclipse.swt.graphics.Rectangle bounds = spinner.getBounds();
-				final Display display = SwtUtils.getDisplay();
-				final org.eclipse.swt.graphics.Rectangle r1 = display.map(parent, null, bounds);
+				super.mouseReleased(me); final Rectangle r = getBounds();
 				if(!spinner.isHorz())
-					spinner.getText().setShellBounds(r1.x, r1.y, r.width - 1, r.height);
+					spinner.getText().setShellBounds(r.x + 1, r.y + (r.height - 21) / 2 + 2, r.width - 1, 19);
 				else
-					spinner.getText().setShellBounds(r1.x + 16, r1.y, r.width, r.height);
-				spinner.getText().setText(valueOf(model.getValue())); spinner.getText().show();
+					spinner.getText().setShellBounds(r.x + 1, r.y + (r.height - 21) / 2 + 2, r.width - 1, 19);
+				spinner.getText().show();
 			}
 		});
 	}
