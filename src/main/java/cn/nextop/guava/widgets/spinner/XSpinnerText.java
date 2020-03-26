@@ -12,6 +12,9 @@ import org.eclipse.swt.widgets.Text;
 import cn.nextop.guava.widgets.spinner.model.XSpinnerModel;
 import cn.nextop.guava.widgets.spinner.render.widget.XSpinnerTextWidget;
 
+/**
+ * @author jonny
+ */
 public class XSpinnerText {
 	//
 	private Text text;
