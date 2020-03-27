@@ -1,4 +1,4 @@
-package cn.nextop.guava.widgets.spinner.builder;
+package cn.nextop.guava.widgets;
 
 import org.eclipse.draw2d.IFigure;
 import org.eclipse.swt.widgets.Canvas;

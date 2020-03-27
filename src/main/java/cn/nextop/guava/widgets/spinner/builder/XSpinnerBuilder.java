@@ -9,6 +9,7 @@ import static com.patrikdufresne.fontawesome.FontAwesome.caret_up;
 import org.eclipse.draw2d.IFigure;
 import org.eclipse.swt.widgets.Canvas;
 
+import cn.nextop.guava.widgets.AbstractBuilder;
 import cn.nextop.guava.widgets.spinner.XSpinner;
 import cn.nextop.guava.widgets.spinner.render.panel.XSpinnerPanel;
 import cn.nextop.guava.widgets.spinner.render.widget.XSpinnerButtonWidget;
