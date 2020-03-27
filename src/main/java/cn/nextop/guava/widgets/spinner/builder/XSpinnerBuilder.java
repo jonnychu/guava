@@ -26,7 +26,7 @@ public class XSpinnerBuilder extends AbstractBuilder {
 	
 	@Override
 	public IFigure build(Canvas parent) {
-		final XSpinner spinner = cast(parent);
+		XSpinner<?> spinner = cast(parent);
 		final boolean isHorz = spinner.isHorz();
 		String s1 = isHorz ? caret_right : caret_up;
 		String s2 = isHorz ? caret_left : caret_down;

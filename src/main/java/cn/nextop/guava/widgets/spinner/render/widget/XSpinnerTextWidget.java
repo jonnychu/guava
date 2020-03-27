@@ -20,13 +20,13 @@ import cn.nextop.guava.widgets.spinner.render.AbstractXSpinnerWidget;
  */
 public class XSpinnerTextWidget extends AbstractXSpinnerWidget {
 	//
-	protected XSpinner spinner;
-	protected XSpinnerModel model;
+	protected XSpinner<?> spinner;
+	protected XSpinnerModel<?> model;
 	
 	/**
 	 * 
 	 */
-	public XSpinnerTextWidget(XSpinner spinner, String name) {
+	public XSpinnerTextWidget(XSpinner<?> spinner, String name) {
 		super(name, false, false); 
 		this.spinner = spinner;
 		this.model = spinner.getModel(); 

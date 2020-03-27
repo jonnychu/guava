@@ -19,17 +19,17 @@ import cn.nextop.guava.widgets.spinner.render.widget.XSpinnerTextWidget;
  */
 public class XSpinnerPanel extends AbstractXSpinnerPanel {
 	//
-	protected XSpinner spinner;
+	protected XSpinner<?> spinner;
 	
 	/**
 	 * 
 	 */
-	public XSpinner getSpinner() { return spinner; }
+	public XSpinner<?> getSpinner() { return spinner; }
 
 	/**
 	 * 
 	 */
-	public XSpinnerPanel(String name, XSpinner spinner) {
+	public XSpinnerPanel(String name, XSpinner<?> spinner) {
 		super(name); this.spinner = spinner;
 		addMouseMotionListener(new MouseMotionListener.Stub());
 	}

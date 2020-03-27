@@ -1,67 +1,110 @@
 package cn.nextop.guava.widgets.spinner.model;
 
-import java.util.concurrent.atomic.AtomicLong;
+import static cn.nextop.guava.widgets.table.support.util.Objects.cast;
+
+import java.math.BigDecimal;
+import java.math.BigInteger;
 
 /**
  * @author jonny
  */
-public class XSpinnerModel {
+public class XSpinnerModel<N> {
 	//
-	private long lower;
-	private long upper;
-	private long step = 1;
-	private AtomicLong value = new AtomicLong(0);
+	private N lower;
+	private N upper;
+	private N step;
+	private N value;
+	private Class<?> type;
 	
 	/**
 	 * 
 	 */
-	public long getStep() {
+	public XSpinnerModel(Class<?> type) {
+		this.type = type;
+	}
+	
+	/**
+	 * 
+	 */
+	public N getStep() {
 		return step;
 	}
 
-	public void setStep(long step) {
+	public void setStep(N step) {
 		this.step = step;
 	}
 	
-	public long getLower() {
+	public N getLower() {
 		return lower;
 	}
 	
-	public void setLower(long lower) {
+	public void setLower(N lower) {
 		this.lower = lower;
 	}
 	
-	public long getUpper() {
+	public N getUpper() {
 		return upper;
 	}
 	
-	public void setUpper(long upper) {
+	public void setUpper(N upper) {
 		this.upper = upper;
 	}
 	
-	public long getValue() {
-		return value.get();
+	public N getValue() {
+		return value;
 	}
 	
-	public void setValue(long val) {
-		if(val >= upper) val = upper;
-		if(val <= lower) val = lower;
-		this.value.set(val);
+	public void setValue(N val) {
+		if(type == BigDecimal.class) {
+			BigDecimal r = cast(val), l = cast(lower), u = cast(upper);
+			if(r.compareTo(u) >= 0) val = upper; if(r.compareTo(l) <= 0) val = lower;
+		} else if(type == BigInteger.class) {
+			BigInteger r = cast(val), l = cast(lower), u = cast(upper);
+			if(r.compareTo(u) >= 0) val = upper; if(r.compareTo(l) <= 0) val = lower;
+		} else if(type == Integer.class) {
+			Integer r = cast(val), l = cast(lower), u = cast(upper);
+			if(r.compareTo(u) >= 0) val = upper; if(r.compareTo(l) <= 0) val = lower;
+		} else if(type == Long.class) {
+			Long r = cast(val), l = cast(lower), u = cast(upper);
+			if(r.compareTo(u) >= 0) val = upper; if(r.compareTo(l) <= 0) val = lower;
+		}
+		this.value = val;
 	}
 	
-	public void increment() {
-		long val = value.addAndGet(step);
-		if(val > upper) this.value.set(upper);
-		if(val < lower) this.value.set(lower);
+	public synchronized void increment() {
+		if(type == BigDecimal.class) {
+			BigDecimal r = cast(this.value), s = cast(step);
+			setValue(cast(r.add(s)));
+		} else if(type == BigInteger.class) {
+			BigInteger r = cast(this.value), s = cast(step);
+			setValue(cast(r.add(s)));
+		} else if(type == Integer.class) {
+			Integer r = cast(this.value), s = cast(step);
+			setValue(cast(r + s));
+		} else if(type == Long.class) {
+			Long r = cast(this.value), s = cast(step);
+			setValue(cast(r + s));
+		}
 	}
 	
-	public void decrement() {
-		long val = value.addAndGet(-step);
-		if(val > upper) this.value.set(upper);
-		if(val < lower) this.value.set(lower);
+	public synchronized void decrement() {
+		if(type == BigDecimal.class) {
+			BigDecimal r = cast(this.value), s = cast(step);
+			setValue(cast(r.subtract(s)));
+		} else if(type == BigInteger.class) {
+			BigInteger r = cast(this.value), s = cast(step);
+			setValue(cast(r.subtract(s)));
+		} else if(type == Integer.class) {
+			Integer r = cast(this.value), s = cast(step);
+			setValue(cast(r - s));
+		} else if(type == Long.class) {
+			Long r = cast(this.value), s = cast(step);
+			setValue(cast(r - s));
+			System.out.println(getValue());
+		}
 	}
 	
-	public void init(long upper, long lower, long step, long value) {
+	public void init(N upper, N lower, N step, N value) {
 		setUpper(upper); setLower(lower); setStep(step); setValue(value);
 	}
 }

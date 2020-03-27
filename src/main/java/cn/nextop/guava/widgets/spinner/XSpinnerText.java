@@ -1,13 +1,13 @@
 package cn.nextop.guava.widgets.spinner;
 
-import static java.lang.Long.parseLong;
+import static cn.nextop.guava.widgets.table.support.util.Objects.cast;
 import static org.eclipse.swt.SWT.LEFT;
 import static org.eclipse.swt.SWT.RIGHT;
 
+import org.eclipse.nebula.widgets.formattedtext.FormattedText;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.widgets.Event;
 import org.eclipse.swt.widgets.Listener;
-import org.eclipse.swt.widgets.Text;
 
 import cn.nextop.guava.widgets.spinner.model.XSpinnerModel;
 import cn.nextop.guava.widgets.spinner.render.widget.XSpinnerTextWidget;
@@ -17,44 +17,45 @@ import cn.nextop.guava.widgets.spinner.render.widget.XSpinnerTextWidget;
  */
 public class XSpinnerText {
 	//
-	private Text text;
 	private boolean showing;
-	private XSpinner spinner;
+	private XSpinner<?> spinner;
+	private FormattedText text;
 	
 	/**
 	 * 
 	 */
-	protected XSpinnerText(XSpinner spinner) {
+	protected XSpinnerText(XSpinner<?> spinner) {
 		this.spinner = spinner;
-		final boolean isHorz = spinner.isHorz();
-		this.text = new Text(spinner, isHorz ? LEFT : RIGHT);
-		this.text.addListener(SWT.Deactivate, new DeactivateListener());
+		int a = spinner.isHorz() ? LEFT : RIGHT;
+		this.text = new FormattedText(spinner, a);
+		this.text.setFormatter(spinner.getFormatter());
+		this.text.getControl().addListener(SWT.Deactivate, new DeactivateListener());
 	}
 	
 	public void dispose() {
-		if (this.showing) hide(); this.text.dispose();
+		if (this.showing) hide(); this.text.getControl().dispose();
 	}
 
 	public void setShellBounds(int x, int y, int width, int height) {
 		if (this.spinner.isDisposed()) return;
-		this.text.setBounds(x, y, width, height);
+		this.text.getControl().setBounds(x, y, width, height);
 	}
 	
 	public void hide() {
 		if (!this.spinner.isDisposed()) {
-			String val = this.text.getText();
-			XSpinnerModel model = spinner.getModel();
+			Object val = this.text.getValue();
+			XSpinnerModel<?> model = spinner.getModel();
 			XSpinnerTextWidget w = spinner.getBuilder().getTxtSpinner();
-			model.setValue(parseLong(val)); w.repaint(); this.text.setVisible(false); 
+			model.setValue(cast(val)); w.repaint(); this.text.getControl().setVisible(false); 
 		}
 		showing = false; 
 	}
 	
 	public void show() {
 		if (!this.spinner.isDisposed()) {
-			XSpinnerModel model = spinner.getModel();
-			String val = String.valueOf(model.getValue());
-			this.text.setText(val); this.text.setVisible(true); this.text.setFocus(); 
+			XSpinnerModel<?> model = spinner.getModel();
+			this.text.setValue(model.getValue()); 
+			this.text.getControl().setVisible(true); this.text.getControl().setFocus(); 
 		}
 		showing = true;
 	}

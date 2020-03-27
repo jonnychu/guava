@@ -3,6 +3,10 @@ package cn.nextop.guava;
 import static cn.nextop.guava.utils.SwtUtils.creator;
 import static cn.nextop.guava.utils.SwtUtils.dispatch;
 
+import java.math.BigDecimal;
+
+import org.eclipse.nebula.widgets.formattedtext.BigDecimalFormatter;
+import org.eclipse.nebula.widgets.formattedtext.LongFormatter;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Shell;
@@ -24,8 +28,13 @@ public class Example {
 		Composite cmp = SwtUtils.creator(shell);
 		cmp.setLayout(new MigLayout("insets 5, gap 0 0","[fill,grow]","[fill,grow][fill,grow][fill,grow]"));
 		XDateTime date = new XDateTime(cmp); date.setLayoutData("cell 0 0, width 10:150:,height 23!");
-		XSpinner spinner1 = new XSpinner(cmp, SWT.VERTICAL); spinner1.setLayoutData("cell 0 1, width 10:150:,height 23!"); spinner1.setValue(100, -100, 1, 0);
-		XSpinner spinner2 = new XSpinner(cmp, SWT.HORIZONTAL); spinner2.setLayoutData("cell 0 2, width 10:150:,height 50!"); spinner2.setValue(100000, -100000, 100, -100);
+		XSpinner<BigDecimal> spinner1 = new XSpinner<>(cmp, SWT.VERTICAL, new BigDecimalFormatter("-########","########0")); 
+		spinner1.setLayoutData("cell 0 1, width 10:150:,height 23!"); 
+		spinner1.setValue(new BigDecimal(100), new BigDecimal(-100), new BigDecimal(1), new BigDecimal(0));
+		
+		XSpinner<Long> spinner2 = new XSpinner<>(cmp, SWT.HORIZONTAL, new LongFormatter("-########0","-########0")); 
+		spinner2.setLayoutData("cell 0 2, width 10:150:,height 50!"); 
+		spinner2.setValue(new Long(999999999), new Long(-999999999), new Long(100), new Long(100));
 		// date time
 		date.setInput(System.currentTimeMillis());
 		
