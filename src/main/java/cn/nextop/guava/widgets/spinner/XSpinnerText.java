@@ -11,6 +11,7 @@ import org.eclipse.swt.widgets.Listener;
 
 import cn.nextop.guava.widgets.spinner.model.XSpinnerModel;
 import cn.nextop.guava.widgets.spinner.render.widget.XSpinnerTextWidget;
+import cn.nextop.guava.widgets.table.support.util.Objects;
 
 /**
  * @author jonny
@@ -54,7 +55,7 @@ public class XSpinnerText {
 	public void show() {
 		if (!this.spinner.isDisposed()) {
 			XSpinnerModel<?> model = spinner.getModel();
-			this.text.setValue(model.getValue()); 
+			this.text.setValue(Objects.cast(model.getValue())); 
 			this.text.getControl().setVisible(true); this.text.getControl().setFocus(); 
 		}
 		showing = true;

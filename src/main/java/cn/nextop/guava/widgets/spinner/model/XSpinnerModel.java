@@ -26,33 +26,16 @@ public class XSpinnerModel<N> {
 	/**
 	 * 
 	 */
-	public N getStep() {
-		return step;
-	}
-
-	public void setStep(N step) {
-		this.step = step;
-	}
+	public N getStep() { return this.step;}
+	public void setStep(N step) {this.step = step;}
 	
-	public N getLower() {
-		return lower;
-	}
+	public N getLower() {return this.lower;}
+	public void setLower(N lower) {this.lower = lower;}
 	
-	public void setLower(N lower) {
-		this.lower = lower;
-	}
+	public N getUpper() {return this.upper;}
+	public void setUpper(N upper) {this.upper = upper;}
 	
-	public N getUpper() {
-		return upper;
-	}
-	
-	public void setUpper(N upper) {
-		this.upper = upper;
-	}
-	
-	public N getValue() {
-		return value;
-	}
+	public N getValue() {return this.value;}
 	
 	public void setValue(N val) {
 		if(type == Long.class) {
@@ -67,7 +50,7 @@ public class XSpinnerModel<N> {
 		} else if(type == BigDecimal.class) {
 			BigDecimal r = cast(val), l = cast(lower), u = cast(upper);
 			if(r.compareTo(u) >= 0) val = upper; if(r.compareTo(l) <= 0) val = lower;
-		}
+		} 
 		this.value = val;
 	}
 	
