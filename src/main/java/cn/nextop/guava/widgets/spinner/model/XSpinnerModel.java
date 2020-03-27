@@ -55,53 +55,52 @@ public class XSpinnerModel<N> {
 	}
 	
 	public void setValue(N val) {
-		if(type == BigDecimal.class) {
-			BigDecimal r = cast(val), l = cast(lower), u = cast(upper);
-			if(r.compareTo(u) >= 0) val = upper; if(r.compareTo(l) <= 0) val = lower;
-		} else if(type == BigInteger.class) {
-			BigInteger r = cast(val), l = cast(lower), u = cast(upper);
+		if(type == Long.class) {
+			Long r = cast(val), l = cast(lower), u = cast(upper);
 			if(r.compareTo(u) >= 0) val = upper; if(r.compareTo(l) <= 0) val = lower;
 		} else if(type == Integer.class) {
 			Integer r = cast(val), l = cast(lower), u = cast(upper);
 			if(r.compareTo(u) >= 0) val = upper; if(r.compareTo(l) <= 0) val = lower;
-		} else if(type == Long.class) {
-			Long r = cast(val), l = cast(lower), u = cast(upper);
+		} else if(type == BigInteger.class) {
+			BigInteger r = cast(val), l = cast(lower), u = cast(upper);
+			if(r.compareTo(u) >= 0) val = upper; if(r.compareTo(l) <= 0) val = lower;
+		} else if(type == BigDecimal.class) {
+			BigDecimal r = cast(val), l = cast(lower), u = cast(upper);
 			if(r.compareTo(u) >= 0) val = upper; if(r.compareTo(l) <= 0) val = lower;
 		}
 		this.value = val;
 	}
 	
 	public synchronized void increment() {
-		if(type == BigDecimal.class) {
-			BigDecimal r = cast(this.value), s = cast(step);
-			setValue(cast(r.add(s)));
-		} else if(type == BigInteger.class) {
-			BigInteger r = cast(this.value), s = cast(step);
-			setValue(cast(r.add(s)));
+		if(type == Long.class) {
+			Long r = cast(this.value), s = cast(step);
+			setValue(cast(r + s));
 		} else if(type == Integer.class) {
 			Integer r = cast(this.value), s = cast(step);
 			setValue(cast(r + s));
-		} else if(type == Long.class) {
-			Long r = cast(this.value), s = cast(step);
-			setValue(cast(r + s));
-		}
+		} else if(type == BigInteger.class) {
+			BigInteger r = cast(this.value), s = cast(step);
+			setValue(cast(r.add(s)));
+		} else if(type == BigDecimal.class) {
+			BigDecimal r = cast(this.value), s = cast(step);
+			setValue(cast(r.add(s)));
+		} 
 	}
 	
 	public synchronized void decrement() {
-		if(type == BigDecimal.class) {
-			BigDecimal r = cast(this.value), s = cast(step);
-			setValue(cast(r.subtract(s)));
-		} else if(type == BigInteger.class) {
-			BigInteger r = cast(this.value), s = cast(step);
-			setValue(cast(r.subtract(s)));
+		if(type == Long.class) {
+			Long r = cast(this.value), s = cast(step);
+			setValue(cast(r - s));
 		} else if(type == Integer.class) {
 			Integer r = cast(this.value), s = cast(step);
 			setValue(cast(r - s));
-		} else if(type == Long.class) {
-			Long r = cast(this.value), s = cast(step);
-			setValue(cast(r - s));
-			System.out.println(getValue());
-		}
+		} else if(type == BigInteger.class) {
+			BigInteger r = cast(this.value), s = cast(step);
+			setValue(cast(r.subtract(s)));
+		} else if(type == BigDecimal.class) {
+			BigDecimal r = cast(this.value), s = cast(step);
+			setValue(cast(r.subtract(s)));
+		} 
 	}
 	
 	public void init(N upper, N lower, N step, N value) {
