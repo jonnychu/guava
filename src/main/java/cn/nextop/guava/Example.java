@@ -40,7 +40,7 @@ public class Example {
 		spinner2.setValue(new Long(999999999), new Long(-999999999), new Long(100), new Long(100));
 		//slider
 		XSlider slider = new XSlider(cmp, SWT.VERTICAL); slider.setLayoutData("cell 0 3, width 10:150:,height 24!");
-		slider.setValue(0, 100, 0);
+		slider.setValue(0, 100, 23);
 		
 		//
 //		Example example = new Example();

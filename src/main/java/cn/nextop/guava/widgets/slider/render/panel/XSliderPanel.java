@@ -82,9 +82,9 @@ public class XSliderPanel extends AbstractXSpinnerPanel implements PropertyChang
 		public void mouseDragged(MouseEvent me) {
 			if (!armed) return;
 			final double vr = slider.getValueRange();
-			slider.getBuilder().getSliderBar().repaint();
 			final int change = me.getLocation().getDifference(start).width;
-			slider.getModel().setValue(revertValue + vr * change / dragRange); me.consume();
+			slider.getModel().setValue(revertValue + vr * change / dragRange); 
+			slider.getBuilder().getSliderBar().repaint(); me.consume();
 		}
 		
 		@Override
