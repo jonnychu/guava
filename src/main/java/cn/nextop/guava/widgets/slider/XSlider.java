@@ -3,8 +3,6 @@ package cn.nextop.guava.widgets.slider;
 import static cn.nextop.guava.widgets.table.support.util.Objects.cast;
 import static org.eclipse.swt.SWT.HORIZONTAL;
 
-import org.eclipse.draw2d.ActionEvent;
-import org.eclipse.draw2d.ActionListener;
 import org.eclipse.draw2d.LightweightSystem;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.widgets.Canvas;
@@ -13,9 +11,11 @@ import org.eclipse.swt.widgets.Composite;
 import cn.nextop.guava.widgets.slider.builder.XSliderBuilder;
 import cn.nextop.guava.widgets.slider.model.XSliderModel;
 import cn.nextop.guava.widgets.slider.render.panel.XSliderPanel;
-import cn.nextop.guava.widgets.spinner.builder.XSpinnerBuilder;
 
-public class XSlider extends Canvas implements ActionListener {
+/**
+ * @author jonny
+ */
+public class XSlider extends Canvas {
 	//
 	private XSliderPanel panel;
 	private XSliderModel model;
@@ -52,8 +52,13 @@ public class XSlider extends Canvas implements ActionListener {
 		return orientation == HORIZONTAL ? true : false;
 	}
 	
-	@Override
-	public void actionPerformed(ActionEvent e) {
-		switch (e.getActionName()) {}
+	public double getValue() { return this.model.getValue(); }
+	
+	public double getValueRange() {
+		return this.model.getUpper() - this.model.getLower();
+	}
+	
+	public void setValue(double lower, double upper, double value) {
+		model.init(lower, upper, value); this.panel.repaint();
 	}
 }
