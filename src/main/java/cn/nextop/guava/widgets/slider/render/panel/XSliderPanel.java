@@ -33,6 +33,11 @@ public class XSliderPanel extends AbstractXSpinnerPanel implements PropertyChang
 	}
 	
 	@Override
+	public boolean isOpaque() {
+		return true;
+	}
+	
+	@Override
 	public void revalidate() {
 		invalidate();
 		getUpdateManager().addInvalidFigure(this);
@@ -50,13 +55,16 @@ public class XSliderPanel extends AbstractXSpinnerPanel implements PropertyChang
 		Indicator indicator = builder.getIndicator();
 		SliderBar sliderBar = builder.getSliderBar();
 		//
+		XSliderModel model = slider.getModel();
 		final Rectangle r = parent.getClientArea();
 		int x = r.x, y = r.y, w = r.width, h = r.height;
-		Rectangle r1 = new Rectangle(x + h / 4, y, w - h / 2, h/2); sliderBar.setBounds(r1);
 		
-		XSliderModel model = slider.getModel();
-		double v = model.getValue(), l = model.getLower(), u = model.getUpper();
-		double p = v / (u - l) * r1.width;
+		//
+		Rectangle r1 = new Rectangle(x + h / 4, y, w - h / 2, h/2); 
+		sliderBar.setBounds(r1); sliderBar.repaint();
+		
+		//
+		double p = model.getValue() / (model.getUpper() - model.getLower()) * r1.width;
 		Rectangle r2 = new Rectangle(x + (int)p, y + h / 2, h/2, h/2); indicator.setBounds(r2);
 	}
 	
@@ -83,8 +91,7 @@ public class XSliderPanel extends AbstractXSpinnerPanel implements PropertyChang
 			if (!armed) return;
 			final double vr = slider.getValueRange();
 			final int change = me.getLocation().getDifference(start).width;
-			slider.getModel().setValue(revertValue + vr * change / dragRange); 
-			slider.getBuilder().getSliderBar().repaint(); me.consume();
+			slider.getModel().setValue(revertValue + vr * change / dragRange); me.consume();
 		}
 		
 		@Override
