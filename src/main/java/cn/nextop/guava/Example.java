@@ -46,7 +46,7 @@ public class Example {
 		XSlider slider = new XSlider(cmp, SWT.VERTICAL); slider.setLayoutData("cell 0 3, width 10:150:,height 24!");
 		slider.setValue(0, 100, 23);
 		//circle progres
-		XCircleProgress progress = new XCircleProgress(cmp); progress.setLayoutData("cell 0 4, width 200!,height 200!");
+		XCircleProgress progress = new XCircleProgress(cmp); progress.setLayoutData("cell 0 4, width 100!,height 100!");
 		progress.init(0f, 100f, 10f);
 		Timer timer = new Timer(); timer.scheduleAtFixedRate(new TimerTask() {
 			int i = 0; @Override public void run() { async(null, () -> { progress.setInput(i++); if(i > 100) timer.cancel(); });}

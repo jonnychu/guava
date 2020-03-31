@@ -60,7 +60,7 @@ public class XCircleProgressPanel extends AbstractXCircleProgressPanel {
 		
 		String text = valueOf((int)((value / range) * 100)) + "%";
 		Dimension d1 = INSTANCE.getTextExtents(text, g.getFont());
-		g.drawText(text, (w - d1.width) / 2, (h - d1.height) / 2);
+		g.drawText(text, (w - d1.width) / 2 + 2, (h - d1.height) / 2);
 		
 		//
 		g.setAdvanced(false); g.setAntialias(SWT.OFF); // close dpi
