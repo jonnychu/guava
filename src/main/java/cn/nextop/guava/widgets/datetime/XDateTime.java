@@ -1,9 +1,10 @@
 package cn.nextop.guava.widgets.datetime;
 
+import static org.eclipse.swt.SWT.DOUBLE_BUFFERED;
+
 import org.eclipse.draw2d.LightweightSystem;
 import org.eclipse.draw2d.MouseEvent;
 import org.eclipse.draw2d.MouseListener;
-import org.eclipse.swt.SWT;
 import org.eclipse.swt.widgets.Canvas;
 import org.eclipse.swt.widgets.Composite;
 
@@ -33,7 +34,7 @@ public class XDateTime extends Canvas {
 	 * 
 	 */
 	public XDateTime(Composite parent) {
-		super(parent, SWT.DOUBLE_BUFFERED);
+		super(parent, DOUBLE_BUFFERED);
 		this.model = new XDateTimeModel();
 		this.lws = new LightweightSystem(this);
 		this.lws.setContents(textPanel = new TextPanel(this));
