@@ -20,6 +20,7 @@ import org.eclipse.swt.widgets.Shell;
 import cn.nextop.guava.utils.SwtUtils;
 import cn.nextop.guava.widgets.datetime.XDateTime;
 import cn.nextop.guava.widgets.progress.circle.XCircleProgress;
+import cn.nextop.guava.widgets.progress.circle1.XInfiniteProgress;
 import cn.nextop.guava.widgets.slider.XSlider;
 import cn.nextop.guava.widgets.spinner.XSpinner;
 import cn.nextop.guava.widgets.table.XTable;
@@ -34,7 +35,7 @@ public class Example {
 		final String name = "Widget Example";
 		Shell shell = creator(500, 400, name);
 		Composite cmp = SwtUtils.creator(shell);
-		cmp.setLayout(new MigLayout("insets 5, gap 0 0","[fill,grow]","[fill,grow][fill,grow][fill,grow][fill,grow][fill,grow][fill,grow]"));
+		cmp.setLayout(new MigLayout("insets 5, gap 0 0","[fill,grow][40]","[fill,grow][fill,grow][fill,grow][fill,grow][fill,grow][fill,grow][fill,grow]"));
 		//datetime
 		XDateTime date = new XDateTime(cmp); date.setLayoutData("cell 0 0, width 10:150:,height 23!"); date.setInput(System.currentTimeMillis());
 		//spinner 1
@@ -48,10 +49,10 @@ public class Example {
 		//slider
 		XSlider slider = new XSlider(cmp, SWT.VERTICAL); slider.setLayoutData("cell 0 3, width 10:150:,height 24!");
 		slider.setValue(0, 100, 23);
-		//circle progres
+		//circle progress
 		XCircleProgress progress = new XCircleProgress(cmp); progress.setLayoutData("cell 0 4, width 100!,height 100!");
 		progress.init(0f, 100f, 25f);
-		Button btnOk = new Button(cmp, SWT.NONE); btnOk.setLayoutData("cell 0 4");
+		Button btnOk = new Button(cmp, SWT.NONE); btnOk.setLayoutData("cell 1 4");
 		btnOk.setText("Start Progress"); btnOk.addSelectionListener(new SelectionAdapter() {
 			boolean finished = false; @Override public void widgetSelected(SelectionEvent e) {
 				super.widgetSelected(e); if(finished) return;
@@ -62,6 +63,8 @@ public class Example {
 				}, 250, 50);
 			}
 		});
+		//infinite progress
+		XInfiniteProgress progress1 = new XInfiniteProgress(cmp); progress1.setLayoutData("cell 0 5, width 100!,height 100!");
 		
 		
 		//

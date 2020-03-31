@@ -14,6 +14,7 @@ import org.eclipse.swt.widgets.Display;
 
 import cn.nextop.guava.utils.Colors;
 import cn.nextop.guava.widgets.progress.circle.XCircleProgress;
+import cn.nextop.guava.widgets.progress.circle.render.AbstractXCircleProgressPanel;
 
 /**
  * @author jonny

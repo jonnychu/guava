@@ -1,11 +1,11 @@
-package cn.nextop.guava.widgets.progress.circle.render.panel;
+package cn.nextop.guava.widgets.progress.circle1.render;
 
 import cn.nextop.guava.widgets.AbstractPanel;
 
 /**
  * @author jonny
  */
-public abstract class AbstractXCircleProgressPanel extends AbstractPanel {
+public abstract class AbstractXInfiniteProgressPanel extends AbstractPanel {
 	//
 	protected float angle1 = -270f;
 	protected int margin = 2, thickness = 10;
@@ -13,7 +13,7 @@ public abstract class AbstractXCircleProgressPanel extends AbstractPanel {
 	/**
 	 * 
 	 */
-	public AbstractXCircleProgressPanel(String name) {
+	public AbstractXInfiniteProgressPanel(String name) {
 		super(name);
 	}
 }
