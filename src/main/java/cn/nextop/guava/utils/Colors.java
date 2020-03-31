@@ -57,6 +57,9 @@ public final class Colors {
 	public static final Color COLOR_WIDGET_SELECTED = getColor(0, 168, 243);
 	public static final Color COLOR_WIDGET_MOTION_ENTER = getColor(140, 255, 251);
 	
+	//
+	public static final Color COLOR_PROGRESS = getColor(119, 167, 251);
+	
 	/**
 	 * Color
 	 */

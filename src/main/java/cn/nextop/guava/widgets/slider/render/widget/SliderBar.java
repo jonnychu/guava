@@ -35,7 +35,7 @@ public class SliderBar extends AbstractXSliderWidget {
 		g.setBackgroundColor(Colors.COLOR_WHITE);
 		g.fillRectangle(x + width, y, w - width, h);
 		
-		g.setBackgroundColor(Colors.COLOR_CYAN);
+		g.setBackgroundColor(Colors.COLOR_PROGRESS);
 		g.fillRectangle(x, y, width, h);
 		
 		Dimension d1 = INSTANCE.getTextExtents(text, g.getFont());

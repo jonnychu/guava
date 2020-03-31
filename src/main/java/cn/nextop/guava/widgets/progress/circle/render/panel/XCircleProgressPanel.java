@@ -46,7 +46,7 @@ public class XCircleProgressPanel extends AbstractXCircleProgressPanel {
 		final Path p1 = new Path(dispay);
 		p1.addArc(x + margin, y + margin, w - margin * 2, h - margin * 2, angle1, -a1);
 		p1.lineTo((w - margin * 2) / 2 , (h - margin * 2) / 2);
-		g.setBackgroundColor(Colors.COLOR_CYAN);
+		g.setBackgroundColor(Colors.COLOR_PROGRESS);
 		g.fillPath(p1); p1.close(); p1.dispose();
 		
 		final Path p2 = new Path(dispay);
