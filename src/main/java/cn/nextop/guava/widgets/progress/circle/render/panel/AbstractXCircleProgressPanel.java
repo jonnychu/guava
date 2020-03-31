@@ -8,7 +8,7 @@ import cn.nextop.guava.widgets.AbstractPanel;
 public abstract class AbstractXCircleProgressPanel extends AbstractPanel {
 	//
 	protected float angle1 = -270f;
-	protected int margin = 2, thickness = 15;
+	protected int margin = 2, thickness = 10;
 	
 	/**
 	 * 
