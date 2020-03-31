@@ -9,14 +9,14 @@ import cn.nextop.guava.widgets.AbstractBuilder;
 import cn.nextop.guava.widgets.progress.circle.XCircleProgress;
 import cn.nextop.guava.widgets.progress.circle.render.panel.XCircleProgressPanel;
 
+/**
+ * @author jonny
+ */
 public class XCircleProgressBuilder extends AbstractBuilder {
-	//
-	private XCircleProgressPanel panel;
 	
 	@Override
 	public IFigure build(Canvas parent) {
 		final XCircleProgress progress = cast(parent);
-		this.panel = new XCircleProgressPanel("circleprogress.panel", progress);
-		return this.panel;
+		return new XCircleProgressPanel("circleprogress.panel", progress);
 	}
 }

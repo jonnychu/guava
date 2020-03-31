@@ -11,6 +11,9 @@ import cn.nextop.guava.widgets.progress.circle.builder.XCircleProgressBuilder;
 import cn.nextop.guava.widgets.progress.circle.model.XCircleProgressModel;
 import cn.nextop.guava.widgets.progress.circle.render.panel.XCircleProgressPanel;
 
+/**
+ * @author jonny
+ */
 public class XCircleProgress extends Canvas {
 	//
 	private LightweightSystem lws;

@@ -1,5 +1,8 @@
 package cn.nextop.guava.widgets.progress.circle.model;
 
+/**
+ * @author jonny
+ */
 public class XCircleProgressModel {
 	//
 	private float min;

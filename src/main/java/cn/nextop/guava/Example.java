@@ -1,9 +1,12 @@
 package cn.nextop.guava;
 
+import static cn.nextop.guava.utils.SwtUtils.async;
 import static cn.nextop.guava.utils.SwtUtils.creator;
 import static cn.nextop.guava.utils.SwtUtils.dispatch;
 
 import java.math.BigDecimal;
+import java.util.Timer;
+import java.util.TimerTask;
 
 import org.eclipse.nebula.widgets.formattedtext.BigDecimalFormatter;
 import org.eclipse.nebula.widgets.formattedtext.LongFormatter;
@@ -45,6 +48,10 @@ public class Example {
 		//circle progres
 		XCircleProgress progress = new XCircleProgress(cmp); progress.setLayoutData("cell 0 4, width 200!,height 200!");
 		progress.init(0f, 100f, 10f);
+		Timer timer = new Timer(); timer.scheduleAtFixedRate(new TimerTask() {
+			int i = 0; @Override public void run() { async(null, () -> { progress.setInput(i++); if(i > 100) timer.cancel(); });}
+		}, 250, 50);
+		
 		
 		//
 //		Example example = new Example();
