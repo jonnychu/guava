@@ -30,9 +30,9 @@ public class XSliderBuilder extends AbstractBuilder {
 		
 		//
 		DragListener listener = this.sliderPanel.new DragListener();
-		this.indicator.addMouseListener(listener);
-		this.indicator.addMouseMotionListener(listener);
+		indicator.addMouseListener(listener); indicator.addMouseMotionListener(listener);
 		
+		//
 		return this.sliderPanel;
 	}
 	

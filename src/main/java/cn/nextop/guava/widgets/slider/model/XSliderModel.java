@@ -29,6 +29,7 @@ public class XSliderModel {
 	public double getLower() {
 		return lower;
 	}
+	
 	public void setLower(double lower) {
 		this.lower = lower;
 	}
@@ -36,6 +37,7 @@ public class XSliderModel {
 	public double getUpper() {
 		return upper;
 	}
+	
 	public void setUpper(double upper) {
 		this.upper = upper;
 	}
@@ -43,6 +45,7 @@ public class XSliderModel {
 	public double getValue() {
 		return value;
 	}
+	
 	public void setValue(double value) {
 		double ov = this.value;
 		this.value = value;
