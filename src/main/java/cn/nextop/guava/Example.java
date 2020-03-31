@@ -11,6 +11,9 @@ import java.util.TimerTask;
 import org.eclipse.nebula.widgets.formattedtext.BigDecimalFormatter;
 import org.eclipse.nebula.widgets.formattedtext.LongFormatter;
 import org.eclipse.swt.SWT;
+import org.eclipse.swt.events.SelectionAdapter;
+import org.eclipse.swt.events.SelectionEvent;
+import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Shell;
 
@@ -47,10 +50,18 @@ public class Example {
 		slider.setValue(0, 100, 23);
 		//circle progres
 		XCircleProgress progress = new XCircleProgress(cmp); progress.setLayoutData("cell 0 4, width 100!,height 100!");
-		progress.init(0f, 100f, 0f);
-		Timer timer = new Timer(); timer.scheduleAtFixedRate(new TimerTask() {
-			int i = 0; @Override public void run() { async(null, () -> { progress.setInput(i++); if(i > 100) timer.cancel(); });}
-		}, 250, 50);
+		progress.init(0f, 100f, 25f);
+		Button btnOk = new Button(cmp, SWT.NONE); btnOk.setLayoutData("cell 0 4");
+		btnOk.setText("Start Progress"); btnOk.addSelectionListener(new SelectionAdapter() {
+			boolean finished = false; @Override public void widgetSelected(SelectionEvent e) {
+				super.widgetSelected(e); if(finished) return;
+				progress.init(0f, 100f, 0f); Timer timer = new Timer(); timer.scheduleAtFixedRate(new TimerTask() {
+					int i = 0; @Override public void run() { 
+						async(null, () -> { progress.setInput(i++); if(i > 100) { timer.cancel(); finished = false; } else { finished = true; } });
+						}
+				}, 250, 50);
+			}
+		});
 		
 		
 		//
