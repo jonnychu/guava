@@ -17,6 +17,6 @@ public class XCircleProgressBuilder extends AbstractBuilder {
 	@Override
 	public IFigure build(Canvas parent) {
 		final XCircleProgress progress = cast(parent);
-		return new XCircleProgressPanel("circleprogress.panel", progress);
+		return new XCircleProgressPanel("circle.progress.panel", progress);
 	}
 }
