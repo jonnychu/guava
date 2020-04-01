@@ -36,5 +36,6 @@
 	</classpathentry>
 	<classpathentry kind="lib" path="lib/com.patrikdufresne.fontawesome-5.1.0.jar" sourcepath="lib/com.patrikdufresne.fontawesome-5.1.0-sources.jar"/>
 	<classpathentry kind="lib" path="lib/org.eclipse.draw2d_3.10.100.201606061308.jar" sourcepath="lib/org.eclipse.draw2d.source_3.10.100.201606061308.jar"/>
+	<classpathentry kind="lib" path="lib/org.eclipse.nebula.widgets.formattedtext_1.0.0.201605182147.jar"/>
 	<classpathentry kind="output" path="target/classes"/>
 </classpath>
