@@ -31,7 +31,7 @@ public class XInfiniteProgressPanel extends AbstractXInfiniteProgressPanel {
 		super.paintClientArea(g);
 		final Rectangle r = getClientArea();
 		final int x = r.x, y = r.y, w = r.width, h = r.height;
-		g.setAdvanced(true); g.setAntialias(SWT.ON); // open dpi
+		g.setAdvanced(true); g.setAntialias(SWT.ON); // open gdip
 		g.setBackgroundColor(Colors.COLOR_PROGRESS);
 		XInfiniteProgressModel model = progress.getModel();
 		double angle = model.getAngle(), p1 = Math.PI / 180;
@@ -44,7 +44,7 @@ public class XInfiniteProgressPanel extends AbstractXInfiniteProgressPanel {
 			g.fillOval((int)x1, (int)y1, radius * 2, radius * 2);
 		}
 		//
-		g.setAdvanced(false); g.setAntialias(SWT.OFF); // close dpi
+		g.setAdvanced(false); g.setAntialias(SWT.OFF); // close gdip
 	}
 	
 	@Override

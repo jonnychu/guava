@@ -36,7 +36,7 @@ public class XCircleProgressPanel extends AbstractXCircleProgressPanel {
 		super.paintClientArea(g);
 		final Rectangle r = getClientArea();
 		final int x = r.x, y = r.y, w = r.width, h = r.height;
-		g.setAdvanced(true); g.setAntialias(SWT.ON); // open dpi
+		g.setAdvanced(true); g.setAntialias(SWT.ON); // open gdip
 		
 		//
 		final float value = progress.getInput();
@@ -65,7 +65,7 @@ public class XCircleProgressPanel extends AbstractXCircleProgressPanel {
 		g.drawText(text, (w - d1.width) / 2 + 2, (h - d1.height) / 2);
 		
 		//
-		g.setAdvanced(false); g.setAntialias(SWT.OFF); // close dpi
+		g.setAdvanced(false); g.setAntialias(SWT.OFF); // close gdip
 	}
 	
 	@Override
