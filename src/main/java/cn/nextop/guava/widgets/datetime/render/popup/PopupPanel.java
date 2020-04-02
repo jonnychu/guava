@@ -6,7 +6,7 @@ import org.eclipse.draw2d.geometry.Rectangle;
 
 import cn.nextop.guava.utils.CGUtils;
 import cn.nextop.guava.utils.Colors;
-import cn.nextop.guava.widgets.datetime.XDateTimePopup;
+import cn.nextop.guava.widgets.datetime.builder.XDateTimePopupBuilder;
 import cn.nextop.guava.widgets.datetime.render.AbstractTimePanel;
 import cn.nextop.guava.widgets.datetime.render.popup.calendar.CalendarPanel;
 import cn.nextop.guava.widgets.datetime.render.popup.shortcut.ShortcutPanel;
@@ -15,27 +15,12 @@ import cn.nextop.guava.widgets.datetime.render.popup.shortcut.ShortcutPanel;
  * @author jonny
  */
 public class PopupPanel extends AbstractTimePanel {
-	//
-	private CalendarPanel calendar;
-	private ShortcutPanel shortcut;
-	private XDateTimePopup dateTimePopup;
 	
 	/**
 	 * 
 	 */
-	public ShortcutPanel getShortcutPanel() { return shortcut; }
-	public CalendarPanel getCalendarPanel() { return calendar; }
-	public XDateTimePopup getXDateTimePopup() { return dateTimePopup; }
-	
-	/**
-	 * 
-	 */
-	public PopupPanel(XDateTimePopup dateTimePopup) {
-		super("popup.panel");
-		this.dateTimePopup = dateTimePopup;
-		//
-		add(shortcut = new ShortcutPanel(this));
-		add(calendar = new CalendarPanel(this));
+	public PopupPanel(String name, XDateTimePopupBuilder builder) {
+		super(name); this.builder = builder;
 	}
 	
 	@Override
@@ -51,9 +36,8 @@ public class PopupPanel extends AbstractTimePanel {
 	@Override
 	protected void layoutManager(IFigure container) {
 		final Rectangle r = container.getBounds();
-		final PopupPanel parent = (PopupPanel)container;
-		final CalendarPanel calendar = parent.getCalendarPanel();
-		final ShortcutPanel shortcut = parent.getShortcutPanel();
+		final CalendarPanel calendar = this.builder.getCalendarPanel();
+		final ShortcutPanel shortcut = this.builder.getShortcutPanel();
 		//
 		int w1 = (int)(r.width * 0.3), w2 = r.width - w1;
 		Rectangle r1 = new Rectangle(r.x, r.y, w1, r.height); shortcut.setBounds(r1);

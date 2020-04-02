@@ -1,5 +1,7 @@
 package cn.nextop.guava.widgets.datetime.render.popup.calendar.date.widget;
 
+import static cn.nextop.guava.widgets.table.support.util.Objects.cast;
+
 import org.eclipse.draw2d.Graphics;
 import org.eclipse.draw2d.MouseEvent;
 import org.eclipse.draw2d.TextUtilities;
@@ -59,7 +61,7 @@ public class MonthWidget extends AbstractTimeWidget {
 	@Override
 	public void handleMouseReleased(MouseEvent event) {
 		super.handleMouseReleased(event); 
-		DatePanel dp = (DatePanel)getParent(); MonthPanel mp = dp.getCalendarPanel().getMonthPanel();
+		final DatePanel dp = cast(getParent()); final MonthPanel mp = dp.getBuilder().getMonthPanel();
 		new MonthAction(type).onAction(dp, this); if(type == Type.SELECT) new ShowMonthAction().onAction(mp, null);
 	}
 }

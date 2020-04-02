@@ -1,10 +1,11 @@
 package cn.nextop.guava.widgets.datetime.render.popup.calendar.month.action;
 
-import static cn.nextop.guava.widgets.datetime.support.tuil.Faster.getDummyCalendar;
+import static cn.nextop.guava.widgets.table.support.util.Objects.cast;
 
 import org.eclipse.draw2d.IFigure;
 
 import cn.nextop.guava.widgets.AbstractAction;
+import cn.nextop.guava.widgets.datetime.XDateTimePopup;
 import cn.nextop.guava.widgets.datetime.model.DummyCalendar;
 import cn.nextop.guava.widgets.datetime.render.popup.calendar.month.MonthPanel;
 import cn.nextop.guava.widgets.datetime.render.popup.calendar.month.widget.MonthItemWidget;
@@ -18,14 +19,15 @@ public abstract class AbstractMonthAction extends AbstractAction {
 	 * 
 	 */
 	public void updateUI(IFigure container, IFigure widget) {
-		final MonthPanel monthPanel = (MonthPanel)container;
-		final DummyCalendar dummyCalendar = getDummyCalendar(monthPanel);
+		final MonthPanel mp = cast(container);
+		XDateTimePopup popup = mp.getBuilder().getDateTimePopup();
+		final DummyCalendar dummyCalendar = popup.getDummyCalendar();
 		
 		// update top ui
-		monthPanel.getSelectYear().setText(dummyCalendar.getYearSymbol());
+		mp.getSelectYear().setText(dummyCalendar.getYearSymbol());
 		
 		// update date
-		final MonthItemWidget[][] months = monthPanel.getMonths();
+		final MonthItemWidget[][] months = mp.getMonths();
 		int month = 0; for (int i = 0; i < months.length; i++) {
 			for (int j = 0; j < months[i].length; j++) {
 				int year = dummyCalendar.getYear();
@@ -36,6 +38,6 @@ public abstract class AbstractMonthAction extends AbstractAction {
 		}
 		
 		//
-		monthPanel.repaint();
+		mp.repaint();
 	}
 }

@@ -14,6 +14,7 @@ import org.eclipse.swt.widgets.Listener;
 import org.eclipse.swt.widgets.Shell;
 
 import cn.nextop.guava.draw2d.scroll.support.dispatcher.ScrollEventDispatcher;
+import cn.nextop.guava.widgets.datetime.builder.XDateTimePopupBuilder;
 import cn.nextop.guava.widgets.datetime.model.DummyCalendar;
 import cn.nextop.guava.widgets.datetime.model.XDateTimeModel;
 import cn.nextop.guava.widgets.datetime.render.popup.PopupPanel;
@@ -28,6 +29,8 @@ public class XDateTimePopup extends Canvas {
 	private XDateTime dateTime;
 	private LightweightSystem lws;
 	private DummyCalendar dummyCalendar;
+	private XDateTimePopupBuilder builder;
+	public static final int ITEMHEIGHT = 24;
 	
 	/**
 	 * 
@@ -46,7 +49,8 @@ public class XDateTimePopup extends Canvas {
 		this.dummyCalendar = new DummyCalendar(model.getTime());
 		//
 		this.lws = new LightweightSystem(this);
-		this.lws.setContents(popup = new PopupPanel(this));
+		this.builder = new XDateTimePopupBuilder();
+		this.lws.setContents(popup = builder.build(this));
 		this.lws.setEventDispatcher(new ScrollEventDispatcher());
 		
 		//

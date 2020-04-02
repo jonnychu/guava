@@ -1,8 +1,12 @@
 package cn.nextop.guava.widgets.datetime.render.popup.calendar.time.sec;
 
+import static cn.nextop.guava.widgets.datetime.XDateTimePopup.ITEMHEIGHT;
+
 import org.eclipse.draw2d.IFigure;
 import org.eclipse.draw2d.geometry.Rectangle;
 
+import cn.nextop.guava.widgets.datetime.builder.XDateTimePopupBuilder;
+import cn.nextop.guava.widgets.datetime.model.DummyCalendar;
 import cn.nextop.guava.widgets.datetime.render.AbstractTimePanel;
 import cn.nextop.guava.widgets.datetime.render.popup.calendar.time.sec.widget.SecWidet;
 
@@ -12,20 +16,24 @@ import cn.nextop.guava.widgets.datetime.render.popup.calendar.time.sec.widget.Se
 public class SecContent extends AbstractTimePanel {
 	//
 	private SecWidet[] items;
-	private SecPanel secPanel;
-	private final int itemHeight = SecPanel.itemHeight;
+	private final int itemHeight = ITEMHEIGHT;
 	
 	/**
 	 * 
 	 */
-	public SecPanel getSecPanel() { return secPanel; }
+	public SecWidet[] getItems() { return items; }
 
 	/**
 	 * 
 	 */
-	public SecContent(SecWidet[] items, SecPanel secPanel) {
-		super("second.content"); this.secPanel = secPanel;
-		this.items = items;	for (SecWidet item : items) { add(item); }
+	public SecContent(String name, XDateTimePopupBuilder builder) {
+		super(name); this.builder = builder;
+		DummyCalendar dc = builder.getDateTimePopup().getDummyCalendar();
+		this.items = new SecWidet[60];
+		for (int i = 0; i < items.length; i++) {
+			final int v = dc.getSelectedSecond();
+			items[i] = new SecWidet(i, v == i); add(items[i]);
+		}
 	}
 	
 	@Override
@@ -38,5 +46,4 @@ public class SecContent extends AbstractTimePanel {
 		}
 		parent.setBounds(new Rectangle(0, 0, r.width, p * h));
 	}
-
 }

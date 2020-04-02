@@ -1,9 +1,10 @@
 package cn.nextop.guava.widgets.datetime.render.popup.calendar.month.action;
 
-import static cn.nextop.guava.widgets.datetime.support.tuil.Faster.getDummyCalendar;
+import static cn.nextop.guava.widgets.table.support.util.Objects.cast;
 
 import org.eclipse.draw2d.IFigure;
 
+import cn.nextop.guava.widgets.datetime.XDateTimePopup;
 import cn.nextop.guava.widgets.datetime.model.DummyCalendar;
 import cn.nextop.guava.widgets.datetime.render.popup.calendar.CalendarPanel;
 import cn.nextop.guava.widgets.datetime.render.popup.calendar.month.MonthPanel;
@@ -17,18 +18,19 @@ public class MonthAction extends AbstractMonthAction {
 
 	@Override
 	public boolean updateData(IFigure container, IFigure widget) {
-		final MonthItemWidget w = (MonthItemWidget)widget;
-		final MonthPanel monthPanel = (MonthPanel)container;
-		final DummyCalendar calendar = getDummyCalendar(monthPanel);
+		final MonthPanel mp = cast(container);
+		final MonthItemWidget w = cast(widget);
+		XDateTimePopup popup = mp.getBuilder().getDateTimePopup();
+		final DummyCalendar dummyCalendar = popup.getDummyCalendar();
 		//
-		calendar.select(w.getYear(), w.getMonth()); return true;
+		dummyCalendar.select(w.getYear(), w.getMonth()); return true;
 	}
 	
 	public void onAction(IFigure container, IFigure widget) {
 		super.onAction(container, widget);
-		final MonthPanel monthPanel = (MonthPanel)container;
-		final CalendarPanel calendarPanel = monthPanel.getCalendarPanel();
+		final MonthPanel mp = cast(container);
+		final CalendarPanel cp = mp.getBuilder().getCalendarPanel();
 		//
-		calendarPanel.panel(PanelType.DATE); 
+		cp.panel(PanelType.DATE); 
 	}
 }

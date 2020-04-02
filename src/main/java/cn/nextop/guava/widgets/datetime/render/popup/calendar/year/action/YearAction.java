@@ -1,9 +1,10 @@
 package cn.nextop.guava.widgets.datetime.render.popup.calendar.year.action;
 
-import static cn.nextop.guava.widgets.datetime.support.tuil.Faster.getDummyCalendar;
+import static cn.nextop.guava.widgets.table.support.util.Objects.cast;
 
 import org.eclipse.draw2d.IFigure;
 
+import cn.nextop.guava.widgets.datetime.XDateTimePopup;
 import cn.nextop.guava.widgets.datetime.model.DummyCalendar;
 import cn.nextop.guava.widgets.datetime.render.popup.calendar.year.YearPanel;
 import cn.nextop.guava.widgets.datetime.support.glossary.Type;
@@ -22,11 +23,12 @@ public class YearAction extends AbstractYearAction {
 
 	@Override
 	public boolean updateData(IFigure container, IFigure widget) {
-		final YearPanel yearPanel = (YearPanel)container;
-		final DummyCalendar calendar = getDummyCalendar(yearPanel);
+		final YearPanel yp = cast(container);
+		XDateTimePopup popup = yp.getBuilder().getDateTimePopup();
+		final DummyCalendar dummyCalendar = popup.getDummyCalendar();
 		//
-		if (this.type == Type.DOWN) { calendar.prev12Year(); }
-		else if(this.type == Type.UP) { calendar.next12Year(); }
+		if (this.type == Type.DOWN) { dummyCalendar.prev12Year(); }
+		else if(this.type == Type.UP) { dummyCalendar.next12Year(); }
 		else if(this.type == Type.SELECT) { return false; } return true;
 	}
 }

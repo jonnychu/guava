@@ -1,6 +1,5 @@
 package cn.nextop.guava.widgets.datetime.render.popup.calendar.year;
 
-import static cn.nextop.guava.widgets.datetime.support.tuil.Faster.getDummyCalendar;
 import static com.patrikdufresne.fontawesome.FontAwesome.angle_double_left;
 import static com.patrikdufresne.fontawesome.FontAwesome.angle_double_right;
 import static java.lang.Integer.parseInt;
@@ -11,9 +10,9 @@ import org.eclipse.draw2d.IFigure;
 import org.eclipse.draw2d.geometry.Rectangle;
 
 import cn.nextop.guava.utils.Colors;
+import cn.nextop.guava.widgets.datetime.builder.XDateTimePopupBuilder;
 import cn.nextop.guava.widgets.datetime.model.DummyCalendar;
 import cn.nextop.guava.widgets.datetime.render.AbstractTimePanel;
-import cn.nextop.guava.widgets.datetime.render.popup.calendar.CalendarPanel;
 import cn.nextop.guava.widgets.datetime.render.popup.calendar.common.widget.LineWidget;
 import cn.nextop.guava.widgets.datetime.render.popup.calendar.common.widget.TimeButtonWidget;
 import cn.nextop.guava.widgets.datetime.render.popup.calendar.year.widget.YearItemWidget;
@@ -25,8 +24,6 @@ import cn.nextop.guava.widgets.datetime.support.glossary.Type;
  */
 public class YearPanel extends AbstractTimePanel {
 	//
-	private CalendarPanel calendarPanel;
-	//
 	private LineWidget line1, line2;
 	private TimeButtonWidget btnTime;
 	private YearItemWidget[][] yearItems;
@@ -37,16 +34,14 @@ public class YearPanel extends AbstractTimePanel {
 	 */
 	public YearWidget getYearWidget() { return selectYear; }
 	public YearItemWidget[][] getYearsWidget() { return yearItems; }
-	public CalendarPanel getCalendarPanel() { return calendarPanel; }
 	
 	/**
 	 * 
 	 */
-	public YearPanel(CalendarPanel calendar) {
-		super("yearpanel");
-		this.calendarPanel = calendar;
+	public YearPanel(String name, XDateTimePopupBuilder builder) {
+		super(name); this.builder = builder;
 		this.yearItems = new YearItemWidget[4][3];
-		DummyCalendar dc = getDummyCalendar(this);
+		DummyCalendar dc = builder.getDateTimePopup().getDummyCalendar();
 		// add widgets
 		add(btnTime = new TimeButtonWidget("Select Time"));
 		add(line1 = new LineWidget()); add(line2 = new LineWidget());
@@ -57,9 +52,9 @@ public class YearPanel extends AbstractTimePanel {
 		final String[] years = dc.getYears();
 		int index = 0; for (int i = 0; i < yearItems.length; i++) {
 			for (int j = 0; j < yearItems[i].length; j++) {
-				String name = years[index]; int year = parseInt(name);
+				String v = years[index]; int year = parseInt(v);
 				final boolean selected = dc.isSelectedYear(year);
-				add(yearItems[i][j] = new YearItemWidget(year, name, selected)); index++;
+				add(yearItems[i][j] = new YearItemWidget(year, v, selected)); index++;
 			}
 		}
 	}

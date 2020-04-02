@@ -1,5 +1,7 @@
 package cn.nextop.guava.widgets.datetime.render.popup.calendar.year.widget;
 
+import static cn.nextop.guava.widgets.table.support.util.Objects.cast;
+
 import org.eclipse.draw2d.Graphics;
 import org.eclipse.draw2d.MouseEvent;
 import org.eclipse.draw2d.TextUtilities;
@@ -11,6 +13,7 @@ import com.patrikdufresne.fontawesome.FontAwesome;
 import cn.nextop.guava.utils.Colors;
 import cn.nextop.guava.utils.Fonts;
 import cn.nextop.guava.widgets.datetime.render.AbstractTimeWidget;
+import cn.nextop.guava.widgets.datetime.render.popup.calendar.year.YearPanel;
 import cn.nextop.guava.widgets.datetime.render.popup.calendar.year.action.YearAction;
 import cn.nextop.guava.widgets.datetime.support.glossary.Type;
 
@@ -54,6 +57,7 @@ public class YearWidget extends AbstractTimeWidget {
 	
 	@Override
 	public void handleMouseReleased(MouseEvent event) {
-		super.handleMouseReleased(event); new YearAction(type).onAction(getParent(), this);
+		super.handleMouseReleased(event); 
+		YearPanel yp = cast(getParent()); new YearAction(type).onAction(yp, this);
 	}
 }

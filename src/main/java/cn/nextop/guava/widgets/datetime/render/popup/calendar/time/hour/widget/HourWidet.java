@@ -1,6 +1,6 @@
 package cn.nextop.guava.widgets.datetime.render.popup.calendar.time.hour.widget;
 
-import static cn.nextop.guava.widgets.datetime.support.tuil.Faster.getTextPanel;
+import static cn.nextop.guava.widgets.table.support.util.Objects.cast;
 import static java.lang.String.valueOf;
 import static org.eclipse.draw2d.TextUtilities.INSTANCE;
 
@@ -14,6 +14,7 @@ import cn.nextop.guava.widgets.datetime.render.AbstractTimeWidget;
 import cn.nextop.guava.widgets.datetime.render.popup.calendar.time.TimePanel;
 import cn.nextop.guava.widgets.datetime.render.popup.calendar.time.action.HourAction;
 import cn.nextop.guava.widgets.datetime.render.popup.calendar.time.hour.HourContent;
+import cn.nextop.guava.widgets.datetime.render.text.TextPanel;
 import cn.nextop.guava.widgets.datetime.render.text.acton.ShowTextAction;
 
 /**
@@ -56,8 +57,9 @@ public class HourWidet extends AbstractTimeWidget {
 	@Override
 	public void handleMouseReleased(MouseEvent event) {
 		super.handleMouseReleased(event);
-		HourContent content = (HourContent)getParent();
-		TimePanel tp = content.getHourPanel().getTimePanel();
-		new HourAction().onAction(tp, this); new ShowTextAction().onAction(getTextPanel(tp), null);
+		HourContent content = cast(getParent());
+		TimePanel time = content.getBuilder().getTimePanel();
+		TextPanel text = content.getBuilder().getDateTimePopup().getDateTime().getTextPanel();
+		new HourAction().onAction(time, this); new ShowTextAction().onAction(text, null);
 	}
 }

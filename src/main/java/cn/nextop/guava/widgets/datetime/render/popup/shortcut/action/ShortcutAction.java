@@ -1,11 +1,10 @@
 package cn.nextop.guava.widgets.datetime.render.popup.shortcut.action;
 
-import static cn.nextop.guava.widgets.datetime.support.tuil.Faster.getDummyCalendar;
-import static cn.nextop.guava.widgets.datetime.support.tuil.Faster.getXDateTimeModel;
-import static java.lang.System.currentTimeMillis;
+import static cn.nextop.guava.widgets.table.support.util.Objects.cast;
 
 import org.eclipse.draw2d.IFigure;
 
+import cn.nextop.guava.widgets.datetime.XDateTimePopup;
 import cn.nextop.guava.widgets.datetime.model.DummyCalendar;
 import cn.nextop.guava.widgets.datetime.model.XDateTimeModel;
 import cn.nextop.guava.widgets.datetime.render.popup.shortcut.ShortcutContent;
@@ -19,16 +18,17 @@ public class ShortcutAction extends AbstractShortcutAction {
 
 	@Override
 	protected boolean updateData(IFigure container, IFigure widget) {
-		final ShortcutContent content = (ShortcutContent) container;
-		final ShortcutItem item = (ShortcutItem) widget;
-		final DummyCalendar dc = getDummyCalendar(content);
-		final XDateTimeModel model = getXDateTimeModel(content);
+		final ShortcutItem item = cast(widget);
+		final ShortcutContent sc = cast(container);
+		XDateTimePopup popup = sc.getBuilder().getDateTimePopup();
+		final XDateTimeModel model = popup.getDateTime().getModel();
+		final DummyCalendar dummyCalendar = popup.getDummyCalendar();
 		
 		
 		Shortcut shortcut = item.getShortcut();
 		if(shortcut == Shortcut.NOW) {
-			dc.select(System.currentTimeMillis());
-			model.setTime(currentTimeMillis());
+			long now = System.currentTimeMillis();
+			model.setTime(now); dummyCalendar.select(now);
 		} else if(shortcut == Shortcut.EOD) {
 			
 		} else if(shortcut == Shortcut.SOD) {

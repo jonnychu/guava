@@ -1,11 +1,12 @@
 package cn.nextop.guava.widgets.datetime.render.popup.calendar.year.action;
 
-import static cn.nextop.guava.widgets.datetime.support.tuil.Faster.getDummyCalendar;
+import static cn.nextop.guava.widgets.table.support.util.Objects.cast;
 import static java.lang.Integer.parseInt;
 
 import org.eclipse.draw2d.IFigure;
 
 import cn.nextop.guava.widgets.AbstractAction;
+import cn.nextop.guava.widgets.datetime.XDateTimePopup;
 import cn.nextop.guava.widgets.datetime.model.DummyCalendar;
 import cn.nextop.guava.widgets.datetime.render.popup.calendar.year.YearPanel;
 import cn.nextop.guava.widgets.datetime.render.popup.calendar.year.widget.YearItemWidget;
@@ -19,15 +20,16 @@ public abstract class AbstractYearAction extends AbstractAction {
 	 * 
 	 */
 	public void updateUI(IFigure container, IFigure widget) {
-		final YearPanel yearPanel = (YearPanel)container;
-		final DummyCalendar dummyCalendar = getDummyCalendar(yearPanel);
+		final YearPanel yp = cast(container);
+		XDateTimePopup popup = yp.getBuilder().getDateTimePopup();
+		final DummyCalendar dummyCalendar = popup.getDummyCalendar();
 		
 		// update top ui
-		yearPanel.getYearWidget().setText(dummyCalendar.getYearSymbol());
+		yp.getYearWidget().setText(dummyCalendar.getYearSymbol());
 		
 		// update year ui
 		final String[] years = dummyCalendar.getYears();
-		YearItemWidget[][] yearItems = yearPanel.getYearsWidget();
+		YearItemWidget[][] yearItems = yp.getYearsWidget();
 		int index = 0; for (int i = 0; i < yearItems.length; i++) {
 			for (int j = 0; j < yearItems[i].length; j++) {
 				String name = years[index]; int year = parseInt(name);
@@ -37,6 +39,6 @@ public abstract class AbstractYearAction extends AbstractAction {
 		}
 		
 		//
-		yearPanel.repaint();
+		yp.repaint();
 	}
 }

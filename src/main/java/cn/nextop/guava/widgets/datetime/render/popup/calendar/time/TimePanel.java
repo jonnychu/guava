@@ -1,12 +1,14 @@
 package cn.nextop.guava.widgets.datetime.render.popup.calendar.time;
 
+import static cn.nextop.guava.widgets.table.support.util.Objects.cast;
+
 import org.eclipse.draw2d.Graphics;
 import org.eclipse.draw2d.IFigure;
 import org.eclipse.draw2d.geometry.Rectangle;
 
 import cn.nextop.guava.utils.Colors;
+import cn.nextop.guava.widgets.datetime.builder.XDateTimePopupBuilder;
 import cn.nextop.guava.widgets.datetime.render.AbstractTimePanel;
-import cn.nextop.guava.widgets.datetime.render.popup.calendar.CalendarPanel;
 import cn.nextop.guava.widgets.datetime.render.popup.calendar.common.widget.DateButtonWidget;
 import cn.nextop.guava.widgets.datetime.render.popup.calendar.common.widget.LineWidget;
 import cn.nextop.guava.widgets.datetime.render.popup.calendar.time.hour.HourPanel;
@@ -18,31 +20,16 @@ import cn.nextop.guava.widgets.datetime.render.popup.calendar.time.sec.SecPanel;
  */
 public class TimePanel extends AbstractTimePanel {
 	//
-	private CalendarPanel calendar;
-	
-	//
 	private LineWidget line;
-	private SecPanel secPanel;
-	private MinPanel minPanel;
-	private HourPanel hourPanel;
 	private DateButtonWidget btnDate;
 	
-	//
-	public SecPanel getSecPanel() { return secPanel; }
-	public MinPanel getMinPanel() { return minPanel; }
-	public HourPanel getHourPanel() { return hourPanel; }
-	public CalendarPanel getCalendarPanel() { return calendar; }
-
 	/**
 	 * 
 	 */
-	public TimePanel(CalendarPanel calendar) {
-		super("time"); this.calendar = calendar;
+	public TimePanel(String name, XDateTimePopupBuilder builder) {
+		super(name); this.builder = builder;
 		//
 		add(line = new LineWidget());
-		add(secPanel = new SecPanel(this));
-		add(minPanel = new MinPanel(this));
-		add(hourPanel = new HourPanel(this));
 		add(btnDate = new DateButtonWidget("Select Date"));
 	}
 	
@@ -55,7 +42,10 @@ public class TimePanel extends AbstractTimePanel {
 	
 	@Override
 	protected void layoutManager(IFigure container) {
-		TimePanel parent = (TimePanel) container;
+		TimePanel parent = cast(container);
+		MinPanel minPanel = builder.getMinPanel();
+		SecPanel secPanel = builder.getSecPanel();
+		HourPanel hourPanel = builder.getHourPanel();
 		final Rectangle r = parent.getBounds();
 		final int x = r.x, y = r.y, w = r.width, h = r.height;
 		//

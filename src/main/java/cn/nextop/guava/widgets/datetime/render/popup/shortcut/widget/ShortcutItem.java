@@ -1,5 +1,6 @@
 package cn.nextop.guava.widgets.datetime.render.popup.shortcut.widget;
 
+import static cn.nextop.guava.widgets.table.support.util.Objects.cast;
 import static org.eclipse.draw2d.TextUtilities.INSTANCE;
 
 import org.eclipse.draw2d.Graphics;
@@ -9,12 +10,11 @@ import org.eclipse.draw2d.geometry.Rectangle;
 
 import cn.nextop.guava.utils.Colors;
 import cn.nextop.guava.widgets.datetime.XDateTime;
+import cn.nextop.guava.widgets.datetime.builder.XDateTimePopupBuilder;
 import cn.nextop.guava.widgets.datetime.render.AbstractTimeWidget;
-import cn.nextop.guava.widgets.datetime.render.popup.calendar.CalendarPanel;
 import cn.nextop.guava.widgets.datetime.render.popup.calendar.date.action.ShowDateAction;
 import cn.nextop.guava.widgets.datetime.render.popup.calendar.time.action.ShowTimeAction;
 import cn.nextop.guava.widgets.datetime.render.popup.shortcut.ShortcutContent;
-import cn.nextop.guava.widgets.datetime.render.popup.shortcut.ShortcutPanel;
 import cn.nextop.guava.widgets.datetime.render.popup.shortcut.action.ShortcutAction;
 import cn.nextop.guava.widgets.datetime.render.text.acton.ShowTextAction;
 import cn.nextop.guava.widgets.datetime.support.glossary.Shortcut;
@@ -30,8 +30,7 @@ public class ShortcutItem extends AbstractTimeWidget {
 	 * 
 	 */
 	public ShortcutItem(Shortcut shortcut) {
-		this.shortcut = shortcut;
-		this.text = shortcut.name();
+		this.shortcut = shortcut; this.text = shortcut.name();
 	}
 	
 	public Shortcut getShortcut() { return shortcut; }
@@ -51,14 +50,13 @@ public class ShortcutItem extends AbstractTimeWidget {
 	@Override
 	public void handleMouseReleased(MouseEvent event) {
 		super.handleMouseReleased(event); 
-		final ShortcutContent content = (ShortcutContent) getParent();
-		final ShortcutPanel ssp = content.getShortcutPanel();
-		final CalendarPanel cp = ssp.getPopupPanel().getCalendarPanel();
-		final XDateTime xdt = ssp.getPopupPanel().getXDateTimePopup().getDateTime();
+		final ShortcutContent content = cast(getParent());
+		final XDateTimePopupBuilder builder = content.getBuilder();
+		final XDateTime xdt = builder.getDateTimePopup().getDateTime();
 		//
 		new ShortcutAction().onAction(content, this);
-		new ShowDateAction().onAction(cp.getDatePanel(), null);
-		new ShowTimeAction().onAction(cp.getTimePanel(), null);
 		new ShowTextAction().onAction(xdt.getTextPanel(), null);
+		new ShowDateAction().onAction(builder.getDatePanel(), null);
+		new ShowTimeAction().onAction(builder.getTimePanel(), null);
 	}
 }

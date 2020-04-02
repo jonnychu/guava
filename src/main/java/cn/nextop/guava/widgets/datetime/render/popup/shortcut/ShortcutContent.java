@@ -1,10 +1,15 @@
 package cn.nextop.guava.widgets.datetime.render.popup.shortcut;
 
+import static cn.nextop.guava.widgets.datetime.XDateTimePopup.ITEMHEIGHT;
+import static cn.nextop.guava.widgets.table.support.util.Objects.cast;
+
 import org.eclipse.draw2d.IFigure;
 import org.eclipse.draw2d.geometry.Rectangle;
 
+import cn.nextop.guava.widgets.datetime.builder.XDateTimePopupBuilder;
 import cn.nextop.guava.widgets.datetime.render.AbstractTimePanel;
 import cn.nextop.guava.widgets.datetime.render.popup.shortcut.widget.ShortcutItem;
+import cn.nextop.guava.widgets.datetime.support.glossary.Shortcut;
 
 /**
  * @author jonny
@@ -12,26 +17,25 @@ import cn.nextop.guava.widgets.datetime.render.popup.shortcut.widget.ShortcutIte
 public class ShortcutContent extends AbstractTimePanel {
 	//
 	private ShortcutItem[] items;
-	private ShortcutPanel shortcutPanel;
-	private final int itemHeight = ShortcutPanel.itemHeight;
+	private final int itemHeight = ITEMHEIGHT;
 	
 	/**
 	 * 
 	 */
-	public ShortcutPanel getShortcutPanel() { return shortcutPanel; }
-
-	/**
-	 * 
-	 */
-	public ShortcutContent(ShortcutItem[] items, ShortcutPanel shortcutPanel) {
-		super("shortcut.content.panel"); this.shortcutPanel = shortcutPanel;
-		this.items = items;	for (ShortcutItem item : items) { add(item); } // all
+	public ShortcutContent(String name, XDateTimePopupBuilder builder) {
+		super(name); this.builder = builder;
+		
+		final Shortcut[] scs = Shortcut.values();
+		this.items = new ShortcutItem[scs.length];
+		for (int i = 0; i < scs.length; i++) {
+			items[i] = new ShortcutItem(scs[i]); add(items[i]);
+		}
 	}
 	
 	@Override
 	protected void layoutManager(IFigure container) {
-		ShortcutContent parent = (ShortcutContent)container;
-		Rectangle r = parent.getBounds();
+		ShortcutContent parent = cast(container);
+		final Rectangle r = parent.getBounds();
 		//
 		int p = 0, h = itemHeight; 
 		for (ShortcutItem item : this.items) {

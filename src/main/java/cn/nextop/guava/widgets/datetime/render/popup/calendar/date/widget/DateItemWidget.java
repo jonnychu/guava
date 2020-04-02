@@ -16,7 +16,6 @@ import cn.nextop.guava.widgets.datetime.render.popup.calendar.date.DatePanel;
 import cn.nextop.guava.widgets.datetime.render.popup.calendar.date.action.DateAction;
 import cn.nextop.guava.widgets.datetime.render.text.TextPanel;
 import cn.nextop.guava.widgets.datetime.render.text.acton.ShowTextAction;
-import cn.nextop.guava.widgets.datetime.support.tuil.Faster;
 
 public class DateItemWidget extends AbstractTimeWidget {
 	//
@@ -79,7 +78,8 @@ public class DateItemWidget extends AbstractTimeWidget {
 	@Override
 	public void handleMouseReleased(MouseEvent event) {
 		super.handleMouseReleased(event);
-		DatePanel dp = (DatePanel)getParent(); TextPanel tp = Faster.getTextPanel(dp);
+		final DatePanel dp = (DatePanel)getParent(); 
+		final TextPanel tp = dp.getBuilder().getDateTimePopup().getDateTime().getTextPanel();
 		new DateAction().onAction(getParent(), this); new ShowTextAction().onAction(tp, null);
 	}
 }

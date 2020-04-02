@@ -1,10 +1,11 @@
 package cn.nextop.guava.widgets.datetime.render.popup.calendar.date.action;
 
-import static cn.nextop.guava.widgets.datetime.support.tuil.Faster.getDummyCalendar;
+import static cn.nextop.guava.widgets.table.support.util.Objects.cast;
 
 import org.eclipse.draw2d.IFigure;
 
 import cn.nextop.guava.widgets.AbstractAction;
+import cn.nextop.guava.widgets.datetime.XDateTimePopup;
 import cn.nextop.guava.widgets.datetime.model.DummyCalendar;
 import cn.nextop.guava.widgets.datetime.model.DummyModel;
 import cn.nextop.guava.widgets.datetime.render.popup.calendar.date.DatePanel;
@@ -19,8 +20,9 @@ public abstract class AbstractDateAction extends AbstractAction {
 	 * 
 	 */
 	public void updateUI(IFigure container, IFigure widget) {
-		final DatePanel dp = (DatePanel)container;
-		final DummyCalendar dummyCalendar = getDummyCalendar(dp);
+		final DatePanel dp = cast(container);
+		XDateTimePopup popup = dp.getBuilder().getDateTimePopup();
+		final DummyCalendar dummyCalendar = popup.getDummyCalendar();
 		
 		// update top ui
 		dp.getSelectYear().setText(dummyCalendar.getYearSymbol());

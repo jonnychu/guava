@@ -1,5 +1,7 @@
 package cn.nextop.guava.widgets.datetime.render.popup.calendar.year.widget;
 
+import static cn.nextop.guava.widgets.table.support.util.Objects.cast;
+
 import org.eclipse.draw2d.Graphics;
 import org.eclipse.draw2d.MouseEvent;
 import org.eclipse.draw2d.TextUtilities;
@@ -59,8 +61,8 @@ public class YearItemWidget extends AbstractTimeWidget {
 	@Override
 	public void handleMouseReleased(MouseEvent event) {
 		super.handleMouseReleased(event); 
-		final YearPanel yp = (YearPanel)getParent();
-		final MonthPanel mp = yp.getCalendarPanel().getMonthPanel();
+		final YearPanel yp = cast(getParent());
+		final MonthPanel mp = yp.getBuilder().getMonthPanel();
 		new Year2Action().onAction(yp, this); new ShowMonthAction().onAction(mp, null);
 	}
 }

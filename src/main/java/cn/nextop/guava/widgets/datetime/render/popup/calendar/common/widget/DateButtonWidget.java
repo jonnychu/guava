@@ -1,5 +1,7 @@
 package cn.nextop.guava.widgets.datetime.render.popup.calendar.common.widget;
 
+import static cn.nextop.guava.widgets.table.support.util.Objects.cast;
+
 import org.eclipse.draw2d.Graphics;
 import org.eclipse.draw2d.MouseEvent;
 import org.eclipse.draw2d.TextUtilities;
@@ -11,7 +13,9 @@ import cn.nextop.guava.utils.Colors;
 import cn.nextop.guava.utils.Fonts;
 import cn.nextop.guava.widgets.datetime.render.AbstractTimeWidget;
 import cn.nextop.guava.widgets.datetime.render.popup.calendar.CalendarPanel;
+import cn.nextop.guava.widgets.datetime.render.popup.calendar.date.DatePanel;
 import cn.nextop.guava.widgets.datetime.render.popup.calendar.date.action.ShowDateAction;
+import cn.nextop.guava.widgets.datetime.render.popup.calendar.time.TimePanel;
 import cn.nextop.guava.widgets.datetime.support.glossary.PanelType;
 
 /**
@@ -22,7 +26,7 @@ public class DateButtonWidget extends AbstractTimeWidget {
 	 * 
 	 */
 	public DateButtonWidget(String text) {
-		this.text = text;
+		super(); this.text = text;
 	}
 	
 	@Override
@@ -40,7 +44,9 @@ public class DateButtonWidget extends AbstractTimeWidget {
 	@Override
 	public void handleMouseReleased(MouseEvent event) {
 		super.handleMouseReleased(event);
-		CalendarPanel cp = (CalendarPanel)getParent().getParent();
-		cp.panel(PanelType.DATE); new ShowDateAction().onAction(cp.getDatePanel(), null);
+		TimePanel tp = cast(getParent());
+		DatePanel dp = tp.getBuilder().getDatePanel();
+		CalendarPanel cp = tp.getBuilder().getCalendarPanel();
+		cp.panel(PanelType.DATE); new ShowDateAction().onAction(dp, null);
 	}
 }

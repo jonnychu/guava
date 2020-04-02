@@ -1,6 +1,5 @@
 package cn.nextop.guava.widgets.datetime.render.popup.calendar.date;
 
-import static cn.nextop.guava.widgets.datetime.support.tuil.Faster.getDummyCalendar;
 import static com.patrikdufresne.fontawesome.FontAwesome.angle_double_left;
 import static com.patrikdufresne.fontawesome.FontAwesome.angle_double_right;
 import static com.patrikdufresne.fontawesome.FontAwesome.angle_left;
@@ -12,10 +11,10 @@ import org.eclipse.draw2d.IFigure;
 import org.eclipse.draw2d.geometry.Rectangle;
 
 import cn.nextop.guava.utils.Colors;
+import cn.nextop.guava.widgets.datetime.builder.XDateTimePopupBuilder;
 import cn.nextop.guava.widgets.datetime.model.DummyCalendar;
 import cn.nextop.guava.widgets.datetime.model.DummyModel;
 import cn.nextop.guava.widgets.datetime.render.AbstractTimePanel;
-import cn.nextop.guava.widgets.datetime.render.popup.calendar.CalendarPanel;
 import cn.nextop.guava.widgets.datetime.render.popup.calendar.common.widget.LineWidget;
 import cn.nextop.guava.widgets.datetime.render.popup.calendar.common.widget.TimeButtonWidget;
 import cn.nextop.guava.widgets.datetime.render.popup.calendar.date.widget.DateItemWidget;
@@ -28,8 +27,6 @@ import cn.nextop.guava.widgets.datetime.support.glossary.Type;
  * @author jonny
  */
 public class DatePanel extends AbstractTimePanel {
-	//
-	private CalendarPanel calendar;
 	//
 	private WeekItemWidget[] weeks;
 	private LineWidget line1, line2;
@@ -44,17 +41,15 @@ public class DatePanel extends AbstractTimePanel {
 	public DateItemWidget[][] getDates() { return dates; }
 	public YearWidget getSelectYear() { return selectYear; }
 	public MonthWidget getSelectMonth() { return selectMonth; }
-	public CalendarPanel getCalendarPanel() { return calendar; }
 	
 	/**
 	 * 
 	 */
-	public DatePanel(CalendarPanel calendar) {
-		super("datepanel");
-		this.calendar = calendar;
+	public DatePanel(String name, XDateTimePopupBuilder builder) {
+		super(name); this.builder = builder;
 		this.weeks = new WeekItemWidget[7];
 		this.dates = new DateItemWidget[6][7];
-		DummyCalendar dc = getDummyCalendar(this);
+		DummyCalendar dc = builder.getDateTimePopup().getDummyCalendar();
 		//
 		add(line1 = new LineWidget());add(line2 = new LineWidget());
 		add(rollUpMonth = new MonthWidget(angle_right, Type.UP));

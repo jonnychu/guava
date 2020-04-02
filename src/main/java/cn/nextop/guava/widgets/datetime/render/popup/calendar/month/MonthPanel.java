@@ -1,6 +1,5 @@
 package cn.nextop.guava.widgets.datetime.render.popup.calendar.month;
 
-import static cn.nextop.guava.widgets.datetime.support.tuil.Faster.getDummyCalendar;
 import static com.patrikdufresne.fontawesome.FontAwesome.angle_double_left;
 import static com.patrikdufresne.fontawesome.FontAwesome.angle_double_right;
 import static java.lang.Math.min;
@@ -10,9 +9,9 @@ import org.eclipse.draw2d.IFigure;
 import org.eclipse.draw2d.geometry.Rectangle;
 
 import cn.nextop.guava.utils.Colors;
+import cn.nextop.guava.widgets.datetime.builder.XDateTimePopupBuilder;
 import cn.nextop.guava.widgets.datetime.model.DummyCalendar;
 import cn.nextop.guava.widgets.datetime.render.AbstractTimePanel;
-import cn.nextop.guava.widgets.datetime.render.popup.calendar.CalendarPanel;
 import cn.nextop.guava.widgets.datetime.render.popup.calendar.common.widget.LineWidget;
 import cn.nextop.guava.widgets.datetime.render.popup.calendar.common.widget.TimeButtonWidget;
 import cn.nextop.guava.widgets.datetime.render.popup.calendar.month.widget.MonthItemWidget;
@@ -24,8 +23,6 @@ import cn.nextop.guava.widgets.datetime.support.glossary.Type;
  */
 public class MonthPanel extends AbstractTimePanel {
 	//
-	private CalendarPanel calendarPanel;
-	//
 	private LineWidget line1, line2;
 	private TimeButtonWidget btnTime;
 	private MonthItemWidget[][] months;
@@ -36,16 +33,14 @@ public class MonthPanel extends AbstractTimePanel {
 	 */
 	public YearWidget getSelectYear() { return selectYear; }
 	public MonthItemWidget[][] getMonths() {return months; }
-	public CalendarPanel getCalendarPanel() { return calendarPanel; }
 	
 	/**
 	 * 
 	 */
-	public MonthPanel(CalendarPanel calendar) {
-		super("monthpanel");
-		this.calendarPanel = calendar;
+	public MonthPanel(String name, XDateTimePopupBuilder builder) {
+		super(name); this.builder = builder;
 		this.months = new MonthItemWidget[4][3];
-		DummyCalendar dc = getDummyCalendar(this);
+		DummyCalendar dc = builder.getDateTimePopup().getDummyCalendar();
 		// add widgets
 		add(line1 = new LineWidget());
 		add(line2 = new LineWidget());
@@ -57,9 +52,9 @@ public class MonthPanel extends AbstractTimePanel {
 		int month = 0; for (int i = 0; i < months.length; i++) {
 			for (int j = 0; j < months[i].length; j++) {
 				int year = dc.getYear(); 
-				String name = dc.getMonthSymbol(month);
+				String v = dc.getMonthSymbol(month);
 				boolean selected = dc.isSelectedMonth(year, month);
-				add(months[i][j] = new MonthItemWidget(month, year, name, selected)); month++;
+				add(months[i][j] = new MonthItemWidget(month, year, v, selected)); month++;
 			}
 		}
 	}

@@ -1,11 +1,14 @@
 package cn.nextop.guava.widgets.datetime.render.popup.calendar.time.min;
 
+import static cn.nextop.guava.widgets.datetime.XDateTimePopup.ITEMHEIGHT;
+
 import org.eclipse.draw2d.IFigure;
 import org.eclipse.draw2d.geometry.Rectangle;
 
+import cn.nextop.guava.widgets.datetime.builder.XDateTimePopupBuilder;
+import cn.nextop.guava.widgets.datetime.model.DummyCalendar;
 import cn.nextop.guava.widgets.datetime.render.AbstractTimePanel;
 import cn.nextop.guava.widgets.datetime.render.popup.calendar.time.min.widget.MinWidet;
-import cn.nextop.guava.widgets.datetime.render.popup.shortcut.ShortcutPanel;
 
 /**
  * @author jonny
@@ -13,20 +16,24 @@ import cn.nextop.guava.widgets.datetime.render.popup.shortcut.ShortcutPanel;
 public class MinContent extends AbstractTimePanel {
 	//
 	private MinWidet[] items;
-	private MinPanel minPanel;
-	private final int itemHeight = ShortcutPanel.itemHeight;
+	private final int itemHeight = ITEMHEIGHT;
 	
 	/**
 	 * 
 	 */
-	public MinPanel getMinPanel() { return minPanel; }
-
+	public MinWidet[] getItems() { return items; }
+	
 	/**
 	 * 
 	 */
-	public MinContent(MinWidet[] items, MinPanel minPanel) {
-		super("minute.content"); this.minPanel = minPanel;
-		this.items = items;	for (MinWidet item : items) { add(item); }
+	public MinContent(String name, XDateTimePopupBuilder builder) {
+		super(name); this.builder = builder;
+		DummyCalendar dc = builder.getDateTimePopup().getDummyCalendar();
+		this.items = new MinWidet[60];
+		for (int i = 0; i < items.length; i++) {
+			final int v = dc.getSelectedMintue();
+			items[i] = new MinWidet(i, v == i); add(items[i]);
+		}
 	}
 	
 	@Override

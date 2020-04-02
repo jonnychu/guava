@@ -1,16 +1,20 @@
 package cn.nextop.guava.widgets.datetime.render.popup.calendar.time.action;
 
-import static cn.nextop.guava.widgets.datetime.support.tuil.Faster.getDummyCalendar;
+import static cn.nextop.guava.widgets.datetime.XDateTimePopup.ITEMHEIGHT;
+import static cn.nextop.guava.widgets.table.support.util.Objects.cast;
 
 import org.eclipse.draw2d.IFigure;
 
 import cn.nextop.guava.widgets.AbstractAction;
 import cn.nextop.guava.widgets.datetime.model.DummyCalendar;
 import cn.nextop.guava.widgets.datetime.render.popup.calendar.time.TimePanel;
+import cn.nextop.guava.widgets.datetime.render.popup.calendar.time.hour.HourContent;
 import cn.nextop.guava.widgets.datetime.render.popup.calendar.time.hour.HourPanel;
 import cn.nextop.guava.widgets.datetime.render.popup.calendar.time.hour.widget.HourWidet;
+import cn.nextop.guava.widgets.datetime.render.popup.calendar.time.min.MinContent;
 import cn.nextop.guava.widgets.datetime.render.popup.calendar.time.min.MinPanel;
 import cn.nextop.guava.widgets.datetime.render.popup.calendar.time.min.widget.MinWidet;
+import cn.nextop.guava.widgets.datetime.render.popup.calendar.time.sec.SecContent;
 import cn.nextop.guava.widgets.datetime.render.popup.calendar.time.sec.SecPanel;
 import cn.nextop.guava.widgets.datetime.render.popup.calendar.time.sec.widget.SecWidet;
 
@@ -23,18 +27,18 @@ public abstract class AbstractTimeAction extends AbstractAction {
 	 * 
 	 */
 	public void updateUI(IFigure container, IFigure widget) {
-		final TimePanel timePanel = (TimePanel) container;
-		final HourPanel hour = timePanel.getHourPanel();
-		final MinPanel minute = timePanel.getMinPanel();
-		final SecPanel second = timePanel.getSecPanel();
-		final DummyCalendar dc = getDummyCalendar(timePanel);
+		final TimePanel timePanel = cast(container);
+		final HourPanel hour = timePanel.getBuilder().getHourPanel();
+		final MinPanel minute = timePanel.getBuilder().getMinPanel();
+		final SecPanel second = timePanel.getBuilder().getSecPanel();
+		final DummyCalendar dc = timePanel.getBuilder().getDateTimePopup().getDummyCalendar();
 		
 		//
-		final HourWidet[] hours = hour.getItems();
-		final MinWidet[] minutes = minute.getItems();
-		final SecWidet[] seconds = second.getItems();
+		final HourWidet[] hours = ((HourContent)hour.getContents()).getItems();
+		final MinWidet[] minutes = ((MinContent)minute.getContents()).getItems();
+		final SecWidet[] seconds = ((SecContent)second.getContents()).getItems();
 		
-		int y1 = 0, y2 = 0, y3 = 0, h = 24;
+		int y1 = 0, y2 = 0, y3 = 0, h = ITEMHEIGHT;;
 		for (int i = 0; i < hours.length; i++) {
 			final boolean selected = dc.getSelectedHour() == i;
 			if(selected) y1 = i * h; hours[i].setValue(i, selected);
