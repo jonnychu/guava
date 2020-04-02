@@ -1,5 +1,7 @@
 package cn.nextop.guava.widgets.progress.circle1.render.panel;
 
+import static cn.nextop.guava.widgets.table.support.util.Objects.cast;
+
 import org.eclipse.draw2d.Graphics;
 import org.eclipse.draw2d.IFigure;
 import org.eclipse.draw2d.geometry.Rectangle;
@@ -46,5 +48,11 @@ public class XInfiniteProgressPanel extends AbstractXInfiniteProgressPanel {
 	}
 	
 	@Override
-	protected void layoutManager(IFigure container) {}
+	protected void layoutManager(IFigure container) {
+		XInfiniteProgressPanel panel = cast(container);
+		final Rectangle r = getClientArea();
+		int w = r.width, h = r.height, r1 = w < h ? w : h;
+		if(w < h) panel.setBounds(new Rectangle(r.x, r.y, r1, r1));
+		else panel.setBounds(new Rectangle(r.x, r.y, r1, r1)); this.radius = r1 / 8;
+	}
 }

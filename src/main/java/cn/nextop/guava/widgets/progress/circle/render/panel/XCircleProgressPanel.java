@@ -1,6 +1,7 @@
 package cn.nextop.guava.widgets.progress.circle.render.panel;
 
 import static cn.nextop.guava.utils.SwtUtils.getDisplay;
+import static cn.nextop.guava.widgets.table.support.util.Objects.cast;
 import static java.lang.String.valueOf;
 import static org.eclipse.draw2d.TextUtilities.INSTANCE;
 
@@ -68,5 +69,11 @@ public class XCircleProgressPanel extends AbstractXCircleProgressPanel {
 	}
 	
 	@Override
-	protected void layoutManager(IFigure container) {}
+	protected void layoutManager(IFigure container) {
+		XCircleProgressPanel panel = cast(container);
+		final Rectangle r = getClientArea();
+		int w = r.width, h = r.height, r1 = w < h ? w : h;
+		if(w < h) panel.setBounds(new Rectangle(r.x, r.y, r1, r1));
+		else panel.setBounds(new Rectangle(r.x, r.y, r1, r1));
+	}
 }

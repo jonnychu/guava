@@ -7,7 +7,7 @@ import cn.nextop.guava.widgets.AbstractPanel;
  */
 public abstract class AbstractXInfiniteProgressPanel extends AbstractPanel {
 	//
-	protected int margin = 4, radius = 12;
+	protected int margin = 4, radius = 1;
 	
 	/**
 	 * 
