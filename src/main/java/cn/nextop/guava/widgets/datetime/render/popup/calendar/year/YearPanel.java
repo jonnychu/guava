@@ -74,8 +74,8 @@ public class YearPanel extends AbstractTimePanel {
 		// h = 40
 		final int th = 40, bh = 40, mh = h - th - bh, space = 1;
 		{
-			final int mgn = 2, w1 = 20, h1 = 20;
-			final int y1 = y + (th - w1) / 2, w2 = (w - w1 * 2 - mgn * 2);
+			final int mgn = 2, w1 = 20, h1 = 30;
+			final int y1 = y + (th - h1) / 2, w2 = (w - w1 * 2 - mgn * 2);
 			Rectangle r1 = new Rectangle(mgn + x, y1, w1, h1); rollDownYear.setBounds(r1);
 			Rectangle r2 = new Rectangle(r1.x + w1, y1, w2, h1); selectYear.setBounds(r2);
 			Rectangle r3 = new Rectangle(r2.x + w2, y1, w1, h1); rollUpYear.setBounds(r3);
