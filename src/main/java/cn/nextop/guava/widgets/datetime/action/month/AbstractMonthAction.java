@@ -1,11 +1,10 @@
-package cn.nextop.guava.widgets.datetime.render.popup.calendar.month.action;
+package cn.nextop.guava.widgets.datetime.action.month;
 
 import static cn.nextop.guava.widgets.table.support.util.Objects.cast;
 
 import org.eclipse.draw2d.IFigure;
 
 import cn.nextop.guava.widgets.AbstractAction;
-import cn.nextop.guava.widgets.datetime.XDateTimePopup;
 import cn.nextop.guava.widgets.datetime.model.DummyCalendar;
 import cn.nextop.guava.widgets.datetime.render.popup.calendar.month.MonthPanel;
 import cn.nextop.guava.widgets.datetime.render.popup.calendar.month.widget.MonthItemWidget;
@@ -20,8 +19,7 @@ public abstract class AbstractMonthAction extends AbstractAction {
 	 */
 	public void updateUI(IFigure container, IFigure widget) {
 		final MonthPanel mp = cast(container);
-		XDateTimePopup popup = mp.getBuilder().getDateTimePopup();
-		final DummyCalendar dummyCalendar = popup.getDummyCalendar();
+		DummyCalendar dummyCalendar = mp.getBuilder().getDummyCalendar();
 		
 		// update top ui
 		mp.getSelectYear().setText(dummyCalendar.getYearSymbol());

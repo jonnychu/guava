@@ -1,5 +1,7 @@
 package cn.nextop.guava.widgets.datetime.render.popup.calendar.time.min.widget;
 
+import static cn.nextop.guava.widgets.datetime.action.ActionFactory.ActionType.TEXT_SHOW;
+import static cn.nextop.guava.widgets.datetime.action.ActionFactory.ActionType.TIME_MINUTE;
 import static cn.nextop.guava.widgets.table.support.util.Objects.cast;
 import static java.lang.String.valueOf;
 import static org.eclipse.draw2d.TextUtilities.INSTANCE;
@@ -12,10 +14,8 @@ import org.eclipse.draw2d.geometry.Rectangle;
 import cn.nextop.guava.utils.Colors;
 import cn.nextop.guava.widgets.datetime.render.AbstractTimeWidget;
 import cn.nextop.guava.widgets.datetime.render.popup.calendar.time.TimePanel;
-import cn.nextop.guava.widgets.datetime.render.popup.calendar.time.action.MinuteAction;
 import cn.nextop.guava.widgets.datetime.render.popup.calendar.time.min.MinContent;
 import cn.nextop.guava.widgets.datetime.render.text.TextPanel;
-import cn.nextop.guava.widgets.datetime.render.text.acton.ShowTextAction;
 
 /**
  * @author jonny
@@ -56,9 +56,9 @@ public class MinWidet extends AbstractTimeWidget {
 	@Override
 	public void handleMouseReleased(MouseEvent event) {
 		super.handleMouseReleased(event);
-		MinContent content = cast(getParent());
-		TimePanel time = content.getBuilder().getTimePanel();
-		TextPanel text = content.getBuilder().getDateTimePopup().getDateTime().getTextPanel();
-		new MinuteAction().onAction(time, this); new ShowTextAction().onAction(text, null);
+		final MinContent content = cast(getParent());
+		final TimePanel time = content.getBuilder().getTimePanel();
+		final TextPanel text = content.getBuilder().getTextPanel();
+		content.getBuilder().getActionFactory().onAction(TIME_MINUTE, time, this, TEXT_SHOW, text, null);
 	}
 }

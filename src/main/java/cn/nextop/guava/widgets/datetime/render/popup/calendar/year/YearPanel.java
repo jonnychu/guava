@@ -41,7 +41,7 @@ public class YearPanel extends AbstractTimePanel {
 	public YearPanel(String name, XDateTimePopupBuilder builder) {
 		super(name); this.builder = builder;
 		this.yearItems = new YearItemWidget[4][3];
-		DummyCalendar dc = builder.getDateTimePopup().getDummyCalendar();
+		final DummyCalendar dc = builder.getDummyCalendar();
 		// add widgets
 		add(btnTime = new TimeButtonWidget("Select Time"));
 		add(line1 = new LineWidget()); add(line2 = new LineWidget());

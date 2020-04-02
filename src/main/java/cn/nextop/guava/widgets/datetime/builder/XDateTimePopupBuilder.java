@@ -6,6 +6,8 @@ import org.eclipse.swt.widgets.Canvas;
 
 import cn.nextop.guava.widgets.AbstractBuilder;
 import cn.nextop.guava.widgets.datetime.XDateTimePopup;
+import cn.nextop.guava.widgets.datetime.action.ActionFactory;
+import cn.nextop.guava.widgets.datetime.model.DummyCalendar;
 import cn.nextop.guava.widgets.datetime.render.popup.PopupPanel;
 import cn.nextop.guava.widgets.datetime.render.popup.calendar.CalendarPanel;
 import cn.nextop.guava.widgets.datetime.render.popup.calendar.date.DatePanel;
@@ -20,6 +22,7 @@ import cn.nextop.guava.widgets.datetime.render.popup.calendar.time.sec.SecPanel;
 import cn.nextop.guava.widgets.datetime.render.popup.calendar.year.YearPanel;
 import cn.nextop.guava.widgets.datetime.render.popup.shortcut.ShortcutContent;
 import cn.nextop.guava.widgets.datetime.render.popup.shortcut.ShortcutPanel;
+import cn.nextop.guava.widgets.datetime.render.text.TextPanel;
 import cn.nextop.guava.widgets.datetime.support.glossary.PanelType;
 
 /**
@@ -131,5 +134,20 @@ public class XDateTimePopupBuilder extends AbstractBuilder {
 
 	public XDateTimePopup getDateTimePopup() {
 		return dateTimePopup;
+	}
+	
+	/**
+	 * Faster 
+	 */
+	public ActionFactory getActionFactory() {
+		return getDateTimePopup().getActionFactory();
+	}
+	
+	public DummyCalendar getDummyCalendar() {
+		return getDateTimePopup().getDummyCalendar();
+	}
+	
+	public TextPanel getTextPanel() {
+		return getDateTimePopup().getDateTime().getTextPanel();
 	}
 }

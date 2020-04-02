@@ -1,4 +1,4 @@
-package cn.nextop.guava.widgets.datetime.render.popup.calendar.time.action;
+package cn.nextop.guava.widgets.datetime.action.time;
 
 import static cn.nextop.guava.widgets.datetime.XDateTimePopup.ITEMHEIGHT;
 import static cn.nextop.guava.widgets.table.support.util.Objects.cast;
@@ -31,7 +31,7 @@ public abstract class AbstractTimeAction extends AbstractAction {
 		final HourPanel hour = timePanel.getBuilder().getHourPanel();
 		final MinPanel minute = timePanel.getBuilder().getMinPanel();
 		final SecPanel second = timePanel.getBuilder().getSecPanel();
-		final DummyCalendar dc = timePanel.getBuilder().getDateTimePopup().getDummyCalendar();
+		final DummyCalendar dc = timePanel.getBuilder().getDummyCalendar();
 		
 		//
 		final HourWidet[] hours = ((HourContent)hour.getContents()).getItems();

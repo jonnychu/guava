@@ -28,7 +28,8 @@ public class SecContent extends AbstractTimePanel {
 	 */
 	public SecContent(String name, XDateTimePopupBuilder builder) {
 		super(name); this.builder = builder;
-		DummyCalendar dc = builder.getDateTimePopup().getDummyCalendar();
+		final DummyCalendar dc = builder.getDummyCalendar();
+		//
 		this.items = new SecWidet[60];
 		for (int i = 0; i < items.length; i++) {
 			final int v = dc.getSelectedSecond();

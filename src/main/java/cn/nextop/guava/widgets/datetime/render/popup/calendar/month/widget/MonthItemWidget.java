@@ -1,5 +1,7 @@
 package cn.nextop.guava.widgets.datetime.render.popup.calendar.month.widget;
 
+import static cn.nextop.guava.widgets.datetime.action.ActionFactory.ActionType.DATE_SHOW;
+import static cn.nextop.guava.widgets.datetime.action.ActionFactory.ActionType.MONTH_MONTH;
 import static cn.nextop.guava.widgets.table.support.util.Objects.cast;
 
 import org.eclipse.draw2d.Graphics;
@@ -12,9 +14,7 @@ import cn.nextop.guava.utils.CGUtils;
 import cn.nextop.guava.utils.Colors;
 import cn.nextop.guava.widgets.datetime.render.AbstractTimeWidget;
 import cn.nextop.guava.widgets.datetime.render.popup.calendar.date.DatePanel;
-import cn.nextop.guava.widgets.datetime.render.popup.calendar.date.action.ShowDateAction;
 import cn.nextop.guava.widgets.datetime.render.popup.calendar.month.MonthPanel;
-import cn.nextop.guava.widgets.datetime.render.popup.calendar.month.action.MonthAction;
 
 /**
  * @author jonny
@@ -64,6 +64,6 @@ public class MonthItemWidget extends AbstractTimeWidget {
 		super.handleMouseReleased(event); 
 		final MonthPanel mp = cast(getParent());
 		final DatePanel dp = mp.getBuilder().getDatePanel();
-		new MonthAction().onAction(mp, this); new ShowDateAction().onAction(dp, null);
+		mp.getBuilder().getActionFactory().onAction(MONTH_MONTH, mp, this, DATE_SHOW, dp, null);
 	}
 }

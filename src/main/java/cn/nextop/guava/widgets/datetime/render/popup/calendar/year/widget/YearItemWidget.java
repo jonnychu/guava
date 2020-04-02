@@ -1,5 +1,7 @@
 package cn.nextop.guava.widgets.datetime.render.popup.calendar.year.widget;
 
+import static cn.nextop.guava.widgets.datetime.action.ActionFactory.ActionType.MONTH_SHOW;
+import static cn.nextop.guava.widgets.datetime.action.ActionFactory.ActionType.YEAR_YEAR2;
 import static cn.nextop.guava.widgets.table.support.util.Objects.cast;
 
 import org.eclipse.draw2d.Graphics;
@@ -12,9 +14,7 @@ import cn.nextop.guava.utils.CGUtils;
 import cn.nextop.guava.utils.Colors;
 import cn.nextop.guava.widgets.datetime.render.AbstractTimeWidget;
 import cn.nextop.guava.widgets.datetime.render.popup.calendar.month.MonthPanel;
-import cn.nextop.guava.widgets.datetime.render.popup.calendar.month.action.ShowMonthAction;
 import cn.nextop.guava.widgets.datetime.render.popup.calendar.year.YearPanel;
-import cn.nextop.guava.widgets.datetime.render.popup.calendar.year.action.Year2Action;
 
 /**
  * @author jonny
@@ -63,6 +63,6 @@ public class YearItemWidget extends AbstractTimeWidget {
 		super.handleMouseReleased(event); 
 		final YearPanel yp = cast(getParent());
 		final MonthPanel mp = yp.getBuilder().getMonthPanel();
-		new Year2Action().onAction(yp, this); new ShowMonthAction().onAction(mp, null);
+		yp.getBuilder().getActionFactory().onAction(YEAR_YEAR2, yp, this, MONTH_SHOW, mp, null);
 	}
 }

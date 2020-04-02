@@ -28,7 +28,8 @@ public class HourContent extends AbstractTimePanel {
 	 */
 	public HourContent(String name, XDateTimePopupBuilder builder) {
 		super(name); this.builder = builder;
-		DummyCalendar dc = builder.getDateTimePopup().getDummyCalendar();
+		final DummyCalendar dc = builder.getDummyCalendar();
+		//
 		this.items = new HourWidet[24];
 		for (int i = 0; i < items.length; i++) {
 			final int v = dc.getSelectedHour();

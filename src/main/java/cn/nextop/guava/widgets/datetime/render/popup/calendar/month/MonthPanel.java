@@ -40,7 +40,7 @@ public class MonthPanel extends AbstractTimePanel {
 	public MonthPanel(String name, XDateTimePopupBuilder builder) {
 		super(name); this.builder = builder;
 		this.months = new MonthItemWidget[4][3];
-		DummyCalendar dc = builder.getDateTimePopup().getDummyCalendar();
+		final DummyCalendar dc = builder.getDummyCalendar();
 		// add widgets
 		add(line1 = new LineWidget());
 		add(line2 = new LineWidget());

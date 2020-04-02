@@ -49,7 +49,7 @@ public class DatePanel extends AbstractTimePanel {
 		super(name); this.builder = builder;
 		this.weeks = new WeekItemWidget[7];
 		this.dates = new DateItemWidget[6][7];
-		DummyCalendar dc = builder.getDateTimePopup().getDummyCalendar();
+		final DummyCalendar dc = builder.getDummyCalendar();
 		//
 		add(line1 = new LineWidget());add(line2 = new LineWidget());
 		add(rollUpMonth = new MonthWidget(angle_right, Type.UP));

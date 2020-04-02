@@ -14,9 +14,6 @@ import cn.nextop.guava.utils.Colors;
 import cn.nextop.guava.utils.Fonts;
 import cn.nextop.guava.widgets.datetime.render.AbstractTimeWidget;
 import cn.nextop.guava.widgets.datetime.render.popup.calendar.date.DatePanel;
-import cn.nextop.guava.widgets.datetime.render.popup.calendar.date.action.MonthAction;
-import cn.nextop.guava.widgets.datetime.render.popup.calendar.month.MonthPanel;
-import cn.nextop.guava.widgets.datetime.render.popup.calendar.month.action.ShowMonthAction;
 import cn.nextop.guava.widgets.datetime.support.glossary.Type;
 
 /**
@@ -61,7 +58,7 @@ public class MonthWidget extends AbstractTimeWidget {
 	@Override
 	public void handleMouseReleased(MouseEvent event) {
 		super.handleMouseReleased(event); 
-		final DatePanel dp = cast(getParent()); final MonthPanel mp = dp.getBuilder().getMonthPanel();
-		new MonthAction(type).onAction(dp, this); if(type == Type.SELECT) new ShowMonthAction().onAction(mp, null);
+		final DatePanel dp = cast(getParent());
+		dp.getBuilder().getActionFactory().onMonthAction(type, dp, this);
 	}
 }

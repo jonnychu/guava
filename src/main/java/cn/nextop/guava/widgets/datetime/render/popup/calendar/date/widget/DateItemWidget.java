@@ -1,5 +1,8 @@
 package cn.nextop.guava.widgets.datetime.render.popup.calendar.date.widget;
 
+import static cn.nextop.guava.widgets.datetime.action.ActionFactory.ActionType.DATE_DATE;
+import static cn.nextop.guava.widgets.datetime.action.ActionFactory.ActionType.TEXT_SHOW;
+import static cn.nextop.guava.widgets.table.support.util.Objects.cast;
 import static java.lang.String.valueOf;
 import static org.eclipse.draw2d.TextUtilities.INSTANCE;
 
@@ -13,9 +16,7 @@ import cn.nextop.guava.utils.CGUtils;
 import cn.nextop.guava.utils.Colors;
 import cn.nextop.guava.widgets.datetime.render.AbstractTimeWidget;
 import cn.nextop.guava.widgets.datetime.render.popup.calendar.date.DatePanel;
-import cn.nextop.guava.widgets.datetime.render.popup.calendar.date.action.DateAction;
 import cn.nextop.guava.widgets.datetime.render.text.TextPanel;
-import cn.nextop.guava.widgets.datetime.render.text.acton.ShowTextAction;
 
 public class DateItemWidget extends AbstractTimeWidget {
 	//
@@ -78,8 +79,8 @@ public class DateItemWidget extends AbstractTimeWidget {
 	@Override
 	public void handleMouseReleased(MouseEvent event) {
 		super.handleMouseReleased(event);
-		final DatePanel dp = (DatePanel)getParent(); 
-		final TextPanel tp = dp.getBuilder().getDateTimePopup().getDateTime().getTextPanel();
-		new DateAction().onAction(getParent(), this); new ShowTextAction().onAction(tp, null);
+		final DatePanel dp = cast(getParent());
+		final TextPanel tp = dp.getBuilder().getTextPanel();
+		dp.getBuilder().getActionFactory().onAction(DATE_DATE, dp, this, TEXT_SHOW, tp, null);
 	}
 }

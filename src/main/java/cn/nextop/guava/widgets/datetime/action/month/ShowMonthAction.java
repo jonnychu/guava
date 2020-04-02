@@ -1,11 +1,11 @@
-package cn.nextop.guava.widgets.datetime.render.popup.calendar.date.action;
+package cn.nextop.guava.widgets.datetime.action.month;
 
 import org.eclipse.draw2d.IFigure;
 
 /**
  * @author jonny
  */
-public class ShowDateAction extends AbstractDateAction {
+public class ShowMonthAction extends AbstractMonthAction {
 
 	@Override
 	protected boolean updateData(IFigure container, IFigure widget) {
