@@ -3,6 +3,7 @@ package cn.nextop.guava;
 import static cn.nextop.guava.utils.SwtUtils.async;
 import static cn.nextop.guava.utils.SwtUtils.creator;
 import static cn.nextop.guava.utils.SwtUtils.dispatch;
+import static cn.nextop.guava.utils.SwtUtils.sync;
 
 import java.math.BigDecimal;
 import java.util.Timer;
@@ -11,6 +12,8 @@ import java.util.TimerTask;
 import org.eclipse.nebula.widgets.formattedtext.BigDecimalFormatter;
 import org.eclipse.nebula.widgets.formattedtext.LongFormatter;
 import org.eclipse.swt.SWT;
+import org.eclipse.swt.events.DisposeEvent;
+import org.eclipse.swt.events.DisposeListener;
 import org.eclipse.swt.events.SelectionAdapter;
 import org.eclipse.swt.events.SelectionEvent;
 import org.eclipse.swt.widgets.Button;
@@ -32,6 +35,7 @@ import net.miginfocom.swt.MigLayout;
 
 public class Example {
 	public static void main(String[] args) {
+		Example example = new Example();
 		final String name = "Widget Example";
 		Shell shell = creator(500, 500, name);
 		Composite cmp = SwtUtils.creator(shell);
@@ -51,18 +55,18 @@ public class Example {
 		slider.setValue(0, 100, 23);
 		//circle progress
 		XCircleProgress progress = new XCircleProgress(cmp); progress.setLayoutData("cell 0 4, width 100!,height 100!");
-		progress.init(0f, 100f, 25f);
-		Button btnOk1 = new Button(cmp, SWT.NONE); btnOk1.setLayoutData("cell 0 5, height 30!, top");
-		btnOk1.setText("Start Progress"); btnOk1.addSelectionListener(new SelectionAdapter() {
-			boolean finished = false; @Override public void widgetSelected(SelectionEvent e) {
-				super.widgetSelected(e); if(finished) return;
-				progress.init(0f, 100f, 0f); Timer timer = new Timer(); timer.scheduleAtFixedRate(new TimerTask() {
-					int i = 0; @Override public void run() { 
-						async(null, () -> { progress.setInput(i++); if(i > 100) { timer.cancel(); finished = false; } else { finished = true; } });
-						}
-				}, 250, 50);
+		progress.init(0f, 100f, 25f); Button btnOk1 = new Button(cmp, SWT.NONE); btnOk1.setLayoutData("cell 0 5, height 30!, top");
+		btnOk1.setText("Start Progress"); CircleProgressModel model = example.new CircleProgressModel(progress);
+		btnOk1.addSelectionListener(new SelectionAdapter() {
+			boolean running = false; @Override public void widgetSelected(SelectionEvent e) {
+				super.widgetSelected(e); if (!running) {
+					running = true;	model.start(); btnOk1.setText("Stop Progress");
+				} else {
+					running = false; model.stop(); btnOk1.setText("Start Progress");
+				}
 			}
 		});
+		shell.addDisposeListener(new DisposeListener() { @Override public void widgetDisposed(DisposeEvent e) { model.stop(); }});
 		//infinite progress
 		XInfiniteProgress progress1 = new XInfiniteProgress(cmp); progress1.setLayoutData("cell 1 4, width 100!,height 100!");
 		Button btnOk2 = new Button(cmp, SWT.NONE); btnOk2.setLayoutData("cell 1 5, height 30!, top");
@@ -73,12 +77,10 @@ public class Example {
 				} else {
 					running = false; progress1.stop(); btnOk2.setText("Start Progress");
 				}
-					
 			}
 		});
 		
 		//
-//		Example example = new Example();
 //		ExampleAdapter adapter = example.new ExampleAdapter();
 //		XTable table = adapter.build(cmp); table.setLayoutData("cell 0 1");
 //		
@@ -95,6 +97,45 @@ public class Example {
 //		rows.add(example.new Row("name1","name2","name3","name4","name5"));
 //		table.inputs(rows);
 		shell.open(); dispatch(() -> shell.isDisposed());
+	}
+	
+	protected class CircleProgressModel {
+		private int i = 0;
+		private Timer timer;
+		private boolean running, cancel;
+		private XCircleProgress progress;
+		
+		public CircleProgressModel(XCircleProgress progress) {
+			this.progress = progress;
+		}
+		
+		/**
+		 * 
+		 */
+		public void stop() { sync(null, () -> { suspend(); }); }
+		
+		public void start() {
+			if (running && !cancel)	return;
+			running = true; timer = new Timer();
+			timer.scheduleAtFixedRate(new TimerTask() {
+				@Override
+				public void run() {
+					async(null, () -> {
+						progress.setInput(i++);
+						if (i > 100) {
+							timer.cancel(); i = 0;
+							running = false; cancel = false;
+						} else {
+							running = true;
+						}
+					});
+				}
+			}, 250, 50);
+		}
+
+		public void suspend() {
+			if (timer == null) return; timer.cancel(); timer = null; running = false; cancel = false;
+		}
 	}
 	
 	public class ExampleAdapter extends XTableAdapter<Row> {
