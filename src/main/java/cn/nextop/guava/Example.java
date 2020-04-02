@@ -39,7 +39,7 @@ public class Example {
 		final String name = "Widget Example";
 		Shell shell = creator(500, 500, name);
 		Composite cmp = SwtUtils.creator(shell);
-		cmp.setLayout(new MigLayout("insets 5, gap 0 0","[fill,grow,center][fill,grow,center]","[fill,grow][fill,grow][fill,grow][fill,grow][fill,grow][fill,grow][fill,grow]"));
+		cmp.setLayout(new MigLayout("insets 5, gap 0 0","[fill,grow,center][fill,grow,center]","[fill,grow][fill,grow][fill,grow][fill,grow][fill,grow][fill,grow]"));
 		//datetime
 		XDateTime date = new XDateTime(cmp); date.setLayoutData("cell 0 0, width 10:150:,height 23!, span 2"); date.setInput(System.currentTimeMillis());
 		//spinner 1
