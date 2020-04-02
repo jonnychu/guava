@@ -74,6 +74,6 @@ public class XCircleProgressPanel extends AbstractXCircleProgressPanel {
 		final Rectangle r = getClientArea();
 		int w = r.width, h = r.height, r1 = w < h ? w : h;
 		if(w < h) panel.setBounds(new Rectangle(r.x, r.y, r1, r1));
-		else panel.setBounds(new Rectangle(r.x, r.y, r1, r1));
+		else panel.setBounds(new Rectangle(r.x, r.y, r1, r1)); this.thickness = r1 / 10;
 	}
 }
