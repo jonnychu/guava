@@ -21,8 +21,8 @@ public class HourPanel extends AbstractTimeScrollPanel {
 	/**
 	 * 
 	 */
-	public HourPanel(TimePanel tp) {
-		super("hour"); this.timePanel = tp;
+	public HourPanel(String name, TimePanel tp) {
+		super(name); this.timePanel = tp;
 		//
 		setVerticalScrollStep(ITEMHEIGHT);
 		setHorizontalScrollBarVisibility(NEVER);

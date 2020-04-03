@@ -70,23 +70,20 @@ public class XDateTimePopupBuilder extends AbstractBuilder {
 		// time
 		this.timePanel = new TimePanel("time.panel", this);
 		{
-			this.secPanel = new SecPanel(this.timePanel);
+			this.secPanel = new SecPanel("sec.panel", this.timePanel);
 			this.secPanel.setContents(new SecContent("sec.content.panel", this));
 			
-			this.minPanel = new MinPanel(this.timePanel);
+			this.minPanel = new MinPanel("min.panel", this.timePanel);
 			this.minPanel.setContents(new MinContent("min.content.panel", this));
 			
-			this.hourPanel = new HourPanel(this.timePanel);
+			this.hourPanel = new HourPanel("hour.panel", this.timePanel);
 			this.hourPanel.setContents(new HourContent("hour.content.panel", this));
 		}
 		
 		//
-		this.timePanel.add(this.secPanel); 
-		this.timePanel.add(this.minPanel);
-		this.timePanel.add(this.hourPanel); 
-		
-		//
-		panel.add(this.timePanel); panel.panel(PanelType.DATE); return panel;
+		this.timePanel.add(this.secPanel); this.timePanel.add(this.minPanel);
+		this.timePanel.add(this.hourPanel); panel.add(this.timePanel); //root
+		panel.panel(PanelType.DATE); return panel; // switch first date panel
 	}
 	
 	/**

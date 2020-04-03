@@ -21,8 +21,8 @@ public class MinPanel extends AbstractTimeScrollPanel {
 	/**
 	 * 
 	 */
-	public MinPanel(TimePanel tp) {
-		super("minute"); this.timePanel = tp;
+	public MinPanel(String name, TimePanel tp) {
+		super(name); this.timePanel = tp;
 		//
 		setVerticalScrollStep(ITEMHEIGHT);
 		setHorizontalScrollBarVisibility(NEVER);

@@ -21,8 +21,8 @@ public class SecPanel extends AbstractTimeScrollPanel {
 	/**
 	 * 
 	 */
-	public SecPanel(TimePanel tp) {
-		super("second"); this.timePanel = tp;
+	public SecPanel(String name, TimePanel tp) {
+		super(name); this.timePanel = tp;
 		//
 		setVerticalScrollStep(ITEMHEIGHT);
 		setHorizontalScrollBarVisibility(NEVER);
