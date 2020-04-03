@@ -23,9 +23,13 @@ import cn.nextop.guava.widgets.datetime.action.time.ShowTimeAction;
 import cn.nextop.guava.widgets.datetime.action.year.ShowYearAction;
 import cn.nextop.guava.widgets.datetime.action.year.Year3Action;
 import cn.nextop.guava.widgets.datetime.action.year.Year4Action;
+import cn.nextop.guava.widgets.datetime.render.AbstractTimePanel;
+import cn.nextop.guava.widgets.datetime.render.popup.calendar.CalendarPanel;
 import cn.nextop.guava.widgets.datetime.render.popup.calendar.date.DatePanel;
 import cn.nextop.guava.widgets.datetime.render.popup.calendar.month.MonthPanel;
+import cn.nextop.guava.widgets.datetime.render.popup.calendar.time.TimePanel;
 import cn.nextop.guava.widgets.datetime.render.popup.calendar.year.YearPanel;
+import cn.nextop.guava.widgets.datetime.support.glossary.PanelType;
 import cn.nextop.guava.widgets.datetime.support.glossary.Type;
 
 /**
@@ -151,5 +155,19 @@ public class ActionFactory {
 		
 		final YearPanel yp = cast(container); 
 		onAction(type1, yp, widget, ActionType.YEAR_SHOW, yp, null);
+	}
+	
+	public void onShowDatePanelAction(ActionType type, Figure container, Figure widget) {
+		final TimePanel tp = cast(container);
+		DatePanel dp = tp.getBuilder().getDatePanel();
+		CalendarPanel cp = tp.getBuilder().getCalendarPanel();
+		cp.panel(PanelType.DATE); actions.get(type).onAction(dp, null);
+	}
+	
+	public void onShowTimePanelAction(ActionType type, Figure container, Figure widget) {
+		AbstractTimePanel panel = cast(container);
+		TimePanel tp = panel.getBuilder().getTimePanel();
+		CalendarPanel cp = panel.getBuilder().getCalendarPanel();
+		cp.panel(PanelType.TIME); actions.get(type).onAction(tp, null);
 	}
 }
