@@ -11,14 +11,14 @@ import cn.nextop.guava.widgets.datetime.support.glossary.Type;
 /**
  * @author jonny
  */
-public class YearAction extends AbstractYearAction {
+public class Year3Action extends AbstractYearAction {
 	//
 	private final Type type;
 	
 	/**
 	 * 
 	 */
-	public YearAction(Type type) { this.type = type; }
+	public Year3Action(Type type) { this.type = type; }
 
 	@Override
 	public boolean updateData(IFigure container, IFigure widget) {

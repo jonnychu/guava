@@ -12,22 +12,28 @@ import cn.nextop.guava.widgets.datetime.action.date.DateAction;
 import cn.nextop.guava.widgets.datetime.action.date.MonthAction;
 import cn.nextop.guava.widgets.datetime.action.date.ShowDateAction;
 import cn.nextop.guava.widgets.datetime.action.date.YearAction;
+import cn.nextop.guava.widgets.datetime.action.month.Month1Action;
 import cn.nextop.guava.widgets.datetime.action.month.ShowMonthAction;
+import cn.nextop.guava.widgets.datetime.action.month.Year2Action;
 import cn.nextop.guava.widgets.datetime.action.text.ShowTextAction;
 import cn.nextop.guava.widgets.datetime.action.time.HourAction;
 import cn.nextop.guava.widgets.datetime.action.time.MinuteAction;
 import cn.nextop.guava.widgets.datetime.action.time.SecondAction;
 import cn.nextop.guava.widgets.datetime.action.time.ShowTimeAction;
 import cn.nextop.guava.widgets.datetime.action.year.ShowYearAction;
-import cn.nextop.guava.widgets.datetime.action.year.Year2Action;
+import cn.nextop.guava.widgets.datetime.action.year.Year3Action;
+import cn.nextop.guava.widgets.datetime.action.year.Year4Action;
 import cn.nextop.guava.widgets.datetime.render.popup.calendar.date.DatePanel;
 import cn.nextop.guava.widgets.datetime.render.popup.calendar.month.MonthPanel;
 import cn.nextop.guava.widgets.datetime.render.popup.calendar.year.YearPanel;
 import cn.nextop.guava.widgets.datetime.support.glossary.Type;
 
+/**
+ * @author jonny
+ */
 public class ActionFactory {
 	//
-	private Map<ActionType, AbstractAction> actions;
+	private final Map<ActionType, AbstractAction> actions;
 	
 	//
 	public enum ActionType {
@@ -43,38 +49,39 @@ public class ActionFactory {
 		DATE_DATE, DATE_MONTH_SELECT, DATE_MONTH_DOWN, DATE_MONTH_UP, DATE_SHOW, DATE_YEAR_SELECT, DATE_YEAR_DOWN, DATE_YEAR_UP
 	}
 	
-	
-	
+	/**
+	 * 
+	 */
 	public ActionFactory() {
-		actions = new HashMap<ActionFactory.ActionType, AbstractAction>();
-		//
+		actions = new HashMap<>();
+		// Text
 		actions.put(ActionType.TEXT_SHOW, new ShowTextAction());
-		// Date
-		actions.put(ActionType.DATE_DATE, new DateAction());
-		actions.put(ActionType.DATE_MONTH_SELECT, new MonthAction(Type.SELECT));
-		actions.put(ActionType.DATE_MONTH_DOWN, new MonthAction(Type.DOWN));
-		actions.put(ActionType.DATE_MONTH_UP, new MonthAction(Type.UP));
-		actions.put(ActionType.DATE_SHOW, new ShowDateAction());
-		actions.put(ActionType.DATE_YEAR_SELECT, new YearAction(Type.SELECT));
-		actions.put(ActionType.DATE_YEAR_DOWN, new YearAction(Type.DOWN));
-		actions.put(ActionType.DATE_YEAR_UP, new YearAction(Type.UP));
-		// Month
-		actions.put(ActionType.MONTH_MONTH, new cn.nextop.guava.widgets.datetime.action.month.MonthAction());
-		actions.put(ActionType.MONTH_SHOW, new ShowMonthAction());
-		actions.put(ActionType.MONTH_YEAR_SELECT, new cn.nextop.guava.widgets.datetime.action.month.YearAction(Type.SELECT));
-		actions.put(ActionType.MONTH_YEAR_DOWN, new cn.nextop.guava.widgets.datetime.action.month.YearAction(Type.DOWN));
-		actions.put(ActionType.MONTH_YEAR_UP, new cn.nextop.guava.widgets.datetime.action.month.YearAction(Type.UP));
-		// Year
-		actions.put(ActionType.YEAR_YEAR2, new Year2Action());
-		actions.put(ActionType.YEAR_YEAR_SELECT, new cn.nextop.guava.widgets.datetime.action.year.YearAction(Type.SELECT));
-		actions.put(ActionType.YEAR_YEAR_DOWN, new cn.nextop.guava.widgets.datetime.action.year.YearAction(Type.DOWN));
-		actions.put(ActionType.YEAR_YEAR_UP, new cn.nextop.guava.widgets.datetime.action.year.YearAction(Type.UP));
-		actions.put(ActionType.YEAR_SHOW, new ShowYearAction());
 		// Time
 		actions.put(ActionType.TIME_HOUR, new HourAction());
 		actions.put(ActionType.TIME_MINUTE, new MinuteAction());
 		actions.put(ActionType.TIME_SECOND, new SecondAction());
 		actions.put(ActionType.TIME_SHOW, new ShowTimeAction());
+		// Date
+		actions.put(ActionType.DATE_DATE, new DateAction());
+		actions.put(ActionType.DATE_SHOW, new ShowDateAction());
+		actions.put(ActionType.DATE_YEAR_UP, new YearAction(Type.UP));
+		actions.put(ActionType.DATE_MONTH_UP, new MonthAction(Type.UP));
+		actions.put(ActionType.DATE_YEAR_DOWN, new YearAction(Type.DOWN));
+		actions.put(ActionType.DATE_MONTH_DOWN, new MonthAction(Type.DOWN));
+		actions.put(ActionType.DATE_YEAR_SELECT, new YearAction(Type.SELECT));
+		actions.put(ActionType.DATE_MONTH_SELECT, new MonthAction(Type.SELECT));
+		// Month
+		actions.put(ActionType.MONTH_MONTH, new Month1Action());
+		actions.put(ActionType.MONTH_SHOW, new ShowMonthAction());
+		actions.put(ActionType.MONTH_YEAR_UP, new Year2Action(Type.UP));
+		actions.put(ActionType.MONTH_YEAR_DOWN, new Year2Action(Type.DOWN));
+		actions.put(ActionType.MONTH_YEAR_SELECT, new Year2Action(Type.SELECT));
+		// Year
+		actions.put(ActionType.YEAR_YEAR2, new Year4Action());
+		actions.put(ActionType.YEAR_SHOW, new ShowYearAction());
+		actions.put(ActionType.YEAR_YEAR_UP, new Year3Action(Type.UP));
+		actions.put(ActionType.YEAR_YEAR_DOWN, new Year3Action(Type.DOWN));
+		actions.put(ActionType.YEAR_YEAR_SELECT, new Year3Action(Type.SELECT));
 	}
 	
 	/**
