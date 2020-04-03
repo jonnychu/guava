@@ -15,6 +15,7 @@ import cn.nextop.guava.widgets.datetime.action.date.YearAction;
 import cn.nextop.guava.widgets.datetime.action.month.Month1Action;
 import cn.nextop.guava.widgets.datetime.action.month.ShowMonthAction;
 import cn.nextop.guava.widgets.datetime.action.month.Year2Action;
+import cn.nextop.guava.widgets.datetime.action.shortcut.ShortcutAction;
 import cn.nextop.guava.widgets.datetime.action.text.ShowTextAction;
 import cn.nextop.guava.widgets.datetime.action.time.HourAction;
 import cn.nextop.guava.widgets.datetime.action.time.MinuteAction;
@@ -41,8 +42,8 @@ public class ActionFactory {
 	
 	//
 	public enum ActionType {
-		// text
-		TEXT_SHOW,
+		// text & shortcut
+		TEXT_SHOW, SHORTCUT,
 		// time
 		TIME_HOUR, TIME_MINUTE, TIME_SECOND, TIME_SHOW,
 		// year
@@ -58,6 +59,8 @@ public class ActionFactory {
 	 */
 	public ActionFactory() {
 		actions = new HashMap<>();
+		// Shortcut
+		actions.put(ActionType.SHORTCUT, new ShortcutAction());
 		// Text
 		actions.put(ActionType.TEXT_SHOW, new ShowTextAction());
 		// Time
@@ -91,22 +94,14 @@ public class ActionFactory {
 	/**
 	 * 
 	 */
-	public void onAction(ActionType type, Figure container, Figure widget) {
-		actions.get(type).onAction(container, widget);
+	public ActionFactory onAction(ActionType type, Figure container, Figure widget) {
+		actions.get(type).onAction(container, widget); return this;
 	}
 	
 	public void onAction(ActionType type1, Figure container1, Figure widget1, 
 			ActionType type2, Figure container2, Figure widget2) {
 		actions.get(type1).onAction(container1, widget1); 
 		actions.get(type2).onAction(container2, widget2);
-	}
-	
-	public void onAction(ActionType type1, Figure container1, Figure widget1, 
-			ActionType type2, Figure container2, Figure widget2, 
-			ActionType type3, Figure container3, Figure widget3) {
-		actions.get(type1).onAction(container1, widget1); 
-		actions.get(type2).onAction(container2, widget2);
-		actions.get(type3).onAction(container3, widget3);
 	}
 	
 	/**

@@ -55,9 +55,8 @@ public class YearWidget extends AbstractTimeWidget {
 	}
 	
 	@Override
-	public void handleMouseReleased(MouseEvent event) {
-		super.handleMouseReleased(event); 
-		final YearPanel yp = cast(getParent()); 
+	public void handleMouseReleased(MouseEvent et) {
+		super.handleMouseReleased(et); YearPanel yp = cast(getParent());
 		yp.getBuilder().getActionFactory().onYearAction2(type, yp, this);
 	}
 }

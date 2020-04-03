@@ -9,14 +9,10 @@ import org.eclipse.draw2d.geometry.Dimension;
 import org.eclipse.draw2d.geometry.Rectangle;
 
 import cn.nextop.guava.utils.Colors;
-import cn.nextop.guava.widgets.datetime.XDateTime;
-import cn.nextop.guava.widgets.datetime.action.date.ShowDateAction;
-import cn.nextop.guava.widgets.datetime.action.text.ShowTextAction;
-import cn.nextop.guava.widgets.datetime.action.time.ShowTimeAction;
+import cn.nextop.guava.widgets.datetime.action.ActionFactory.ActionType;
 import cn.nextop.guava.widgets.datetime.builder.XDateTimePopupBuilder;
 import cn.nextop.guava.widgets.datetime.render.AbstractTimeWidget;
 import cn.nextop.guava.widgets.datetime.render.popup.shortcut.ShortcutContent;
-import cn.nextop.guava.widgets.datetime.render.popup.shortcut.action.ShortcutAction;
 import cn.nextop.guava.widgets.datetime.support.glossary.Shortcut;
 
 /**
@@ -52,11 +48,11 @@ public class ShortcutItem extends AbstractTimeWidget {
 		super.handleMouseReleased(event); 
 		final ShortcutContent content = cast(getParent());
 		final XDateTimePopupBuilder builder = content.getBuilder();
-		final XDateTime xdt = builder.getDateTimePopup().getDateTime();
 		//
-		new ShortcutAction().onAction(content, this);
-		new ShowTextAction().onAction(xdt.getTextPanel(), null);
-		new ShowDateAction().onAction(builder.getDatePanel(), null);
-		new ShowTimeAction().onAction(builder.getTimePanel(), null);
+		content.getBuilder().getActionFactory()
+		.onAction(ActionType.SHORTCUT, content, this)
+		.onAction(ActionType.TEXT_SHOW, builder.getTextPanel(), null)
+		.onAction(ActionType.DATE_SHOW, builder.getDatePanel(), null)
+		.onAction(ActionType.TIME_SHOW, builder.getTimePanel(), null);
 	}
 }

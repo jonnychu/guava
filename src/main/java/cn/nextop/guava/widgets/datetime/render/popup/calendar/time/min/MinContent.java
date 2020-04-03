@@ -47,5 +47,4 @@ public class MinContent extends AbstractTimePanel {
 		}
 		parent.setBounds(new Rectangle(0, 0, r.width, p * h));
 	}
-
 }

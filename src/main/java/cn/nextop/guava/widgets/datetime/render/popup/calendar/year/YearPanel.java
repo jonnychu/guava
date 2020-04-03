@@ -54,7 +54,8 @@ public class YearPanel extends AbstractTimePanel {
 			for (int j = 0; j < yearItems[i].length; j++) {
 				String v = years[index]; int year = parseInt(v);
 				final boolean selected = dc.isSelectedYear(year);
-				add(yearItems[i][j] = new YearItemWidget(year, v, selected)); index++;
+				add(yearItems[i][j] = new YearItemWidget(year, v, selected));
+				index++;
 			}
 		}
 	}

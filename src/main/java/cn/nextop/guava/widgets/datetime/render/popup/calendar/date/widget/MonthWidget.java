@@ -56,9 +56,8 @@ public class MonthWidget extends AbstractTimeWidget {
 	}
 	
 	@Override
-	public void handleMouseReleased(MouseEvent event) {
-		super.handleMouseReleased(event); 
-		final DatePanel dp = cast(getParent());
+	public void handleMouseReleased(MouseEvent et) {
+		super.handleMouseReleased(et); DatePanel dp = cast(getParent());
 		dp.getBuilder().getActionFactory().onMonthAction(type, dp, this);
 	}
 }

@@ -1,4 +1,4 @@
-package cn.nextop.guava.widgets.datetime.render.popup.shortcut.action;
+package cn.nextop.guava.widgets.datetime.action.shortcut;
 
 import org.eclipse.draw2d.IFigure;
 
