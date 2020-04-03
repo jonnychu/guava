@@ -86,7 +86,7 @@ public class XSpinnerModel<N> {
 		} 
 	}
 	
-	public void init(N upper, N lower, N step, N value) {
+	public void init(N lower, N upper, N step, N value) {
 		setUpper(upper); setLower(lower); setStep(step); setValue(value);
 	}
 }

@@ -69,7 +69,7 @@ public class XSpinner<T extends Number> extends Canvas implements ActionListener
 		return orientation == HORIZONTAL ? true : false;
 	}
 	
-	public void setValue(T max, T min, T step, T value) {
+	public void setValue(T min, T max, T step, T value) {
 		model.init(max, min, step, value); this.panel.repaint();
 	}
 	
