@@ -114,8 +114,8 @@ public class XScrollBar extends AbstractPanel implements PropertyChangeListener,
 	public XRangeModel getModel() { return model; }
 
 	public void setModel(XRangeModel model) {
-		if(this.model != null) this.model.removePropListener(this);
-		this.model = model;	this.model.addPropListener(this);
+		if(this.model != null) model.removePropListener(this);
+		this.model = model;	 this.model.addPropListener(this);
 	}
 	
 	/**
