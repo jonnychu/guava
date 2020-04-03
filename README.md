@@ -4,15 +4,15 @@ SWT Widgets by draw2d
 Please run cn.nextop.guava.Example java file
 
 > widget List
->> slider
+* 1 slider
 
->> spinner
+* 2 spinner
 
->> datetime
+* 3 datetime
 
->> circle progress
+* 4 circle progress
 
->>> circle precent bar
+    4.1 circle precent bar
 
->>> infinite progress bar
+    4.2 infinite progress bar
 
