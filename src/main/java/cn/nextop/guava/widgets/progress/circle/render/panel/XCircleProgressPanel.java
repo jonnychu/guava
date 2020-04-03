@@ -1,5 +1,7 @@
 package cn.nextop.guava.widgets.progress.circle.render.panel;
 
+import static cn.nextop.guava.utils.Fonts.bold;
+import static cn.nextop.guava.utils.Fonts.size;
 import static cn.nextop.guava.utils.SwtUtils.getDisplay;
 import static cn.nextop.guava.widgets.table.support.util.Objects.cast;
 import static java.lang.String.valueOf;
@@ -10,6 +12,7 @@ import org.eclipse.draw2d.IFigure;
 import org.eclipse.draw2d.geometry.Dimension;
 import org.eclipse.draw2d.geometry.Rectangle;
 import org.eclipse.swt.SWT;
+import org.eclipse.swt.graphics.Font;
 import org.eclipse.swt.graphics.Path;
 import org.eclipse.swt.widgets.Display;
 
@@ -60,12 +63,13 @@ public class XCircleProgressPanel extends AbstractXCircleProgressPanel {
 		g.setBackgroundColor(Colors.COLOR_WHITE);
 		g.fillOval(margin + thickness, margin + thickness, w - margin * 2 - thickness * 2, h - margin * 2 - thickness * 2);
 		
-		String text = valueOf((int)((value / range) * 100)) + "%";
-		Dimension d1 = INSTANCE.getTextExtents(text, g.getFont());
-		g.drawText(text, (w - d1.width) / 2 + 2, (h - d1.height) / 2);
+		g.setAdvanced(false); g.setAntialias(SWT.OFF); // close gdip
 		
 		//
-		g.setAdvanced(false); g.setAntialias(SWT.OFF); // close gdip
+		String text = valueOf((int)((value / range) * 100)) + "%";
+		Font f1 = bold(size(g.getFont(), 2)); g.setFont(f1);
+		Dimension d1 = INSTANCE.getTextExtents(text, f1);
+		g.drawText(text, (w - d1.width) / 2 + 2, (h - d1.height) / 2);
 	}
 	
 	@Override
