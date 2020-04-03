@@ -43,7 +43,7 @@ public class Example {
 		//datetime
 		XDateTime date = new XDateTime(cmp); date.setLayoutData("cell 0 0, width 10:150:,height 23!, span 2"); date.setInput(System.currentTimeMillis());
 		//spinner 1
-		XSpinner<BigDecimal> spinner1 = new XSpinner<>(cmp, SWT.VERTICAL, new BigDecimalFormatter("##0.00","##0")); 
+		XSpinner<BigDecimal> spinner1 = new XSpinner<>(cmp, SWT.VERTICAL, new BigDecimalFormatter("-##0.00","##0.00")); 
 		spinner1.setLayoutData("cell 0 1, width 10:150:,height 23!, span 2"); 
 		spinner1.setValue(new BigDecimal("-100.00"), new BigDecimal("100.00"), new BigDecimal("0.01"), new BigDecimal("1.00"));
 		//spinner 2
