@@ -70,7 +70,7 @@ public class XSpinner<T extends Number> extends Canvas implements ActionListener
 	}
 	
 	public void setValue(T min, T max, T step, T value) {
-		model.init(max, min, step, value); this.panel.repaint();
+		model.init(min, max, step, value); this.panel.repaint();
 	}
 	
 	@Override
