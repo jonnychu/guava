@@ -77,13 +77,10 @@ public class XSpinner<T extends Number> extends Canvas implements ActionListener
 	public void actionPerformed(ActionEvent e) {
 		switch (e.getActionName()) {
 		case "button.up":
-			model.increment(); builder.getTxtSpinner().repaint();
-			break;
+			model.increment(); builder.getTxtSpinner().repaint(); break;
 		case "button.down":
-			model.decrement(); builder.getTxtSpinner().repaint();
-			break;
-		default:
-			break;
+			model.decrement(); builder.getTxtSpinner().repaint(); break;
+		default: throw new RuntimeException("NO !!!"+e);
 		}
 	}
 }

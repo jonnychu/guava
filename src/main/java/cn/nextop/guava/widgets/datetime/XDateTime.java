@@ -45,8 +45,13 @@ public class XDateTime extends Canvas {
 	/**
 	 * 
 	 */
-	public long getInput() { return this.model.getTime(); }
-	public void setInput(long time) { this.model.setTime(time); }
+	public long getInput() {
+		return this.model.getTime();
+	}
+
+	public void setInput(long time) {
+		this.model.setTime(time); textPanel.repaint();
+	}
 	
 	/**
 	 * 
