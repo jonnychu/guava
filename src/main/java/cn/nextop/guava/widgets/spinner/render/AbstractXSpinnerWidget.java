@@ -1,11 +1,13 @@
 package cn.nextop.guava.widgets.spinner.render;
 
-import static org.eclipse.draw2d.Cursors.HAND;
+import static org.eclipse.swt.widgets.Display.getDefault;
 
 import org.eclipse.draw2d.Figure;
 import org.eclipse.draw2d.MouseEvent;
 import org.eclipse.draw2d.MouseListener;
 import org.eclipse.draw2d.MouseMotionListener;
+import org.eclipse.swt.SWT;
+import org.eclipse.swt.graphics.Cursor;
 
 /**
  * @author jonny
@@ -19,6 +21,7 @@ public abstract class AbstractXSpinnerWidget extends Figure {
 	protected boolean selected = false;
 	//
 	protected final int margin = 2, arc = 3, oval = 5;
+	protected Cursor ctext = getDefault().getSystemCursor(SWT.CURSOR_IBEAM);
 	
 	/**
 	 * 
@@ -72,5 +75,5 @@ public abstract class AbstractXSpinnerWidget extends Figure {
 	public void handleMouseExited(MouseEvent event) { super.handleMouseExited(event); this.enter = false; repaint(); }
 	
 	@Override
-	public void handleMouseEntered(MouseEvent event) { super.handleMouseEntered(event); this.enter = true; if(this.isEnabled()) setCursor(HAND); repaint(); }
+	public void handleMouseEntered(MouseEvent event) { super.handleMouseEntered(event); this.enter = true; if(this.isEnabled()) setCursor(ctext); repaint(); }
 }
