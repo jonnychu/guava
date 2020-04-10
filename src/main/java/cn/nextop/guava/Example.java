@@ -6,6 +6,8 @@ import static cn.nextop.guava.utils.SwtUtils.dispatch;
 import static cn.nextop.guava.utils.SwtUtils.sync;
 
 import java.math.BigDecimal;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Timer;
 import java.util.TimerTask;
 
@@ -21,15 +23,14 @@ import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Shell;
 
 import cn.nextop.guava.utils.SwtUtils;
+import cn.nextop.guava.widgets.combo.XCombo;
+import cn.nextop.guava.widgets.combo.builder.AbstractXComboBuilder;
+import cn.nextop.guava.widgets.combo.model.row.IRow;
 import cn.nextop.guava.widgets.datetime.XDateTime;
 import cn.nextop.guava.widgets.progress.circle.XCircleProgress;
 import cn.nextop.guava.widgets.progress.circle1.XInfiniteProgress;
 import cn.nextop.guava.widgets.slider.XSlider;
 import cn.nextop.guava.widgets.spinner.XSpinner;
-import cn.nextop.guava.widgets.table.XTable;
-import cn.nextop.guava.widgets.table.builder.XTableAdapter;
-import cn.nextop.guava.widgets.table.builder.XTableBuilder;
-import cn.nextop.guava.widgets.table.model.basic.row.XTableRow;
 import net.miginfocom.swt.MigLayout;
 
 
@@ -39,7 +40,7 @@ public class Example {
 		final String name = "Widget Example";
 		Shell shell = creator(500, 500, name);
 		Composite cmp = SwtUtils.creator(shell);
-		cmp.setLayout(new MigLayout("insets 5, gap 0 0","[fill,grow,center][fill,grow,center]","[fill,grow][fill,grow][fill,grow][fill,grow][fill,grow][fill,grow]"));
+		cmp.setLayout(new MigLayout("insets 5, gap 0 0","[fill,grow,center][fill,grow,center]","[fill,grow][fill,grow][fill,grow][fill,grow][fill,grow][fill,grow][fill,grow]"));
 		//datetime
 		XDateTime date = new XDateTime(cmp); date.setLayoutData("cell 0 0, width 10:150:,height 23!, span 2"); date.setInput(System.currentTimeMillis());
 		//spinner 1
@@ -79,6 +80,32 @@ public class Example {
 				}
 			}
 		});
+		
+		XCombo combo = new AbstractXComboBuilder<Row>() {
+			
+			@Override
+			public XCombo builder(Composite cmp) {
+				XComboBuilder r = new XComboBuilder();
+				r.colum().text("Select").align(SWT.LEFT).bool().property("isSelected").weight(1);
+				r.colum().text("Column1").align(SWT.CENTER).property("getCol2").weight(1);
+				r.colum().text("Column2").align(SWT.RIGHT).property("getCol3").weight(1);
+				return r.builder(cmp);
+			}
+		}.builder(cmp); 
+		
+		List<IRow> rows = new ArrayList<>();
+		rows.add(example.new Row(true, "row11", "row12"));
+		rows.add(example.new Row(true, "row21", "row22"));
+		rows.add(example.new Row(true, "row31", "row32"));
+		rows.add(example.new Row(true, "row41", "row42"));
+		rows.add(example.new Row(true, "row51", "row52"));
+		rows.add(example.new Row(true, "row61", "row62"));
+		rows.add(example.new Row(true, "row71", "row72"));
+		rows.add(example.new Row(true, "row81", "row82"));
+		rows.add(example.new Row(true, "row91", "row92"));
+		rows.add(example.new Row(true, "row101", "row102"));
+		combo.input(rows);
+		combo.setLayoutData("cell 0 6, width 10:150:,height 24!, span 2");
 		
 		//
 //		ExampleAdapter adapter = example.new ExampleAdapter();
@@ -138,69 +165,44 @@ public class Example {
 		}
 	}
 	
-	public class ExampleAdapter extends XTableAdapter<Row> {
+	public class Row implements IRow {
+		//
+		private boolean selected;
+		private String col2, col3;
+		
+		/**
+		 * 
+		 */
+		public Row(boolean selected, String col2, String col3) {
+			this.selected = selected; this.col2 = col2; this.col3 = col3;
+		}
+		
+		/**
+		 * 
+		 */
+		public String getCol2() {
+			return col2;
+		}
 
-		@Override
-		public XTable build(Composite cmp) {
-			XTableBuilder r = new XTableBuilder(cmp);
-			r.column().text("no1").property(Row.class, "name1").pixel(100).build();
-			r.column().text("no2").property(Row.class, "name2").pixel(100).build();
-			r.column().text("no3").property(Row.class, "name3").pixel(200).build();
-			r.column().text("no4").property(Row.class, "name4").pixel(100).build();
-			r.column().text("no5").property(Row.class, "name5").pixel(100).build();
-			return r.builder();
+		public void setCol2(String col2) {
+			this.col2 = col2;
 		}
-	}
-	
-	public class Row implements XTableRow.RowIdAware {
-		private String name1;
-		private String name2;
-		private String name3;
-		private String name4;
-		private String name5;
+
+		public String getCol3() {
+			return col3;
+		}
+
+		public void setCol3(String col3) {
+			this.col3 = col3;
+		}
 		
 		@Override
-		public Object rowId() {
-			return null;
+		public boolean isSelected() {
+			return this.selected;
 		}
 		
-		public Row(String name1, String name2, String name3, String name4, String name5) {
-			this.name1 = name1;
-			this.name2 = name2;
-			this.name3 = name3;
-			this.name4 = name4;
-			this.name5 = name5;
-		}
-		
-		public String getName1() {
-			return name1;
-		}
-		public void setName1(String name1) {
-			this.name1 = name1;
-		}
-		public String getName2() {
-			return name2;
-		}
-		public void setName2(String name2) {
-			this.name2 = name2;
-		}
-		public String getName3() {
-			return name3;
-		}
-		public void setName3(String name3) {
-			this.name3 = name3;
-		}
-		public String getName4() {
-			return name4;
-		}
-		public void setName4(String name4) {
-			this.name4 = name4;
-		}
-		public String getName5() {
-			return name5;
-		}
-		public void setName5(String name5) {
-			this.name5 = name5;
+		public void setSelected(boolean selected) {
+			this.selected = selected;
 		}
 	}
 }
