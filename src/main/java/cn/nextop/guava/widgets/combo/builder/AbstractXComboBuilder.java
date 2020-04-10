@@ -7,6 +7,7 @@ import org.eclipse.swt.widgets.Composite;
 import cn.nextop.guava.widgets.combo.XCombo;
 import cn.nextop.guava.widgets.combo.model.colum.Column;
 import cn.nextop.guava.widgets.combo.model.colum.Columns;
+import cn.nextop.guava.widgets.combo.model.config.XComboConfig;
 import cn.nextop.guava.widgets.combo.render.popup.widget.BoolCellWidget;
 import cn.nextop.guava.widgets.combo.support.property.Property;
 
@@ -24,14 +25,23 @@ public abstract class AbstractXComboBuilder<T> {
 	
 	public class XComboBuilder {
 		//
-		private Column<T> colum;
+		private XCombo combo;
 		private Columns colums;
+		private Column<T> colum;
 		
 		/**
 		 * 
 		 */
-		public XComboBuilder() {
+		public XComboConfig getXComboConfig() {
+			return this.combo.getModel().getXComboConfig();
+		}
+		
+		/**
+		 * 
+		 */
+		public XComboBuilder(Composite cmp) {
 			this.colums = new Columns();
+			this.combo = new XCombo(cmp);
 		}
 		
 		public XComboBuilder align(int align) {
@@ -58,8 +68,7 @@ public abstract class AbstractXComboBuilder<T> {
 			this.colum.setProperty(new Property<T>(getTClass(), name)); return this;
 		}
 		
-		public XCombo builder(Composite cmp) {
-			XCombo combo = new XCombo(cmp);
+		public XCombo builder() {
 			combo.getModel().setColums(this.colums);
 			return combo;
 		}

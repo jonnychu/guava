@@ -47,6 +47,9 @@ public class XCombo extends Canvas {
 		this.textPanel.addMouseListener(new ShowPopupAction());
 	}
 	
+	/**
+	 * 
+	 */
 	public void input(List<IRow> rows) {
 		this.model.setRows(new Rows(rows));
 	}

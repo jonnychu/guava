@@ -15,7 +15,6 @@ import cn.nextop.guava.utils.Layout;
 import cn.nextop.guava.widgets.combo.model.XComboModel;
 import cn.nextop.guava.widgets.combo.model.colum.Column;
 import cn.nextop.guava.widgets.combo.model.config.XComboConfig;
-import cn.nextop.guava.widgets.combo.model.row.IRow;
 import cn.nextop.guava.widgets.combo.render.popup.PopupPanel;
 import cn.nextop.guava.widgets.combo.render.popup.content.DataContent;
 import cn.nextop.guava.widgets.combo.render.popup.content.HeaderContent;
@@ -50,21 +49,18 @@ public class XComboPopup extends Canvas {
 		getShell().addListener(SWT.Deactivate, new DeactivateListener());
 	}
 
-	public void input(List<IRow> rows) {
-		
-	}
-	
 	public void show() {
 		final XComboModel model = combo.getModel();
 		final XComboConfig cfg = model.getXComboConfig();
+		final int size = model.getRows().getRows().size();
 		final List<Column<?>> cols = model.getColums().getColums();
 		final int w = cfg.getPopupWidth(), h = cfg.getPopupHeight();
-		Layout.layout(combo, getShell(), w, h); if(cfg.hasHeader()) {
-			popup.setHeaderContents(new HeaderContent("header.content", cols));
-		}
-		DataContent data = new DataContent("data.content", popup, cols);
-		popup.setDataContents(data); data.invalidate();
-		getShell().open();
+		final int h1 = cfg.getHeaderHeight(), h2 = cfg.getItemHeight();
+		boolean x = cfg.hasHeader(); int totalHeight = (x ? h1 : 0) + h2 * size;
+		Layout.layout(combo, getShell(), w, totalHeight < h ? totalHeight : h); 
+		//
+		if(x) popup.setHeaderContents(new HeaderContent("header.content", cols));
+		popup.setDataContents(new DataContent("data.content", popup, cols)); getShell().open();
 	}
 	
 	public void hide() {

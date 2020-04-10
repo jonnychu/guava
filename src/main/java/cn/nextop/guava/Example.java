@@ -25,6 +25,7 @@ import org.eclipse.swt.widgets.Shell;
 import cn.nextop.guava.utils.SwtUtils;
 import cn.nextop.guava.widgets.combo.XCombo;
 import cn.nextop.guava.widgets.combo.builder.AbstractXComboBuilder;
+import cn.nextop.guava.widgets.combo.model.config.XComboConfig;
 import cn.nextop.guava.widgets.combo.model.row.IRow;
 import cn.nextop.guava.widgets.datetime.XDateTime;
 import cn.nextop.guava.widgets.progress.circle.XCircleProgress;
@@ -40,7 +41,7 @@ public class Example {
 		final String name = "Widget Example";
 		Shell shell = creator(500, 500, name);
 		Composite cmp = SwtUtils.creator(shell);
-		cmp.setLayout(new MigLayout("insets 5, gap 0 0","[fill,grow,center][fill,grow,center]","[fill,grow][fill,grow][fill,grow][fill,grow][fill,grow][fill,grow][fill,grow]"));
+		cmp.setLayout(new MigLayout("insets 5, gap 0 0","[fill,grow,center][fill,grow,center]","[fill,grow][fill,grow][fill,grow][fill,grow][fill,grow][fill,grow][fill,grow][fill,grow]"));
 		//datetime
 		XDateTime date = new XDateTime(cmp); date.setLayoutData("cell 0 0, width 10:150:,height 23!, span 2"); date.setInput(System.currentTimeMillis());
 		//spinner 1
@@ -81,31 +82,87 @@ public class Example {
 			}
 		});
 		
-		XCombo combo = new AbstractXComboBuilder<Row>() {
+		//
+		{
+			XCombo combo = new AbstractXComboBuilder<Row>() {
+				
+				@Override
+				public XCombo builder(Composite cmp) {
+					XComboBuilder r = new XComboBuilder(cmp);
+					r.colum().text("Select").align(SWT.LEFT).bool().property("isSelected").weight(1);
+					r.colum().text("Column1").align(SWT.CENTER).property("getCol2").weight(1);
+					r.colum().text("Column2").align(SWT.RIGHT).property("getCol3").weight(1);
+					return r.builder();
+				}
+			}.builder(cmp); 
 			
-			@Override
-			public XCombo builder(Composite cmp) {
-				XComboBuilder r = new XComboBuilder();
-				r.colum().text("Select").align(SWT.LEFT).bool().property("isSelected").weight(1);
-				r.colum().text("Column1").align(SWT.CENTER).property("getCol2").weight(1);
-				r.colum().text("Column2").align(SWT.RIGHT).property("getCol3").weight(1);
-				return r.builder(cmp);
-			}
-		}.builder(cmp); 
+			List<IRow> rows = new ArrayList<>();
+			rows.add(example.new Row(true, "row11", "row12"));
+			rows.add(example.new Row(true, "row21", "row22"));
+			rows.add(example.new Row(true, "row31", "row32"));
+			rows.add(example.new Row(true, "row41", "row42"));
+			rows.add(example.new Row(true, "row51", "row52"));
+			rows.add(example.new Row(true, "row61", "row62"));
+			rows.add(example.new Row(true, "row71", "row72"));
+			rows.add(example.new Row(true, "row81", "row82"));
+			rows.add(example.new Row(true, "row91", "row92"));
+			rows.add(example.new Row(true, "row101", "row102"));
+			combo.input(rows);
+			combo.setLayoutData("cell 0 6, width 10:150:,height 24!");
+		}
+
 		
-		List<IRow> rows = new ArrayList<>();
-		rows.add(example.new Row(true, "row11", "row12"));
-		rows.add(example.new Row(true, "row21", "row22"));
-		rows.add(example.new Row(true, "row31", "row32"));
-		rows.add(example.new Row(true, "row41", "row42"));
-		rows.add(example.new Row(true, "row51", "row52"));
-		rows.add(example.new Row(true, "row61", "row62"));
-		rows.add(example.new Row(true, "row71", "row72"));
-		rows.add(example.new Row(true, "row81", "row82"));
-		rows.add(example.new Row(true, "row91", "row92"));
-		rows.add(example.new Row(true, "row101", "row102"));
-		combo.input(rows);
-		combo.setLayoutData("cell 0 6, width 10:150:,height 24!, span 2");
+		//
+		{
+			XCombo combo = new AbstractXComboBuilder<Row>() {
+				
+				@Override
+				public XCombo builder(Composite cmp) {
+					//
+					XComboBuilder r = new XComboBuilder(cmp);
+					XComboConfig config = r.getXComboConfig();
+					config.setHeader(false); config.setPopupWidth(200); config.setPopupHeight(200);;
+					
+					r.colum().text("Select").align(SWT.LEFT).bool().property("isSelected").weight(2);
+					r.colum().text("Column1").align(SWT.CENTER).property("getCol2").weight(8);
+					return r.builder();
+				}
+			}.builder(cmp); 
+			
+			List<IRow> rows = new ArrayList<>();
+			rows.add(example.new Row(true, "row11", "row12"));
+			rows.add(example.new Row(true, "row21", "row22"));
+			rows.add(example.new Row(true, "row31", "row32"));
+			rows.add(example.new Row(true, "row41", "row42"));
+			rows.add(example.new Row(true, "row51", "row52"));
+			combo.input(rows);
+			combo.setLayoutData("cell 1 6, width 10:150:,height 24!");
+		}
+
+		{
+			XCombo combo = new AbstractXComboBuilder<Row>() {
+				
+				@Override
+				public XCombo builder(Composite cmp) {
+					//
+					XComboBuilder r = new XComboBuilder(cmp);
+					XComboConfig config = r.getXComboConfig();
+					config.setHeader(false); config.setPopupWidth(200); config.setPopupHeight(200);;
+					
+					r.colum().text("Column1").align(SWT.LEFT).property("getCol2").weight(8);
+					return r.builder();
+				}
+			}.builder(cmp); 
+			
+			List<IRow> rows = new ArrayList<>();
+			rows.add(example.new Row(true, "row11", "row12"));
+			rows.add(example.new Row(true, "row21", "row22"));
+			rows.add(example.new Row(true, "row31", "row32"));
+			rows.add(example.new Row(true, "row41", "row42"));
+			rows.add(example.new Row(true, "row51", "row52"));
+			combo.input(rows);
+			combo.setLayoutData("cell 0 7, width 10:150:,height 24!");
+		}
 		
 		//
 //		ExampleAdapter adapter = example.new ExampleAdapter();
