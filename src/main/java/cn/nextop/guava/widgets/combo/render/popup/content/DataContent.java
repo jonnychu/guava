@@ -14,7 +14,6 @@ import cn.nextop.guava.widgets.combo.model.XComboModel;
 import cn.nextop.guava.widgets.combo.model.colum.Column;
 import cn.nextop.guava.widgets.combo.model.config.XComboConfig;
 import cn.nextop.guava.widgets.combo.model.row.IRow;
-import cn.nextop.guava.widgets.combo.model.row.Rows;
 import cn.nextop.guava.widgets.combo.render.AbstractCellWidget;
 import cn.nextop.guava.widgets.combo.render.popup.PopupPanel;
 
@@ -71,32 +70,24 @@ public class DataContent extends AbstractPanel {
 		XComboModel model = popup.getXCombo().getModel();
 		XComboConfig config = model.getXComboConfig();
 		//
-		final Rows rows = model.getRows();
-		final int size = rows.getRows().size();
 		final Rectangle r = content.getClientArea();
-		int x = r.x, y = r.y, w = r.width, h = r.height;
-		
-		//
-		int total = 0; for (int i = 0; i < columns.size(); i++) {
-			total = total +  columns.get(i).getWeight();
+		int tw = 0; for (int i = 0; i < columns.size(); i++) {
+			tw = tw +  columns.get(i).getWeight();
 		}
 		
 		//
-		final int aw = w / total, ih = config.getItemHeight();
-		content.setSize(w, size * ih);
+		final int aw = r.width / tw, ih = config.getItemHeight();
 		for (int i = 0; i < widgets.length; i++) {
-			int cx = 0, rw = w;
+			int cx = 0, rw = r.width;
 			for (int j = 0; j < widgets[i].length; j++) {
 				AbstractCellWidget cw = widgets[i][j];
 				if(j == widgets[i].length - 1) {
-					cw.setBounds(new Rectangle(x + cx, y + ih * i, rw, ih));
+					cw.setBounds(new Rectangle(r.x + cx, r.y + ih * i, rw, ih));
 				} else {
-					cw.setBounds(new Rectangle(x + cx, y + ih * i, aw, ih));
+					cw.setBounds(new Rectangle(r.x + cx, r.y + ih * i, aw, ih));
 				}
 				cx = cx + aw; rw = rw - aw;
 			}
 		}
-		
-		System.out.println(content.getBounds());
 	}
 }
