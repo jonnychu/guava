@@ -16,8 +16,8 @@ import cn.nextop.guava.widgets.combo.model.XComboModel;
 import cn.nextop.guava.widgets.combo.model.colum.Column;
 import cn.nextop.guava.widgets.combo.model.config.XComboConfig;
 import cn.nextop.guava.widgets.combo.render.popup.PopupPanel;
-import cn.nextop.guava.widgets.combo.render.popup.content.DataContent;
-import cn.nextop.guava.widgets.combo.render.popup.content.HeaderContent;
+import cn.nextop.guava.widgets.combo.render.popup.content.data.DataContent;
+import cn.nextop.guava.widgets.combo.render.popup.content.header.HeaderContent;
 
 /**
  * @author jonny

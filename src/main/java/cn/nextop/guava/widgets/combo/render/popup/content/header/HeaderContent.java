@@ -1,4 +1,4 @@
-package cn.nextop.guava.widgets.combo.render.popup.content;
+package cn.nextop.guava.widgets.combo.render.popup.content.header;
 
 import static cn.nextop.guava.widgets.table.support.util.Objects.cast;
 
@@ -7,16 +7,16 @@ import java.util.List;
 import org.eclipse.draw2d.IFigure;
 import org.eclipse.draw2d.geometry.Rectangle;
 
-import cn.nextop.guava.widgets.AbstractPanel;
 import cn.nextop.guava.widgets.combo.model.colum.Column;
 import cn.nextop.guava.widgets.combo.render.AbstractColumnWidget;
+import cn.nextop.guava.widgets.combo.render.AbstractComboPanel;
 import cn.nextop.guava.widgets.combo.render.popup.PopupPanel;
 import cn.nextop.guava.widgets.combo.render.popup.widget.DefaultColumnWidget;
 
 /**
  * @author jonny
  */
-public class HeaderContent extends AbstractPanel {
+public class HeaderContent extends AbstractComboPanel {
 	//
 	private PopupPanel panel;
 	private AbstractColumnWidget[] widgets;

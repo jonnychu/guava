@@ -160,6 +160,7 @@ public class Example {
 			rows.add(example.new Row(true, "row31", "row32"));
 			rows.add(example.new Row(true, "row41", "row42"));
 			rows.add(example.new Row(true, "row51", "row52"));
+			rows.add(example.new Row(true, "row51", "row52"));
 			combo.input(rows);
 			combo.setLayoutData("cell 0 7, width 10:150:,height 24!");
 		}

@@ -12,6 +12,9 @@ import cn.nextop.guava.utils.Colors;
 import cn.nextop.guava.widgets.combo.model.colum.Column;
 import cn.nextop.guava.widgets.combo.render.AbstractColumnWidget;
 
+/**
+ * @author jonny
+ */
 public class DefaultColumnWidget extends AbstractColumnWidget {
 	
 	//
