@@ -123,8 +123,8 @@ public class Example {
 					XComboConfig config = r.getXComboConfig();
 					config.setHeader(false); config.setPopupWidth(200); config.setPopupHeight(200);;
 					
-					r.colum().text("Select").align(SWT.LEFT).bool().property("selected").weight(2);
-					r.colum().text("Column1").align(SWT.CENTER).property("col2").weight(8);
+					r.colum().text("Select").align(SWT.LEFT).bool().property("selected").weight(3);
+					r.colum().text("Column1").align(SWT.CENTER).property("col2").weight(7);
 					return r.builder();
 				}
 			}.builder(cmp); 

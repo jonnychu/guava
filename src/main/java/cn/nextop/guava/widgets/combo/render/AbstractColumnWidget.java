@@ -14,7 +14,7 @@ public abstract class AbstractColumnWidget extends Figure {
 	protected boolean editable = true;
 	protected boolean selected = false;
 	//
-	protected final int margin = 5, arc = 3, oval = 5;
+	protected final int margin = 8, arc = 3, oval = 5;
 	
 	public String getText() {
 		return text;

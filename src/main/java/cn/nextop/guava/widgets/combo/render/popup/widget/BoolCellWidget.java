@@ -30,7 +30,7 @@ public class BoolCellWidget extends AbstractCellWidget {
 		final int align = column.getAlign();
 		Property<?> property = column.getProperty();
 		boolean selected = cast(property.getValue(cast(row)));
-		g.setFont(FontAwesome.getFont()); this.text = selected ? check : "";
+		g.setFont(FontAwesome.getFont(10)); this.text = selected ? check : "";
 		Dimension d1 = INSTANCE.getStringExtents(text, g.getFont());
 		if(align == SWT.LEFT) {
 			g.drawText(this.text, r.x + margin, r.y + (r.height - d1.height) / 2);
