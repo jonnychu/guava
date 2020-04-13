@@ -1,9 +1,9 @@
 package cn.nextop.guava;
 
-import static cn.nextop.guava.utils.SwtUtils.async;
-import static cn.nextop.guava.utils.SwtUtils.creator;
-import static cn.nextop.guava.utils.SwtUtils.dispatch;
-import static cn.nextop.guava.utils.SwtUtils.sync;
+import static cn.nextop.guava.support.swt.SwtUtils.async;
+import static cn.nextop.guava.support.swt.SwtUtils.creator;
+import static cn.nextop.guava.support.swt.SwtUtils.dispatch;
+import static cn.nextop.guava.support.swt.SwtUtils.sync;
 
 import java.math.BigDecimal;
 import java.util.ArrayList;
@@ -22,7 +22,7 @@ import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Shell;
 
-import cn.nextop.guava.utils.SwtUtils;
+import cn.nextop.guava.support.swt.SwtUtils;
 import cn.nextop.guava.widgets.combo.XCombo;
 import cn.nextop.guava.widgets.combo.builder.AbstractXComboBuilder;
 import cn.nextop.guava.widgets.combo.model.config.XComboConfig;

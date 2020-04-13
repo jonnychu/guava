@@ -1,6 +1,6 @@
 package cn.nextop.guava.widgets.datetime;
 
-import static cn.nextop.guava.utils.SwtUtils.shell;
+import static cn.nextop.guava.support.swt.SwtUtils.shell;
 
 import org.eclipse.draw2d.LightweightSystem;
 import org.eclipse.swt.SWT;

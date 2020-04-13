@@ -1,12 +1,12 @@
 package cn.nextop.guava.widgets.datetime.render.popup.calendar.time;
 
-import static cn.nextop.guava.widgets.table.support.util.Objects.cast;
+import static cn.nextop.guava.support.Objects.cast;
 
 import org.eclipse.draw2d.Graphics;
 import org.eclipse.draw2d.IFigure;
 import org.eclipse.draw2d.geometry.Rectangle;
 
-import cn.nextop.guava.utils.Colors;
+import cn.nextop.guava.support.swt.Colors;
 import cn.nextop.guava.widgets.datetime.builder.XDateTimePopupBuilder;
 import cn.nextop.guava.widgets.datetime.render.AbstractTimePanel;
 import cn.nextop.guava.widgets.datetime.render.popup.calendar.common.widget.DateButtonWidget;

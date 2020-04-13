@@ -1,6 +1,6 @@
 package cn.nextop.guava.widgets.spinner;
 
-import static cn.nextop.guava.widgets.table.support.util.Objects.cast;
+import static cn.nextop.guava.support.Objects.cast;
 import static org.eclipse.swt.SWT.LEFT;
 import static org.eclipse.swt.SWT.RIGHT;
 
@@ -9,9 +9,9 @@ import org.eclipse.swt.SWT;
 import org.eclipse.swt.widgets.Event;
 import org.eclipse.swt.widgets.Listener;
 
+import cn.nextop.guava.support.Objects;
 import cn.nextop.guava.widgets.spinner.model.XSpinnerModel;
 import cn.nextop.guava.widgets.spinner.render.widget.XSpinnerTextWidget;
-import cn.nextop.guava.widgets.table.support.util.Objects;
 
 /**
  * @author jonny

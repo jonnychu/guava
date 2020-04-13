@@ -1,6 +1,6 @@
 package cn.nextop.guava.widgets.progress.circle1;
 
-import static cn.nextop.guava.widgets.table.support.util.Objects.cast;
+import static cn.nextop.guava.support.Objects.cast;
 
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;

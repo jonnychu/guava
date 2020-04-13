@@ -1,6 +1,6 @@
 package cn.nextop.guava.widgets.datetime.render.popup.shortcut.widget;
 
-import static cn.nextop.guava.widgets.table.support.util.Objects.cast;
+import static cn.nextop.guava.support.Objects.cast;
 import static org.eclipse.draw2d.TextUtilities.INSTANCE;
 
 import org.eclipse.draw2d.Graphics;
@@ -8,7 +8,7 @@ import org.eclipse.draw2d.MouseEvent;
 import org.eclipse.draw2d.geometry.Dimension;
 import org.eclipse.draw2d.geometry.Rectangle;
 
-import cn.nextop.guava.utils.Colors;
+import cn.nextop.guava.support.swt.Colors;
 import cn.nextop.guava.widgets.datetime.action.ActionFactory.ActionType;
 import cn.nextop.guava.widgets.datetime.builder.XDateTimePopupBuilder;
 import cn.nextop.guava.widgets.datetime.render.AbstractTimeWidget;

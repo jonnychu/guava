@@ -1,13 +1,13 @@
 package cn.nextop.guava.widgets.progress.circle1.render.panel;
 
-import static cn.nextop.guava.widgets.table.support.util.Objects.cast;
+import static cn.nextop.guava.support.Objects.cast;
 
 import org.eclipse.draw2d.Graphics;
 import org.eclipse.draw2d.IFigure;
 import org.eclipse.draw2d.geometry.Rectangle;
 import org.eclipse.swt.SWT;
 
-import cn.nextop.guava.utils.Colors;
+import cn.nextop.guava.support.swt.Colors;
 import cn.nextop.guava.widgets.progress.circle1.XInfiniteProgress;
 import cn.nextop.guava.widgets.progress.circle1.model.XInfiniteProgressModel;
 import cn.nextop.guava.widgets.progress.circle1.render.AbstractXInfiniteProgressPanel;

@@ -1,7 +1,7 @@
 package cn.nextop.guava;
 
-import static cn.nextop.guava.utils.SwtUtils.creator;
-import static cn.nextop.guava.utils.SwtUtils.dispatch;
+import static cn.nextop.guava.support.swt.SwtUtils.creator;
+import static cn.nextop.guava.support.swt.SwtUtils.dispatch;
 
 import org.eclipse.draw2d.ActionEvent;
 import org.eclipse.draw2d.ActionListener;
@@ -16,8 +16,8 @@ import org.eclipse.swt.widgets.Shell;
 import com.patrikdufresne.fontawesome.FontAwesome;
 
 import cn.nextop.guava.draw2d.scroll.bar.StepButton;
-import cn.nextop.guava.utils.Colors;
-import cn.nextop.guava.utils.SwtUtils;
+import cn.nextop.guava.support.swt.Colors;
+import cn.nextop.guava.support.swt.SwtUtils;
 import net.miginfocom.swt.MigLayout;
 
 /**

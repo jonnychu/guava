@@ -1,8 +1,8 @@
 package cn.nextop.guava.widgets.datetime.render.popup.calendar.year.widget;
 
+import static cn.nextop.guava.support.Objects.cast;
 import static cn.nextop.guava.widgets.datetime.action.ActionFactory.ActionType.MONTH_SHOW;
 import static cn.nextop.guava.widgets.datetime.action.ActionFactory.ActionType.YEAR_YEAR2;
-import static cn.nextop.guava.widgets.table.support.util.Objects.cast;
 
 import org.eclipse.draw2d.Graphics;
 import org.eclipse.draw2d.MouseEvent;
@@ -10,8 +10,8 @@ import org.eclipse.draw2d.TextUtilities;
 import org.eclipse.draw2d.geometry.Dimension;
 import org.eclipse.draw2d.geometry.Rectangle;
 
-import cn.nextop.guava.utils.CGUtils;
-import cn.nextop.guava.utils.Colors;
+import cn.nextop.guava.support.swt.CGUtils;
+import cn.nextop.guava.support.swt.Colors;
 import cn.nextop.guava.widgets.datetime.render.AbstractTimeWidget;
 import cn.nextop.guava.widgets.datetime.render.popup.calendar.month.MonthPanel;
 import cn.nextop.guava.widgets.datetime.render.popup.calendar.year.YearPanel;

@@ -1,6 +1,6 @@
 package cn.nextop.guava.widgets.spinner.render.widget;
 
-import static cn.nextop.guava.utils.SwtUtils.sync;
+import static cn.nextop.guava.support.swt.SwtUtils.sync;
 import static org.eclipse.draw2d.FigureUtilities.getTextExtents;
 
 import java.util.Iterator;
@@ -19,7 +19,7 @@ import org.eclipse.draw2d.geometry.Rectangle;
 
 import com.patrikdufresne.fontawesome.FontAwesome;
 
-import cn.nextop.guava.utils.Colors;
+import cn.nextop.guava.support.swt.Colors;
 
 /**
  * @author jonny

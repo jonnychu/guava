@@ -1,6 +1,6 @@
 package cn.nextop.guava.widgets.combo.render.popup.widget;
 
-import static cn.nextop.guava.utils.CGUtils.fillRect;
+import static cn.nextop.guava.support.swt.CGUtils.fillRect;
 import static org.eclipse.draw2d.TextUtilities.INSTANCE;
 
 import org.eclipse.draw2d.Graphics;
@@ -8,7 +8,7 @@ import org.eclipse.draw2d.geometry.Dimension;
 import org.eclipse.draw2d.geometry.Rectangle;
 import org.eclipse.swt.SWT;
 
-import cn.nextop.guava.utils.Colors;
+import cn.nextop.guava.support.swt.Colors;
 import cn.nextop.guava.widgets.combo.model.colum.Column;
 import cn.nextop.guava.widgets.combo.render.AbstractColumnWidget;
 

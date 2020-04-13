@@ -10,7 +10,7 @@ import org.eclipse.draw2d.MouseListener;
 import org.eclipse.draw2d.geometry.Dimension;
 import org.eclipse.draw2d.geometry.Rectangle;
 
-import cn.nextop.guava.utils.Colors;
+import cn.nextop.guava.support.swt.Colors;
 import cn.nextop.guava.widgets.spinner.XSpinner;
 import cn.nextop.guava.widgets.spinner.model.XSpinnerModel;
 import cn.nextop.guava.widgets.spinner.render.AbstractXSpinnerWidget;

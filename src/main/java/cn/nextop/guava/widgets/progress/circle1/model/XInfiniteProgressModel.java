@@ -1,7 +1,7 @@
 package cn.nextop.guava.widgets.progress.circle1.model;
 
-import static cn.nextop.guava.utils.SwtUtils.async;
-import static cn.nextop.guava.utils.SwtUtils.sync;
+import static cn.nextop.guava.support.swt.SwtUtils.async;
+import static cn.nextop.guava.support.swt.SwtUtils.sync;
 
 import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeSupport;

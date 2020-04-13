@@ -1,7 +1,7 @@
 package cn.nextop.guava.widgets.datetime.action.time;
 
+import static cn.nextop.guava.support.Objects.cast;
 import static cn.nextop.guava.widgets.datetime.XDateTimePopup.ITEMHEIGHT;
-import static cn.nextop.guava.widgets.table.support.util.Objects.cast;
 
 import org.eclipse.draw2d.IFigure;
 

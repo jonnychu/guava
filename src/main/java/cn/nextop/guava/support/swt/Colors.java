@@ -1,4 +1,4 @@
-package cn.nextop.guava.utils;
+package cn.nextop.guava.support.swt;
 
 import static org.eclipse.swt.widgets.Display.getDefault;
 

@@ -1,6 +1,6 @@
 package cn.nextop.guava.widgets.datetime.action.year;
 
-import static cn.nextop.guava.widgets.table.support.util.Objects.cast;
+import static cn.nextop.guava.support.Objects.cast;
 import static java.lang.Integer.parseInt;
 
 import org.eclipse.draw2d.IFigure;

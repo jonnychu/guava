@@ -1,6 +1,6 @@
 package cn.nextop.guava.widgets.combo.render.popup.content.data.row;
 
-import static cn.nextop.guava.widgets.table.support.util.Objects.cast;
+import static cn.nextop.guava.support.Objects.cast;
 
 import java.util.List;
 
@@ -10,8 +10,8 @@ import org.eclipse.draw2d.MouseEvent;
 import org.eclipse.draw2d.MouseMotionListener.Stub;
 import org.eclipse.draw2d.geometry.Rectangle;
 
-import cn.nextop.guava.utils.CGUtils;
-import cn.nextop.guava.utils.Colors;
+import cn.nextop.guava.support.swt.CGUtils;
+import cn.nextop.guava.support.swt.Colors;
 import cn.nextop.guava.widgets.combo.XComboPopup;
 import cn.nextop.guava.widgets.combo.model.XComboModel;
 import cn.nextop.guava.widgets.combo.model.colum.Column;

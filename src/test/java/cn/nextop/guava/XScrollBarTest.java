@@ -1,7 +1,7 @@
 package cn.nextop.guava;
 
-import static cn.nextop.guava.utils.SwtUtils.creator;
-import static cn.nextop.guava.utils.SwtUtils.dispatch;
+import static cn.nextop.guava.support.swt.SwtUtils.creator;
+import static cn.nextop.guava.support.swt.SwtUtils.dispatch;
 
 import org.eclipse.draw2d.Graphics;
 import org.eclipse.draw2d.IFigure;
@@ -14,8 +14,8 @@ import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Shell;
 
 import cn.nextop.guava.draw2d.scroll.bar.XScrollBar;
-import cn.nextop.guava.utils.Colors;
-import cn.nextop.guava.utils.SwtUtils;
+import cn.nextop.guava.support.swt.Colors;
+import cn.nextop.guava.support.swt.SwtUtils;
 import cn.nextop.guava.widgets.AbstractPanel;
 import net.miginfocom.swt.MigLayout;
 

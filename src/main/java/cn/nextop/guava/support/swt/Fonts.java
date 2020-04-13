@@ -1,4 +1,4 @@
-package cn.nextop.guava.utils;
+package cn.nextop.guava.support.swt;
 
 import org.eclipse.jface.resource.FontDescriptor;
 import org.eclipse.swt.SWT;

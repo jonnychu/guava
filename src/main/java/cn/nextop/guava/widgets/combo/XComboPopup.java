@@ -1,6 +1,6 @@
 package cn.nextop.guava.widgets.combo;
 
-import static cn.nextop.guava.utils.SwtUtils.shell;
+import static cn.nextop.guava.support.swt.SwtUtils.shell;
 
 import java.util.List;
 
@@ -11,7 +11,7 @@ import org.eclipse.swt.widgets.Event;
 import org.eclipse.swt.widgets.Listener;
 
 import cn.nextop.guava.draw2d.scroll.support.dispatcher.ScrollEventDispatcher;
-import cn.nextop.guava.utils.Layout;
+import cn.nextop.guava.support.swt.Layout;
 import cn.nextop.guava.widgets.combo.model.XComboModel;
 import cn.nextop.guava.widgets.combo.model.colum.Column;
 import cn.nextop.guava.widgets.combo.model.config.XComboConfig;

@@ -1,4 +1,4 @@
-package cn.nextop.guava.utils;
+package cn.nextop.guava.support.swt;
 
 import org.eclipse.draw2d.Graphics;
 import org.eclipse.draw2d.geometry.Rectangle;

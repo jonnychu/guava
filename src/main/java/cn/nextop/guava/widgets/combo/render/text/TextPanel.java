@@ -1,11 +1,11 @@
 package cn.nextop.guava.widgets.combo.render.text;
 
-import static cn.nextop.guava.widgets.table.support.util.Objects.cast;
+import static cn.nextop.guava.support.Objects.cast;
 
 import org.eclipse.draw2d.Graphics;
 import org.eclipse.draw2d.IFigure;
 
-import cn.nextop.guava.utils.Colors;
+import cn.nextop.guava.support.swt.Colors;
 import cn.nextop.guava.widgets.combo.XCombo;
 import cn.nextop.guava.widgets.combo.render.AbstractComboPanel;
 import cn.nextop.guava.widgets.combo.render.text.widget.TextWidget;

@@ -1,9 +1,9 @@
 package cn.nextop.guava.widgets.progress.circle.render.panel;
 
-import static cn.nextop.guava.utils.Fonts.bold;
-import static cn.nextop.guava.utils.Fonts.size;
-import static cn.nextop.guava.utils.SwtUtils.getDisplay;
-import static cn.nextop.guava.widgets.table.support.util.Objects.cast;
+import static cn.nextop.guava.support.Objects.cast;
+import static cn.nextop.guava.support.swt.Fonts.bold;
+import static cn.nextop.guava.support.swt.Fonts.size;
+import static cn.nextop.guava.support.swt.SwtUtils.getDisplay;
 import static java.lang.String.valueOf;
 import static org.eclipse.draw2d.TextUtilities.INSTANCE;
 
@@ -16,7 +16,7 @@ import org.eclipse.swt.graphics.Font;
 import org.eclipse.swt.graphics.Path;
 import org.eclipse.swt.widgets.Display;
 
-import cn.nextop.guava.utils.Colors;
+import cn.nextop.guava.support.swt.Colors;
 import cn.nextop.guava.widgets.progress.circle.XCircleProgress;
 import cn.nextop.guava.widgets.progress.circle.render.AbstractXCircleProgressPanel;
 

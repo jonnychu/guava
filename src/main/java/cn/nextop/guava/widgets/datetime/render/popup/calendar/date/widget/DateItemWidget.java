@@ -1,8 +1,8 @@
 package cn.nextop.guava.widgets.datetime.render.popup.calendar.date.widget;
 
+import static cn.nextop.guava.support.Objects.cast;
 import static cn.nextop.guava.widgets.datetime.action.ActionFactory.ActionType.DATE_DATE;
 import static cn.nextop.guava.widgets.datetime.action.ActionFactory.ActionType.TEXT_SHOW;
-import static cn.nextop.guava.widgets.table.support.util.Objects.cast;
 import static java.lang.String.valueOf;
 import static org.eclipse.draw2d.TextUtilities.INSTANCE;
 
@@ -12,8 +12,8 @@ import org.eclipse.draw2d.geometry.Dimension;
 import org.eclipse.draw2d.geometry.Rectangle;
 import org.eclipse.swt.SWT;
 
-import cn.nextop.guava.utils.CGUtils;
-import cn.nextop.guava.utils.Colors;
+import cn.nextop.guava.support.swt.CGUtils;
+import cn.nextop.guava.support.swt.Colors;
 import cn.nextop.guava.widgets.datetime.render.AbstractTimeWidget;
 import cn.nextop.guava.widgets.datetime.render.popup.calendar.date.DatePanel;
 import cn.nextop.guava.widgets.datetime.render.text.TextPanel;

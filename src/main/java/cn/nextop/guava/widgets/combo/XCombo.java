@@ -1,6 +1,6 @@
 package cn.nextop.guava.widgets.combo;
 
-import static cn.nextop.guava.widgets.table.support.util.Objects.cast;
+import static cn.nextop.guava.support.Objects.cast;
 import static org.eclipse.swt.SWT.DOUBLE_BUFFERED;
 
 import java.util.List;
