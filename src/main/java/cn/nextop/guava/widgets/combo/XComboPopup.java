@@ -10,7 +10,6 @@ import org.eclipse.swt.widgets.Canvas;
 import org.eclipse.swt.widgets.Event;
 import org.eclipse.swt.widgets.Listener;
 
-import cn.nextop.guava.support.draw2d.scroll.support.dispatcher.ScrollEventDispatcher;
 import cn.nextop.guava.support.swt.Layout;
 import cn.nextop.guava.widgets.combo.model.XComboModel;
 import cn.nextop.guava.widgets.combo.model.colum.Column;
@@ -42,10 +41,10 @@ public class XComboPopup extends Canvas {
 		this.combo = combo;
 		//
 		this.lws = new LightweightSystem(this);
-		this.lws.setEventDispatcher(new ScrollEventDispatcher());
 		this.lws.setContents(popup = new PopupPanel("popup", this));
 		
 		//
+		getShell().addListener(SWT.MouseWheel, new MouseWhellListener());
 		getShell().addListener(SWT.Deactivate, new DeactivateListener());
 	}
 
@@ -70,5 +69,13 @@ public class XComboPopup extends Canvas {
 	/**
 	 * 
 	 */
-	private class DeactivateListener implements Listener { @Override public void handleEvent(Event event) { hide(); }}
+	private class DeactivateListener implements Listener { 
+		@Override public void handleEvent(Event event) { hide(); }
+	}
+
+	private class MouseWhellListener implements Listener {
+		@Override public void handleEvent(Event event) {
+			if(event.count > 0) popup.pageUp(); else popup.pageDown();
+		}
+	}
 }

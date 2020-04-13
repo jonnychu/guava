@@ -67,6 +67,19 @@ public class PopupPanel extends AbstractComboPanel {
 	/**
 	 * 
 	 */
+	public void pageUp() {
+		if(!this.vBar.isVisible()) return;
+		vBar.setValue(vBar.getValue() - vBar.getStepIncrement());
+	}
+	
+	public void pageDown() {
+		if(!this.vBar.isVisible()) return;
+		vBar.setValue(vBar.getValue() + vBar.getStepIncrement());
+	}
+	
+	/**
+	 * 
+	 */
 	@Override
 	protected void layoutManager(IFigure container) {
 		PopupPanel parent = cast(container);
