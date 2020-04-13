@@ -5,8 +5,8 @@ import java.util.Iterator;
 import org.eclipse.draw2d.ScrollBar;
 import org.eclipse.draw2d.ScrollPane;
 
-import cn.nextop.guava.support.draw2d.scroll.support.event.MouseWheelListener;
-import cn.nextop.guava.support.draw2d.scroll.support.event.ScrollEvent;
+import cn.nextop.guava.widgets.datetime.support.dispatcher.event.MouseWheelListener;
+import cn.nextop.guava.widgets.datetime.support.dispatcher.event.ScrollEvent;
 
 /**
  * @author jonny

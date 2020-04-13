@@ -1,11 +1,11 @@
-package cn.nextop.guava.support.draw2d.scroll.support.dispatcher;
+package cn.nextop.guava.widgets.datetime.support.dispatcher;
 
 import org.eclipse.draw2d.IFigure;
 import org.eclipse.draw2d.SWTEventDispatcher;
 import org.eclipse.swt.widgets.Event;
 
-import cn.nextop.guava.support.draw2d.scroll.support.event.ScrollEvent;
 import cn.nextop.guava.widgets.datetime.render.AbstractTimeScrollPanel;
+import cn.nextop.guava.widgets.datetime.support.dispatcher.event.ScrollEvent;
 
 /**
  * add scroll mouse event
