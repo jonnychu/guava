@@ -262,5 +262,10 @@ public class Example {
 		public void setSelected(boolean selected) {
 			this.selected = selected;
 		}
+
+		@Override
+		public Object getId() {
+			return null;
+		}
 	}
 }
