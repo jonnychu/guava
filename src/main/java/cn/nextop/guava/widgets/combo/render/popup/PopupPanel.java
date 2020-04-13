@@ -8,8 +8,8 @@ import org.eclipse.draw2d.geometry.Dimension;
 import org.eclipse.draw2d.geometry.Insets;
 import org.eclipse.draw2d.geometry.Rectangle;
 
-import cn.nextop.guava.draw2d.scroll.bar.XRangeModel;
-import cn.nextop.guava.draw2d.scroll.bar.XScrollBar;
+import cn.nextop.guava.support.draw2d.scroll.bar.XRangeModel;
+import cn.nextop.guava.support.draw2d.scroll.bar.XScrollBar;
 import cn.nextop.guava.widgets.combo.XComboPopup;
 import cn.nextop.guava.widgets.combo.model.XComboModel;
 import cn.nextop.guava.widgets.combo.model.config.XComboConfig;

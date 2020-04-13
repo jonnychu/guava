@@ -1,8 +1,11 @@
 package cn.nextop.guava.widgets.combo.support.property;
 
+import static cn.nextop.guava.support.reflection.ReflectionUtils.findField;
+import static cn.nextop.guava.support.reflection.ReflectionUtils.getterMethod;
+import static cn.nextop.guava.support.reflection.ReflectionUtils.setterMethod;
+
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
-import java.util.function.Predicate;
 
 /**
  * @author jonny
@@ -23,9 +26,9 @@ public class Property<T> {
 	 */
 	public Property(Class<T> clazz, String name) {
 		this.clazz = clazz; this.name = name;
-		this.field = getField(clazz, name);
-		this.getter = findPublicMethod(clazz, name);
-		this.setter = findPublicMethod(clazz, name);
+		this.field = findField(clazz, name);
+		this.getter = getterMethod(clazz, name);
+		this.setter = setterMethod(clazz, name);
 	}
 	
 	/**
@@ -52,20 +55,5 @@ public class Property<T> {
 		} catch (Exception e) {
 			throw new RuntimeException("failed to invoke: " + setter.getName() + ", target: " + target + ", value: " + value, e);
 		}
-	}
-	
-	/**
-	 * 
-	 */
-	public Method findPublicMethod(Class<?> clazz, String name) {
-		try { return clazz.getMethod(name); } catch (NoSuchMethodException e) { return null; }
-	}
-	
-	public Field getField (final Class<?> clazz, final String name) {
-		final Predicate<Field> t = v -> v.getName().equals(name);
-		if(clazz != null) for(Class<?> v = clazz; v != null; v = v.getSuperclass()) {
-			for(Field w : v.getDeclaredFields()) if(t.test(w)) { w.setAccessible(true); return w; }
-		}
-		return null;
 	}
 }

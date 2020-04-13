@@ -1,4 +1,4 @@
-package cn.nextop.guava.draw2d.scroll.bar;
+package cn.nextop.guava.support.draw2d.scroll.bar;
 
 import static cn.nextop.guava.support.swt.SwtUtils.sync;
 import static org.eclipse.draw2d.FigureUtilities.getTextExtents;

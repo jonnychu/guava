@@ -13,7 +13,7 @@ import org.eclipse.swt.widgets.Event;
 import org.eclipse.swt.widgets.Listener;
 import org.eclipse.swt.widgets.Shell;
 
-import cn.nextop.guava.draw2d.scroll.support.dispatcher.ScrollEventDispatcher;
+import cn.nextop.guava.support.draw2d.scroll.support.dispatcher.ScrollEventDispatcher;
 import cn.nextop.guava.widgets.datetime.action.ActionFactory;
 import cn.nextop.guava.widgets.datetime.builder.XDateTimePopupBuilder;
 import cn.nextop.guava.widgets.datetime.model.DummyCalendar;

@@ -10,7 +10,7 @@ import org.eclipse.swt.widgets.Canvas;
 import org.eclipse.swt.widgets.Event;
 import org.eclipse.swt.widgets.Listener;
 
-import cn.nextop.guava.draw2d.scroll.support.dispatcher.ScrollEventDispatcher;
+import cn.nextop.guava.support.draw2d.scroll.support.dispatcher.ScrollEventDispatcher;
 import cn.nextop.guava.support.swt.Layout;
 import cn.nextop.guava.widgets.combo.model.XComboModel;
 import cn.nextop.guava.widgets.combo.model.colum.Column;

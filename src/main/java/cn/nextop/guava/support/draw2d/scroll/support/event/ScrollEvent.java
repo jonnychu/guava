@@ -1,4 +1,4 @@
-package cn.nextop.guava.draw2d.scroll.support.event;
+package cn.nextop.guava.support.draw2d.scroll.support.event;
 
 import org.eclipse.draw2d.EventDispatcher;
 import org.eclipse.draw2d.IFigure;

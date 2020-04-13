@@ -1,4 +1,4 @@
-package cn.nextop.guava.draw2d.scroll.bar;
+package cn.nextop.guava.support.draw2d.scroll.bar;
 
 import java.util.Iterator;
 

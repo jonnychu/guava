@@ -89,9 +89,9 @@ public class Example {
 				@Override
 				public XCombo builder(Composite cmp) {
 					XComboBuilder r = new XComboBuilder(cmp);
-					r.colum().text("Select").align(SWT.LEFT).bool().property("isSelected").weight(1);
-					r.colum().text("Column1").align(SWT.CENTER).property("getCol2").weight(1);
-					r.colum().text("Column2").align(SWT.RIGHT).property("getCol3").weight(1);
+					r.colum().text("Select").align(SWT.LEFT).bool().property("selected").weight(1);
+					r.colum().text("Column1").align(SWT.CENTER).property("col2").weight(1);
+					r.colum().text("Column2").align(SWT.RIGHT).property("col3").weight(1);
 					return r.builder();
 				}
 			}.builder(cmp); 
@@ -123,8 +123,8 @@ public class Example {
 					XComboConfig config = r.getXComboConfig();
 					config.setHeader(false); config.setPopupWidth(200); config.setPopupHeight(200);;
 					
-					r.colum().text("Select").align(SWT.LEFT).bool().property("isSelected").weight(2);
-					r.colum().text("Column1").align(SWT.CENTER).property("getCol2").weight(8);
+					r.colum().text("Select").align(SWT.LEFT).bool().property("selected").weight(2);
+					r.colum().text("Column1").align(SWT.CENTER).property("col2").weight(8);
 					return r.builder();
 				}
 			}.builder(cmp); 
@@ -149,7 +149,7 @@ public class Example {
 					XComboConfig config = r.getXComboConfig();
 					config.setHeader(false); config.setPopupWidth(200); config.setPopupHeight(200);;
 					
-					r.colum().text("Column1").align(SWT.LEFT).property("getCol2").weight(8);
+					r.colum().text("Column1").align(SWT.LEFT).property("col2").weight(8);
 					return r.builder();
 				}
 			}.builder(cmp); 

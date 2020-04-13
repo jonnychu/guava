@@ -12,7 +12,7 @@ import org.eclipse.draw2d.geometry.Point;
 import org.eclipse.draw2d.geometry.Rectangle;
 import org.eclipse.draw2d.geometry.Translatable;
 
-import cn.nextop.guava.draw2d.scroll.bar.XRangeModel;
+import cn.nextop.guava.support.draw2d.scroll.bar.XRangeModel;
 import cn.nextop.guava.widgets.AbstractPanel;
 
 /**

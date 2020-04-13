@@ -1,6 +1,7 @@
 package cn.nextop.guava.widgets.combo.render.popup.content.data.row;
 
 import static cn.nextop.guava.support.Objects.cast;
+import static cn.nextop.guava.support.swt.CGUtils.fillRect;
 
 import java.util.List;
 
@@ -10,7 +11,6 @@ import org.eclipse.draw2d.MouseEvent;
 import org.eclipse.draw2d.MouseMotionListener.Stub;
 import org.eclipse.draw2d.geometry.Rectangle;
 
-import cn.nextop.guava.support.swt.CGUtils;
 import cn.nextop.guava.support.swt.Colors;
 import cn.nextop.guava.widgets.combo.XComboPopup;
 import cn.nextop.guava.widgets.combo.model.XComboModel;
@@ -42,19 +42,16 @@ public class RowPanel extends AbstractComboPanel {
 				this.widgets[i] = cast(clazz.newInstance());
 				this.widgets[i].setColumn(column);
 				this.widgets[i].setRow(row); add(this.widgets[i]);
-			} catch (InstantiationException e) {
-				e.printStackTrace();
-			} catch (IllegalAccessException e) {
-				e.printStackTrace();
+			} catch (InstantiationException | IllegalAccessException e) {
+				throw new RuntimeException(e);
 			}
 		}
 	}
 	
 	@Override
 	protected void paintClientArea(Graphics g) {
-		if(enter) CGUtils.fillRect(g, getClientArea(), Colors.COLOR_GRAY);
-		else CGUtils.fillRect(g, getClientArea(), Colors.COLOR_WHITE);
-		super.paintClientArea(g);
+		if(enter) fillRect(g, getClientArea(), Colors.COLOR_GRAY);
+		else fillRect(g, getClientArea(), Colors.COLOR_WHITE); super.paintClientArea(g);
 	}
 	
 	@Override
@@ -84,12 +81,8 @@ public class RowPanel extends AbstractComboPanel {
 	}
 	
 	@Override
-	public void handleMouseExited(MouseEvent event) {
-		enter = false; repaint();
-	}
+	public void handleMouseExited(MouseEvent event) { super.handleMouseExited(event); enter = false; repaint(); }
 	
 	@Override
-	public void handleMouseEntered(MouseEvent event) {
-		enter = true; repaint();
-	}
+	public void handleMouseEntered(MouseEvent event) { super.handleMouseEntered(event); enter = true; repaint(); }
 }
