@@ -52,5 +52,11 @@ public class ReflectionUtilsTest {
 		System.out.println(ReflectionUtils.findMethod(Row.class, "getCol3"));
 		System.out.println(ReflectionUtils.findField(Row.class, "selected"));
 		System.out.println(ReflectionUtils.findField(Row.class, "selected").getType());
+		
+		System.out.println(ReflectionUtils.getterMethod(Row.class, "col3"));
+		System.out.println(ReflectionUtils.getterMethod(Row.class, "selected"));
+		System.out.println(ReflectionUtils.setterMethod(Row.class, "col3"));
+		System.out.println(ReflectionUtils.setterMethod(Row.class, "col3"));
+		System.out.println(ReflectionUtils.setterMethod(Row.class, "col3"));
 	}
 }

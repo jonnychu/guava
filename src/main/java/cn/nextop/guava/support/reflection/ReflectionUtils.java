@@ -537,4 +537,60 @@ public final class ReflectionUtils {
 		 */
 		boolean matches(Field field);
 	}
+	
+	/**
+	 * 
+	 */
+	public static Method getterMethod(Class<?> clazz, String name) {
+		return getMethod(clazz, name , (m) -> {
+			final String mn = m.getName();
+			if(isGetter(m) && (mn.equalsIgnoreCase("get" + name)
+					|| mn.equalsIgnoreCase("is" + name))) return true; return false;
+		});
+	}
+	
+	public static Method setterMethod(Class<?> clazz, String name) {
+		return getMethod(clazz, name , (m) -> {
+			final String mn = m.getName();
+			if(isSetter(m) && mn.equalsIgnoreCase("set" + name)) return true; return false;
+		});
+	}
+	
+	public static Method getMethod(Class<?> clazz, String name, @Nullable MethodFilter mf) {
+		Method[] methods = getDeclaredMethods(clazz);
+		for (Method method : methods) {
+			if (mf != null && !mf.matches(method)) {
+				continue;
+			}
+			return method;
+		}
+		if (clazz.getSuperclass() != null) {
+			getMethod(clazz.getSuperclass(), name, mf);
+		}
+		else if (clazz.isInterface()) {
+			for (Class<?> superIfc : clazz.getInterfaces()) {
+				getMethod(superIfc, name, mf);
+			}
+		}
+		return null;
+	}
+	
+	public static boolean isGetter(Method method) {
+		if (!(method.getName().startsWith("get")
+				|| method.getName().startsWith("is")))
+			return false;
+		if (method.getParameterTypes().length != 0)
+			return false;
+		if (void.class.equals(method.getReturnType()))
+			return false;
+		return true;
+	}
+
+	public static boolean isSetter(Method method) {
+		if (!method.getName().startsWith("set"))
+			return false;
+		if (method.getParameterTypes().length != 1)
+			return false;
+		return true;
+	}
 }
