@@ -2,7 +2,6 @@ package cn.nextop.guava.widgets.combo.model.colum;
 
 import org.eclipse.swt.SWT;
 
-import cn.nextop.guava.widgets.combo.render.AbstractColumnWidget;
 import cn.nextop.guava.widgets.combo.render.popup.widget.DefaultCellWidget;
 import cn.nextop.guava.widgets.combo.render.popup.widget.DefaultColumnWidget;
 import cn.nextop.guava.widgets.combo.support.property.Property;
@@ -13,16 +12,17 @@ public class Column<T> {
 	private int height = 24;
 	private String text = "";
 	private int align = SWT.CENTER;
+	//
 	private Property<T> property;
 	private Class<?> cellWidget;
-	private AbstractColumnWidget columnwidget;
+	private Class<?> columnwidget;
 	
 	/**
 	 * 
 	 */
 	public Column() {
 		this.cellWidget = DefaultCellWidget.class;
-		this.columnwidget = new DefaultColumnWidget(this);
+		this.columnwidget = DefaultColumnWidget.class;
 	}
 	
 	/**
@@ -59,7 +59,15 @@ public class Column<T> {
 	public void setHeight(int height) {
 		this.height = height;
 	}
+	
+	public Property<T> getProperty() {
+		return property;
+	}
 
+	public void setProperty(Property<T> property) {
+		this.property = property;
+	}
+	
 	public Class<?> getCellWidget() {
 		return cellWidget;
 	}
@@ -68,19 +76,11 @@ public class Column<T> {
 		this.cellWidget = cellWidget;
 	}
 
-	public AbstractColumnWidget getColumnwidget() {
+	public Class<?> getColumnwidget() {
 		return columnwidget;
 	}
 
-	public void setColumnwidget(AbstractColumnWidget columnwidget) {
+	public void setColumnwidget(Class<?> columnwidget) {
 		this.columnwidget = columnwidget;
-	}
-
-	public Property<T> getProperty() {
-		return property;
-	}
-
-	public void setProperty(Property<T> property) {
-		this.property = property;
 	}
 }

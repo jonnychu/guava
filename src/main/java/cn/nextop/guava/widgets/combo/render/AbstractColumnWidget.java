@@ -16,18 +16,6 @@ public abstract class AbstractColumnWidget extends Figure {
 	//
 	protected final int margin = 5, arc = 3, oval = 5;
 	
-	/**
-	 * 
-	 */
-	public AbstractColumnWidget(Column<?> column) {
-		this.column = column;
-	}
-	
-	/**
-	 * 
-	 */
-	
-	
 	public String getText() {
 		return text;
 	}

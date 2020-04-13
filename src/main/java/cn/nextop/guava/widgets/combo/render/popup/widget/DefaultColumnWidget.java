@@ -9,18 +9,12 @@ import org.eclipse.draw2d.geometry.Rectangle;
 import org.eclipse.swt.SWT;
 
 import cn.nextop.guava.support.swt.Colors;
-import cn.nextop.guava.widgets.combo.model.colum.Column;
 import cn.nextop.guava.widgets.combo.render.AbstractColumnWidget;
 
 /**
  * @author jonny
  */
 public class DefaultColumnWidget extends AbstractColumnWidget {
-	
-	//
-	public DefaultColumnWidget(Column<?> column) {
-		super(column);
-	}
 	
 	@Override
 	protected void paintFigure(Graphics g) {

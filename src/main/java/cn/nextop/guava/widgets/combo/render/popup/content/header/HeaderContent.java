@@ -31,7 +31,14 @@ public class HeaderContent extends AbstractComboPanel {
 		super(name);
 		widgets = new DefaultColumnWidget[columns.size()];
 		for (int i = 0; i < columns.size(); i++) {
-			add(widgets[i] = ((Column<?>)columns.get(i)).getColumnwidget());
+			try {
+				Column<?> column = columns.get(i);
+				Class<?> clazz = column.getColumnwidget();
+				this.widgets[i] = cast(clazz.newInstance());
+				this.widgets[i].setColumn(column); add(this.widgets[i]);
+			} catch (InstantiationException | IllegalAccessException e) {
+				throw new RuntimeException(e);
+			}
 		}
 	}
 
