@@ -36,7 +36,8 @@ public class XCombo extends Canvas {
 	public void setPopup(XComboPopup popup) { this.popup = popup; }
 	
 	/**
-	 * 
+	 * @param parent
+	 * @param style SWT.SINGLE or SWT.MULTI
 	 */
 	public XCombo(Composite parent) {
 		super(parent, DOUBLE_BUFFERED);
