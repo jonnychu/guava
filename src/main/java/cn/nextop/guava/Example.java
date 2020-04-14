@@ -89,6 +89,8 @@ public class Example {
 				@Override
 				public XCombo builder(Composite cmp) {
 					XComboBuilder r = new XComboBuilder(cmp);
+					XComboConfig config = r.getXComboConfig();
+					config.setStyle(SWT.MULTI);
 					r.colum().text("Select").align(SWT.LEFT).bool().property("selected").weight(1);
 					r.colum().text("Column1").align(SWT.CENTER).property("col2").weight(1);
 					r.colum().text("Column2").align(SWT.RIGHT).property("col3").weight(1);
@@ -98,17 +100,19 @@ public class Example {
 			
 			List<IRow> rows = new ArrayList<>();
 			rows.add(example.new Row(true, "row11", "row12"));
-			rows.add(example.new Row(true, "row21", "row22"));
-			rows.add(example.new Row(true, "row31", "row32"));
+			rows.add(example.new Row(false, "row21", "row22"));
+			rows.add(example.new Row(false, "row31", "row32"));
 			rows.add(example.new Row(true, "row41", "row42"));
-			rows.add(example.new Row(true, "row51", "row52"));
-			rows.add(example.new Row(true, "row61", "row62"));
-			rows.add(example.new Row(true, "row71", "row72"));
-			rows.add(example.new Row(true, "row81", "row82"));
-			rows.add(example.new Row(true, "row91", "row92"));
-			rows.add(example.new Row(true, "row101", "row102"));
+			rows.add(example.new Row(false, "row51", "row52"));
+			rows.add(example.new Row(false, "row61", "row62"));
+			rows.add(example.new Row(false, "row71", "row72"));
+			rows.add(example.new Row(false, "row81", "row82"));
+			rows.add(example.new Row(false, "row91", "row92"));
+			rows.add(example.new Row(false, "row101", "row102"));
 			combo.input(rows);
 			combo.setLayoutData("cell 0 6, width 10:150:,height 24!");
+			
+			combo.getSelection().forEach(System.out::println);;
 		}
 
 		
@@ -121,7 +125,8 @@ public class Example {
 					//
 					XComboBuilder r = new XComboBuilder(cmp);
 					XComboConfig config = r.getXComboConfig();
-					config.setHeader(false); config.setPopupWidth(200); config.setPopupHeight(200);;
+					config.setStyle(SWT.SINGLE); config.setHeader(false); 
+					config.setPopupWidth(200); config.setPopupHeight(200);;
 					
 					r.colum().text("Select").align(SWT.LEFT).bool().property("selected").weight(3);
 					r.colum().text("Column1").align(SWT.CENTER).property("col2").weight(7);
@@ -131,10 +136,10 @@ public class Example {
 			
 			List<IRow> rows = new ArrayList<>();
 			rows.add(example.new Row(true, "row11", "row12"));
-			rows.add(example.new Row(true, "row21", "row22"));
-			rows.add(example.new Row(true, "row31", "row32"));
-			rows.add(example.new Row(true, "row41", "row42"));
-			rows.add(example.new Row(true, "row51", "row52"));
+			rows.add(example.new Row(false, "row21", "row22"));
+			rows.add(example.new Row(false, "row31", "row32"));
+			rows.add(example.new Row(false, "row41", "row42"));
+			rows.add(example.new Row(false, "row51", "row52"));
 			combo.input(rows);
 			combo.setLayoutData("cell 1 6, width 10:150:,height 24!");
 		}
@@ -147,7 +152,8 @@ public class Example {
 					//
 					XComboBuilder r = new XComboBuilder(cmp);
 					XComboConfig config = r.getXComboConfig();
-					config.setHeader(false); config.setPopupWidth(200); config.setPopupHeight(200);;
+					config.setStyle(SWT.SINGLE); config.setHeader(false); 
+					config.setPopupWidth(200); config.setPopupHeight(200);;
 					
 					r.colum().text("Column1").align(SWT.LEFT).property("col2").weight(8);
 					return r.builder();
@@ -156,11 +162,11 @@ public class Example {
 			
 			List<IRow> rows = new ArrayList<>();
 			rows.add(example.new Row(true, "row11", "row12"));
-			rows.add(example.new Row(true, "row21", "row22"));
-			rows.add(example.new Row(true, "row31", "row32"));
-			rows.add(example.new Row(true, "row41", "row42"));
-			rows.add(example.new Row(true, "row51", "row52"));
-			rows.add(example.new Row(true, "row51", "row52"));
+			rows.add(example.new Row(false, "row21", "row22"));
+			rows.add(example.new Row(false, "row31", "row32"));
+			rows.add(example.new Row(false, "row41", "row42"));
+			rows.add(example.new Row(false, "row51", "row52"));
+			rows.add(example.new Row(false, "row51", "row52"));
 			combo.input(rows);
 			combo.setLayoutData("cell 0 7, width 10:150:,height 24!");
 		}
@@ -266,6 +272,11 @@ public class Example {
 		@Override
 		public Object getId() {
 			return null;
+		}
+
+		@Override
+		public String displayName() {
+			return "[" + this.col2 + "]";
 		}
 	}
 }

@@ -5,6 +5,8 @@ import static com.patrikdufresne.fontawesome.FontAwesome.caret_down;
 import static com.patrikdufresne.fontawesome.FontAwesome.caret_up;
 import static org.eclipse.draw2d.TextUtilities.INSTANCE;
 
+import java.util.List;
+
 import org.eclipse.draw2d.Figure;
 import org.eclipse.draw2d.Graphics;
 import org.eclipse.draw2d.geometry.Dimension;
@@ -14,6 +16,8 @@ import com.patrikdufresne.fontawesome.FontAwesome;
 
 import cn.nextop.guava.widgets.combo.XCombo;
 import cn.nextop.guava.widgets.combo.XComboPopup;
+import cn.nextop.guava.widgets.combo.model.XComboModel;
+import cn.nextop.guava.widgets.combo.model.row.IRow;
 import cn.nextop.guava.widgets.combo.render.text.TextPanel;
 
 /**
@@ -28,10 +32,15 @@ public class TextWidget extends Figure {
 		TextPanel textPanel = cast(getParent());
 		XCombo combo = textPanel.getXCombo();
 		XComboPopup popup = combo.getPopup();
-//		XComboModel model = combo.getModel();
+		XComboModel model = combo.getModel();
+		List<IRow> selection = model.getSelection();
+		StringBuilder name = new StringBuilder();
+		for (IRow iRow : selection) {
+			name.append(iRow.displayName()).append(" ");
+		}
 		//
 		{
-			final String text1 = "select all";
+			final String text1 = name.toString();
 			Dimension d1 = INSTANCE.getStringExtents(text1, g.getFont());
 			g.drawString(text1, r.x + 8, r.y + (r.height - d1.height) / 2);
 		}

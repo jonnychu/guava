@@ -51,6 +51,10 @@ public class XCombo extends Canvas {
 	/**
 	 * 
 	 */
+	public List<IRow> getSelection() {
+		return this.model.getSelection();
+	}
+	
 	public void input(List<IRow> rows) {
 		this.model.setRows(new Rows(rows));
 	}

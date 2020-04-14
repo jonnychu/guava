@@ -8,11 +8,13 @@ import java.util.List;
 import org.eclipse.draw2d.Graphics;
 import org.eclipse.draw2d.IFigure;
 import org.eclipse.draw2d.MouseEvent;
-import org.eclipse.draw2d.MouseMotionListener.Stub;
+import org.eclipse.draw2d.MouseListener;
+import org.eclipse.draw2d.MouseMotionListener;
 import org.eclipse.draw2d.geometry.Rectangle;
 
 import cn.nextop.guava.support.swt.Colors;
 import cn.nextop.guava.widgets.combo.XComboPopup;
+import cn.nextop.guava.widgets.combo.action.SelectionAction;
 import cn.nextop.guava.widgets.combo.model.XComboModel;
 import cn.nextop.guava.widgets.combo.model.colum.Column;
 import cn.nextop.guava.widgets.combo.model.config.XComboConfig;
@@ -26,13 +28,22 @@ import cn.nextop.guava.widgets.combo.render.popup.PopupPanel;
  */
 public class RowPanel extends AbstractComboPanel {
 	//
+	private IRow row;
 	private boolean enter;
 	private PopupPanel panel;
 	private List<Column<?>> columns;
 	private AbstractCellWidget[] widgets;
 	
+	public PopupPanel getPopupPanel() {
+		return panel;
+	}
+
+	public IRow getRow() {
+		return row;
+	}
+
 	public RowPanel(PopupPanel panel, List<Column<?>> columns, IRow row) {
-		super(""); addMouseMotionListener(new Stub());
+		super(""); this.row = row;
 		this.panel = panel; this.columns = columns;
 		this.widgets = new AbstractCellWidget[columns.size()];
 		for (int i = 0; i < columns.size(); i++) {
@@ -46,6 +57,9 @@ public class RowPanel extends AbstractComboPanel {
 				throw new RuntimeException(e);
 			}
 		}
+		
+		addMouseListener(new MouseListener.Stub());
+		addMouseMotionListener(new MouseMotionListener.Stub());
 	}
 	
 	@Override
@@ -78,6 +92,12 @@ public class RowPanel extends AbstractComboPanel {
 			}
 			cx = cx + aw; rw = rw - aw;
 		}
+	}
+	
+	@Override
+	public void handleMouseReleased(MouseEvent event) {
+		super.handleMouseReleased(event);
+		new SelectionAction().onAction(this, null);
 	}
 	
 	@Override

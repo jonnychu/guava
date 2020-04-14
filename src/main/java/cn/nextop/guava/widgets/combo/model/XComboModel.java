@@ -1,7 +1,11 @@
 package cn.nextop.guava.widgets.combo.model;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import cn.nextop.guava.widgets.combo.model.colum.Columns;
 import cn.nextop.guava.widgets.combo.model.config.XComboConfig;
+import cn.nextop.guava.widgets.combo.model.row.IRow;
 import cn.nextop.guava.widgets.combo.model.row.Rows;
 
 /**
@@ -55,5 +59,16 @@ public class XComboModel {
 
 	public void setXComboConfig(XComboConfig config) {
 		this.config = config;
+	}
+	
+	/**
+	 * 
+	 */
+	public List<IRow> getSelection() {
+		List<IRow> r = new ArrayList<>();
+		for (IRow iRow : rows.getRows()) {
+			if(iRow.isSelected()) r.add(iRow);
+		}
+		return r;
 	}
 }
