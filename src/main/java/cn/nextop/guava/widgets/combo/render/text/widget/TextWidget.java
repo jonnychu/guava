@@ -1,8 +1,6 @@
 package cn.nextop.guava.widgets.combo.render.text.widget;
 
 import static cn.nextop.guava.support.Objects.cast;
-import static com.patrikdufresne.fontawesome.FontAwesome.caret_down;
-import static com.patrikdufresne.fontawesome.FontAwesome.caret_up;
 import static org.eclipse.draw2d.TextUtilities.INSTANCE;
 
 import java.util.List;
@@ -12,11 +10,9 @@ import org.eclipse.draw2d.Graphics;
 import org.eclipse.draw2d.geometry.Dimension;
 import org.eclipse.draw2d.geometry.Rectangle;
 
-import com.patrikdufresne.fontawesome.FontAwesome;
-
 import cn.nextop.guava.widgets.combo.XCombo;
-import cn.nextop.guava.widgets.combo.XComboPopup;
 import cn.nextop.guava.widgets.combo.model.XComboModel;
+import cn.nextop.guava.widgets.combo.model.config.XComboConfig;
 import cn.nextop.guava.widgets.combo.model.row.IRow;
 import cn.nextop.guava.widgets.combo.render.text.TextPanel;
 
@@ -24,31 +20,31 @@ import cn.nextop.guava.widgets.combo.render.text.TextPanel;
  * @author jonny
  */
 public class TextWidget extends Figure {
-
+	//
+	private final static String P1 = "Selected(";
+	
 	@Override
 	protected void paintFigure(Graphics g) {
 		super.paintFigure(g);
 		final Rectangle r = getBounds();
 		TextPanel textPanel = cast(getParent());
-		XCombo combo = textPanel.getXCombo();
-		XComboPopup popup = combo.getPopup();
-		XComboModel model = combo.getModel();
+		final XCombo combo = textPanel.getXCombo();
+		final XComboModel model = combo.getModel();
 		List<IRow> selection = model.getSelection();
-		StringBuilder name = new StringBuilder();
-		for (IRow iRow : selection) {
-			name.append(iRow.displayName()).append(" ");
+		final StringBuilder name = new StringBuilder();
+		final XComboConfig cfg = model.getXComboConfig();
+		if(selection != null) {
+			final int size = selection.size();
+			if(size > cfg.getTextDisplaySize()) { 
+				name.append(P1).append(size).append(")");
+			} else { 
+				selection.stream()
+				.forEach(e -> name.append(e.displayName()).append(" "));
+			}
 		}
 		//
-		{
-			final String text1 = name.toString();
-			Dimension d1 = INSTANCE.getStringExtents(text1, g.getFont());
-			g.drawString(text1, r.x + 8, r.y + (r.height - d1.height) / 2);
-		}
-		{
-			g.setFont(FontAwesome.getFont(10));
-			final String text2 = (popup == null) ? caret_down : caret_up;
-			Dimension d1 = INSTANCE.getStringExtents(text2, g.getFont());
-			g.drawString(text2, r.x + r.width - d1.width - 8, r.y + (r.height - d1.height) / 2);
-		}
+		final String text = name.toString();
+		Dimension d1 = INSTANCE.getStringExtents(text, g.getFont());
+		g.drawString(text, r.x + 8, r.y + (r.height - d1.height) / 2);
 	}
 }

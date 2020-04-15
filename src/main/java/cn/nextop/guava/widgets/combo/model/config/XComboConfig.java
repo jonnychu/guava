@@ -9,6 +9,7 @@ public class XComboConfig {
 	//
 	private boolean header = true;
 	private int style = SWT.SINGLE;
+	private int textDisplaySize = 3;
 	private int itemHeight = 24, headerHeight = 24;
 	private int popupWidth = 300, popupHeight = 200;
 	
@@ -56,5 +57,12 @@ public class XComboConfig {
 	}
 	public void setHeaderHeight(int headerHeight) {
 		this.headerHeight = headerHeight;
+	}
+	
+	public int getTextDisplaySize() {
+		return textDisplaySize;
+	}
+	public void setTextDisplaySize(int textDisplaySize) {
+		this.textDisplaySize = textDisplaySize;
 	}
 }

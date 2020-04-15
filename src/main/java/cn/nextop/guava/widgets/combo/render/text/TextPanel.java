@@ -4,10 +4,12 @@ import static cn.nextop.guava.support.Objects.cast;
 
 import org.eclipse.draw2d.Graphics;
 import org.eclipse.draw2d.IFigure;
+import org.eclipse.draw2d.geometry.Rectangle;
 
 import cn.nextop.guava.support.swt.Colors;
 import cn.nextop.guava.widgets.combo.XCombo;
 import cn.nextop.guava.widgets.combo.render.AbstractComboPanel;
+import cn.nextop.guava.widgets.combo.render.text.widget.IconWidget;
 import cn.nextop.guava.widgets.combo.render.text.widget.TextWidget;
 
 /**
@@ -17,6 +19,7 @@ public class TextPanel extends AbstractComboPanel {
 	//
 	private XCombo combo;
 	private TextWidget text;
+	private IconWidget icon;
 	
 	//
 	public TextWidget getTextWidget() { return text; }
@@ -29,6 +32,7 @@ public class TextPanel extends AbstractComboPanel {
 		super("text.panel"); 
 		this.combo = combo;
 		add(text = new TextWidget());
+		add(icon = new IconWidget());
 	}
 	
 	@Override
@@ -40,6 +44,8 @@ public class TextPanel extends AbstractComboPanel {
 	
 	@Override protected void layoutManager(IFigure container) {
 		TextPanel parent = cast(container);
-		text.setBounds(parent.getBounds());
+		Rectangle r = parent.getBounds();
+		text.setBounds(new Rectangle(r.x, r.y, r.width - 20, r.height));
+		icon.setBounds(new Rectangle(r.x + r.width - 20, r.y, 20, r.height));
 	}
 }

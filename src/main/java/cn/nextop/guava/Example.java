@@ -276,7 +276,7 @@ public class Example {
 
 		@Override
 		public String displayName() {
-			return "[" + this.col2 + "]";
+			return this.col2;
 		}
 	}
 }
