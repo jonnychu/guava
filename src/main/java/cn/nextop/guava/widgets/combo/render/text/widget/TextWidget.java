@@ -22,6 +22,7 @@ import cn.nextop.guava.widgets.combo.render.text.TextPanel;
 public class TextWidget extends Figure {
 	//
 	private final static String P1 = "Selected(";
+	private final static String P2 = "Selected All";
 	
 	@Override
 	protected void paintFigure(Graphics g) {
@@ -31,11 +32,14 @@ public class TextWidget extends Figure {
 		final XCombo combo = textPanel.getXCombo();
 		final XComboModel model = combo.getModel();
 		List<IRow> selection = model.getSelection();
+		List<IRow> allRow = model.getRows().getRows();
 		final StringBuilder name = new StringBuilder();
 		final XComboConfig cfg = model.getXComboConfig();
 		if(selection != null) {
 			final int size = selection.size();
-			if(size > cfg.getTextDisplaySize()) { 
+			if(size == allRow.size()) {
+				name.append(P2);
+			} else if(size > cfg.getTextDisplaySize()) { 
 				name.append(P1).append(size).append(")");
 			} else { 
 				selection.stream()

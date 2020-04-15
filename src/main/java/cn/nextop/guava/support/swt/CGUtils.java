@@ -22,6 +22,10 @@ public class CGUtils {
 		g.setBackgroundColor(color); g.fillRectangle(r);
 	}
 	
+	public static void drawRect(Graphics g, Rectangle r, Color color) {
+		if(color != null) g.setForegroundColor(color); g.drawRectangle(getBorderRect(r));
+	}
+	
 	public static void main(String[] args) {
 		Rectangle r = new Rectangle(10, 10, 20, 20);
 		System.out.println(CGUtils.scaleRect(r, 2));

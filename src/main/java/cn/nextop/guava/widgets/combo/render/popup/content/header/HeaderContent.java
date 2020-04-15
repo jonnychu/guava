@@ -58,12 +58,13 @@ public class HeaderContent extends AbstractComboPanel {
 		int aw = w / total, cx = 0, rw = w;
 		for (int i = 0; i < widgets.length; i++) {
 			AbstractColumnWidget w1 = widgets[i];
+			int wt = w1.getColumn().getWeight();
 			if(i == widgets.length - 1) {
 				w1.setBounds(new Rectangle(x + cx, y, rw, h));
 			} else {
-				w1.setBounds(new Rectangle(x + cx, y, aw, h));
+				w1.setBounds(new Rectangle(x + cx, y, aw * wt, h));
 			}
-			cx = cx + aw; rw = rw - aw;
+			cx = cx + aw * wt; rw = rw - aw * wt;
 		}
 	}
 }

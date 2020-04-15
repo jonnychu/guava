@@ -91,9 +91,9 @@ public class Example {
 					XComboBuilder r = new XComboBuilder(cmp);
 					XComboConfig config = r.getXComboConfig();
 					config.setStyle(SWT.MULTI);
-					r.colum().text("Select").align(SWT.LEFT).bool().property("selected").weight(1);
-					r.colum().text("Column1").align(SWT.LEFT).property("col2").weight(1);
-					r.colum().text("Column2").align(SWT.RIGHT).property("col3").weight(1);
+					r.colum().text("Select").align(SWT.RIGHT).bool().property("selected").weight(2);
+					r.colum().text("Column1").align(SWT.LEFT).property("col2").weight(3);
+					r.colum().text("Column2").align(SWT.RIGHT).property("col3").weight(3);
 					return r.builder();
 				}
 			}.builder(cmp); 
@@ -128,8 +128,8 @@ public class Example {
 					config.setStyle(SWT.SINGLE); config.setHeader(false); 
 					config.setPopupWidth(200); config.setPopupHeight(200);;
 					
-					r.colum().text("Select").align(SWT.LEFT).bool().property("selected").weight(3);
-					r.colum().text("Column1").align(SWT.LEFT).property("col2").weight(7);
+					r.colum().text("Select").align(SWT.CENTER).bool().property("selected").weight(1);
+					r.colum().text("Column1").align(SWT.LEFT).property("col2").weight(9);
 					return r.builder();
 				}
 			}.builder(cmp); 

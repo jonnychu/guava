@@ -81,16 +81,17 @@ public class RowPanel extends AbstractComboPanel {
 		}
 		
 		//
-		final int aw = r.width / tw, ih = config.getItemHeight();
-		int cx = 0, rw = r.width;
+		int aw = r.width / tw, rw = r.width;
+		int ih = config.getItemHeight(), cx = 0;
 		for (int j = 0; j < widgets.length; j++) {
 			AbstractCellWidget cw = widgets[j];
+			int wt = cw.getColumn().getWeight();
 			if(j == widgets.length - 1) {
 				cw.setBounds(new Rectangle(r.x + cx, r.y, rw, ih));
 			} else {
-				cw.setBounds(new Rectangle(r.x + cx, r.y, aw, ih));
+				cw.setBounds(new Rectangle(r.x + cx, r.y, aw * wt, ih));
 			}
-			cx = cx + aw; rw = rw - aw;
+			cx = cx + aw * wt; rw = rw - aw * wt;
 		}
 	}
 	
