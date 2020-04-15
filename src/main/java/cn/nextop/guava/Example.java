@@ -34,8 +34,11 @@ import cn.nextop.guava.widgets.slider.XSlider;
 import cn.nextop.guava.widgets.spinner.XSpinner;
 import net.miginfocom.swt.MigLayout;
 
-
+/**
+ * @author jonny
+ */
 public class Example {
+	
 	public static void main(String[] args) {
 		Example example = new Example();
 		final String name = "Widget Example";
@@ -43,51 +46,66 @@ public class Example {
 		Composite cmp = SwtUtils.creator(shell);
 		cmp.setLayout(new MigLayout("insets 5, gap 0 0","[fill,grow,center][fill,grow,center]","[fill,grow][fill,grow][fill,grow][fill,grow][fill,grow][fill,grow][fill,grow][fill,grow]"));
 		//datetime
-		XDateTime date = new XDateTime(cmp); date.setLayoutData("cell 0 0, width 10:150:,height 23!, span 2"); date.setInput(System.currentTimeMillis());
-		//spinner 1
-		XSpinner<BigDecimal> spinner1 = new XSpinner<>(cmp, SWT.VERTICAL, new BigDecimalFormatter("-##0.00","##0.00")); 
-		spinner1.setLayoutData("cell 0 1, width 10:150:,height 23!, span 2"); 
-		spinner1.setValue(new BigDecimal("-100.00"), new BigDecimal("100.00"), new BigDecimal("0.01"), new BigDecimal("1.00"));
-		//spinner 2
-		XSpinner<Long> spinner2 = new XSpinner<>(cmp, SWT.HORIZONTAL, new LongFormatter("-########0","########0")); 
-		spinner2.setLayoutData("cell 0 2, width 10:150:,height 50!, span 2"); 
-		spinner2.setValue(new Long(-999999999), new Long(999999999), new Long(100), new Long(100));
-		//slider
-		XSlider slider = new XSlider(cmp, SWT.VERTICAL); slider.setLayoutData("cell 0 3, width 10:150:,height 24!, span 2");
-		slider.setValue(0, 100, 23);
-		//circle progress
-		XCircleProgress progress = new XCircleProgress(cmp); progress.setLayoutData("cell 0 4");
-		progress.init(0f, 100f, 25f); Button btnOk1 = new Button(cmp, SWT.NONE); btnOk1.setLayoutData("cell 0 5, height 30!, top");
-		btnOk1.setText("Start Progress"); CircleProgressModel model = example.new CircleProgressModel(progress);
-		btnOk1.addSelectionListener(new SelectionAdapter() {
-			boolean running = false; @Override public void widgetSelected(SelectionEvent e) {
-				super.widgetSelected(e); if (!running) {
-					running = true;	model.start(); btnOk1.setText("Stop Progress");
-				} else {
-					running = false; model.stop(); btnOk1.setText("Start Progress");
-				}
-			}
-		});
-		shell.addDisposeListener(new DisposeListener() { @Override public void widgetDisposed(DisposeEvent e) { model.stop(); }});
-		//infinite progress
-		XInfiniteProgress progress1 = new XInfiniteProgress(cmp); progress1.setLayoutData("cell 1 4");
-		Button btnOk2 = new Button(cmp, SWT.NONE); btnOk2.setLayoutData("cell 1 5, height 30!, top");
-		btnOk2.setText("Start Progress"); btnOk2.addSelectionListener(new SelectionAdapter() {
-			boolean running = false; @Override public void widgetSelected(SelectionEvent e) {
-				super.widgetSelected(e); if (!running) {
-					running = true;	progress1.start(); btnOk2.setText("Stop Progress");
-				} else {
-					running = false; progress1.stop(); btnOk2.setText("Start Progress");
-				}
-			}
-		});
+		{
+			XDateTime date = new XDateTime(cmp); date.setLayoutData("cell 0 0, width 10:150:,height 23!, span 2"); date.setInput(System.currentTimeMillis());
+		}
 		
-		//
+		//spinner 1
+		{
+			XSpinner<BigDecimal> spinner1 = new XSpinner<>(cmp, SWT.VERTICAL, new BigDecimalFormatter("-##0.00","##0.00")); 
+			spinner1.setLayoutData("cell 0 1, width 10:150:,height 23!, span 2"); 
+			spinner1.setValue(new BigDecimal("-100.00"), new BigDecimal("100.00"), new BigDecimal("0.01"), new BigDecimal("1.00"));
+		}
+		
+		//spinner 2
+		{
+			XSpinner<Long> spinner2 = new XSpinner<>(cmp, SWT.HORIZONTAL, new LongFormatter("-########0","########0")); 
+			spinner2.setLayoutData("cell 0 2, width 10:150:,height 50!, span 2"); 
+			spinner2.setValue(new Long(-999999999), new Long(999999999), new Long(100), new Long(100));
+		}
+		
+		//slider
+		{
+			XSlider slider = new XSlider(cmp, SWT.VERTICAL); slider.setLayoutData("cell 0 3, width 10:150:,height 24!, span 2"); slider.setValue(0, 100, 23);
+		}
+		
+		//circle progress
+		{
+			XCircleProgress progress = new XCircleProgress(cmp); progress.setLayoutData("cell 0 4");
+			progress.init(0f, 100f, 25f); Button btnOk1 = new Button(cmp, SWT.NONE); btnOk1.setLayoutData("cell 0 5, height 30!, top");
+			btnOk1.setText("Start Progress"); CircleProgressModel model = example.new CircleProgressModel(progress);
+			btnOk1.addSelectionListener(new SelectionAdapter() {
+				boolean running = false; @Override public void widgetSelected(SelectionEvent e) {
+					super.widgetSelected(e); if (!running) {
+						running = true;	model.start(); btnOk1.setText("Stop Progress");
+					} else {
+						running = false; model.stop(); btnOk1.setText("Start Progress");
+					}
+				}
+			});
+			shell.addDisposeListener(new DisposeListener() { @Override public void widgetDisposed(DisposeEvent e) { model.stop(); }});
+		}
+
+		//infinite progress
+		{
+			XInfiniteProgress progress1 = new XInfiniteProgress(cmp); progress1.setLayoutData("cell 1 4");
+			Button btnOk2 = new Button(cmp, SWT.NONE); btnOk2.setLayoutData("cell 1 5, height 30!, top");
+			btnOk2.setText("Start Progress"); btnOk2.addSelectionListener(new SelectionAdapter() {
+				boolean running = false; @Override public void widgetSelected(SelectionEvent e) {
+					super.widgetSelected(e); if (!running) {
+						running = true;	progress1.start(); btnOk2.setText("Stop Progress");
+					} else {
+						running = false; progress1.stop(); btnOk2.setText("Start Progress");
+					}
+				}
+			});
+		}
+		
+		//combo 1
 		{
 			XCombo combo = new AbstractXComboBuilder<Row>() {
-				
-				@Override
-				public XCombo builder(Composite cmp) {
+				@Override public XCombo builder(Composite cmp) {
+					//
 					XComboBuilder r = new XComboBuilder(cmp);
 					XComboConfig config = r.getXComboConfig();
 					config.setStyle(SWT.MULTI);
@@ -116,12 +134,10 @@ public class Example {
 		}
 
 		
-		//
+		//combo 2
 		{
 			XCombo combo = new AbstractXComboBuilder<Row>() {
-				
-				@Override
-				public XCombo builder(Composite cmp) {
+				@Override public XCombo builder(Composite cmp) {
 					//
 					XComboBuilder r = new XComboBuilder(cmp);
 					XComboConfig config = r.getXComboConfig();
@@ -143,12 +159,11 @@ public class Example {
 			combo.input(rows);
 			combo.setLayoutData("cell 1 6, width 10:150:,height 24!");
 		}
-
+		
+		//combo 3
 		{
 			XCombo combo = new AbstractXComboBuilder<Row>() {
-				
-				@Override
-				public XCombo builder(Composite cmp) {
+				@Override public XCombo builder(Composite cmp) {
 					//
 					XComboBuilder r = new XComboBuilder(cmp);
 					XComboConfig config = r.getXComboConfig();
@@ -172,21 +187,6 @@ public class Example {
 		}
 		
 		//
-//		ExampleAdapter adapter = example.new ExampleAdapter();
-//		XTable table = adapter.build(cmp); table.setLayoutData("cell 0 1");
-//		
-//		List<Row> rows = new ArrayList<>(); 
-//		rows.add(example.new Row("name1","name2","name3","name4","name5"));
-//		rows.add(example.new Row("name1","name2","name3","name4","name5"));
-//		rows.add(example.new Row("name1","name2","name3","name4","name5"));
-//		rows.add(example.new Row("name1","name2","name3","name4","name5"));
-//		rows.add(example.new Row("name1","name2","name3","name4","name5"));
-//		rows.add(example.new Row("name1","name2","name3","name4","name5"));
-//		rows.add(example.new Row("name1","name2","name3","name4","name5"));
-//		rows.add(example.new Row("name1","name2","name3","name4","name5"));
-//		rows.add(example.new Row("name1","name2","name3","name4","name5"));
-//		rows.add(example.new Row("name1","name2","name3","name4","name5"));
-//		table.inputs(rows);
 		shell.open(); dispatch(() -> shell.isDisposed());
 	}
 	
@@ -229,6 +229,9 @@ public class Example {
 		}
 	}
 	
+	/**
+	 * Combo data
+	 */
 	public class Row implements IRow {
 		//
 		private boolean selected;
@@ -260,6 +263,14 @@ public class Example {
 			this.col3 = col3;
 		}
 		
+		/**
+		 * 
+		 */
+		@Override
+		public String displayName() {
+			return this.col2;
+		}
+		
 		@Override
 		public boolean isSelected() {
 			return this.selected;
@@ -268,15 +279,10 @@ public class Example {
 		public void setSelected(boolean selected) {
 			this.selected = selected;
 		}
-
+		
 		@Override
-		public Object getId() {
-			return null;
-		}
-
-		@Override
-		public String displayName() {
-			return this.col2;
+		public String toString() {
+			return "ID : " + getId().toString() + ", Select : " + isSelected();
 		}
 	}
 }
