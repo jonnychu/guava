@@ -11,7 +11,8 @@ public class Column<T> {
 	private int weight = 1;
 	private int height = 24;
 	private String text = "";
-	private int align = SWT.CENTER;
+	private int colAlign = SWT.CENTER;
+	private int cellAlign = SWT.CENTER;
 	//
 	private Property<T> property;
 	private Class<?> cellWidget;
@@ -36,13 +37,6 @@ public class Column<T> {
 		this.text = text;
 	}
 	
-	public int getAlign() {
-		return align;
-	}
-	
-	public void setAlign(int align) {
-		this.align = align;
-	}
 	
 	public int getWeight() {
 		return weight;
@@ -58,6 +52,22 @@ public class Column<T> {
 	
 	public void setHeight(int height) {
 		this.height = height;
+	}
+	
+	public int getColAlign() {
+		return colAlign;
+	}
+
+	public void setColAlign(int colAlign) {
+		this.colAlign = colAlign;
+	}
+
+	public int getCellAlign() {
+		return cellAlign;
+	}
+
+	public void setCellAlign(int cellalign) {
+		this.cellAlign = cellalign;
 	}
 	
 	public Property<T> getProperty() {

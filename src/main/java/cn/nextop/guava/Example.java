@@ -92,7 +92,7 @@ public class Example {
 					XComboConfig config = r.getXComboConfig();
 					config.setStyle(SWT.MULTI);
 					r.colum().text("Select").align(SWT.LEFT).bool().property("selected").weight(1);
-					r.colum().text("Column1").align(SWT.CENTER).property("col2").weight(1);
+					r.colum().text("Column1").align(SWT.LEFT).property("col2").weight(1);
 					r.colum().text("Column2").align(SWT.RIGHT).property("col3").weight(1);
 					return r.builder();
 				}
@@ -129,7 +129,7 @@ public class Example {
 					config.setPopupWidth(200); config.setPopupHeight(200);;
 					
 					r.colum().text("Select").align(SWT.LEFT).bool().property("selected").weight(3);
-					r.colum().text("Column1").align(SWT.CENTER).property("col2").weight(7);
+					r.colum().text("Column1").align(SWT.LEFT).property("col2").weight(7);
 					return r.builder();
 				}
 			}.builder(cmp); 

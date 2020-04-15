@@ -26,9 +26,8 @@ public class DefaultColumnWidget extends AbstractColumnWidget {
 	protected void paintClientArea(Graphics g) {
 		super.paintClientArea(g);
 		final Rectangle r = getClientArea();
-		this.text = column.getText();
-		int align = column.getAlign();
-		Dimension d1 = INSTANCE.getStringExtents(text, g.getFont());
+		int align = column.getColAlign(); this.text = column.getText();
+		final Dimension d1 = INSTANCE.getStringExtents(text, g.getFont());
 		if(align == SWT.LEFT) {
 			g.drawText(this.text, r.x + margin, (r.height - d1.height) / 2);
 		} else if(align == SWT.RIGHT) {

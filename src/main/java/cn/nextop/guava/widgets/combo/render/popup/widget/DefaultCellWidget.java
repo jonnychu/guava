@@ -24,7 +24,7 @@ public class DefaultCellWidget extends AbstractCellWidget {
 	protected void paintClientArea(Graphics g) {
 		super.paintClientArea(g);
 		final Rectangle r = getClientArea();
-		final int align = column.getAlign();
+		final int align = column.getCellAlign();
 		Property<?> property = column.getProperty();
 		this.text = cast(property.getValue(cast(row)));
 		Dimension d1 = INSTANCE.getStringExtents(text, g.getFont());

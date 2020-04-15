@@ -44,16 +44,20 @@ public abstract class AbstractXComboBuilder<T> {
 			this.combo = new XCombo(cmp);
 		}
 		
-		public XComboBuilder align(int align) {
-			this.colum.setAlign(align); return this;
-		}
-		
 		public XComboBuilder text(String text) {
 			this.colum.setText(text); return this;
 		}
 		
 		public XComboBuilder weight(int weight) {
 			this.colum.setWeight(weight); return this;
+		}
+		
+		public XComboBuilder colAlign(int align) {
+			this.colum.setColAlign(align); return this;
+		}
+		
+		public XComboBuilder align(int align) {
+			this.colum.setCellAlign(align); return this;
 		}
 		
 		public XComboBuilder colum() {
