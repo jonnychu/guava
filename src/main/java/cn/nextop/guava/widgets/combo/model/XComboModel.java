@@ -15,9 +15,8 @@ public class XComboModel {
 	//
 	private Rows rows;
 	private Columns colums;
-	private boolean enable;
 	private XComboConfig config;
-	
+	private boolean enable = true;
 	
 	/**
 	 * 

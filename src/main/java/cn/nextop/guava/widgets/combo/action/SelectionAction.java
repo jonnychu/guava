@@ -42,7 +42,9 @@ public class SelectionAction extends AbstractAction {
 		XComboModel model = combo.getModel();
 		XComboConfig cfg = model.getXComboConfig();
 		List<IRow> rows = model.getRows().getRows();
-		IRow select = panel.getRow();
+		//
+		if(!model.isEnable()) return true;
+		final IRow select = panel.getRow();
 		if(cfg.getStyle() == SWT.SINGLE) {
 			for (IRow iRow : rows) {
 				if(iRow == select) {

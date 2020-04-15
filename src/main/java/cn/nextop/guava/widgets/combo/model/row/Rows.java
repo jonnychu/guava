@@ -3,6 +3,9 @@ package cn.nextop.guava.widgets.combo.model.row;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * @author jonny
+ */
 public class Rows {
 	private List<IRow> rows;
 	

@@ -51,8 +51,8 @@ public class RowPanel extends AbstractComboPanel {
 			Class<?> clazz = column.getCellWidget();
 			try {
 				this.widgets[i] = cast(clazz.newInstance());
-				this.widgets[i].setColumn(column);
-				this.widgets[i].setRow(row); add(this.widgets[i]);
+				this.widgets[i].setRow(row); widgets[i].setParent(panel); 
+				this.widgets[i].setColumn(column); add(this.widgets[i]);
 			} catch (InstantiationException | IllegalAccessException e) {
 				throw new RuntimeException(e);
 			}

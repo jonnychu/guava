@@ -59,6 +59,10 @@ public class XCombo extends Canvas {
 		this.model.setRows(new Rows(rows));
 	}
 	
+	public void setEnable(boolean enable) {
+		this.model.setEnable(enable);
+	}
+	
 	/**
 	 * 
 	 */

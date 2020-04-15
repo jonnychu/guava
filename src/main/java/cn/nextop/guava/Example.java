@@ -186,6 +186,32 @@ public class Example {
 			combo.setLayoutData("cell 0 7, width 10:150:,height 24!");
 		}
 		
+		//combo 4, enable false
+		{
+			XCombo combo = new AbstractXComboBuilder<Row>() {
+				@Override public XCombo builder(Composite cmp) {
+					//
+					XComboBuilder r = new XComboBuilder(cmp);
+					XComboConfig config = r.getXComboConfig();
+					config.setStyle(SWT.SINGLE); config.setHeader(false); 
+					config.setPopupWidth(200); config.setPopupHeight(200);;
+					
+					r.colum().text("Select").align(SWT.CENTER).bool().property("selected").weight(1);
+					r.colum().text("Column1").align(SWT.LEFT).property("col2").weight(9);
+					return r.builder();
+				}
+			}.builder(cmp); 
+			
+			List<IRow> rows = new ArrayList<>();
+			rows.add(example.new Row(true, "row11", "row12"));
+			rows.add(example.new Row(false, "row21", "row22"));
+			rows.add(example.new Row(false, "row31", "row32"));
+			rows.add(example.new Row(false, "row41", "row42"));
+			rows.add(example.new Row(false, "row51", "row52"));
+			combo.input(rows); combo.setEnable(false);
+			combo.setLayoutData("cell 1 7, width 10:150:,height 24!");
+		}
+		
 		//
 		shell.open(); dispatch(() -> shell.isDisposed());
 	}

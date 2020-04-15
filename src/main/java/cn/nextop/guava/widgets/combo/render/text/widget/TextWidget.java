@@ -1,6 +1,7 @@
 package cn.nextop.guava.widgets.combo.render.text.widget;
 
 import static cn.nextop.guava.support.Objects.cast;
+import static cn.nextop.guava.support.swt.Colors.COLOR_DARK_GRAY;
 import static org.eclipse.draw2d.TextUtilities.INSTANCE;
 
 import java.util.List;
@@ -35,11 +36,10 @@ public class TextWidget extends Figure {
 		List<IRow> allRow = model.getRows().getRows();
 		final StringBuilder name = new StringBuilder();
 		final XComboConfig cfg = model.getXComboConfig();
-		if(selection != null) {
-			final int size = selection.size();
-			if(size == allRow.size()) {
-				name.append(P2);
-			} else if(size > cfg.getTextDisplaySize()) { 
+		if(!model.isEnable()) g.setForegroundColor(COLOR_DARK_GRAY);
+		if(selection != null) { int size = selection.size();
+			if(size == allRow.size()) {	name.append(P2); } 
+			else if(size > cfg.getTextDisplaySize()) { 
 				name.append(P1).append(size).append(")");
 			} else { 
 				selection.stream()
