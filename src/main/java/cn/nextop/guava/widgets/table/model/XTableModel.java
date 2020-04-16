@@ -1,12 +1,8 @@
 package cn.nextop.guava.widgets.table.model;
 
-import java.util.ArrayList;
-import java.util.List;
-
-import cn.nextop.guava.widgets.combo.model.colum.Columns;
-import cn.nextop.guava.widgets.combo.model.config.XComboConfig;
-import cn.nextop.guava.widgets.combo.model.row.IRow;
-import cn.nextop.guava.widgets.combo.model.row.Rows;
+import cn.nextop.guava.widgets.table.model.column.Columns;
+import cn.nextop.guava.widgets.table.model.config.XTableConfig;
+import cn.nextop.guava.widgets.table.model.row.Rows;
 
 /**
  * @author jonny
@@ -15,14 +11,14 @@ public class XTableModel {
 	//
 	private Rows rows;
 	private Columns colums;
-	private XComboConfig config;
+	private XTableConfig config;
 	private boolean enable = true;
 	
 	/**
 	 * 
 	 */
 	public XTableModel() {
-		this.config = new XComboConfig();
+		this.config = new XTableConfig();
 	}
 	
 	/**
@@ -35,15 +31,7 @@ public class XTableModel {
 	public void setRows(Rows rows) {
 		this.rows = rows;
 	}
-	
-	public boolean isEnable() {
-		return enable;
-	}
 
-	public void setEnable(boolean enable) {
-		this.enable = enable;
-	}
-	
 	public Columns getColums() {
 		return colums;
 	}
@@ -52,22 +40,19 @@ public class XTableModel {
 		this.colums = colums;
 	}
 
-	public XComboConfig getXComboConfig() {
+	public XTableConfig getConfig() {
 		return config;
 	}
 
-	public void setXComboConfig(XComboConfig config) {
+	public void setConfig(XTableConfig config) {
 		this.config = config;
 	}
-	
-	/**
-	 * 
-	 */
-	public List<IRow> getSelection() {
-		List<IRow> r = new ArrayList<>();
-		for (IRow iRow : rows.getRows()) {
-			if(iRow.isSelected()) r.add(iRow);
-		}
-		return r;
+
+	public boolean isEnable() {
+		return enable;
+	}
+
+	public void setEnable(boolean enable) {
+		this.enable = enable;
 	}
 }

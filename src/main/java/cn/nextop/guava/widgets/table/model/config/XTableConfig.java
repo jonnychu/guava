@@ -1,28 +1,17 @@
 package cn.nextop.guava.widgets.table.model.config;
 
-import org.eclipse.swt.SWT;
-
 /**
  * @author jonny
  */
 public class XTableConfig {
 	//
 	private boolean header = true;
-	private int style = SWT.SINGLE;
-	private int textDisplaySize = 3;
 	private int itemHeight = 24, headerHeight = 24;
 	private int popupWidth = 300, popupHeight = 200;
 	
 	/**
 	 * 
 	 */
-	public int getStyle() {
-		return style;
-	}
-	public void setStyle(int style) {
-		this.style = style;
-	}
-	
 	public boolean hasHeader() {
 		return header;
 	}
@@ -57,12 +46,5 @@ public class XTableConfig {
 	}
 	public void setHeaderHeight(int headerHeight) {
 		this.headerHeight = headerHeight;
-	}
-	
-	public int getTextDisplaySize() {
-		return textDisplaySize;
-	}
-	public void setTextDisplaySize(int textDisplaySize) {
-		this.textDisplaySize = textDisplaySize;
 	}
 }
