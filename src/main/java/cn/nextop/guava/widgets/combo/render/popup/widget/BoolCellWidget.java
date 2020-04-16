@@ -11,8 +11,8 @@ import org.eclipse.swt.SWT;
 
 import com.patrikdufresne.fontawesome.FontAwesome;
 
+import cn.nextop.guava.support.property.Property;
 import cn.nextop.guava.widgets.combo.render.AbstractCellWidget;
-import cn.nextop.guava.widgets.combo.support.property.Property;
 
 /**
  * @author jonny

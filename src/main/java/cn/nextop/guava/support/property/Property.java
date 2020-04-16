@@ -1,4 +1,4 @@
-package cn.nextop.guava.widgets.combo.support.property;
+package cn.nextop.guava.support.property;
 
 import static cn.nextop.guava.support.reflection.ReflectionUtils.findField;
 import static cn.nextop.guava.support.reflection.ReflectionUtils.getterMethod;

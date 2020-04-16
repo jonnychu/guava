@@ -1,11 +1,8 @@
-package cn.nextop.guava.widgets.combo.model.colum;
+package cn.nextop.guava.widgets.table.model.column;
 
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * @author jonny
- */
 public class Columns {
 	protected List<Column<?>> colums;
 	

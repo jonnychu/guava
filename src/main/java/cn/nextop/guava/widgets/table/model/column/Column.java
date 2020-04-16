@@ -1,4 +1,4 @@
-package cn.nextop.guava.widgets.combo.model.colum;
+package cn.nextop.guava.widgets.table.model.column;
 
 import org.eclipse.swt.SWT;
 

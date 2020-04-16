@@ -4,12 +4,12 @@ import java.lang.reflect.ParameterizedType;
 
 import org.eclipse.swt.widgets.Composite;
 
+import cn.nextop.guava.support.property.Property;
 import cn.nextop.guava.widgets.combo.XCombo;
 import cn.nextop.guava.widgets.combo.model.colum.Column;
 import cn.nextop.guava.widgets.combo.model.colum.Columns;
 import cn.nextop.guava.widgets.combo.model.config.XComboConfig;
 import cn.nextop.guava.widgets.combo.render.popup.widget.BoolCellWidget;
-import cn.nextop.guava.widgets.combo.support.property.Property;
 
 /**
  * @author jonny

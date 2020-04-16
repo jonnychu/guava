@@ -8,8 +8,8 @@ import org.eclipse.draw2d.geometry.Dimension;
 import org.eclipse.draw2d.geometry.Rectangle;
 import org.eclipse.swt.SWT;
 
+import cn.nextop.guava.support.property.Property;
 import cn.nextop.guava.widgets.combo.render.AbstractCellWidget;
-import cn.nextop.guava.widgets.combo.support.property.Property;
 
 /**
  * @author jonny
