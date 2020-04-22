@@ -21,12 +21,12 @@ import cn.nextop.guava.widgets.table.render.AbstractXTablePanel;
 /**
  * @author jonny
  */
-public class HeaderContent extends AbstractXTablePanel {
+public class HeadContent extends AbstractXTablePanel {
 	
 	/**
 	 * 
 	 */
-	public HeaderContent(XTableFactory factory) {
+	public HeadContent(XTableFactory factory) {
 		super("content.header", factory);
 	}
 	
@@ -54,7 +54,7 @@ public class HeaderContent extends AbstractXTablePanel {
 	
 	@Override
 	protected void layoutManager(IFigure container) {
-		HeaderContent hc = cast(container);
+		HeadContent hc = cast(container);
 		final XTableModel model = factory.getModel();
 		List<Column<?>> cols = model.getColumns().getColumns();
 		if(cols == null || cols.size() == 0) return;

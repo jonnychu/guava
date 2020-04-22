@@ -33,7 +33,15 @@ public class XTableModel {
 	public void setRows(Rows rows) {
 		this.rows = rows;
 	}
+	
+	public boolean isEnable() {
+		return enable;
+	}
 
+	public void setEnable(boolean enable) {
+		this.enable = enable;
+	}
+	
 	public Columns getColumns() {
 		return columns;
 	}
@@ -48,13 +56,5 @@ public class XTableModel {
 
 	public void setXTableConfig(XTableConfig config) {
 		this.config = config;
-	}
-
-	public boolean isEnable() {
-		return enable;
-	}
-
-	public void setEnable(boolean enable) {
-		this.enable = enable;
 	}
 }

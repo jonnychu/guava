@@ -2,6 +2,9 @@ package cn.nextop.guava.widgets.table.model.column;
 
 import static cn.nextop.guava.support.Objects.cast;
 
+import java.beans.PropertyChangeListener;
+import java.beans.PropertyChangeSupport;
+
 import org.eclipse.swt.SWT;
 
 import cn.nextop.guava.support.property.Property;
@@ -17,11 +20,13 @@ public class Column<T> {
 	//
 	private int height = 24;
 	private String text = "";
-	private int pixel = 30, weight = 0;
 	private int colAlign = SWT.CENTER;
 	private int cellAlign = SWT.CENTER;
+	private int pixel = 30, weight = 0, minimum = 20;
 	//
 	private Property<T> property;
+	private final PropertyChangeSupport listeners;
+	public static final String PROPERTY_VALUE = "COLUMN_VALUE";
 	private Class<? extends AbstractXTableCellWidget> cellWidget;
 	private Class<? extends AbstractXTableColumnWidget> columnwidget;
 	
@@ -29,6 +34,9 @@ public class Column<T> {
 	 * 
 	 */
 	public Column() {
+		//
+		this.listeners = new PropertyChangeSupport(this);
+		//
 		this.cellWidget = cast(DefaultCellWidget.class);
 		this.columnwidget = cast(DefaultColumnWidget.class);
 	}
@@ -42,14 +50,6 @@ public class Column<T> {
 	
 	public void setText(String text) {
 		this.text = text;
-	}
-	
-	public int getPixel() {
-		return pixel;
-	}
-
-	public void setPixel(int pixel) {
-		this.pixel = pixel;
 	}
 	
 	public int getWeight() {
@@ -75,7 +75,25 @@ public class Column<T> {
 	public void setColAlign(int colAlign) {
 		this.colAlign = colAlign;
 	}
+	
+	public int getMinimum() {
+		return minimum;
+	}
 
+	public void setMinimum(int minimum) {
+		this.minimum = minimum;
+	}
+	
+	public int getPixel() {
+		return pixel;
+	}
+
+	public void setPixel(int pixel) {
+		int ov = this.pixel;
+		this.pixel = pixel;
+		fire(PROPERTY_VALUE, ov, getPixel());
+	}
+	
 	public int getCellAlign() {
 		return cellAlign;
 	}
@@ -106,5 +124,20 @@ public class Column<T> {
 
 	public void setColumnwidget(Class<? extends AbstractXTableColumnWidget> columnwidget) {
 		this.columnwidget = columnwidget;
+	}
+	
+	/**
+	 * 
+	 */
+	public void addPropListener(PropertyChangeListener listener) {
+		listeners.addPropertyChangeListener(listener);
+	}
+	
+	protected void fire(String string, int oldValue, int newValue) {
+		listeners.firePropertyChange(string, oldValue, newValue);
+	}
+	
+	public void removePropListener(PropertyChangeListener listener) {
+		listeners.removePropertyChangeListener(listener);
 	}
 }

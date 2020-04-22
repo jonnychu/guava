@@ -32,26 +32,30 @@ public class TableExample {
 				@Override
 				public XTable builder(Composite cmp) {
 					XTableBuilder r = new XTableBuilder(cmp);
+//					r.colum().pixel(100).text("Column1").align(SWT.CENTER).property("col1");
+//					r.colum().pixel(100).text("Column2").align(SWT.CENTER).property("col2");
+//					r.colum().pixel(100).text("Column3").align(SWT.CENTER).property("col3");
+//					r.colum().pixel(100).text("Column4").align(SWT.CENTER).property("col4");
+//					r.colum().pixel(100).text("Column5").align(SWT.CENTER).property("col5");
+//					r.colum().pixel(100).text("Column6").align(SWT.CENTER).property("col6");
+//					r.colum().pixel(100).text("Column7").align(SWT.CENTER).property("col7");
+//					r.colum().pixel(100).text("Column8").align(SWT.CENTER).property("col8");
+//					r.colum().pixel(100).text("Column9").align(SWT.CENTER).property("col9");
+//					r.colum().pixel(100).text("Column10").align(SWT.CENTER).property("col10");
+//					r.colum().pixel(100).text("Column11").align(SWT.CENTER).property("col11");
+//					r.colum().pixel(100).text("Column12").align(SWT.CENTER).property("col12");
+//					r.colum().pixel(100).text("Column13").align(SWT.CENTER).property("col13");
+//					r.colum().pixel(100).text("Column14").align(SWT.CENTER).property("col14");
+//					r.colum().pixel(100).text("Column15").align(SWT.CENTER).property("col15");
+//					r.colum().pixel(100).text("Column16").align(SWT.CENTER).property("col16");
+//					r.colum().pixel(100).text("Column17").align(SWT.CENTER).property("col17");
+//					r.colum().pixel(100).text("Column18").align(SWT.CENTER).property("col18");
+//					r.colum().pixel(100).text("Column19").align(SWT.CENTER).property("col19");
+//					r.colum().pixel(100).text("Column20").align(SWT.CENTER).property("col20");
+					
 					r.colum().pixel(100).text("Column1").align(SWT.CENTER).property("col1");
 					r.colum().pixel(100).text("Column2").align(SWT.CENTER).property("col2");
-					r.colum().pixel(100).text("Column3").align(SWT.CENTER).property("col3");
-					r.colum().pixel(100).text("Column4").align(SWT.CENTER).property("col4");
-					r.colum().pixel(100).text("Column5").align(SWT.CENTER).property("col5");
-					r.colum().pixel(100).text("Column6").align(SWT.CENTER).property("col6");
-					r.colum().pixel(100).text("Column7").align(SWT.CENTER).property("col7");
-					r.colum().pixel(100).text("Column8").align(SWT.CENTER).property("col8");
-					r.colum().pixel(100).text("Column9").align(SWT.CENTER).property("col9");
-					r.colum().pixel(100).text("Column10").align(SWT.CENTER).property("col10");
-					r.colum().pixel(100).text("Column11").align(SWT.CENTER).property("col11");
-					r.colum().pixel(100).text("Column12").align(SWT.CENTER).property("col12");
-					r.colum().pixel(100).text("Column13").align(SWT.CENTER).property("col13");
-					r.colum().pixel(100).text("Column14").align(SWT.CENTER).property("col14");
-					r.colum().pixel(100).text("Column15").align(SWT.CENTER).property("col15");
-					r.colum().pixel(100).text("Column16").align(SWT.CENTER).property("col16");
-					r.colum().pixel(100).text("Column17").align(SWT.CENTER).property("col17");
-					r.colum().pixel(100).text("Column18").align(SWT.CENTER).property("col18");
-					r.colum().pixel(100).text("Column19").align(SWT.CENTER).property("col19");
-					r.colum().pixel(100).text("Column20").align(SWT.CENTER).property("col20");
+					r.colum().weight(1).text("Column3").align(SWT.CENTER).property("col3");
 					return r.builder();
 				}
 			}.builder(cmp);

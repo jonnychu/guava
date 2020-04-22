@@ -3,6 +3,9 @@ package cn.nextop.guava.widgets.table.render.panel;
 import static cn.nextop.guava.support.Objects.cast;
 import static java.lang.Math.max;
 
+import java.beans.PropertyChangeEvent;
+import java.beans.PropertyChangeListener;
+
 import org.eclipse.draw2d.IFigure;
 import org.eclipse.draw2d.geometry.Dimension;
 import org.eclipse.draw2d.geometry.Insets;
@@ -10,9 +13,9 @@ import org.eclipse.draw2d.geometry.Rectangle;
 
 import cn.nextop.guava.support.draw2d.scroll.bar.XRangeModel;
 import cn.nextop.guava.support.draw2d.scroll.bar.XScrollBar;
-import cn.nextop.guava.widgets.table.XTable;
 import cn.nextop.guava.widgets.table.builder.internal.XTableFactory;
 import cn.nextop.guava.widgets.table.model.XTableModel;
+import cn.nextop.guava.widgets.table.model.column.Column;
 import cn.nextop.guava.widgets.table.model.config.XTableConfig;
 import cn.nextop.guava.widgets.table.render.AbstractXTablePanel;
 import cn.nextop.guava.widgets.table.render.viewport.XViewport;
@@ -21,9 +24,8 @@ import cn.nextop.guava.widgets.table.render.viewport.YViewport;
 /**
  * @author jonny
  */
-public class XTablePanel extends AbstractXTablePanel {
+public class XTablePanel extends AbstractXTablePanel implements PropertyChangeListener {
 	//
-	protected XTable table;
 	protected XViewport head;
 	protected YViewport data;
 	protected XScrollBar hBar, vBar;
@@ -32,13 +34,8 @@ public class XTablePanel extends AbstractXTablePanel {
 	/**
 	 * 
 	 */
-	public XTable getXTable() { return table; }
-
-	/**
-	 * 
-	 */
-	public XTablePanel(XTable table, XTableFactory factory) {
-		super("table.panel", factory); this.table = table;
+	public XTablePanel(XTableFactory factory) {
+		super("table.panel", factory);
 		this.hBar = new XScrollBar("hz", true ); 
 		this.vBar = new XScrollBar("vt", false);
 		this.hRangeModel = this.hBar.getModel();
@@ -59,12 +56,12 @@ public class XTablePanel extends AbstractXTablePanel {
 	/**
 	 * 
 	 */
-	public void setDataContents(IFigure figure) {
-		this.data.setContents(figure);
+	public void setHeadContents(IFigure figure) {
+		this.head.setContents(figure);
 	}
 	
-	public void setHeaderContents(IFigure figure) {
-		this.head.setContents(figure);
+	public void setDataContents(IFigure figure) {
+		this.data.setContents(figure);
 	}
 	
 	/**
@@ -78,6 +75,13 @@ public class XTablePanel extends AbstractXTablePanel {
 	public void pageDown() {
 		if(!this.vBar.isVisible()) return;
 		vBar.setValue(vBar.getValue() + vBar.getStepIncrement());
+	}
+	
+	private void localRevalidate() {
+		invalidateTree();
+		if (getLayoutManager() != null)
+			getLayoutManager().invalidate();
+		getUpdateManager().addInvalidFigure(this);
 	}
 	
 	@Override
@@ -125,5 +129,14 @@ public class XTablePanel extends AbstractXTablePanel {
 		final int hStepInc = hBar.getStepIncrement();
 		int hPageInc = hBar.getModel().getExtent() - hStepInc;
 		if (hPageInc < hStepInc) hPageInc = hStepInc; hBar.setPageIncrement(hPageInc);
+	}
+	
+	@Override
+	public void propertyChange(PropertyChangeEvent event) {
+		if (event.getSource() instanceof Column) {
+			if (Column.PROPERTY_VALUE.equals(event.getPropertyName())) {
+				localRevalidate(); repaint(); fireFigureMoved(); fireCoordinateSystemChanged();
+			}
+		}
 	}
 }

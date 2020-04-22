@@ -8,38 +8,38 @@ import java.util.List;
  */
 public class Columns {
 	//
-	protected List<Column<?>> colums;
+	protected List<Column<?>> columns;
 	
 	public Columns() {
-		this.colums = new ArrayList<>();
+		this.columns = new ArrayList<>();
 	}
 	
 	public void add(Column<?> colum) {
-		this.colums.add(colum);
+		this.columns.add(colum);
 	}
 
 	public List<Column<?>> getColumns() {
-		return colums;
+		return columns;
 	}
 	
 	public List<Column<?>> toPixel(int width) {
 		int tw = 0, tp = 0; 
-		for (Column<?> col : colums) {
+		for (Column<?> col : columns) {
 			final int px = col.getPixel(), wt = col.getWeight();
 			if(wt > 0) { tw = tw + wt; } else { tp = tp + px; }
 		}
 		if(tw > 0) { 
 			int rp = width - tp, aw = rp / tw, idx = 0;
-			for (Column<?> col : colums) {
+			for (Column<?> col : columns) {
 				final int px = col.getPixel();
 				final int wt = col.getWeight();
 				if(wt == 0 || aw * wt < px) continue;
 				
-				if(idx == colums.size() - 1) col.setPixel(rp);
+				if(idx == columns.size() - 1) col.setPixel(rp);
 				else { col.setPixel(aw * col.getWeight()); }
 				rp = rp - aw * col.getWeight();
 			}
 		}
-		return colums;
+		return columns;
 	}
 }

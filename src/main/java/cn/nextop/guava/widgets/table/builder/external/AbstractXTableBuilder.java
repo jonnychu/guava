@@ -63,6 +63,10 @@ public abstract class AbstractXTableBuilder<T> {
 			this.column.setCellAlign(align); return this;
 		}
 		
+		public XTableBuilder minimum(int minimum) {
+			this.column.setMinimum(minimum); return this;
+		}
+		
 		public XTableBuilder colum() {
 			this.columns.add(this.column = new Column<>()); return this;
 		}

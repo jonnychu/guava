@@ -17,7 +17,7 @@ import cn.nextop.guava.widgets.table.render.AbstractXTableColumnWidget;
 import cn.nextop.guava.widgets.table.render.panel.RowPanel;
 import cn.nextop.guava.widgets.table.render.panel.XTablePanel;
 import cn.nextop.guava.widgets.table.render.panel.content.DataContent;
-import cn.nextop.guava.widgets.table.render.panel.content.HeaderContent;
+import cn.nextop.guava.widgets.table.render.panel.content.HeadContent;
 
 /**
  * @author jonny
@@ -26,16 +26,16 @@ public class XTableFactory extends AbstractBuilder {
 	//
 	private XTable table;
 	private DataContent dc;
-	private HeaderContent hc;
+	private HeadContent hc;
 	private XTablePanel tablePanel;
 	
 	
 	@Override
 	public XTablePanel build(Canvas parent) {
 		this.table = cast(parent);
-		this.tablePanel = new XTablePanel(table, this);
+		this.tablePanel = new XTablePanel(this);
 		this.tablePanel.setDataContents(this.dc = new DataContent(this));
-		this.tablePanel.setHeaderContents(this.hc = new HeaderContent(this));
+		this.tablePanel.setHeadContents(this.hc = new HeadContent(this));
 		return tablePanel;
 	}
 	
@@ -73,6 +73,7 @@ public class XTableFactory extends AbstractBuilder {
 				Class<?> clazz = column.getColumnwidget();
 				widgets[i] = Objects.cast(clazz.newInstance());
 				widgets[i].setColumn(column); hc.add(widgets[i]);
+				column.addPropListener(tablePanel);// add column resize
 			} catch (InstantiationException | IllegalAccessException e) {
 				throw new RuntimeException(e);
 			}
@@ -82,26 +83,23 @@ public class XTableFactory extends AbstractBuilder {
 	/**
 	 * 
 	 */
+	public XTable getTable() {
+		return this.table;
+	}
+	
 	public XTableModel getModel() {
 		return this.table.getModel();
 	}
 	
-	/**
-	 * 
-	 */
-	public XTable getTable() {
-		return table;
-	}
-	
-	public void setTable(XTable table) {
-		this.table = table;
-	}
-	
 	public XTablePanel getTablePanel() {
-		return tablePanel;
+		return this.tablePanel;
 	}
 	
-	public void setTablePanel(XTablePanel tablePanel) {
-		this.tablePanel = tablePanel;
+	public DataContent getDataContent() {
+		return this.dc;
+	}
+	
+	public HeadContent getHeadContent() {
+		return this.hc;
 	}
 }

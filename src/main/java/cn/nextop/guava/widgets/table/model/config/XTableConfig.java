@@ -9,12 +9,14 @@ import cn.nextop.guava.support.swt.Colors;
  */
 public class XTableConfig {
 	//
-	private int itemHeight = 24, headerHeight = 24;
-	private int stepIncrement = itemHeight, pageIncrement = itemHeight * 12;
-	//
+	private Color FG_GRAY = Colors.COLOR_GRAY;
 	private Color BG_WHITE = Colors.COLOR_WHITE;
 	private Color BG_GRAY_L = Colors.COLOR_LIGHT_GRAY;
-	private Color FG_GRAY = Colors.COLOR_GRAY;
+	
+	//
+	private int itemHeight = 24, headerHeight = 24;
+	private int stepIncrement = itemHeight, pageIncrement = itemHeight * 12;
+	
 	
 	//
 	public int getItemHeight() {
