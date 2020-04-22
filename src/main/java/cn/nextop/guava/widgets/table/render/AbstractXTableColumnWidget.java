@@ -66,16 +66,9 @@ public abstract class AbstractXTableColumnWidget extends Figure {
 		this.editable = editable;
 	}
 	
-	@Override
-	public void handleMouseMoved(MouseEvent event) {
-		super.handleMouseMoved(event);
-		Rectangle r = getEdge(((AbstractXTableColumnWidget)event.getSource()).getBounds());
-		if(r.contains(event.getLocation())) setCursor(Cursors.SIZEWE); else setCursor(null);
-	}
-	
 	protected Rectangle getEdge(Rectangle r) {
 		if(r == null) return null;
-		return new Rectangle(r.x + r.width - 5, r.y, 5, r.y + r.height);
+		return new Rectangle(r.x + r.width - 4, r.y, 4, r.y + r.height);
 	}
 	
 	/**
@@ -86,13 +79,21 @@ public abstract class AbstractXTableColumnWidget extends Figure {
 		protected Point start;
 		protected boolean armed;
 		protected int revertValue;
+		protected final int ws = 4;
 		
 		@Override
 		public void mousePressed(MouseEvent me) {
+			if(!touch(me)) return;
 			start = me.getLocation(); armed = true;
 			revertValue = column.getPixel(); me.consume();
 		}
-
+		
+		@Override
+		public void mouseMoved(MouseEvent me) {
+			super.mouseMoved(me);
+			if(touch(me)) setCursor(Cursors.SIZEWE); else setCursor(null);
+		}
+		
 		@Override
 		public void mouseDragged(MouseEvent me) {
 			if (!armed) return;
@@ -109,6 +110,12 @@ public abstract class AbstractXTableColumnWidget extends Figure {
 		@Override
 		public void mouseReleased(MouseEvent me) {
 			if (!armed) return; armed = false; me.consume();
+		}
+		
+		private boolean touch(MouseEvent me) {
+			Rectangle r = getEdge(((AbstractXTableColumnWidget)me.getSource()).getBounds());
+			Rectangle touchRect = new Rectangle(r.x + r.width - ws, r.y, ws, r.y + r.height);
+			return touchRect.contains(me.getLocation());
 		}
 	}
 }
