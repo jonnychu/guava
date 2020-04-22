@@ -46,6 +46,13 @@ public class XTablePanel extends AbstractXTablePanel {
 		this.head = new XViewport("vh", hRangeModel, null);
 		this.data = new YViewport("vd", hRangeModel, vRangeModel);
 		
+		XTableModel model = factory.getModel();
+		XTableConfig config = model.getXTableConfig();
+		this.hBar.setStepIncrement(config.getStepIncrement());
+		this.hBar.setPageIncrement(config.getPageIncrement());
+		this.vBar.setStepIncrement(config.getStepIncrement());
+		this.vBar.setPageIncrement(config.getPageIncrement());
+		
 		add(this.head); add(this.data); add(this.hBar); add(this.vBar);
 	}
 	

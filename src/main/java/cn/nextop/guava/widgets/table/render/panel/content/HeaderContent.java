@@ -2,8 +2,6 @@ package cn.nextop.guava.widgets.table.render.panel.content;
 
 import static cn.nextop.guava.support.Objects.cast;
 import static cn.nextop.guava.support.swt.CGUtils.drawLine;
-import static cn.nextop.guava.support.swt.CGUtils.fillRect;
-import static cn.nextop.guava.support.swt.Colors.COLOR_GRAY;
 
 import java.util.List;
 
@@ -12,7 +10,7 @@ import org.eclipse.draw2d.IFigure;
 import org.eclipse.draw2d.geometry.Dimension;
 import org.eclipse.draw2d.geometry.Rectangle;
 
-import cn.nextop.guava.support.swt.Colors;
+import cn.nextop.guava.support.swt.CGUtils;
 import cn.nextop.guava.widgets.table.builder.internal.XTableFactory;
 import cn.nextop.guava.widgets.table.model.XTableModel;
 import cn.nextop.guava.widgets.table.model.column.Column;
@@ -34,20 +32,23 @@ public class HeaderContent extends AbstractXTablePanel {
 	
 	@Override
 	protected void paintClientArea(Graphics g) {
-		Rectangle r = getBounds(); g.pushState();
-		fillRect(g, getBounds(), Colors.COLOR_WHITE);
+		//
 		final XTableModel model = factory.getModel();
+		final XTableConfig cfg = model.getXTableConfig();
 		List<Column<?>> cols = model.getColumns().getColumns();
+		//
+		final Rectangle r = getBounds(); g.pushState();
+		final int x = r.x, y = r.y, w = r.width, h = r.height;
+		CGUtils.fillRect(g, getBounds(), cfg.getBG_WHITE());
 		int cx = 0; for (int i = 0; i < cols.size(); i++) {
 			Column<?> column = cols.get(i);
-			drawLine(g, cx, r.y, cx, r.y + r.height, COLOR_GRAY);
-			cx = cx + r.x + column.getPixel();
+			drawLine(g, cx, y, cx, y + h, cfg.getFG_GRAY());
+			cx = cx + x + column.getPixel();
 			if(i == cols.size() - 1)
-				drawLine(g, cx, r.y, cx, r.y + r.height, COLOR_GRAY);
-				
+				drawLine(g, cx, y, cx, y + h, cfg.getFG_GRAY());
 		}
-		drawLine(g, r.x, r.y, r.x + r.width, r.y, COLOR_GRAY);
-		drawLine(g, r.x, r.y + r.height - 1, r.x + r.width, r.y + r.height - 1, COLOR_GRAY);
+		drawLine(g, x, y, x + w, y, cfg.getFG_GRAY());
+		drawLine(g, x, y + h - 1, x + w, y + h - 1, cfg.getFG_GRAY());
 		g.popState(); super.paintClientArea(g);
 	}
 	
