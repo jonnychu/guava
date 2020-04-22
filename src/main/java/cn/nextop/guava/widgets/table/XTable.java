@@ -30,8 +30,8 @@ public class XTable extends Canvas {
 	}
 	
 	public void input(List<IRow> rows) {
-		this.model.getRows().setRows(rows);
-		this.factory.buildData();
+		if(rows == null || rows.size() == 0) return;
+		model.getRows().setRows(rows); factory.buildData();
 	}
 	
 	/**

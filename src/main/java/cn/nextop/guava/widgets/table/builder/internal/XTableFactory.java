@@ -25,9 +25,9 @@ import cn.nextop.guava.widgets.table.render.panel.content.HeaderContent;
 public class XTableFactory extends AbstractBuilder {
 	//
 	private XTable table;
-	private XTablePanel tablePanel;
 	private DataContent dc;
 	private HeaderContent hc;
+	private XTablePanel tablePanel;
 	
 	
 	@Override
@@ -43,11 +43,9 @@ public class XTableFactory extends AbstractBuilder {
 		final XTableModel model = this.table.getModel();
 		final List<IRow> rows = model.getRows().getRows();
 		final List<Column<?>> cols = model.getColumns().getColumns();
-		if(rows == null || rows.size() == 0) return; 
-		if(cols == null || cols.size() == 0) return;
-		int size = cols.size(); 
-		for (IRow row : rows) {
-			RowPanel rp = new RowPanel(this);
+		if(rows == null || rows.size() == 0 || cols == null || cols.size() == 0) return; 
+		int size = cols.size(); for (IRow row : rows) {
+			final RowPanel rp = new RowPanel(this);
 			AbstractXTableCellWidget[] cw = new AbstractXTableCellWidget[size];
 			for (int i = 0; i < size; i++) {
 				try {

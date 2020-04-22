@@ -17,7 +17,7 @@ public class Column<T> {
 	//
 	private int height = 24;
 	private String text = "";
-	private int pixel = 30, weight = 0, dragMinPixel = 30;
+	private int pixel = 30, weight = 0;
 	private int colAlign = SWT.CENTER;
 	private int cellAlign = SWT.CENTER;
 	//
@@ -68,14 +68,6 @@ public class Column<T> {
 		this.height = height;
 	}
 	
-	public int getDragMinPixel() {
-		return dragMinPixel;
-	}
-
-	public void setDragMinPixel(int dragMinPixel) {
-		this.dragMinPixel = dragMinPixel;
-	}
-
 	public int getColAlign() {
 		return colAlign;
 	}
