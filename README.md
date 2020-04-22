@@ -19,3 +19,5 @@ Please run cn.nextop.guava.Example java file
 * 5 combo
 
 ![Image text](https://github.com/jonnychu/guava/blob/master/doc/sample.PNG)
+
+* 6 table
