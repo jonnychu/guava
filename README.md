@@ -21,3 +21,5 @@ Please run cn.nextop.guava.Example java file
 ![Image text](https://github.com/jonnychu/guava/blob/master/doc/sample.PNG)
 
 * 6 table
+
+![Image text](https://github.com/jonnychu/guava/blob/master/doc/table.PNG)
