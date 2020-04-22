@@ -1,32 +1,36 @@
 package cn.nextop.guava.widgets.table.model.column;
 
+import static cn.nextop.guava.support.Objects.cast;
+
 import org.eclipse.swt.SWT;
 
 import cn.nextop.guava.support.property.Property;
-import cn.nextop.guava.widgets.combo.render.popup.widget.DefaultCellWidget;
-import cn.nextop.guava.widgets.combo.render.popup.widget.DefaultColumnWidget;
+import cn.nextop.guava.widgets.table.render.AbstractXTableCellWidget;
+import cn.nextop.guava.widgets.table.render.AbstractXTableColumnWidget;
+import cn.nextop.guava.widgets.table.render.widget.DefaultCellWidget;
+import cn.nextop.guava.widgets.table.render.widget.DefaultColumnWidget;
 
 /**
  * @author jonny
  */
 public class Column<T> {
 	//
-	private int weight = 1;
 	private int height = 24;
 	private String text = "";
+	private int pixel = 30, weight = 0, dragMinPixel = 30;
 	private int colAlign = SWT.CENTER;
 	private int cellAlign = SWT.CENTER;
 	//
 	private Property<T> property;
-	private Class<?> cellWidget;
-	private Class<?> columnwidget;
+	private Class<? extends AbstractXTableCellWidget> cellWidget;
+	private Class<? extends AbstractXTableColumnWidget> columnwidget;
 	
 	/**
 	 * 
 	 */
 	public Column() {
-		this.cellWidget = DefaultCellWidget.class;
-		this.columnwidget = DefaultColumnWidget.class;
+		this.cellWidget = cast(DefaultCellWidget.class);
+		this.columnwidget = cast(DefaultColumnWidget.class);
 	}
 	
 	/**
@@ -40,6 +44,13 @@ public class Column<T> {
 		this.text = text;
 	}
 	
+	public int getPixel() {
+		return pixel;
+	}
+
+	public void setPixel(int pixel) {
+		this.pixel = pixel;
+	}
 	
 	public int getWeight() {
 		return weight;
@@ -57,6 +68,14 @@ public class Column<T> {
 		this.height = height;
 	}
 	
+	public int getDragMinPixel() {
+		return dragMinPixel;
+	}
+
+	public void setDragMinPixel(int dragMinPixel) {
+		this.dragMinPixel = dragMinPixel;
+	}
+
 	public int getColAlign() {
 		return colAlign;
 	}
@@ -85,7 +104,7 @@ public class Column<T> {
 		return cellWidget;
 	}
 
-	public void setCellWidget(Class<?> cellWidget) {
+	public void setCellWidget(Class<? extends AbstractXTableCellWidget> cellWidget) {
 		this.cellWidget = cellWidget;
 	}
 
@@ -93,7 +112,7 @@ public class Column<T> {
 		return columnwidget;
 	}
 
-	public void setColumnwidget(Class<?> columnwidget) {
+	public void setColumnwidget(Class<? extends AbstractXTableColumnWidget> columnwidget) {
 		this.columnwidget = columnwidget;
 	}
 }

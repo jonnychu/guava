@@ -1,4 +1,4 @@
-package cn.nextop.guava.widgets.table.render.viewport;
+package cn.nextop.guava.table;
 
 import static java.lang.Math.max;
 
@@ -20,8 +20,8 @@ import cn.nextop.guava.widgets.AbstractPanel;
  */
 public class XViewport extends AbstractPanel implements PropertyChangeListener {
 
-	protected IFigure view;
-	protected XRangeModel hRangeModel, vRangeModel;
+	private IFigure view;
+	private XRangeModel hRangeModel, vRangeModel;
 	
 	/**
 	 * 
@@ -60,7 +60,7 @@ public class XViewport extends AbstractPanel implements PropertyChangeListener {
 		int extent2 = getClientArea().height;
 		int max1 = this.view.getBounds().width;
 		int max2 = this.view.getBounds().height;
-		if(this.hRangeModel != null)
+		if(this.hRangeModel != null) 
 			this.hRangeModel.setAll(0, extent1, max1);
 		if(this.vRangeModel != null)
 			this.vRangeModel.setAll(0, extent2, max2);
@@ -124,13 +124,13 @@ public class XViewport extends AbstractPanel implements PropertyChangeListener {
 		Point p = viewport.getClientArea().getLocation();
 		p.translate(viewport.getViewLocation().getNegated());
 		//
-		final Rectangle r1 = viewport.getClientArea();
-		Dimension pSize = contents.getPreferredSize(r1.width, r1.height);
-		
+		Rectangle r1 = viewport.getClientArea();
+		final int w = r1.width, h = r1.height;
+		Dimension min = contents.getMinimumSize(w, h);
 		//
-		final Dimension r2 = r1.getSize();
-		r2.height = max(r2.height, pSize.height);
-		r2.width = Math.max(r2.width, pSize.width);
+		Dimension r2 = r1.getSize();
+		r2.height = max(r2.height, min.height);
+		r2.width = Math.max(r2.width, min.width);
 		contents.setBounds(new Rectangle(p, r2));
 	}
 	

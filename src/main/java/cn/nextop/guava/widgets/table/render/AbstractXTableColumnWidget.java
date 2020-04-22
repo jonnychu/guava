@@ -2,7 +2,7 @@ package cn.nextop.guava.widgets.table.render;
 
 import org.eclipse.draw2d.Figure;
 
-import cn.nextop.guava.widgets.combo.model.colum.Column;
+import cn.nextop.guava.widgets.table.model.column.Column;
 
 /**
  * @author jonny
@@ -16,6 +16,9 @@ public abstract class AbstractXTableColumnWidget extends Figure {
 	//
 	protected final int margin = 8, arc = 3, oval = 5;
 	
+	/**
+	 * 
+	 */
 	public String getText() {
 		return text;
 	}

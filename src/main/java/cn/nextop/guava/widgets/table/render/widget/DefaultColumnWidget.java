@@ -1,6 +1,5 @@
 package cn.nextop.guava.widgets.table.render.widget;
 
-import static cn.nextop.guava.support.swt.CGUtils.fillRect;
 import static org.eclipse.draw2d.TextUtilities.INSTANCE;
 
 import org.eclipse.draw2d.Graphics;
@@ -8,19 +7,12 @@ import org.eclipse.draw2d.geometry.Dimension;
 import org.eclipse.draw2d.geometry.Rectangle;
 import org.eclipse.swt.SWT;
 
-import cn.nextop.guava.support.swt.Colors;
-import cn.nextop.guava.widgets.table.render.AbstractXTableCellWidget;
+import cn.nextop.guava.widgets.table.render.AbstractXTableColumnWidget;
 
 /**
  * @author jonny
  */
-public class DefaultColumnWidget extends AbstractXTableCellWidget {
-	
-	@Override
-	protected void paintFigure(Graphics g) {
-		super.paintFigure(g);
-		fillRect(g, getBounds(), Colors.COLOR_WHITE);
-	}
+public class DefaultColumnWidget extends AbstractXTableColumnWidget {
 	
 	@Override
 	protected void paintClientArea(Graphics g) {

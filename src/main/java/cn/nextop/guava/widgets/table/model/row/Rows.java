@@ -9,8 +9,8 @@ import java.util.List;
 public class Rows {
 	private List<IRow> rows;
 	
-	public Rows(List<IRow> rows) {
-		this.rows = new ArrayList<>(rows);
+	public Rows() {
+		this.rows = new ArrayList<>();
 	}
 
 	public List<IRow> getRows() {
@@ -20,5 +20,10 @@ public class Rows {
 	public void setRows(List<IRow> rows) {
 		this.rows.clear();
 		this.rows.addAll(rows);
+	}
+	
+	public int size() {
+		if(rows == null) return 0;
+		else return rows.size();
 	}
 }

@@ -1,4 +1,4 @@
-package cn.nextop.guava.widgets.table.render.panel;
+package cn.nextop.guava.table;
 
 import static cn.nextop.guava.support.Objects.cast;
 import static java.lang.Math.max;
@@ -10,43 +10,31 @@ import org.eclipse.draw2d.geometry.Rectangle;
 
 import cn.nextop.guava.support.draw2d.scroll.bar.XRangeModel;
 import cn.nextop.guava.support.draw2d.scroll.bar.XScrollBar;
-import cn.nextop.guava.widgets.table.XTable;
-import cn.nextop.guava.widgets.table.builder.internal.XTableFactory;
-import cn.nextop.guava.widgets.table.model.XTableModel;
-import cn.nextop.guava.widgets.table.model.config.XTableConfig;
-import cn.nextop.guava.widgets.table.render.AbstractXTablePanel;
-import cn.nextop.guava.widgets.table.render.viewport.XViewport;
-import cn.nextop.guava.widgets.table.render.viewport.YViewport;
+import cn.nextop.guava.widgets.AbstractPanel;
 
 /**
  * @author jonny
  */
-public class XTablePanel extends AbstractXTablePanel {
+public class TestPanel extends AbstractPanel {
 	//
-	protected XTable table;
-	protected XViewport head;
-	protected YViewport data;
+	protected XViewport data;
+	protected YViewport header;
 	protected XScrollBar hBar, vBar;
 	protected XRangeModel hRangeModel, vRangeModel;
 	
 	/**
 	 * 
 	 */
-	public XTable getXTable() { return table; }
-
-	/**
-	 * 
-	 */
-	public XTablePanel(XTable table, XTableFactory factory) {
-		super("table.panel", factory); this.table = table;
-		this.hBar = new XScrollBar("hz", true ); 
-		this.vBar = new XScrollBar("vt", false);
+	public TestPanel(String name) {
+		super(name);
+		this.hBar = new XScrollBar("horz", true); 
+		this.vBar = new XScrollBar("vert", false);
 		this.hRangeModel = this.hBar.getModel();
 		this.vRangeModel = this.vBar.getModel();
-		this.head = new XViewport("vh", hRangeModel, null);
-		this.data = new YViewport("vd", hRangeModel, vRangeModel);
+		this.header = new YViewport("header", hRangeModel, null);
+		this.data = new XViewport("data", hRangeModel, vRangeModel);
 		
-		add(this.head); add(this.data); add(this.hBar); add(this.vBar);
+		add(this.data); add(this.header); add(this.hBar); add(this.vBar);
 	}
 	
 	/**
@@ -57,7 +45,12 @@ public class XTablePanel extends AbstractXTablePanel {
 	}
 	
 	public void setHeaderContents(IFigure figure) {
-		this.head.setContents(figure);
+		this.header.setContents(figure);
+	}
+	
+	@Override
+	public void validate() {
+		super.validate(); this.hBar.validate(); this.vBar.validate();
 	}
 	
 	/**
@@ -73,41 +66,49 @@ public class XTablePanel extends AbstractXTablePanel {
 		vBar.setValue(vBar.getValue() + vBar.getStepIncrement());
 	}
 	
-	@Override
-	public void validate() {
-		super.validate(); this.hBar.validate(); this.vBar.validate();
-	}
-	
 	/**
 	 * 
 	 */
 	@Override
 	protected void layoutManager(IFigure container) {
-		XTablePanel parent = cast(container);
-		XTableModel model = parent.getFactory().getModel();
-		final XTableConfig config = model.getXTableConfig();
+		TestPanel parent = cast(container);
 		
 		//
 		final Rectangle cArea = parent.getClientArea();
 		final int right = vBar.getPreferredSize().width;
 		final int bottom = hBar.getPreferredSize().height;
 		final Insets i1 = new Insets(0, 0, bottom, right);
-		
+
 		Dimension d1 = cArea.getSize();
 		Dimension d2 = d1.getShrinked(i1.right, i1.bottom);
 		d2.width = max(d2.width, 0); d2.height = max(d2.height, 0);
 		int wHint = d2.width, hHint = d2.height;
+
+		final Insets i2 = data.getInsets();
+		Dimension minSize = new Dimension(i2.getWidth(), i2.getHeight());
+		if (data.getContents() != null) {
+			if (wHint > -1) wHint = Math.max(0, wHint - i2.getWidth());
+			if (hHint > -1) hHint = Math.max(0, hHint - i2.getHeight());
+			minSize.expand(data.getContents().getMinimumSize(wHint, hHint));
+		}
+		Dimension pref = data.getPreferredSize(wHint, hHint).getCopy();
+		pref.height = minSize.height; pref.width = minSize.width;
+
+		boolean none = d1.contains(pref);
+		boolean both = !none && pref.containsProper(d2);
+		boolean showV = both || pref.height > d1.height;
+		boolean showH = both || pref.width > d1.width;
 		
-		Dimension dp = data.getContents().getPreferredSize(wHint, hHint).getCopy();
-		Dimension hp = head.getContents().getPreferredSize(wHint, hHint).getCopy();
-		boolean showV = hp.height + dp.height > d1.height, showH = hp.width > d1.width;
 		vBar.setVisible(showV); hBar.setVisible(showH);
 		if (!showV) i1.right = 0; if (!showH) i1.bottom = 0;
 		final Rectangle r1 = cArea.getShrinked(i1);
-		Rectangle r2 = new Rectangle(r1.x, r1.y, r1.width, config.getHeaderHeight()); head.setBounds(r2);
-		Rectangle r3 = new Rectangle(r1.x, r2.bottom(), r1.width, r1.height - r2.height); data.setBounds(r3);
+		if(header.getContents() == null) {
+			Rectangle r3 = new Rectangle(r1.x, r1.y, r1.width, r1.height); data.setBounds(r3);
+		} else {
+			Rectangle r2 = new Rectangle(r1.x, r1.y, r1.width, 24); header.setBounds(r2);
+			Rectangle r3 = new Rectangle(r1.x, r2.bottom(), r1.width, r1.height - r2.height); data.setBounds(r3);
+		}
 		
-		// bar
 		if (showV) vBar.setBounds(new Rectangle(r1.right(), r1.y, i1.right, r1.height));
 		if (showH) hBar.setBounds(new Rectangle(r1.x, r1.bottom(), r1.width, i1.bottom));
 		

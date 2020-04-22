@@ -37,21 +37,18 @@ public class StepButton extends Figure {
 	public StepButton(String text, String name) {
 		this.text = text; this.name = name;
 		this.model = new XButtonModel();
-		addMouseListener(new MouseListener.Stub() {
-			@Override
-			public void mousePressed(MouseEvent me) {
-				super.mousePressed(me); model.pressed();
-			}
-			
-			@Override
-			public void mouseReleased(MouseEvent me) {
-				super.mouseReleased(me); model.released();
+		//
+		addMouseMotionListener(new MouseMotionListener.Stub() {
+			@Override public void mouseExited(MouseEvent me) {
+				super.mouseExited(me); model.released();
 			}
 		});
-		addMouseMotionListener(new MouseMotionListener.Stub() {
-			@Override
-			public void mouseExited(MouseEvent me) {
-				super.mouseExited(me); model.released();
+		addMouseListener(new MouseListener.Stub() {
+			@Override public void mousePressed(MouseEvent me) {
+				super.mousePressed(me); model.pressed();
+			}
+			@Override public void mouseReleased(MouseEvent me) {
+				super.mouseReleased(me); model.released();
 			}
 		});
 	}

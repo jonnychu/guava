@@ -22,56 +22,62 @@ public abstract class AbstractXTableBuilder<T> {
         return (Class<T>) ((ParameterizedType) getClass().getGenericSuperclass()).getActualTypeArguments()[0];
     }
 	
-	public class XComboBuilder {
+	public class XTableBuilder {
 		//
 		private XTable table;
-		private Columns colums;
-		private Column<T> colum;
+		private Columns columns;
+		private Column<T> column;
 		
 		/**
 		 * 
 		 */
 		public XTableConfig getXComboConfig() {
-			return this.table.getModel().getConfig();
+			return this.table.getModel().getXTableConfig();
 		}
 		
 		/**
 		 * 
 		 */
-		public XComboBuilder(Composite cmp) {
-			this.colums = new Columns();
+		public XTableBuilder(Composite cmp) {
+			this.columns = new Columns();
 			this.table = new XTable(cmp);
 		}
 		
-		public XComboBuilder text(String text) {
-			this.colum.setText(text); return this;
+		public XTableBuilder text(String text) {
+			this.column.setText(text); return this;
 		}
 		
-		public XComboBuilder weight(int weight) {
-			this.colum.setWeight(weight); return this;
+		public XTableBuilder pixel(int pixel) {
+			this.column.setPixel(pixel); return this;
 		}
 		
-		public XComboBuilder colAlign(int align) {
-			this.colum.setColAlign(align); return this;
+		public XTableBuilder weight(int weight) {
+			this.column.setWeight(weight); return this;
 		}
 		
-		public XComboBuilder align(int align) {
-			this.colum.setCellAlign(align); return this;
+		public XTableBuilder colAlign(int align) {
+			this.column.setColAlign(align); return this;
 		}
 		
-		public XComboBuilder colum() {
-			this.colums.add(this.colum = new Column<>()); return this;
+		public XTableBuilder align(int align) {
+			this.column.setCellAlign(align); return this;
 		}
 		
-		public XComboBuilder property(String name) {
-			this.colum.setProperty(new Property<T>(getTClass(), name)); return this;
+		public XTableBuilder colum() {
+			this.columns.add(this.column = new Column<>()); return this;
+		}
+		
+		public XTableBuilder property(String name) {
+			this.column.setProperty(new Property<T>(getTClass(), name)); return this;
 		}
 		
 		/**
 		 * 
 		 */
 		public XTable builder() {
-			table.getModel().setColums(this.colums); return table;
+			table.getModel().setColumns(this.columns); 
+			table.getFactory().buildHeader();
+			return table;
 		}
 	}
 }

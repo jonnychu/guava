@@ -33,26 +33,26 @@ public class XScrollBar extends AbstractPanel implements PropertyChangeListener,
 	protected boolean horz;
 	protected XRangeModel model;
 	protected StepButton btnUp, btnDown;
-	protected int stepIncrement = 10;
-	protected int pageIncrement = 50;
 	protected PageButton pageUp, pageDown;
+	protected final int pSize = 16;
+	protected int stepIncrement = 10, pageIncrement = 50;
 	
 	/**
 	 * 
 	 */
 	public XScrollBar(String name, boolean horz) {
 		super(name); this.horz = horz;
-		String s1 = horz ? caret_left : caret_up;
-		String s2 = horz ? caret_right : caret_down;
+		String n1 = horz ? caret_left : caret_up;
+		String n2 = horz ? caret_right : caret_down;
 		//
 		this.model = new XRangeModel();
 		this.model.addPropListener(this);
 		DragListener listener = new DragListener();
 		//
 		add(this.thumb = new Thumb());
-		add(this.btnUp = new StepButton(s1, "up"));
-		add(this.btnDown = new StepButton(s2, "down"));
-		add(this.pageUp = new PageButton("pageup"));
+		add(this.btnUp    = new StepButton(n1, "up"  ));
+		add(this.btnDown  = new StepButton(n2, "down"));
+		add(this.pageUp   = new PageButton("pageup"  ));
 		add(this.pageDown = new PageButton("pagedown"));
 		// Listener
 		this.btnUp.addActionListener(this);
@@ -101,9 +101,6 @@ public class XScrollBar extends AbstractPanel implements PropertyChangeListener,
 		return getMaximum() - getExtent() - getMinimum();
 	}
 	
-	/**
-	 * 
-	 */
 	public void setValue(int v) { this.model.setValue(v); }
 	
 	public int getValue() { return this.model.getValue(); }
@@ -178,7 +175,8 @@ public class XScrollBar extends AbstractPanel implements PropertyChangeListener,
 			if((val < 1) || (!isEnabled())) return;
 			final int v1 = this.horz ? r1.x : r1.y;
 			final int v2 = horz ? r1.width : r1.height;
-			final int thumbWH = v2 * extent / totalRange;
+			int thumbWH = v2 * extent / totalRange;
+			thumbWH = thumbWH < pSize * 2 ? pSize * 2 : thumbWH;
 			final int thumbXY = v1 + (v2 - thumbWH) * (value - min) / val;
 			Rectangle thumbBounds = this.horz ? 
 					new Rectangle(thumbXY, r1.y, thumbWH, r1.height) 
@@ -222,7 +220,7 @@ public class XScrollBar extends AbstractPanel implements PropertyChangeListener,
 	
 	@Override
 	protected Dimension calPreferredSize(IFigure container, int wHint, int hHint) {
-		return this.horz ? new Dimension(wHint, 16) : new Dimension(16, hHint);
+		return this.horz ? new Dimension(wHint, pSize) : new Dimension(pSize, hHint);
 	}
 	
 	/**

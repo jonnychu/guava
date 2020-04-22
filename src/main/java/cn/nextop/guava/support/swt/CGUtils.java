@@ -26,6 +26,17 @@ public class CGUtils {
 		if(color != null) g.setForegroundColor(color); g.drawRectangle(getBorderRect(r));
 	}
 	
+	public static void drawLineRect(Graphics g, Rectangle r, Color color) {
+		g.setForegroundColor(color);
+		g.drawLine(r.x , r.y, r.x + r.width, r.y);
+		g.drawLine(r.x + r.width, r.y, r.x + r.width, r.y + r.height);
+		g.drawLine(r.x, r.y + r.height - 1, r.x + r.width, r.y + r.height - 1);
+	}
+	
+	public static void drawLine(Graphics g, int x1, int y1, int x2, int y2, Color color) {
+		g.setForegroundColor(color); g.drawLine(x1, y1, x2, y2);
+	}
+	
 	public static void main(String[] args) {
 		Rectangle r = new Rectangle(10, 10, 20, 20);
 		System.out.println(CGUtils.scaleRect(r, 2));

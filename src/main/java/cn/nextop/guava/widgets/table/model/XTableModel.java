@@ -10,7 +10,7 @@ import cn.nextop.guava.widgets.table.model.row.Rows;
 public class XTableModel {
 	//
 	private Rows rows;
-	private Columns colums;
+	private Columns columns;
 	private XTableConfig config;
 	private boolean enable = true;
 	
@@ -18,6 +18,8 @@ public class XTableModel {
 	 * 
 	 */
 	public XTableModel() {
+		this.rows = new Rows();
+		this.columns = new Columns();
 		this.config = new XTableConfig();
 	}
 	
@@ -32,19 +34,19 @@ public class XTableModel {
 		this.rows = rows;
 	}
 
-	public Columns getColums() {
-		return colums;
+	public Columns getColumns() {
+		return columns;
 	}
 
-	public void setColums(Columns colums) {
-		this.colums = colums;
+	public void setColumns(Columns colums) {
+		this.columns = colums;
 	}
 
-	public XTableConfig getConfig() {
+	public XTableConfig getXTableConfig() {
 		return config;
 	}
 
-	public void setConfig(XTableConfig config) {
+	public void setXTableConfig(XTableConfig config) {
 		this.config = config;
 	}
 

@@ -44,7 +44,7 @@ public final class Colors {
 	
 	//
 	public static final Color COLOR_LIGHT_GREEN = getColor(96, 255, 96);
-	public static final Color COLOR_LIGHT_GRAY = getColor(192, 192, 192);
+	public static final Color COLOR_LIGHT_GRAY = getColor(245, 245, 245);
 	public static final Color COLOR_LIGHT_BLUE = getColor(127, 127, 255);
 	
 	//

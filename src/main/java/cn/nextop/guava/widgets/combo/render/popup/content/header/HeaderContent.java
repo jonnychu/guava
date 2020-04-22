@@ -11,7 +11,6 @@ import cn.nextop.guava.widgets.combo.model.colum.Column;
 import cn.nextop.guava.widgets.combo.render.AbstractColumnWidget;
 import cn.nextop.guava.widgets.combo.render.AbstractComboPanel;
 import cn.nextop.guava.widgets.combo.render.popup.PopupPanel;
-import cn.nextop.guava.widgets.combo.render.popup.widget.DefaultColumnWidget;
 
 /**
  * @author jonny
@@ -29,7 +28,7 @@ public class HeaderContent extends AbstractComboPanel {
 	 */
 	public HeaderContent(String name, List<Column<?>> columns) {
 		super(name);
-		widgets = new DefaultColumnWidget[columns.size()];
+		widgets = new AbstractColumnWidget[columns.size()];
 		for (int i = 0; i < columns.size(); i++) {
 			try {
 				Column<?> column = columns.get(i);

@@ -14,7 +14,7 @@ public class XRangeModel {
 	private int min, max, value, extent;
 	//
 	private final PropertyChangeSupport listeners;
-	public static final String PROPERTY_VALUE = "VALUE";
+	public static final String PROPERTY_VALUE = "RM_VALUE";
 	
 	/**
 	 * 
