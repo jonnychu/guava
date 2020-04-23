@@ -4,7 +4,9 @@ import static cn.nextop.guava.support.swt.SwtUtils.creator;
 import static cn.nextop.guava.support.swt.SwtUtils.dispatch;
 
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.widgets.Composite;
@@ -23,7 +25,7 @@ public class TableExample {
 
 	public static void main(String[] args) {
 		TableExample exp = new TableExample();
-		final String name = "Widget Example";
+		final String name = "Table Example";
 		Shell shell = creator(500, 500, name);
 		Composite cmp = SwtUtils.creator(shell);
 		cmp.setLayout(new MigLayout("insets 5, gap 0 0","[fill,grow]","[fill,grow]"));
@@ -66,7 +68,9 @@ public class TableExample {
 				rows.add(exp.new Row("row"+i, "row"+i, "row"+i, "row"+i, "row"+i, "row"+i, "row"+i, "row"+i, "row"+i, "row"+i
 						, "row"+i, "row"+i, "row"+i, "row"+i, "row"+i, "row"+i, "row"+i, "row"+i, "row"+i, "row"+i));
 			}
-			table.input(rows);
+			
+			List<IRow> r = rows.stream().sorted(Comparator.comparing(IRow::getId).reversed()).collect(Collectors.toList());
+			table.input(r);
 		}
 		
 		//
@@ -283,7 +287,7 @@ public class TableExample {
 		
 		@Override
 		public String toString() {
-			return "ID : " + getId().toString() + ", Select : " + isSelected();
+			return "ID : " + getId() + ", Select : " + isSelected();
 		}
 	}
 

@@ -9,6 +9,7 @@ import cn.nextop.guava.widgets.table.XTable;
 import cn.nextop.guava.widgets.table.model.column.Column;
 import cn.nextop.guava.widgets.table.model.column.Columns;
 import cn.nextop.guava.widgets.table.model.config.XTableConfig;
+import cn.nextop.guava.widgets.table.support.glossary.Sort;
 
 /**
  * @author jonny
@@ -57,6 +58,10 @@ public abstract class AbstractXTableBuilder<T> {
 		
 		public XTableBuilder colAlign(int align) {
 			this.column.setColAlign(align); return this;
+		}
+		
+		public XTableBuilder sortable() {
+			this.column.setSort(Sort.NONE); return this;
 		}
 		
 		public XTableBuilder align(int align) {

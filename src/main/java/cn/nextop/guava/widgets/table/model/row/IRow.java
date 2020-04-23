@@ -13,7 +13,7 @@ public interface IRow {
 
 	void setSelected(boolean select);
 	
-	default Object getId() {
+	default long getId() {
 		return Sequence.next();
 	}
 }

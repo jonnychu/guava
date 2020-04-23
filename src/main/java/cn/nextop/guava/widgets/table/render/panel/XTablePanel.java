@@ -134,7 +134,7 @@ public class XTablePanel extends AbstractXTablePanel implements PropertyChangeLi
 	@Override
 	public void propertyChange(PropertyChangeEvent event) {
 		if (event.getSource() instanceof Column) {
-			if (Column.PROPERTY_VALUE.equals(event.getPropertyName())) {
+			if (Column.PROPERTY_RESIZE.equals(event.getPropertyName())) {
 				localRevalidate(); repaint(); fireFigureMoved(); fireCoordinateSystemChanged();
 			}
 		}

@@ -12,6 +12,7 @@ import cn.nextop.guava.widgets.table.render.AbstractXTableCellWidget;
 import cn.nextop.guava.widgets.table.render.AbstractXTableColumnWidget;
 import cn.nextop.guava.widgets.table.render.widget.DefaultCellWidget;
 import cn.nextop.guava.widgets.table.render.widget.DefaultColumnWidget;
+import cn.nextop.guava.widgets.table.support.glossary.Sort;
 
 /**
  * @author jonny
@@ -20,15 +21,18 @@ public class Column<T> {
 	//
 	private int height = 24;
 	private String text = "";
+	private Sort sort = Sort.ETERNAL;
 	private int colAlign = SWT.CENTER;
 	private int cellAlign = SWT.CENTER;
 	private int pixel = 30, weight = 0, minimum = 20;
 	//
 	private Property<T> property;
 	private final PropertyChangeSupport listeners;
-	public static final String PROPERTY_VALUE = "COLUMN_VALUE";
 	private Class<? extends AbstractXTableCellWidget> cellWidget;
 	private Class<? extends AbstractXTableColumnWidget> columnwidget;
+	//
+	public static final String PROPERTY_SORT = "COLUMN_SORT";
+	public static final String PROPERTY_RESIZE = "COLUMN_PIXEL";
 	
 	/**
 	 * 
@@ -44,6 +48,14 @@ public class Column<T> {
 	/**
 	 * 
 	 */
+	public Sort getSort() {
+		return sort;
+	}
+
+	public void setSort(Sort sort) {
+		this.sort = sort;
+	}
+	
 	public String getText() {
 		return text;
 	}
@@ -91,7 +103,7 @@ public class Column<T> {
 	public void setPixel(int pixel) {
 		int ov = this.pixel;
 		this.pixel = pixel;
-		fire(PROPERTY_VALUE, ov, getPixel());
+		fire(PROPERTY_RESIZE, ov, getPixel());
 	}
 	
 	public int getCellAlign() {

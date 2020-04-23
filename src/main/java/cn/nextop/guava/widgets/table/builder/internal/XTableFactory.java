@@ -18,6 +18,7 @@ import cn.nextop.guava.widgets.table.render.panel.RowPanel;
 import cn.nextop.guava.widgets.table.render.panel.XTablePanel;
 import cn.nextop.guava.widgets.table.render.panel.content.DataContent;
 import cn.nextop.guava.widgets.table.render.panel.content.HeadContent;
+import cn.nextop.guava.widgets.table.render.widget.DefaultColumnResizeWidget;
 
 /**
  * @author jonny
@@ -66,13 +67,19 @@ public class XTableFactory extends AbstractBuilder {
 		final XTableModel model = this.table.getModel();
 		final List<Column<?>> cols = model.getColumns().getColumns();
 		if(cols == null || cols.size() == 0) return; int size = cols.size(); 
-		AbstractXTableColumnWidget[] widgets = new AbstractXTableColumnWidget[size];
+		AbstractXTableColumnWidget[] cw1 = new AbstractXTableColumnWidget[size];
+		AbstractXTableColumnWidget[] cw2 = new AbstractXTableColumnWidget[size];
 		for (int i = 0; i < size; i++) {
 			try {
 				Column<?> column = cols.get(i);
+				//
 				Class<?> clazz = column.getColumnwidget();
-				widgets[i] = Objects.cast(clazz.newInstance());
-				widgets[i].setColumn(column); hc.add(widgets[i]);
+				cw1[i] = Objects.cast(clazz.newInstance());
+				cw1[i].setColumn(column); this.hc.add(cw1[i]);
+				// resize
+				cw2[i] = new DefaultColumnResizeWidget();
+				cw2[i].setColumn(column); this.hc.add(cw2[i]);
+				//
 				column.addPropListener(tablePanel);// add column resize
 			} catch (InstantiationException | IllegalAccessException e) {
 				throw new RuntimeException(e);
