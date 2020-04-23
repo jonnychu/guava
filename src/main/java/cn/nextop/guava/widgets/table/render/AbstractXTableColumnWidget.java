@@ -15,7 +15,7 @@ public abstract class AbstractXTableColumnWidget extends Figure {
 	protected boolean editable = true;
 	protected boolean selected = false;
 	//
-	protected final int margin = 4, arc = 3, oval = 5;
+	protected final int margin = 8, arc = 3, oval = 5;
 	
 	/**
 	 * 
