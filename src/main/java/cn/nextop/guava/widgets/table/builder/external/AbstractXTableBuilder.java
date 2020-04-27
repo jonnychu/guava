@@ -9,6 +9,10 @@ import cn.nextop.guava.widgets.table.XTable;
 import cn.nextop.guava.widgets.table.model.column.Column;
 import cn.nextop.guava.widgets.table.model.column.Columns;
 import cn.nextop.guava.widgets.table.model.config.XTableConfig;
+import cn.nextop.guava.widgets.table.support.formatter.XTableFormatter;
+import cn.nextop.guava.widgets.table.support.formatter.impl.XTableDateFormatter;
+import cn.nextop.guava.widgets.table.support.formatter.impl.XTableDatetimeFormatter;
+import cn.nextop.guava.widgets.table.support.formatter.impl.XTableNumberFormatter;
 import cn.nextop.guava.widgets.table.support.glossary.Sort;
 
 /**
@@ -78,6 +82,25 @@ public abstract class AbstractXTableBuilder<T> {
 		
 		public XTableBuilder property(String name) {
 			this.column.setProperty(new Property<T>(getTClass(), name)); return this;
+		}
+		
+		/**
+		 * 
+		 */
+		public XTableBuilder formatter(XTableFormatter<T> formatter) {
+			this.column.setFormatter(formatter); return this;
+		}
+		
+		public XTableBuilder date(String pattern) {
+			this.column.setFormatter(new XTableDateFormatter<>(pattern)); return this;
+		}
+		
+		public XTableBuilder number(String pattern) {
+			this.column.setFormatter(new XTableNumberFormatter<>(pattern)); return this;
+		}
+		
+		public XTableBuilder datetime(String pattern) {
+			this.column.setFormatter(new XTableDatetimeFormatter<>(pattern)); return this;
 		}
 		
 		/**

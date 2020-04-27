@@ -10,6 +10,7 @@ import org.eclipse.swt.SWT;
 
 import cn.nextop.guava.support.property.Property;
 import cn.nextop.guava.widgets.table.render.AbstractXTableCellWidget;
+import cn.nextop.guava.widgets.table.support.formatter.XTableFormatter;
 
 /**
  * @author jonny
@@ -26,7 +27,8 @@ public class DefaultCellWidget extends AbstractXTableCellWidget {
 		final Rectangle r = getClientArea();
 		final int align = column.getCellAlign();
 		Property<?> property = column.getProperty();
-		this.text = cast(property.getValue(cast(row)));
+		XTableFormatter<?> formatter = column.getFormatter();
+		this.text = formatter.valueOf(cast(property.getValue(cast(row))));
 		Dimension d1 = INSTANCE.getStringExtents(text, g.getFont());
 		if(align == SWT.LEFT) {
 			g.drawText(this.text, r.x + margin, r.y + (r.height - d1.height) / 2);

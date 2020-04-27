@@ -12,6 +12,8 @@ import cn.nextop.guava.widgets.table.render.AbstractXTableCellWidget;
 import cn.nextop.guava.widgets.table.render.AbstractXTableColumnWidget;
 import cn.nextop.guava.widgets.table.render.widget.DefaultCellWidget;
 import cn.nextop.guava.widgets.table.render.widget.DefaultColumnWidget;
+import cn.nextop.guava.widgets.table.support.formatter.XTableFormatter;
+import cn.nextop.guava.widgets.table.support.formatter.impl.XTableDefaultFormatter;
 import cn.nextop.guava.widgets.table.support.glossary.Sort;
 
 /**
@@ -27,6 +29,7 @@ public class Column<T> {
 	private int pixel = 30, weight = 0, minimum = 20;
 	//
 	private Property<T> property;
+	private XTableFormatter<T> formatter;
 	private final PropertyChangeSupport listeners;
 	private Class<? extends AbstractXTableCellWidget> cellWidget;
 	private Class<? extends AbstractXTableColumnWidget> columnwidget;
@@ -41,6 +44,7 @@ public class Column<T> {
 		//
 		this.listeners = new PropertyChangeSupport(this);
 		//
+		this.formatter = new XTableDefaultFormatter<>();
 		this.cellWidget = cast(DefaultCellWidget.class);
 		this.columnwidget = cast(DefaultColumnWidget.class);
 	}
@@ -125,7 +129,15 @@ public class Column<T> {
 	public Class<?> getCellWidget() {
 		return cellWidget;
 	}
+	
+	public XTableFormatter<T> getFormatter() {
+		return formatter;
+	}
 
+	public void setFormatter(XTableFormatter<T> formatter) {
+		this.formatter = formatter;
+	}
+	
 	public void setCellWidget(Class<? extends AbstractXTableCellWidget> cellWidget) {
 		this.cellWidget = cellWidget;
 	}
@@ -137,7 +149,7 @@ public class Column<T> {
 	public void setColumnwidget(Class<? extends AbstractXTableColumnWidget> columnwidget) {
 		this.columnwidget = columnwidget;
 	}
-	
+
 	/**
 	 * 
 	 */
