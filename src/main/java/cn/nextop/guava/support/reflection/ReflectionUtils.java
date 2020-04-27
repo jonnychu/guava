@@ -565,11 +565,11 @@ public final class ReflectionUtils {
 			return method;
 		}
 		if (clazz.getSuperclass() != null) {
-			getMethod(clazz.getSuperclass(), name, mf);
+			return getMethod(clazz.getSuperclass(), name, mf);
 		}
 		else if (clazz.isInterface()) {
 			for (Class<?> superIfc : clazz.getInterfaces()) {
-				getMethod(superIfc, name, mf);
+				return getMethod(superIfc, name, mf);
 			}
 		}
 		return null;

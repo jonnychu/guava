@@ -78,5 +78,4 @@ public class XComboPopup extends Canvas {
 			if(event.count > 0) popup.pageUp(); else popup.pageDown();
 		}
 	}
-	
 }

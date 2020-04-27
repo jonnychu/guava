@@ -7,11 +7,13 @@ import cn.nextop.guava.support.Sequence;
  */
 public interface IRow {
 	
-	String displayName();
-	
 	boolean isSelected();
 
 	void setSelected(boolean select);
+	
+	long getRowId();
+	
+	void setRowId(long rowId);
 	
 	default long getId() {
 		return Sequence.next();

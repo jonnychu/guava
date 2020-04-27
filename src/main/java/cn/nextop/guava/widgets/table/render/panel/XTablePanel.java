@@ -69,12 +69,12 @@ public class XTablePanel extends AbstractXTablePanel implements PropertyChangeLi
 	 */
 	public void pageUp() {
 		if(!this.vBar.isVisible()) return;
-		vBar.setValue(vBar.getValue() - vBar.getStepIncrement());
+		vBar.setValue(vBar.getValue() - vBar.getPageIncrement());
 	}
 	
 	public void pageDown() {
 		if(!this.vBar.isVisible()) return;
-		vBar.setValue(vBar.getValue() + vBar.getStepIncrement());
+		vBar.setValue(vBar.getValue() + vBar.getPageIncrement());
 	}
 	
 	private void localRevalidate() {

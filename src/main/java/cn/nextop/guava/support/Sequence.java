@@ -7,7 +7,7 @@ import java.util.concurrent.atomic.AtomicLong;
  */
 public class Sequence {
 	//
-	private static final AtomicLong SEQUENCE = new AtomicLong(10000000);
+	private static final AtomicLong SEQUENCE = new AtomicLong(1);
 	
 	//
 	public static long next() { return SEQUENCE.getAndIncrement(); }

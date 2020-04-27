@@ -16,6 +16,7 @@ import org.eclipse.swt.widgets.Shell;
 import cn.nextop.guava.support.swt.SwtUtils;
 import cn.nextop.guava.widgets.table.XTable;
 import cn.nextop.guava.widgets.table.builder.external.AbstractXTableBuilder;
+import cn.nextop.guava.widgets.table.model.row.AbstractRow;
 import cn.nextop.guava.widgets.table.model.row.IRow;
 import net.miginfocom.swt.MigLayout;
 
@@ -35,7 +36,7 @@ public class TableExample {
 				@Override
 				public XTable builder(Composite cmp) {
 					XTableBuilder r = new XTableBuilder(cmp);
-					r.colum().pixel(100).text("Column1").align(SWT.CENTER).property("col1");
+					r.colum().pixel(100).text("Column1").align(SWT.CENTER).property("rowId");
 					r.colum().pixel(100).text("Column2").align(SWT.CENTER).property("col2").number("#,###");
 					r.colum().pixel(100).text("Column4").align(SWT.CENTER).property("col3").number("#,###");
 					r.colum().pixel(100).text("Column5").align(SWT.CENTER).property("col4").number("#,###");
@@ -63,7 +64,7 @@ public class TableExample {
 	/**
 	 * Combo data
 	 */
-	public class Row implements IRow {
+	public class Row extends AbstractRow {
 		//
 		private boolean selected;
 		private Byte col1;
@@ -161,11 +162,6 @@ public class TableExample {
 		 * 
 		 */
 		@Override
-		public String displayName() {
-			return null;
-		}
-		
-		@Override
 		public boolean isSelected() {
 			return this.selected;
 		}
@@ -180,5 +176,4 @@ public class TableExample {
 			return "ID : " + getId() + ", Select : " + isSelected();
 		}
 	}
-
 }
