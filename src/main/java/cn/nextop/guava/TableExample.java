@@ -50,7 +50,7 @@ public class TableExample {
 			
 			List<IRow> rows = new ArrayList<>();
 			for (int i = 0; i < 1000; i++) {
-				rows.add(exp.new Row(Byte.valueOf("127"), Short.valueOf("2561"), new Integer(11111), new Long(1111111111L), new Double(222222222L), new BigDecimal("1111.1212"), System.currentTimeMillis()));
+				rows.add(exp.new Row(Byte.valueOf("127"), Short.valueOf("2561"), new Integer(i), new Long(1111111111L), new Double(222222222L), new BigDecimal("1111.1212"), System.currentTimeMillis()));
 			}
 			
 			List<IRow> r = rows.stream().sorted(Comparator.comparing(IRow::getId).reversed()).collect(Collectors.toList());
@@ -66,7 +66,6 @@ public class TableExample {
 	 */
 	public class Row extends AbstractRow {
 		//
-		private boolean selected;
 		private Byte col1;
 		private Short col2;
 		private Integer col3;
@@ -155,25 +154,6 @@ public class TableExample {
 
 		public void setCol7(Long col7) {
 			this.col7 = col7;
-		}
-
-
-		/**
-		 * 
-		 */
-		@Override
-		public boolean isSelected() {
-			return this.selected;
-		}
-		
-		@Override
-		public void setSelected(boolean selected) {
-			this.selected = selected;
-		}
-		
-		@Override
-		public String toString() {
-			return "ID : " + getId() + ", Select : " + isSelected();
 		}
 	}
 }

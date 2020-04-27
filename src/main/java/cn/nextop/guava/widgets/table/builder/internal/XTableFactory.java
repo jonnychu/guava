@@ -59,7 +59,6 @@ public class XTableFactory extends AbstractBuilder {
 			}
 			this.dc.add(rp);
 		}
-		this.tablePanel.invalidate();
 	}
 	
 	public void buildHeader() {
