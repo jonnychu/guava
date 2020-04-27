@@ -9,6 +9,8 @@ import cn.nextop.guava.widgets.table.XTable;
 import cn.nextop.guava.widgets.table.model.column.Column;
 import cn.nextop.guava.widgets.table.model.column.Columns;
 import cn.nextop.guava.widgets.table.model.config.XTableConfig;
+import cn.nextop.guava.widgets.table.render.widget.DefaultCellRenderWidget;
+import cn.nextop.guava.widgets.table.render.widget.external.XTableWidget;
 import cn.nextop.guava.widgets.table.support.formatter.XTableFormatter;
 import cn.nextop.guava.widgets.table.support.formatter.impl.XTableDateFormatter;
 import cn.nextop.guava.widgets.table.support.formatter.impl.XTableDatetimeFormatter;
@@ -34,10 +36,18 @@ public abstract class AbstractXTableBuilder<T> {
 		private Column<T> column;
 		
 		/**
-		 * 
+		 * config
 		 */
 		public XTableConfig getXComboConfig() {
 			return this.table.getModel().getXTableConfig();
+		}
+		
+		/**
+		 * render cell
+		 */
+		public XTableBuilder render(XTableWidget ...widgets) {
+			this.column.setCellWidget(DefaultCellRenderWidget.class);
+			this.column.setCellRenderWidgets(widgets); return this;
 		}
 		
 		/**
@@ -48,6 +58,9 @@ public abstract class AbstractXTableBuilder<T> {
 			this.table = new XTable(cmp);
 		}
 		
+		/**
+		 * 
+		 */
 		public XTableBuilder text(String text) {
 			this.column.setText(text); return this;
 		}

@@ -31,7 +31,9 @@ public class DataContent extends AbstractXTablePanel {
 	}
 	
 	@Override
-	protected void paintClientArea(Graphics g) {
+	protected void paintFigure(Graphics g) {
+		super.paintFigure(g);
+
 		final XTableModel model = factory.getModel();
 		final XTableConfig cfg = model.getXTableConfig();
 		List<Column<?>> cols = model.getColumns().getColumns();
@@ -53,7 +55,7 @@ public class DataContent extends AbstractXTablePanel {
 			if(i == s1 - 1)	drawLine(g, cx, y, cx, y + h, cfg.getFG_GRAY());
 				
 		}
-		g.popState(); super.paintClientArea(g);
+		g.popState();
 	}
 	
 	@Override

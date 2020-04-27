@@ -1,17 +1,16 @@
 package cn.nextop.guava.widgets.table.model.column;
 
-import static cn.nextop.guava.support.Objects.cast;
-
 import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeSupport;
 
 import org.eclipse.swt.SWT;
 
 import cn.nextop.guava.support.property.Property;
+import cn.nextop.guava.widgets.table.model.cell.ColCell;
+import cn.nextop.guava.widgets.table.model.cell.RowCell;
 import cn.nextop.guava.widgets.table.render.AbstractXTableCellWidget;
 import cn.nextop.guava.widgets.table.render.AbstractXTableColumnWidget;
-import cn.nextop.guava.widgets.table.render.widget.DefaultCellWidget;
-import cn.nextop.guava.widgets.table.render.widget.DefaultColumnWidget;
+import cn.nextop.guava.widgets.table.render.widget.external.XTableWidget;
 import cn.nextop.guava.widgets.table.support.formatter.XTableFormatter;
 import cn.nextop.guava.widgets.table.support.formatter.impl.XTableDefaultFormatter;
 import cn.nextop.guava.widgets.table.support.glossary.Sort;
@@ -28,14 +27,14 @@ public class Column<T> {
 	private int cellAlign = SWT.CENTER;
 	private int pixel = 30, weight = 0, minimum = 20;
 	//
+	private ColCell colCell;
+	private RowCell rowCell;
 	private Property<T> property;
 	private XTableFormatter<T> formatter;
-	private final PropertyChangeSupport listeners;
-	private Class<? extends AbstractXTableCellWidget> cellWidget;
-	private Class<? extends AbstractXTableColumnWidget> columnwidget;
 	//
+	private final PropertyChangeSupport listeners;
 	public static final String PROPERTY_SORT = "COLUMN_SORT";
-	public static final String PROPERTY_RESIZE = "COLUMN_PIXEL";
+	public static final String PROPERTY_RESIZE = "COLUMN_RESIZE";
 	
 	/**
 	 * 
@@ -44,9 +43,9 @@ public class Column<T> {
 		//
 		this.listeners = new PropertyChangeSupport(this);
 		//
+		this.colCell = new ColCell();
+		this.rowCell = new RowCell();
 		this.formatter = new XTableDefaultFormatter<>();
-		this.cellWidget = cast(DefaultCellWidget.class);
-		this.columnwidget = cast(DefaultColumnWidget.class);
 	}
 	
 	/**
@@ -126,10 +125,6 @@ public class Column<T> {
 		this.property = property;
 	}
 	
-	public Class<?> getCellWidget() {
-		return cellWidget;
-	}
-	
 	public XTableFormatter<T> getFormatter() {
 		return formatter;
 	}
@@ -138,18 +133,30 @@ public class Column<T> {
 		this.formatter = formatter;
 	}
 	
+	public XTableWidget[] getCellRenderWidgets() {
+		return rowCell.getCellRenderWidgets();
+	}
+	
+	public void setCellRenderWidgets(XTableWidget[] widgets) {
+		this.rowCell.setCellRenderWidgets(widgets);
+	}
+	
+	public Class<? extends AbstractXTableCellWidget> getCellWidget() {
+		return rowCell.getCellWidget();
+	}
+	
 	public void setCellWidget(Class<? extends AbstractXTableCellWidget> cellWidget) {
-		this.cellWidget = cellWidget;
+		this.rowCell.setCellWidget(cellWidget);;
 	}
 
-	public Class<?> getColumnwidget() {
-		return columnwidget;
+	public Class<? extends AbstractXTableColumnWidget> getColumnwidget() {
+		return colCell.getColumnwidget();
 	}
 
 	public void setColumnwidget(Class<? extends AbstractXTableColumnWidget> columnwidget) {
-		this.columnwidget = columnwidget;
+		this.colCell.setColumnwidget(columnwidget);
 	}
-
+	
 	/**
 	 * 
 	 */
