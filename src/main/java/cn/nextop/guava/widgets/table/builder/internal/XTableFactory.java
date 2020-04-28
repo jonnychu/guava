@@ -20,6 +20,7 @@ import cn.nextop.guava.widgets.table.render.panel.content.DataContent;
 import cn.nextop.guava.widgets.table.render.panel.content.HeadContent;
 import cn.nextop.guava.widgets.table.render.widget.DefaultColumnResizeWidget;
 import cn.nextop.guava.widgets.table.render.widget.external.XTableWidget;
+import cn.nextop.guava.widgets.table.support.selection.ISelection;
 
 /**
  * @author jonny
@@ -54,6 +55,7 @@ public class XTableFactory extends AbstractBuilder {
 					Column<?> column = cols.get(i);
 					cw[i] = cast(column.getCellWidget().newInstance());
 					cw[i].setColumn(column); cw[i].setRow(row); rp.add(cw[i]);
+					cw[i].setFactory(this);
 					
 					XTableWidget[] tws = column.getCellRenderWidgets();
 					if(tws == null || tws.length == 0) continue;
@@ -73,6 +75,7 @@ public class XTableFactory extends AbstractBuilder {
 	public void buildHeader() {
 		if(this.hc == null) return; this.hc.removeAll();
 		final XTableModel model = this.table.getModel();
+		final ISelection selection = model.getSelection();
 		final List<Column<?>> cols = model.getColumns().getColumns();
 		if(cols == null || cols.size() == 0) return; int size = cols.size(); 
 		AbstractXTableColumnWidget[] cw1 = new AbstractXTableColumnWidget[size];
@@ -93,6 +96,9 @@ public class XTableFactory extends AbstractBuilder {
 				throw new RuntimeException(e);
 			}
 		}
+		//
+//		selection.removePropListener(this.tablePanel);
+		selection.addPropListener(this.tablePanel);
 	}
 	
 	/**

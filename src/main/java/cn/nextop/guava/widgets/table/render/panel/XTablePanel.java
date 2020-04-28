@@ -20,6 +20,7 @@ import cn.nextop.guava.widgets.table.model.config.XTableConfig;
 import cn.nextop.guava.widgets.table.render.AbstractXTablePanel;
 import cn.nextop.guava.widgets.table.render.viewport.XViewport;
 import cn.nextop.guava.widgets.table.render.viewport.YViewport;
+import cn.nextop.guava.widgets.table.support.selection.ISelection;
 
 /**
  * @author jonny
@@ -135,7 +136,11 @@ public class XTablePanel extends AbstractXTablePanel implements PropertyChangeLi
 	public void propertyChange(PropertyChangeEvent event) {
 		if (event.getSource() instanceof Column) {
 			if (Column.PROPERTY_RESIZE.equals(event.getPropertyName())) {
-				localRevalidate(); repaint(); fireFigureMoved(); fireCoordinateSystemChanged();
+				localRevalidate(); repaint(); //fireFigureMoved(); fireCoordinateSystemChanged();
+			}
+		} else if(event.getSource() instanceof ISelection) {
+			if (ISelection.PROPERTY_SELECT.equals(event.getPropertyName())) {
+				localRevalidate(); repaint(); //fireFigureMoved(); fireCoordinateSystemChanged();
 			}
 		}
 	}

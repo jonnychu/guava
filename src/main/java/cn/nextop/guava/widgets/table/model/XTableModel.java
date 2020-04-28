@@ -3,6 +3,7 @@ package cn.nextop.guava.widgets.table.model;
 import cn.nextop.guava.widgets.table.model.column.Columns;
 import cn.nextop.guava.widgets.table.model.config.XTableConfig;
 import cn.nextop.guava.widgets.table.model.row.Rows;
+import cn.nextop.guava.widgets.table.support.selection.ISelection;
 
 /**
  * @author jonny
@@ -56,5 +57,9 @@ public class XTableModel {
 
 	public void setXTableConfig(XTableConfig config) {
 		this.config = config;
+	}
+	
+	public ISelection getSelection() {
+		return config.getSelection();
 	}
 }

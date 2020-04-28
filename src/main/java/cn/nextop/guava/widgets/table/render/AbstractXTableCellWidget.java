@@ -1,12 +1,8 @@
 package cn.nextop.guava.widgets.table.render;
 
-import static org.eclipse.draw2d.Cursors.HAND;
-
 import org.eclipse.draw2d.Figure;
-import org.eclipse.draw2d.MouseEvent;
-import org.eclipse.draw2d.MouseListener;
-import org.eclipse.draw2d.MouseMotionListener;
 
+import cn.nextop.guava.widgets.table.builder.internal.XTableFactory;
 import cn.nextop.guava.widgets.table.model.column.Column;
 import cn.nextop.guava.widgets.table.model.row.IRow;
 
@@ -21,6 +17,7 @@ public abstract class AbstractXTableCellWidget extends Figure {
 	protected boolean enter = false;
 	protected boolean editable = true;
 	protected boolean selected = false;
+	protected XTableFactory factory;
 	//
 	protected final int margin = 8, arc = 3, oval = 5;
 	
@@ -28,12 +25,6 @@ public abstract class AbstractXTableCellWidget extends Figure {
 	 * 
 	 */
 	public AbstractXTableCellWidget() {
-		this(true, true);
-	}
-	
-	public AbstractXTableCellWidget(boolean m1, boolean m2) {
-		if(m1) addMouseListener(new MouseListener.Stub());
-		if(m2) addMouseMotionListener(new MouseMotionListener.Stub());
 	}
 	
 	/**
@@ -87,9 +78,11 @@ public abstract class AbstractXTableCellWidget extends Figure {
 		this.editable = editable;
 	}
 	
-	@Override
-	public void handleMouseExited(MouseEvent event) { super.handleMouseExited(event); this.enter = false; repaint(); }
-	
-	@Override
-	public void handleMouseEntered(MouseEvent event) { super.handleMouseEntered(event); this.enter = true; if(this.isEnabled()) setCursor(HAND); repaint(); }
+	public XTableFactory getFactory() {
+		return factory;
+	}
+
+	public void setFactory(XTableFactory factory) {
+		this.factory = factory;
+	}
 }
