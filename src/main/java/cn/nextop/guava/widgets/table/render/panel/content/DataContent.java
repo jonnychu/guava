@@ -31,12 +31,29 @@ public class DataContent extends AbstractXTablePanel {
 	}
 	
 	@Override
+	protected void paintBorder(Graphics g) {
+		super.paintBorder(g);
+		final XTableModel model = factory.getModel();
+		final XTableConfig cfg = model.getXTableConfig();
+		List<Column<?>> cols = model.getColumns().getColumns();
+		//
+		Rectangle r = getBounds(); g.pushState();
+		final int x = r.x, y = r.y, h = r.height;
+		int cx = 0, s1 = cols.size(); for (int i = 0; i < s1; i++) {
+			drawLine(g, cx, y, cx, y + h, cfg.getFG_GRAY());
+			Column<?> column = cols.get(i); cx = cx + x + column.getPixel();
+			if(i == s1 - 1)	drawLine(g, cx, y, cx, y + h, cfg.getFG_GRAY());
+				
+		}
+		g.popState();
+	}
+	
+	@Override
 	protected void paintFigure(Graphics g) {
 		super.paintFigure(g);
 
 		final XTableModel model = factory.getModel();
 		final XTableConfig cfg = model.getXTableConfig();
-		List<Column<?>> cols = model.getColumns().getColumns();
 		//
 		Rectangle r = getBounds(); g.pushState();
 		final int x = r.x, y = r.y, w = r.width, h = r.height;
@@ -48,12 +65,6 @@ public class DataContent extends AbstractXTablePanel {
 			}
 			g.fillRectangle(x, cy, w, cfg.getItemHeight());
 			cy = cy + cfg.getItemHeight();
-		}
-		int cx = 0, s1 = cols.size(); for (int i = 0; i < s1; i++) {
-			drawLine(g, cx, y, cx, y + h, cfg.getFG_GRAY());
-			Column<?> column = cols.get(i); cx = cx + x + column.getPixel();
-			if(i == s1 - 1)	drawLine(g, cx, y, cx, y + h, cfg.getFG_GRAY());
-				
 		}
 		g.popState();
 	}

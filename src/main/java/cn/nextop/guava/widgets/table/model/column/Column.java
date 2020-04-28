@@ -5,6 +5,7 @@ import java.beans.PropertyChangeSupport;
 
 import org.eclipse.swt.SWT;
 
+import cn.nextop.guava.support.Sequence;
 import cn.nextop.guava.support.property.Property;
 import cn.nextop.guava.widgets.table.model.cell.ColCell;
 import cn.nextop.guava.widgets.table.model.cell.RowCell;
@@ -20,6 +21,7 @@ import cn.nextop.guava.widgets.table.support.glossary.Sort;
  */
 public class Column<T> {
 	//
+	private int colId;
 	private int height = 24;
 	private String text = "";
 	private Sort sort = Sort.ETERNAL;
@@ -41,11 +43,11 @@ public class Column<T> {
 	 */
 	public Column() {
 		//
-		this.listeners = new PropertyChangeSupport(this);
-		//
 		this.colCell = new ColCell();
 		this.rowCell = new RowCell();
+		this.colId = Sequence.nextInt();
 		this.formatter = new XTableDefaultFormatter<>();
+		this.listeners = new PropertyChangeSupport(this);
 	}
 	
 	/**
@@ -57,6 +59,14 @@ public class Column<T> {
 
 	public void setSort(Sort sort) {
 		this.sort = sort;
+	}
+	
+	public int getColId() {
+		return colId;
+	}
+
+	public void setColId(int colId) {
+		this.colId = colId;
 	}
 	
 	public String getText() {

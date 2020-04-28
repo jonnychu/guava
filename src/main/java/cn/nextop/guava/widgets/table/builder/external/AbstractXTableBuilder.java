@@ -9,7 +9,6 @@ import cn.nextop.guava.widgets.table.XTable;
 import cn.nextop.guava.widgets.table.model.column.Column;
 import cn.nextop.guava.widgets.table.model.column.Columns;
 import cn.nextop.guava.widgets.table.model.config.XTableConfig;
-import cn.nextop.guava.widgets.table.render.widget.DefaultCellRenderWidget;
 import cn.nextop.guava.widgets.table.render.widget.external.XTableWidget;
 import cn.nextop.guava.widgets.table.support.formatter.XTableFormatter;
 import cn.nextop.guava.widgets.table.support.formatter.impl.XTableDateFormatter;
@@ -34,21 +33,6 @@ public abstract class AbstractXTableBuilder<T> {
 		private XTable table;
 		private Columns columns;
 		private Column<T> column;
-		
-		/**
-		 * config
-		 */
-		public XTableConfig getXComboConfig() {
-			return this.table.getModel().getXTableConfig();
-		}
-		
-		/**
-		 * render cell
-		 */
-		public XTableBuilder render(XTableWidget ...widgets) {
-			this.column.setCellWidget(DefaultCellRenderWidget.class);
-			this.column.setCellRenderWidgets(widgets); return this;
-		}
 		
 		/**
 		 * 
@@ -95,6 +79,20 @@ public abstract class AbstractXTableBuilder<T> {
 		
 		public XTableBuilder property(String name) {
 			this.column.setProperty(new Property<T>(getTClass(), name)); return this;
+		}
+		
+		/**
+		 * config
+		 */
+		public XTableConfig getXComboConfig() {
+			return this.table.getModel().getXTableConfig();
+		}
+		
+		/**
+		 * render cell
+		 */
+		public XTableBuilder render(XTableWidget ...widgets) {
+			this.column.setCellRenderWidgets(widgets); return this;
 		}
 		
 		/**

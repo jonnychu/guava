@@ -34,4 +34,9 @@ public class AbstractRow implements IRow {
 	public void setSelected(boolean select) {
 		selected = select;
 	}
+	
+	@Override
+	public boolean equals(Object obj) {
+		return ((this == obj) || (this.getId() == ((IRow)obj).getId()));
+	}
 }

@@ -14,6 +14,6 @@ public interface IRow {
 	void setSelected(boolean select);
 	
 	default Object getId() {
-		return Sequence.next();
+		return Sequence.nextLong();
 	}
 }

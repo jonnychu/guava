@@ -16,6 +16,6 @@ public interface IRow {
 	void setRowId(long rowId);
 	
 	default long getId() {
-		return Sequence.next();
+		return Sequence.nextLong();
 	}
 }

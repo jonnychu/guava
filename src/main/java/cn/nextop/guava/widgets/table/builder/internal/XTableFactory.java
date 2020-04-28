@@ -18,7 +18,6 @@ import cn.nextop.guava.widgets.table.render.panel.RowPanel;
 import cn.nextop.guava.widgets.table.render.panel.XTablePanel;
 import cn.nextop.guava.widgets.table.render.panel.content.DataContent;
 import cn.nextop.guava.widgets.table.render.panel.content.HeadContent;
-import cn.nextop.guava.widgets.table.render.widget.DefaultCellRenderWidget;
 import cn.nextop.guava.widgets.table.render.widget.DefaultColumnResizeWidget;
 import cn.nextop.guava.widgets.table.render.widget.external.XTableWidget;
 
@@ -56,14 +55,12 @@ public class XTableFactory extends AbstractBuilder {
 					cw[i] = cast(column.getCellWidget().newInstance());
 					cw[i].setColumn(column); cw[i].setRow(row); rp.add(cw[i]);
 					
-					if(cw[i] instanceof DefaultCellRenderWidget) {
-						XTableWidget[] tws = column.getCellRenderWidgets();
-						if(tws == null || tws.length == 0) continue;
-						for (int j = 0; j < tws.length; j++) {
-							XTableWidget tw = tws[j].getClass().newInstance();
-							tw.text(tws[j].getText()).action(tws[j].getAction()).setRow(row);
-							cw[i].add(tw);
-						}
+					XTableWidget[] tws = column.getCellRenderWidgets();
+					if(tws == null || tws.length == 0) continue;
+					for (int j = 0; j < tws.length; j++) {
+						XTableWidget tw = tws[j].getClass().newInstance();
+						tw.text(tws[j].getText()).action(tws[j].getAction()).setRow(row);
+						cw[i].add(tw);
 					}
 				} catch (InstantiationException | IllegalAccessException e) {
 					throw new RuntimeException(e);
