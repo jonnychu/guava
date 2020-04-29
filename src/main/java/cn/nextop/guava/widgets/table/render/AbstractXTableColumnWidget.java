@@ -1,8 +1,8 @@
 package cn.nextop.guava.widgets.table.render;
 
 import org.eclipse.draw2d.Figure;
-import org.eclipse.draw2d.geometry.Rectangle;
 
+import cn.nextop.guava.widgets.table.builder.internal.XTableFactory;
 import cn.nextop.guava.widgets.table.model.column.Column;
 
 /**
@@ -12,6 +12,7 @@ public abstract class AbstractXTableColumnWidget extends Figure {
 	// Default Value
 	protected Column<?> column;
 	protected String text = "";
+	protected XTableFactory factory;
 	protected boolean editable = true;
 	protected boolean selected = false;
 	//
@@ -52,8 +53,11 @@ public abstract class AbstractXTableColumnWidget extends Figure {
 		this.editable = editable;
 	}
 	
-	protected Rectangle getEdge(Rectangle r) {
-		if(r == null) return null;
-		return new Rectangle(r.x + r.width - 4, r.y, 4, r.y + r.height);
+	public XTableFactory getFactory() {
+		return factory;
+	}
+
+	public void setFactory(XTableFactory factory) {
+		this.factory = factory;
 	}
 }

@@ -4,40 +4,26 @@ import org.eclipse.draw2d.Figure;
 
 import cn.nextop.guava.widgets.table.builder.internal.XTableFactory;
 import cn.nextop.guava.widgets.table.model.column.Column;
-import cn.nextop.guava.widgets.table.model.row.IRow;
+import cn.nextop.guava.widgets.table.render.panel.RowPanel;
 
 /**
  * @author jonny
  */
 public abstract class AbstractXTableCellWidget extends Figure {
 	// Default Value
-	protected IRow row;
 	protected Column<?> column;
 	protected String text = "";
+	protected RowPanel rowPanel;
+	protected XTableFactory factory;
 	protected boolean enter = false;
 	protected boolean editable = true;
 	protected boolean selected = false;
-	protected XTableFactory factory;
 	//
 	protected final int margin = 8, arc = 3, oval = 5;
 	
 	/**
 	 * 
 	 */
-	public AbstractXTableCellWidget() {
-	}
-	
-	/**
-	 * 
-	 */
-	public IRow getRow() {
-		return row;
-	}
-
-	public void setRow(IRow row) {
-		this.row = row;
-	}
-	
 	public String getText() {
 		return text;
 	}
@@ -45,7 +31,7 @@ public abstract class AbstractXTableCellWidget extends Figure {
 	public void setText(String text) {
 		this.text = text;
 	}
-	
+
 	public boolean isEnter() {
 		return enter;
 	}
@@ -76,6 +62,15 @@ public abstract class AbstractXTableCellWidget extends Figure {
 
 	public void setEditable(boolean editable) {
 		this.editable = editable;
+	}
+	
+	
+	public RowPanel getRowPanel() {
+		return rowPanel;
+	}
+
+	public void setRowPanel(RowPanel rowPanel) {
+		this.rowPanel = rowPanel;
 	}
 	
 	public XTableFactory getFactory() {

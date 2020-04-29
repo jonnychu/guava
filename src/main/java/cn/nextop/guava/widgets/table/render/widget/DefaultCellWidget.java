@@ -15,10 +15,13 @@ import org.eclipse.draw2d.geometry.Dimension;
 import org.eclipse.draw2d.geometry.Rectangle;
 import org.eclipse.swt.SWT;
 
+import cn.nextop.guava.support.Objects;
 import cn.nextop.guava.support.property.Property;
 import cn.nextop.guava.support.swt.Colors;
 import cn.nextop.guava.widgets.table.model.XTableModel;
+import cn.nextop.guava.widgets.table.model.row.IRow;
 import cn.nextop.guava.widgets.table.render.AbstractXTableCellWidget;
+import cn.nextop.guava.widgets.table.render.panel.RowPanel;
 import cn.nextop.guava.widgets.table.render.widget.external.XTableWidget;
 import cn.nextop.guava.widgets.table.support.formatter.XTableFormatter;
 import cn.nextop.guava.widgets.table.support.selection.ISelection;
@@ -27,7 +30,10 @@ import cn.nextop.guava.widgets.table.support.selection.ISelection;
  * @author jonny
  */
 public class DefaultCellWidget extends AbstractXTableCellWidget {
-	
+
+	/**
+	 * 
+	 */
 	public DefaultCellWidget() {
 		setLayoutManager(new ClassicLayout());
 		addMouseListener(new MouseListener.Stub());
@@ -44,10 +50,11 @@ public class DefaultCellWidget extends AbstractXTableCellWidget {
 		super.paintClientArea(g);
 		List<XTableWidget> widgets = cast(getChildren());
 		if(widgets == null || widgets.size() == 0) {
+			final IRow row = rowPanel.getRow();
 			final Rectangle r = getClientArea();
 			final int align = column.getCellAlign();
-			Property<?> property = column.getProperty();
-			XTableFormatter<?> formatter = column.getFormatter();
+			final Property<?> property = column.getProperty();
+			final XTableFormatter<?> formatter = column.getFormatter();
 			this.text = formatter.valueOf(cast(property.getValue(cast(row))));
 			Dimension d1 = INSTANCE.getStringExtents(text, g.getFont());
 			if(align == SWT.LEFT) {
@@ -58,7 +65,7 @@ public class DefaultCellWidget extends AbstractXTableCellWidget {
 				g.drawText(this.text, r.x + r.width - d1.width - margin, r.y + (r.height - d1.height) / 2);
 			}
 		} else {
-			// draw children;
+			// children draw self;
 		}
 	}
 	
@@ -69,8 +76,8 @@ public class DefaultCellWidget extends AbstractXTableCellWidget {
 		@Override
 		public void layout(IFigure container) {
 			DefaultCellWidget parent = cast(container);
-			List<XTableWidget> widgets = cast(parent.getChildren());
 			final Rectangle r = parent.getClientArea();
+			final List<XTableWidget> widgets = cast(parent.getChildren());
 			if(widgets == null || widgets.size() == 0) return;
 			final int x = r.x, y = r.y, w = r.width, h = r.height;
 			int cw = (w - margin) / widgets.size(), cx = x + margin;
@@ -89,9 +96,10 @@ public class DefaultCellWidget extends AbstractXTableCellWidget {
 	@Override
 	public void handleMousePressed(MouseEvent event) {
 		super.handleMousePressed(event);
+		final RowPanel rp = Objects.cast(getParent());
 		final XTableModel model = this.factory.getModel();
 		final ISelection selection = model.getSelection();
 		List<DefaultCellWidget> c = cast(getParent().getChildren());
-		if(c == null || c.size() == 0) return; selection.add(this.row.getRowId(), c);
+		if(c == null || c.size() == 0) return; selection.add(rp.getRow().getRowId(), c);
 	}
 }

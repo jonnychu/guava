@@ -48,21 +48,20 @@ public class XTableFactory extends AbstractBuilder {
 		final List<Column<?>> cols = model.getColumns().getColumns();
 		if(rows == null || rows.size() == 0 || cols == null || cols.size() == 0) return; 
 		int size = cols.size(); for (IRow row : rows) {
-			final RowPanel rp = new RowPanel(this);
+			final RowPanel rp = new RowPanel(this); rp.setRow(row);
 			AbstractXTableCellWidget[] cw = new AbstractXTableCellWidget[size];
 			for (int i = 0; i < size; i++) {
 				try {
-					Column<?> column = cols.get(i);
-					cw[i] = cast(column.getCellWidget().newInstance());
-					cw[i].setColumn(column); cw[i].setRow(row); rp.add(cw[i]);
-					cw[i].setFactory(this);
+					final Column<?> column = cols.get(i);
+					final Class<?> clazz = column.getCellWidget();
+					cw[i] = cast(clazz.newInstance()); cw[i].setFactory(this);
+					cw[i].setColumn(column); cw[i].setRowPanel(rp); rp.add(cw[i]);
 					
 					XTableWidget[] tws = column.getCellRenderWidgets();
 					if(tws == null || tws.length == 0) continue;
 					for (int j = 0; j < tws.length; j++) {
 						XTableWidget tw = tws[j].getClass().newInstance();
-						tw.text(tws[j].getText()).action(tws[j].getAction()).setRow(row);
-						cw[i].add(tw);
+						tw.text(tws[j].getText()).action(tws[j].getAction()); cw[i].add(tw);
 					}
 				} catch (InstantiationException | IllegalAccessException e) {
 					throw new RuntimeException(e);
@@ -87,6 +86,7 @@ public class XTableFactory extends AbstractBuilder {
 				Class<?> clazz = column.getColumnwidget();
 				cw1[i] = Objects.cast(clazz.newInstance());
 				cw1[i].setColumn(column); this.hc.add(cw1[i]);
+				cw1[i].setFactory(this);
 				// resize
 				cw2[i] = new DefaultColumnResizeWidget();
 				cw2[i].setColumn(column); this.hc.add(cw2[i]);
@@ -97,8 +97,14 @@ public class XTableFactory extends AbstractBuilder {
 			}
 		}
 		//
-//		selection.removePropListener(this.tablePanel);
 		selection.addPropListener(this.tablePanel);
+	}
+	
+	public void sort() {
+		final XTableModel model = this.table.getModel();
+		final List<IRow> rows = model.getRows().getRows();
+		final List<RowPanel> rps = cast(this.dc.getChildren());
+		for (int i = 0; i < rps.size(); i++) { rps.get(i).setRow(rows.get(i)); }
 	}
 	
 	/**

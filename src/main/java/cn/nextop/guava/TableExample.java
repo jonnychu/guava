@@ -73,8 +73,8 @@ public class TableExample {
 		@Override
 		public XTable builder(Composite cmp) {
 			XTableBuilder r = new XTableBuilder(cmp);
-			r.colum().pixel(100).text("Column1").align(SWT.CENTER).property("rowId");
-			r.colum().pixel(100).text("Column2").align(SWT.CENTER).property("col2").number("#,###");
+			r.colum().pixel(100).text("Column1").align(SWT.CENTER).colAlign(SWT.LEFT).property("rowId");
+			r.colum().pixel(100).text("Column2").align(SWT.CENTER).colAlign(SWT.RIGHT).property("col2").number("#,###");
 			r.colum().pixel(100).text("Column4").align(SWT.CENTER).property("col3").number("#,###");
 			r.colum().pixel(100).text("Column5").align(SWT.CENTER).property("col4").number("#,###");
 			r.colum().pixel(100).text("Column6").align(SWT.CENTER).property("col5").number("#,###");

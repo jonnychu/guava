@@ -11,6 +11,7 @@ import cn.nextop.guava.widgets.table.builder.internal.XTableFactory;
 import cn.nextop.guava.widgets.table.model.XTableModel;
 import cn.nextop.guava.widgets.table.model.column.Column;
 import cn.nextop.guava.widgets.table.model.config.XTableConfig;
+import cn.nextop.guava.widgets.table.model.row.IRow;
 import cn.nextop.guava.widgets.table.render.AbstractXTableCellWidget;
 import cn.nextop.guava.widgets.table.render.AbstractXTablePanel;
 
@@ -18,7 +19,15 @@ import cn.nextop.guava.widgets.table.render.AbstractXTablePanel;
  * @author jonny
  */
 public class RowPanel extends AbstractXTablePanel {
+	//
+	private IRow row;
 	
+	/**
+	 * 
+	 */
+	public IRow getRow() { return row; }
+	public void setRow(IRow row) { this.row = row; }
+
 	/**
 	 * 
 	 */

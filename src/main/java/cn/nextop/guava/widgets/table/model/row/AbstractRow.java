@@ -37,6 +37,6 @@ public class AbstractRow implements IRow {
 	
 	@Override
 	public boolean equals(Object obj) {
-		return ((this == obj) || (this.getId() == ((IRow)obj).getId()));
+		return (this.getRowId() == ((IRow)obj).getRowId());
 	}
 }

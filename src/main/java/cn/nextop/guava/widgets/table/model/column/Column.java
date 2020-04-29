@@ -1,7 +1,12 @@
 package cn.nextop.guava.widgets.table.model.column;
 
+import static cn.nextop.guava.support.Objects.cast;
+
 import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeSupport;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.List;
 
 import org.eclipse.swt.SWT;
 
@@ -9,6 +14,7 @@ import cn.nextop.guava.support.Sequence;
 import cn.nextop.guava.support.property.Property;
 import cn.nextop.guava.widgets.table.model.cell.ColCell;
 import cn.nextop.guava.widgets.table.model.cell.RowCell;
+import cn.nextop.guava.widgets.table.model.row.IRow;
 import cn.nextop.guava.widgets.table.render.AbstractXTableCellWidget;
 import cn.nextop.guava.widgets.table.render.AbstractXTableColumnWidget;
 import cn.nextop.guava.widgets.table.render.widget.external.XTableWidget;
@@ -24,7 +30,7 @@ public class Column<T> {
 	private int colId;
 	private int height = 24;
 	private String text = "";
-	private Sort sort = Sort.ETERNAL;
+	private Sort sort = Sort.NONE;
 	private int colAlign = SWT.CENTER;
 	private int cellAlign = SWT.CENTER;
 	private int pixel = 30, weight = 0, minimum = 20;
@@ -170,15 +176,39 @@ public class Column<T> {
 	/**
 	 * 
 	 */
+	public void fire(String string, int oldValue, int newValue) {
+		listeners.firePropertyChange(string, oldValue, newValue);
+	}
+	
+	public void fire(String string, Sort oldValue, Sort newValue) {
+		listeners.firePropertyChange(string, oldValue, newValue);
+	}
+	
 	public void addPropListener(PropertyChangeListener listener) {
 		listeners.addPropertyChangeListener(listener);
 	}
 	
-	protected void fire(String string, int oldValue, int newValue) {
-		listeners.firePropertyChange(string, oldValue, newValue);
-	}
-	
 	public void removePropListener(PropertyChangeListener listener) {
 		listeners.removePropertyChangeListener(listener);
+	}
+	
+	public void sort(List<IRow> rows) {
+		Collections.sort(rows, new Comparator<IRow>() {
+			@Override
+			public int compare(IRow o1, IRow o2) {
+				Object v1 = property.getValue(cast(o1));
+				Object v2 = property.getValue(cast(o2));
+				if(v1 == null && v2 == null) return 0;
+				if(v1 == null && v2 != null) return 1;
+				if(v1 != null && v2 == null) return -1;
+				if(sort == Sort.ASC) {
+					return v1.toString().compareTo(v2.toString());
+				} else if (sort == Sort.DESC) {
+					return -v1.toString().compareTo(v2.toString());
+				} else { // Default ID
+					return o1.getRowId() - o2.getRowId() > 0 ? 1 : -1;
+				}
+			}
+		});
 	}
 }
