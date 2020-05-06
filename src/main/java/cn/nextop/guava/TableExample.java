@@ -11,6 +11,9 @@ import java.util.function.Consumer;
 import java.util.stream.Collectors;
 
 import org.eclipse.swt.SWT;
+import org.eclipse.swt.events.SelectionAdapter;
+import org.eclipse.swt.events.SelectionEvent;
+import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Shell;
 
@@ -33,25 +36,29 @@ public class TableExample {
 		final String name = "Table Example";
 		Shell shell = creator(500, 500, name);
 		Composite cmp = SwtUtils.creator(shell);
-		cmp.setLayout(new MigLayout("insets 5, gap 0 0","[fill,grow]","[fill,grow]"));
-		{
-			Builder builder = exp.new Builder();
-			XTable table = builder.onClick1((v) -> {
-				System.out.println("click1 : "+v.getRowId());
-			}).onClick2((v) -> {
-				System.out.println("click2 : "+v.getRowId());
-			}).builder(cmp);
-			table.setLayoutData("cell 0 0");
-			
-			List<IRow> rows = new ArrayList<>();
-			for (int i = 0; i < 10000; i++) {
-				rows.add(exp.new Row(Byte.valueOf("127"), Short.valueOf(i+""), new Integer(i+1), new Long(1000000+i),
-						new Double(2000000000+i), new BigDecimal("3000000000000000."+i), System.currentTimeMillis()));
+		cmp.setLayout(new MigLayout("insets 5, gap 0 0","[fill,grow]","[30][fill,grow]"));
+		//
+		Builder builder = exp.new Builder();
+		XTable table = builder.onClick1((v) -> {
+			System.out.println("click1 : "+v.getRowId());
+		}).onClick2((v) -> {
+			System.out.println("click2 : "+v.getRowId());
+		}).builder(cmp);
+		table.setLayoutData("cell 0 1");
+		Button btn = new Button(cmp, SWT.NONE); btn.setLayoutData("cell 0 0"); btn.setText("click me");
+		btn.addSelectionListener(new SelectionAdapter() {
+			@Override
+			public void widgetSelected(SelectionEvent e) {
+				List<IRow> r = table.getModel().getRows().getRows();
+				if(r != null && r.size() > 0) return;
+				List<IRow> rows = new ArrayList<>();
+				for (int i = 0; i < 10000; i++) {
+					rows.add(exp.new Row(Byte.valueOf("127"), Short.valueOf(i+""), new Integer(i+1), new Long(1000000+i),
+							new Double(2000000000+i), new BigDecimal("3000000000000000."+i), System.currentTimeMillis()));
+				}
+				table.input(rows.stream().sorted(Comparator.comparing(IRow::getId)).collect(Collectors.toList()));
 			}
-			
-			List<IRow> r = rows.stream().sorted(Comparator.comparing(IRow::getId).reversed()).collect(Collectors.toList());
-			table.input(r);
-		}
+		});
 		
 		//
 		shell.open(); dispatch(() -> shell.isDisposed());
@@ -78,7 +85,7 @@ public class TableExample {
 			r.colum().pixel(100).text("Column4").align(SWT.CENTER).property("col3").number("#,###");
 			r.colum().pixel(100).text("Column5").align(SWT.CENTER).property("col4").number("#,###");
 			r.colum().pixel(100).text("Column6").align(SWT.CENTER).property("col5").number("#,###");
-			r.colum().pixel(100).text("Column7").align(SWT.CENTER).property("col6").number("#,###.0000");
+			r.colum().pixel(200).text("Column7").align(SWT.CENTER).property("col6").number("#,###.0000");
 			r.colum().pixel(150).text("Column8").align(SWT.CENTER).property("col7").datetime("yyyy-MM-dd HH:mm:ss");
 			r.colum().pixel(150).text("Action").align(SWT.CENTER).render(btnOk, btnClose);
 			return r.builder();
@@ -99,7 +106,6 @@ public class TableExample {
 		private BigDecimal col6;
 		private Long col7;
 		
-		
 		/**
 		 * 
 		 */
@@ -111,71 +117,57 @@ public class TableExample {
 			this.col7 = col7;
 		}
 		
-		
 		public Byte getCol1() {
 			return col1;
 		}
-
 
 		public void setCol1(Byte col1) {
 			this.col1 = col1;
 		}
 
-
 		public Short getCol2() {
 			return col2;
 		}
-
 
 		public void setCol2(Short col2) {
 			this.col2 = col2;
 		}
 
-
 		public Integer getCol3() {
 			return col3;
 		}
-
 
 		public void setCol3(Integer col3) {
 			this.col3 = col3;
 		}
 
-
 		public Long getCol4() {
 			return col4;
 		}
-
 
 		public void setCol4(Long col4) {
 			this.col4 = col4;
 		}
 
-
 		public Double getCol5() {
 			return col5;
 		}
-
 
 		public void setCol5(Double col5) {
 			this.col5 = col5;
 		}
 
-
 		public BigDecimal getCol6() {
 			return col6;
 		}
-
 
 		public void setCol6(BigDecimal col6) {
 			this.col6 = col6;
 		}
 
-
 		public Long getCol7() {
 			return col7;
 		}
-
 
 		public void setCol7(Long col7) {
 			this.col7 = col7;
