@@ -31,7 +31,7 @@ public class Column<T> {
 	private int colId;
 	private int height = 24;
 	private String text = "";
-	private Sort sort = Sort.NONE;
+	private Sort sort = Sort.ETERNAL;
 	private int colAlign = SWT.CENTER;
 	private int cellAlign = SWT.CENTER;
 	private int pixel = 30, weight = 0, minimum = 20;

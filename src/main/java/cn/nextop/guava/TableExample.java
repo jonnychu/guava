@@ -80,13 +80,13 @@ public class TableExample {
 		@Override
 		public XTable builder(Composite cmp) {
 			XTableBuilder r = new XTableBuilder(cmp);
-			r.colum().pixel(100).text("Column1").align(SWT.CENTER).colAlign(SWT.LEFT).property("rowId");
-			r.colum().pixel(100).text("Column2").align(SWT.CENTER).colAlign(SWT.RIGHT).property("col2").number("#,###");
-			r.colum().pixel(100).text("Column4").align(SWT.CENTER).property("col3").number("#,###");
-			r.colum().pixel(100).text("Column5").align(SWT.CENTER).property("col4").number("#,###");
-			r.colum().pixel(100).text("Column6").align(SWT.CENTER).property("col5").number("#,###");
-			r.colum().pixel(200).text("Column7").align(SWT.CENTER).property("col6").number("#,###.0000");
-			r.colum().pixel(150).text("Column8").align(SWT.CENTER).property("col7").datetime("yyyy-MM-dd HH:mm:ss");
+			r.colum().pixel(100).text("Column1").align(SWT.CENTER).colAlign(SWT.LEFT).sortable().property("rowId");
+			r.colum().pixel(100).text("Column2").align(SWT.CENTER).colAlign(SWT.RIGHT).sortable().property("col2").number("#,###");
+			r.colum().pixel(100).text("Column4").align(SWT.CENTER).property("col3").sortable().number("#,###");
+			r.colum().pixel(100).text("Column5").align(SWT.CENTER).property("col4").sortable().number("#,###");
+			r.colum().pixel(100).text("Column6").align(SWT.CENTER).property("col5").sortable().number("#,###");
+			r.colum().pixel(200).text("Column7").align(SWT.CENTER).property("col6").sortable().number("#,###.0000");
+			r.colum().pixel(150).text("Column8").align(SWT.CENTER).property("col7").sortable().datetime("yyyy-MM-dd HH:mm:ss");
 			r.colum().pixel(150).text("Action").align(SWT.CENTER).render(btnOk, btnClose);
 			return r.builder();
 		}

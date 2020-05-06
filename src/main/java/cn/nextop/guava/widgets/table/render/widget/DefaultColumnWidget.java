@@ -70,6 +70,7 @@ public class DefaultColumnWidget extends AbstractXTableColumnWidget {
 	@Override
 	public void handleMousePressed(MouseEvent event) {
 		super.handleMousePressed(event);
+		if(column.getSort() == ETERNAL) return;
 		final Sort prev = this.column.getSort();
 		final Sort next = this.column.getSort().next();
 		final XTableModel model = this.factory.getModel();
