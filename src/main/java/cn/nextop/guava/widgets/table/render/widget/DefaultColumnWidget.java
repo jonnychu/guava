@@ -1,5 +1,6 @@
 package cn.nextop.guava.widgets.table.render.widget;
 
+import static cn.nextop.guava.widgets.table.support.glossary.Sort.ETERNAL;
 import static org.eclipse.draw2d.TextUtilities.INSTANCE;
 
 import java.util.List;
@@ -74,8 +75,8 @@ public class DefaultColumnWidget extends AbstractXTableColumnWidget {
 		final XTableModel model = this.factory.getModel();
 		final List<IRow> rows = model.getRows().getRows();
 		final List<Column<?>> cols = model.getColumns().getColumns();
-		for (Column<?> col : cols) {
-			if(col.getSort() == Sort.ETERNAL) continue;
+		for (Column<?> col : cols) { // clear
+			if(col.getSort() == ETERNAL) continue;
 			col.setSort(Sort.NONE);
 		}
 		this.column.setSort(prev.next());

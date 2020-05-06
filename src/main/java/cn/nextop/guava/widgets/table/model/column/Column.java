@@ -4,6 +4,7 @@ import static cn.nextop.guava.support.Objects.cast;
 
 import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeSupport;
+import java.math.BigDecimal;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
@@ -196,17 +197,46 @@ public class Column<T> {
 		Collections.sort(rows, new Comparator<IRow>() {
 			@Override
 			public int compare(IRow o1, IRow o2) {
+				Class<?> clazz = property.getType();
 				Object v1 = property.getValue(cast(o1));
 				Object v2 = property.getValue(cast(o2));
 				if(v1 == null && v2 == null) return 0;
-				if(v1 == null && v2 != null) return 1;
-				if(v1 != null && v2 == null) return -1;
-				if(sort == Sort.ASC) {
+				if(v1 == null) return -1; if(v2 == null) return +1;
+				int asc = 1; switch (sort) {
+					case ASC: asc = 1; break;
+					case DESC: asc = -1; break;
+					default: return o1.getRowId() - o2.getRowId() > 0 ? -1 : 1;
+				}
+				
+				//
+				if (clazz.equals(int.class)) {
+					return asc * ((int) v1 - (int) v2);
+				} else if (clazz.equals(byte.class)) {
+					return asc * ((byte) v1 - (byte) v2);
+				} else if (clazz.equals(short.class)) {
+					return asc * ((short) v1 - (short) v2);
+				} else if (clazz.equals(long.class)) {
+					return (int) (asc * ((long) v1 - (long) v2));
+				} else if (clazz.equals(float.class)) {
+					return (int) (asc * ((float) v1 - (float) v2));
+				} else if (clazz.equals(double.class)) {
+					return (int) (asc * ((double) v1 - (double) v2));
+				} else if (clazz.equals(Byte.class)) {
+					return asc * ((Byte)v1).compareTo((Byte)v2);
+				} else if (clazz.equals(Long.class)) {
+					return asc * ((Long)v1).compareTo((Long)v2);
+				} else if (clazz.equals(Short.class)) {
+					return asc * ((Short)v1).compareTo((Short)v2);
+				} else if (clazz.equals(Float.class)) {
+					return asc * ((Float)v1).compareTo((Float)v2);
+				} else if (clazz.equals(Double.class)) {
+					return asc * ((Double)v1).compareTo((Double)v2);
+				} else if (clazz.equals(Integer.class)) {
+					return asc * ((Integer)v1).compareTo((Integer)v2);
+				} else if (clazz.equals(BigDecimal.class)) {
+					return asc * ((BigDecimal)v1).compareTo((BigDecimal)v2);
+				} else {
 					return v1.toString().compareTo(v2.toString());
-				} else if (sort == Sort.DESC) {
-					return -v1.toString().compareTo(v2.toString());
-				} else { // Default ID
-					return o1.getRowId() - o2.getRowId() > 0 ? 1 : -1;
 				}
 			}
 		});

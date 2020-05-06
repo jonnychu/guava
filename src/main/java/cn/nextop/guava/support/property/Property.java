@@ -41,6 +41,13 @@ public class Property<T> {
 	/**
 	 * 
 	 */
+	public Class<?> getType() {
+		return getter.getReturnType();
+	}
+	
+	/**
+	 * 
+	 */
 	public Object getValue(final T target) {
 		try {
 			return this.getter.invoke(target, NULL);

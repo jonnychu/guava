@@ -44,9 +44,9 @@ public class TableExample {
 			table.setLayoutData("cell 0 0");
 			
 			List<IRow> rows = new ArrayList<>();
-			for (int i = 0; i < 1000; i++) {
-				rows.add(exp.new Row(Byte.valueOf("127"), Short.valueOf("2561"), new Integer(i), new Long(1111111111L),
-						new Double(222222222L), new BigDecimal("1111.1212"), System.currentTimeMillis()));
+			for (int i = 0; i < 10000; i++) {
+				rows.add(exp.new Row(Byte.valueOf("127"), Short.valueOf(i+""), new Integer(i+1), new Long(1000000+i),
+						new Double(2000000000+i), new BigDecimal("3000000000000000."+i), System.currentTimeMillis()));
 			}
 			
 			List<IRow> r = rows.stream().sorted(Comparator.comparing(IRow::getId).reversed()).collect(Collectors.toList());
