@@ -6,6 +6,7 @@ import java.util.List;
 
 import org.eclipse.swt.widgets.Canvas;
 
+import cn.nextop.guava.support.Lists;
 import cn.nextop.guava.support.Objects;
 import cn.nextop.guava.widgets.AbstractBuilder;
 import cn.nextop.guava.widgets.table.XTable;
@@ -43,11 +44,12 @@ public class XTableFactory extends AbstractBuilder {
 	}
 	
 	public void buildData() {
+		if(this.hc == null) return; this.dc.removeAll();
 		final XTableModel model = this.table.getModel();
 		final List<IRow> rows = model.getRows().getRows();
-		final List<Column<?>> cols = model.getColumns().getColumns();
-		if(rows == null || rows.size() == 0 || cols == null || cols.size() == 0) return;
-		this.dc.removeAll(); int size = cols.size(); for (IRow row : rows) {
+		List<Column<?>> cols = model.getColumns().getColumns();
+		if(Lists.isEmpty(rows) || Lists.isEmpty(cols))  return; 
+		int size = cols.size(); for (IRow row : rows) {
 			final RowPanel rp = new RowPanel(this); rp.setRow(row);
 			AbstractXTableCellWidget[] cw = new AbstractXTableCellWidget[size];
 			for (int i = 0; i < size; i++) {
@@ -76,7 +78,7 @@ public class XTableFactory extends AbstractBuilder {
 		final XTableModel model = this.table.getModel();
 		final ISelection selection = model.getSelection();
 		final List<Column<?>> cols = model.getColumns().getColumns();
-		if(cols == null || cols.size() == 0) return; int size = cols.size(); 
+		if(Lists.isEmpty(cols)) return; final int size = cols.size(); 
 		AbstractXTableColumnWidget[] cw1 = new AbstractXTableColumnWidget[size];
 		AbstractXTableColumnWidget[] cw2 = new AbstractXTableColumnWidget[size];
 		for (int i = 0; i < size; i++) {

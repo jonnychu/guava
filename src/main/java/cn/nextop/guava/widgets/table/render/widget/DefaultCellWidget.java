@@ -1,5 +1,6 @@
 package cn.nextop.guava.widgets.table.render.widget;
 
+import static cn.nextop.guava.support.Lists.isEmpty;
 import static cn.nextop.guava.support.Objects.cast;
 import static cn.nextop.guava.support.swt.CGUtils.fillRect;
 import static org.eclipse.draw2d.TextUtilities.INSTANCE;
@@ -77,8 +78,7 @@ public class DefaultCellWidget extends AbstractXTableCellWidget {
 		public void layout(IFigure container) {
 			DefaultCellWidget parent = cast(container);
 			final Rectangle r = parent.getClientArea();
-			final List<XTableWidget> widgets = cast(parent.getChildren());
-			if(widgets == null || widgets.size() == 0) return;
+			List<XTableWidget> widgets = cast(parent.getChildren()); if(isEmpty(widgets)) return;
 			final int x = r.x, y = r.y, w = r.width, h = r.height;
 			int cw = (w - margin) / widgets.size(), cx = x + margin;
 			for (XTableWidget widget : widgets) {
@@ -100,6 +100,6 @@ public class DefaultCellWidget extends AbstractXTableCellWidget {
 		final XTableModel model = this.factory.getModel();
 		final ISelection selection = model.getSelection();
 		List<DefaultCellWidget> c = cast(getParent().getChildren());
-		if(c == null || c.size() == 0) return; selection.add(rp.getRow().getRowId(), c);
+		if(isEmpty(c)) return; selection.add(rp.getRow().getRowId(), c);
 	}
 }

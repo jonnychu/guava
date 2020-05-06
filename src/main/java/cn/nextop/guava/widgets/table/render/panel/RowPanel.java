@@ -7,6 +7,7 @@ import java.util.List;
 import org.eclipse.draw2d.IFigure;
 import org.eclipse.draw2d.geometry.Rectangle;
 
+import cn.nextop.guava.support.Lists;
 import cn.nextop.guava.widgets.table.builder.internal.XTableFactory;
 import cn.nextop.guava.widgets.table.model.XTableModel;
 import cn.nextop.guava.widgets.table.model.column.Column;
@@ -41,7 +42,7 @@ public class RowPanel extends AbstractXTablePanel {
 		final XTableModel model = factory.getModel();
 		XTableConfig config = model.getXTableConfig();
 		List<Column<?>> cols = model.getColumns().getColumns();
-		if(cols == null || cols.size() == 0) return;
+		if(Lists.isEmpty(cols)) return;
 		
 		//
 		Rectangle r = parent.getClientArea();

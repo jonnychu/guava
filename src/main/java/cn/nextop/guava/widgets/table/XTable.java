@@ -11,6 +11,7 @@ import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Event;
 import org.eclipse.swt.widgets.Listener;
 
+import cn.nextop.guava.support.Lists;
 import cn.nextop.guava.widgets.table.builder.internal.XTableFactory;
 import cn.nextop.guava.widgets.table.model.XTableModel;
 import cn.nextop.guava.widgets.table.model.row.IRow;
@@ -38,7 +39,7 @@ public class XTable extends Canvas {
 	}
 	
 	public void input(List<IRow> rows) {
-		if(rows == null || rows.size() == 0) return;
+		if(Lists.isEmpty(rows)) return;
 		model.getRows().setRows(rows); factory.buildData();
 	}
 	

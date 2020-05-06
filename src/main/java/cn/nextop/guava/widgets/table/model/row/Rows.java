@@ -1,7 +1,8 @@
 package cn.nextop.guava.widgets.table.model.row;
 
+import static cn.nextop.guava.support.Lists.isEmpty;
+
 import java.util.ArrayList;
-import java.util.Comparator;
 import java.util.List;
 
 /**
@@ -25,13 +26,6 @@ public class Rows {
 	}
 	
 	public int size() {
-		if(rows == null) return 0;
-		else return rows.size();
-	}
-	
-	public void defaultSort(boolean asc) {
-		if(rows == null) return;
-		if(asc) rows.stream().sorted(Comparator.comparing(IRow::getId));
-		else rows.stream().sorted(Comparator.comparing(IRow::getId).reversed());
+		if(isEmpty(rows)) return 0; else return rows.size();
 	}
 }

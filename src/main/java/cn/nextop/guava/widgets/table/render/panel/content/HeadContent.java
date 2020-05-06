@@ -11,6 +11,7 @@ import org.eclipse.draw2d.geometry.Dimension;
 import org.eclipse.draw2d.geometry.Rectangle;
 import org.eclipse.swt.graphics.Color;
 
+import cn.nextop.guava.support.Lists;
 import cn.nextop.guava.support.swt.CGUtils;
 import cn.nextop.guava.widgets.table.builder.internal.XTableFactory;
 import cn.nextop.guava.widgets.table.model.XTableModel;
@@ -61,7 +62,7 @@ public class HeadContent extends AbstractXTablePanel {
 		HeadContent hc = cast(container);
 		final XTableModel model = factory.getModel();
 		List<Column<?>> cols = model.getColumns().getColumns();
-		if(cols == null || cols.size() == 0) return;
+		if(Lists.isEmpty(cols)) return;
 		
 		//
 		final Rectangle r = hc.getClientArea();
