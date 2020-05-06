@@ -119,8 +119,7 @@ public abstract class AbstractXTableBuilder<T> {
 		 */
 		public XTable builder() {
 			table.getModel().setColumns(this.columns); 
-			table.getFactory().buildHeader();
-			return table;
+			table.getFactory().buildHeader(); return table;
 		}
 	}
 }
