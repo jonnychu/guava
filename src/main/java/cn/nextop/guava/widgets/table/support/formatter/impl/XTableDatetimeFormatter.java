@@ -4,7 +4,7 @@ import java.util.Date;
 
 import org.eclipse.nebula.widgets.formattedtext.DateTimeFormatter;
 
-import cn.nextop.guava.support.util.Objects;
+import cn.nextop.guava.support.Objects;
 import cn.nextop.guava.widgets.table.support.formatter.XTableFormatter;
 
 /**

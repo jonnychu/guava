@@ -1,6 +1,6 @@
 package cn.nextop.guava.widgets.combo.render.popup;
 
-import static cn.nextop.guava.support.util.Objects.cast;
+import static cn.nextop.guava.support.Objects.cast;
 import static java.lang.Math.max;
 
 import org.eclipse.draw2d.IFigure;

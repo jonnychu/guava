@@ -1,7 +1,7 @@
 package cn.nextop.guava.widgets.table.render.panel.content;
 
+import static cn.nextop.guava.support.Objects.cast;
 import static cn.nextop.guava.support.swt.CGUtils.drawLine;
-import static cn.nextop.guava.support.util.Objects.cast;
 
 import java.util.List;
 

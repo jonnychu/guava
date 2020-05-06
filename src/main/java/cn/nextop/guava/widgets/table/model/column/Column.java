@@ -1,6 +1,6 @@
 package cn.nextop.guava.widgets.table.model.column;
 
-import static cn.nextop.guava.support.util.Objects.cast;
+import static cn.nextop.guava.support.Objects.cast;
 
 import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeSupport;
@@ -11,8 +11,8 @@ import java.util.List;
 
 import org.eclipse.swt.SWT;
 
+import cn.nextop.guava.support.Sequence;
 import cn.nextop.guava.support.property.Property;
-import cn.nextop.guava.support.util.Sequence;
 import cn.nextop.guava.widgets.table.model.cell.ColCell;
 import cn.nextop.guava.widgets.table.model.cell.RowCell;
 import cn.nextop.guava.widgets.table.model.row.IRow;

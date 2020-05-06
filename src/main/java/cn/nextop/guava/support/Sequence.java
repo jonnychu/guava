@@ -1,4 +1,4 @@
-package cn.nextop.guava.support.util;
+package cn.nextop.guava.support;
 
 import java.util.concurrent.atomic.AtomicInteger;
 import java.util.concurrent.atomic.AtomicLong;

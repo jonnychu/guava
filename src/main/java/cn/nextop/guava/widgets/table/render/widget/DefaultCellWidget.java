@@ -1,7 +1,7 @@
 package cn.nextop.guava.widgets.table.render.widget;
 
+import static cn.nextop.guava.support.Objects.cast;
 import static cn.nextop.guava.support.swt.CGUtils.fillRect;
-import static cn.nextop.guava.support.util.Objects.cast;
 import static org.eclipse.draw2d.TextUtilities.INSTANCE;
 
 import java.util.List;
@@ -15,9 +15,9 @@ import org.eclipse.draw2d.geometry.Dimension;
 import org.eclipse.draw2d.geometry.Rectangle;
 import org.eclipse.swt.SWT;
 
+import cn.nextop.guava.support.Objects;
 import cn.nextop.guava.support.property.Property;
 import cn.nextop.guava.support.swt.Colors;
-import cn.nextop.guava.support.util.Objects;
 import cn.nextop.guava.widgets.table.model.XTableModel;
 import cn.nextop.guava.widgets.table.model.row.IRow;
 import cn.nextop.guava.widgets.table.render.AbstractXTableCellWidget;

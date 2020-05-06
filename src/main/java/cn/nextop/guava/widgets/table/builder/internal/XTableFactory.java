@@ -1,12 +1,12 @@
 package cn.nextop.guava.widgets.table.builder.internal;
 
-import static cn.nextop.guava.support.util.Objects.cast;
+import static cn.nextop.guava.support.Objects.cast;
 
 import java.util.List;
 
 import org.eclipse.swt.widgets.Canvas;
 
-import cn.nextop.guava.support.util.Objects;
+import cn.nextop.guava.support.Objects;
 import cn.nextop.guava.widgets.AbstractBuilder;
 import cn.nextop.guava.widgets.table.XTable;
 import cn.nextop.guava.widgets.table.model.XTableModel;
