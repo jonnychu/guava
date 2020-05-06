@@ -1,6 +1,6 @@
 package cn.nextop.guava.widgets.table.render.widget.external;
 
-import static cn.nextop.guava.support.Objects.cast;
+import static cn.nextop.guava.support.util.Objects.cast;
 
 import java.util.function.Consumer;
 

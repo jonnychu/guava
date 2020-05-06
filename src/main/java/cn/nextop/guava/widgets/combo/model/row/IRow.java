@@ -1,6 +1,6 @@
 package cn.nextop.guava.widgets.combo.model.row;
 
-import cn.nextop.guava.support.Sequence;
+import cn.nextop.guava.support.util.Sequence;
 
 /**
  * @author jonny

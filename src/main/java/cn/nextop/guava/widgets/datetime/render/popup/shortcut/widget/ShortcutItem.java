@@ -1,6 +1,6 @@
 package cn.nextop.guava.widgets.datetime.render.popup.shortcut.widget;
 
-import static cn.nextop.guava.support.Objects.cast;
+import static cn.nextop.guava.support.util.Objects.cast;
 import static org.eclipse.draw2d.TextUtilities.INSTANCE;
 
 import org.eclipse.draw2d.Graphics;

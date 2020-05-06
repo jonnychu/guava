@@ -1,6 +1,6 @@
 package cn.nextop.guava.widgets.progress.circle;
 
-import static cn.nextop.guava.support.Objects.cast;
+import static cn.nextop.guava.support.util.Objects.cast;
 
 import org.eclipse.draw2d.LightweightSystem;
 import org.eclipse.swt.SWT;

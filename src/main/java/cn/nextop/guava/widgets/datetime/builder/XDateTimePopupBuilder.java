@@ -1,6 +1,6 @@
 package cn.nextop.guava.widgets.datetime.builder;
 
-import static cn.nextop.guava.support.Objects.cast;
+import static cn.nextop.guava.support.util.Objects.cast;
 
 import org.eclipse.swt.widgets.Canvas;
 

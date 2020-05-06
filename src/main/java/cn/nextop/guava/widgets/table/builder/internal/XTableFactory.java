@@ -1,12 +1,12 @@
 package cn.nextop.guava.widgets.table.builder.internal;
 
-import static cn.nextop.guava.support.Objects.cast;
+import static cn.nextop.guava.support.util.Objects.cast;
 
 import java.util.List;
 
 import org.eclipse.swt.widgets.Canvas;
 
-import cn.nextop.guava.support.Objects;
+import cn.nextop.guava.support.util.Objects;
 import cn.nextop.guava.widgets.AbstractBuilder;
 import cn.nextop.guava.widgets.table.XTable;
 import cn.nextop.guava.widgets.table.model.XTableModel;
@@ -46,8 +46,8 @@ public class XTableFactory extends AbstractBuilder {
 		final XTableModel model = this.table.getModel();
 		final List<IRow> rows = model.getRows().getRows();
 		final List<Column<?>> cols = model.getColumns().getColumns();
-		if(rows == null || rows.size() == 0 || cols == null || cols.size() == 0) return; 
-		int size = cols.size(); for (IRow row : rows) {
+		if(rows == null || rows.size() == 0 || cols == null || cols.size() == 0) return;
+		this.dc.removeAll(); int size = cols.size(); for (IRow row : rows) {
 			final RowPanel rp = new RowPanel(this); rp.setRow(row);
 			AbstractXTableCellWidget[] cw = new AbstractXTableCellWidget[size];
 			for (int i = 0; i < size; i++) {

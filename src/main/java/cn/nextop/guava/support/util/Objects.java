@@ -1,4 +1,4 @@
-package cn.nextop.guava.support;
+package cn.nextop.guava.support.util;
 
 /**
  * @author jonny

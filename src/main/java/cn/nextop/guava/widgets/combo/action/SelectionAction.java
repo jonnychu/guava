@@ -5,7 +5,7 @@ import java.util.List;
 import org.eclipse.draw2d.IFigure;
 import org.eclipse.swt.SWT;
 
-import cn.nextop.guava.support.Objects;
+import cn.nextop.guava.support.util.Objects;
 import cn.nextop.guava.widgets.AbstractAction;
 import cn.nextop.guava.widgets.combo.XCombo;
 import cn.nextop.guava.widgets.combo.XComboPopup;

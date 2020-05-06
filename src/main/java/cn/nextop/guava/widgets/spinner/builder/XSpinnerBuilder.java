@@ -1,6 +1,6 @@
 package cn.nextop.guava.widgets.spinner.builder;
 
-import static cn.nextop.guava.support.Objects.cast;
+import static cn.nextop.guava.support.util.Objects.cast;
 import static com.patrikdufresne.fontawesome.FontAwesome.caret_down;
 import static com.patrikdufresne.fontawesome.FontAwesome.caret_left;
 import static com.patrikdufresne.fontawesome.FontAwesome.caret_right;

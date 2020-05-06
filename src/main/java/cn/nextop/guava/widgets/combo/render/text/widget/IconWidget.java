@@ -1,6 +1,6 @@
 package cn.nextop.guava.widgets.combo.render.text.widget;
 
-import static cn.nextop.guava.support.Objects.cast;
+import static cn.nextop.guava.support.util.Objects.cast;
 import static com.patrikdufresne.fontawesome.FontAwesome.caret_down;
 import static com.patrikdufresne.fontawesome.FontAwesome.caret_up;
 import static org.eclipse.draw2d.TextUtilities.INSTANCE;

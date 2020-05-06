@@ -1,6 +1,6 @@
 package cn.nextop.guava.widgets.table.model.cell;
 
-import static cn.nextop.guava.support.Objects.cast;
+import static cn.nextop.guava.support.util.Objects.cast;
 
 import cn.nextop.guava.widgets.table.render.AbstractXTableColumnWidget;
 import cn.nextop.guava.widgets.table.render.widget.DefaultColumnWidget;

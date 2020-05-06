@@ -49,8 +49,6 @@ public class TableExample {
 		btn.addSelectionListener(new SelectionAdapter() {
 			@Override
 			public void widgetSelected(SelectionEvent e) {
-				List<IRow> r = table.getModel().getRows().getRows();
-				if(r != null && r.size() > 0) return;
 				List<IRow> rows = new ArrayList<>();
 				for (int i = 0; i < 10000; i++) {
 					rows.add(exp.new Row(Byte.valueOf("127"), Short.valueOf(i+""), new Integer(i+1), new Long(1000000+i),

@@ -1,9 +1,9 @@
 package cn.nextop.guava.widgets.progress.circle.render.panel;
 
-import static cn.nextop.guava.support.Objects.cast;
 import static cn.nextop.guava.support.swt.Fonts.bold;
 import static cn.nextop.guava.support.swt.Fonts.size;
 import static cn.nextop.guava.support.swt.SwtUtils.getDisplay;
+import static cn.nextop.guava.support.util.Objects.cast;
 import static java.lang.String.valueOf;
 import static org.eclipse.draw2d.TextUtilities.INSTANCE;
 
