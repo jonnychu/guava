@@ -1,6 +1,7 @@
 package cn.nextop.guava.widgets.table.render.widget;
 
 import static cn.nextop.guava.support.Lists.isEmpty;
+import static cn.nextop.guava.support.Lists.toList;
 import static cn.nextop.guava.support.Objects.cast;
 import static cn.nextop.guava.support.swt.CGUtils.fillRect;
 import static org.eclipse.draw2d.TextUtilities.INSTANCE;
@@ -43,7 +44,14 @@ public class DefaultCellWidget extends AbstractXTableCellWidget {
 	@Override
 	protected void paintFigure(Graphics g) {
 		super.paintFigure(g);
-		if(this.selected) fillRect(g, getBounds(), Colors.COLOR_CYAN);
+		final RowPanel rp = Objects.cast(getRowPanel());
+		final XTableModel model = this.factory.getModel();
+		final ISelection selection = model.getSelection();
+		final Long rowId = rp.getRow().getRowId(); 
+		final Integer colId = getColumn().getColId();
+		if(selection.isSelected(rowId, colId)) {
+			fillRect(g, getBounds(), Colors.COLOR_CYAN);
+		}
 	}
 	
 	@Override
@@ -96,10 +104,9 @@ public class DefaultCellWidget extends AbstractXTableCellWidget {
 	@Override
 	public void handleMousePressed(MouseEvent event) {
 		super.handleMousePressed(event);
-		final RowPanel rp = Objects.cast(getParent());
+		final RowPanel rp = Objects.cast(getRowPanel());
 		final XTableModel model = this.factory.getModel();
 		final ISelection selection = model.getSelection();
-		List<DefaultCellWidget> c = cast(getParent().getChildren());
-		if(isEmpty(c)) return; selection.add(rp.getRow().getRowId(), c);
+		selection.add(rp.getRow().getRowId(), toList(getColumn().getColId()));
 	}
 }

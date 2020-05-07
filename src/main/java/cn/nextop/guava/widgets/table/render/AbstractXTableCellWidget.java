@@ -17,7 +17,6 @@ public abstract class AbstractXTableCellWidget extends Figure {
 	protected XTableFactory factory;
 	protected boolean enter = false;
 	protected boolean editable = true;
-	protected boolean selected = false;
 	//
 	protected final int margin = 8, arc = 3, oval = 5;
 	
@@ -46,14 +45,6 @@ public abstract class AbstractXTableCellWidget extends Figure {
 
 	public void setColumn(Column<?> column) {
 		this.column = column;
-	}
-	
-	public boolean isSelected() {
-		return selected;
-	}
-
-	public void setSelected(boolean selected) {
-		this.selected = selected;
 	}
 	
 	public boolean isEditable() {

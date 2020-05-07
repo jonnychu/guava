@@ -6,6 +6,7 @@ import org.eclipse.swt.widgets.Composite;
 
 import cn.nextop.guava.support.property.Property;
 import cn.nextop.guava.widgets.table.XTable;
+import cn.nextop.guava.widgets.table.model.XTableModel;
 import cn.nextop.guava.widgets.table.model.column.Column;
 import cn.nextop.guava.widgets.table.model.column.Columns;
 import cn.nextop.guava.widgets.table.model.config.XTableConfig;
@@ -82,9 +83,16 @@ public abstract class AbstractXTableBuilder<T> {
 		}
 		
 		/**
+		 * model
+		 */
+		public XTableModel getXTableModel() {
+			return this.table.getModel();
+		}
+		
+		/**
 		 * config
 		 */
-		public XTableConfig getXComboConfig() {
+		public XTableConfig getXTableConfig() {
 			return this.table.getModel().getXTableConfig();
 		}
 		

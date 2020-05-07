@@ -1,10 +1,11 @@
 package cn.nextop.guava.widgets.table.support.selection;
 
 import java.beans.PropertyChangeListener;
-import java.util.Collection;
 import java.util.List;
 
-import cn.nextop.guava.widgets.table.render.widget.DefaultCellWidget;
+import com.google.common.collect.SetMultimap;
+
+import cn.nextop.guava.widgets.table.model.XTableModel;
 
 /**
  * @author jonny
@@ -13,9 +14,15 @@ public interface ISelection {
 	
 	final String PROPERTY_SELECT = "SELECTION";
 	
-	Collection<DefaultCellWidget> getSelection();
+	void clear();
 	
-	void add(Long no, List<DefaultCellWidget> value);
+	void setXTableModel(XTableModel model);
+	
+	SetMultimap<Long, Integer> getSelection();
+	
+	void add(Long rowId, List<Integer> colIds);
+	
+	boolean isSelected(Long rowId, Integer colIds);
 	
 	/**
 	 * 

@@ -4,6 +4,7 @@ import cn.nextop.guava.widgets.table.model.column.Columns;
 import cn.nextop.guava.widgets.table.model.config.XTableConfig;
 import cn.nextop.guava.widgets.table.model.row.Rows;
 import cn.nextop.guava.widgets.table.support.selection.ISelection;
+import cn.nextop.guava.widgets.table.support.selection.impl.SingleRowSelection;
 
 /**
  * @author jonny
@@ -14,6 +15,7 @@ public class XTableModel {
 	private Columns columns;
 	private XTableConfig config;
 	private boolean enable = true;
+	private ISelection selection;
 	
 	/**
 	 * 
@@ -22,11 +24,10 @@ public class XTableModel {
 		this.rows = new Rows();
 		this.columns = new Columns();
 		this.config = new XTableConfig();
+		this.selection = new SingleRowSelection();
+		this.selection.setXTableModel(this);// Default
 	}
 	
-	/**
-	 * 
-	 */
 	public Rows getRows() {
 		return rows;
 	}
@@ -60,6 +61,11 @@ public class XTableModel {
 	}
 	
 	public ISelection getSelection() {
-		return config.getSelection();
+		return this.selection;
+	}
+	
+	public void setSelection(ISelection selection) {
+		this.selection = selection;
+		this.selection.setXTableModel(this);
 	}
 }

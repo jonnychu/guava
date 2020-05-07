@@ -3,8 +3,6 @@ package cn.nextop.guava.widgets.table.model.config;
 import org.eclipse.swt.graphics.Color;
 
 import cn.nextop.guava.support.swt.Colors;
-import cn.nextop.guava.widgets.table.support.selection.ISelection;
-import cn.nextop.guava.widgets.table.support.selection.impl.SingleRowSelection;
 
 /**
  * @author jonny
@@ -19,14 +17,10 @@ public class XTableConfig {
 	private int itemHeight = 24, headerHeight = 24;
 	private int stepIncrement = itemHeight, pageIncrement = itemHeight * 12;
 	
-	//
-	private ISelection selection;
-	
 	/**
 	 * 
 	 */
 	public XTableConfig() {
-		selection = new SingleRowSelection();
 	}
 	
 	//
@@ -84,13 +78,5 @@ public class XTableConfig {
 
 	public void setFG_GRAY(Color fG_GRAY) {
 		FG_GRAY = fG_GRAY;
-	}
-	
-	public ISelection getSelection() {
-		return selection;
-	}
-
-	public void setSelection(ISelection selection) {
-		this.selection = selection;
 	}
 }

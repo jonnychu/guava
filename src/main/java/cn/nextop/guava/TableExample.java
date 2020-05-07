@@ -20,10 +20,12 @@ import org.eclipse.swt.widgets.Shell;
 import cn.nextop.guava.support.swt.SwtUtils;
 import cn.nextop.guava.widgets.table.XTable;
 import cn.nextop.guava.widgets.table.builder.external.AbstractXTableBuilder;
+import cn.nextop.guava.widgets.table.model.XTableModel;
 import cn.nextop.guava.widgets.table.model.row.AbstractRow;
 import cn.nextop.guava.widgets.table.model.row.IRow;
 import cn.nextop.guava.widgets.table.render.widget.external.XTableButtonWidget;
 import cn.nextop.guava.widgets.table.render.widget.external.XTableWidget;
+import cn.nextop.guava.widgets.table.support.selection.impl.MultiRowSelection;
 import net.miginfocom.swt.MigLayout;
 
 /**
@@ -78,6 +80,8 @@ public class TableExample {
 		@Override
 		public XTable builder(Composite cmp) {
 			XTableBuilder r = new XTableBuilder(cmp);
+			XTableModel model = r.getXTableModel();
+			model.setSelection(new MultiRowSelection());
 			r.colum().pixel(100).text("Column1").align(SWT.CENTER).colAlign(SWT.LEFT).sortable().property("rowId");
 			r.colum().pixel(100).text("Column2").align(SWT.CENTER).colAlign(SWT.RIGHT).sortable().property("col2").number("#,###");
 			r.colum().pixel(100).text("Column4").align(SWT.CENTER).property("col3").sortable().number("#,###");

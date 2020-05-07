@@ -10,6 +10,9 @@ public class Columns {
 	//
 	protected List<Column<?>> columns;
 	
+	/**
+	 * 
+	 */
 	public Columns() {
 		this.columns = new ArrayList<>();
 	}
@@ -20,6 +23,14 @@ public class Columns {
 
 	public List<Column<?>> getColumns() {
 		return columns;
+	}
+	
+	public List<Integer> getAllColumnId() {
+		List<Integer> r = new ArrayList<>();
+		for (Column<?> c : this.columns) {
+			r.add(c.getColId());
+		}
+		return r;
 	}
 	
 	public List<Column<?>> toPixel(int width) {
