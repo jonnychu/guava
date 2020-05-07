@@ -33,9 +33,7 @@ public class XTable extends Canvas {
 		this.factory = new XTableFactory();
 		this.lws = new LightweightSystem(this);
 		this.lws.setContents(panel = this.factory.build(this));
-		
-		//
-		addListener(SWT.MouseWheel, new MouseWhellListener());
+		this.addListener(SWT.MouseWheel, new MouseWhellListener());
 	}
 	
 	public void input(List<IRow> rows) {
