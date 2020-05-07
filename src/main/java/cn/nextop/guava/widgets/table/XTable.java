@@ -24,8 +24,8 @@ public class XTable extends Canvas {
 	//
 	private XTableModel model;
 	private XTablePanel panel;
-	private LightweightSystem lws;
 	private XTableFactory factory;
+	private LightweightSystem lws;
 	
 	public XTable(Composite parent) {
 		super(parent, DOUBLE_BUFFERED);
