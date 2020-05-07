@@ -1,11 +1,11 @@
 package cn.nextop.guava.widgets.table;
 
 import static org.eclipse.swt.SWT.DOUBLE_BUFFERED;
+import static org.eclipse.swt.SWT.MouseWheel;
 
 import java.util.List;
 
 import org.eclipse.draw2d.LightweightSystem;
-import org.eclipse.swt.SWT;
 import org.eclipse.swt.widgets.Canvas;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Event;
@@ -33,7 +33,7 @@ public class XTable extends Canvas {
 		this.factory = new XTableFactory();
 		this.lws = new LightweightSystem(this);
 		this.lws.setContents(panel = this.factory.build(this));
-		this.addListener(SWT.MouseWheel, new MouseWhellListener());
+		this.addListener(MouseWheel, new MouseWhellListener());
 	}
 	
 	public void input(List<IRow> rows) {
