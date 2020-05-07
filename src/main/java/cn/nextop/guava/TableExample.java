@@ -54,7 +54,7 @@ public class TableExample {
 					rows.add(exp.new Row(Byte.valueOf("127"), Short.valueOf(i+""), new Integer(i+1), new Long(1000000+i),
 							new Double(2000000000+i), new BigDecimal("3000000000000000."+i), System.currentTimeMillis()));
 				}
-				table.input(rows.stream().sorted(Comparator.comparing(IRow::getId)).collect(Collectors.toList()));
+				table.input(rows.stream().sorted(Comparator.comparing(IRow::getRowId)).collect(Collectors.toList()));
 			}
 		});
 		
