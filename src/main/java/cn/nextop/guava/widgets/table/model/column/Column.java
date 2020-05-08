@@ -104,10 +104,6 @@ public class Column<T> {
 		return colAlign;
 	}
 
-	public void setColAlign(int colAlign) {
-		this.colAlign = colAlign;
-	}
-	
 	public int getMinimum() {
 		return minimum;
 	}

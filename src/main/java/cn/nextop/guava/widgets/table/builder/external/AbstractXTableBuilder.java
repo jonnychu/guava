@@ -58,10 +58,6 @@ public abstract class AbstractXTableBuilder<T> {
 			this.column.setWeight(weight); return this;
 		}
 		
-		public XTableBuilder colAlign(int align) {
-			this.column.setColAlign(align); return this;
-		}
-		
 		public XTableBuilder sortable() {
 			this.column.setSort(Sort.NONE); return this;
 		}
