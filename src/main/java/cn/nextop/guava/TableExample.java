@@ -5,10 +5,8 @@ import static cn.nextop.guava.support.swt.SwtUtils.dispatch;
 
 import java.math.BigDecimal;
 import java.util.ArrayList;
-import java.util.Comparator;
 import java.util.List;
 import java.util.function.Consumer;
-import java.util.stream.Collectors;
 
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.events.SelectionAdapter;
@@ -56,7 +54,7 @@ public class TableExample {
 					rows.add(exp.new Row(Byte.valueOf("127"), Short.valueOf(i+""), new Integer(i+1), new Long(1000000+i),
 							new Double(2000000000+i), new BigDecimal("3000000000000000."+i), System.currentTimeMillis()));
 				}
-				table.input(rows.stream().sorted(Comparator.comparing(IRow::getRowId)).collect(Collectors.toList()));
+				table.input(rows);
 			}
 		});
 		

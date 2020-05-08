@@ -73,7 +73,7 @@ public class DefaultColumnWidget extends AbstractXTableColumnWidget {
 		for (Column<?> col : cols) { // clear
 			if(col.getSort() == ETERNAL) continue; col.setSort(Sort.NONE);
 		}
-		this.column.setSort(prev.next());
+		this.column.setSort(next);
 		this.column.sort(rows); this.factory.sort();
 		this.column.fire(Column.PROPERTY_SORT, prev, next);
 	}

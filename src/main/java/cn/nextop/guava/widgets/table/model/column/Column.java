@@ -205,7 +205,7 @@ public class Column<T> {
 				int asc = 1; switch (sort) {
 					case ASC: asc = 1; break;
 					case DESC: asc = -1; break;
-					default: return o1.getRowId() - o2.getRowId() > 0 ? -1 : 1;
+					default: return o1.getRowId() - o2.getRowId() > 0 ? 1 : -1;
 				}
 				
 				//
