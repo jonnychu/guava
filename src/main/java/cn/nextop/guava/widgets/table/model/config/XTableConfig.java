@@ -14,7 +14,7 @@ public class XTableConfig {
 	private Color BG_GRAY_L = Colors.COLOR_LIGHT_GRAY;
 	
 	//
-	private int itemHeight = 24, headerHeight = 24;
+	private int itemHeight = 24, headerHeight = 26;
 	private int stepIncrement = itemHeight, pageIncrement = itemHeight * 12;
 	
 	/**

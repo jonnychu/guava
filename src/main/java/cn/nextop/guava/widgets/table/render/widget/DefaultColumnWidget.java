@@ -3,8 +3,8 @@ package cn.nextop.guava.widgets.table.render.widget;
 import static cn.nextop.guava.widgets.table.support.glossary.Sort.ASC;
 import static cn.nextop.guava.widgets.table.support.glossary.Sort.DESC;
 import static cn.nextop.guava.widgets.table.support.glossary.Sort.ETERNAL;
-import static com.patrikdufresne.fontawesome.FontAwesome.caret_down;
-import static com.patrikdufresne.fontawesome.FontAwesome.caret_up;
+import static com.patrikdufresne.fontawesome.FontAwesome.angle_down;
+import static com.patrikdufresne.fontawesome.FontAwesome.angle_up;
 import static org.eclipse.draw2d.TextUtilities.INSTANCE;
 
 import java.util.List;
@@ -31,7 +31,7 @@ import cn.nextop.guava.widgets.table.support.glossary.Sort;
 public class DefaultColumnWidget extends AbstractXTableColumnWidget {
 	//
 	private final int space = 2;
-	private final String asc = caret_up, desc = caret_down;
+	private final String asc = angle_up, desc = angle_down;
 	
 	/**
 	 * 
@@ -45,28 +45,20 @@ public class DefaultColumnWidget extends AbstractXTableColumnWidget {
 		super.paintClientArea(g);
 		final Rectangle r = getClientArea();
 		final Sort sort = this.column.getSort();
-		Font font1 = g.getFont(), font2 = FontAwesome.getFont(8);
 		int align = column.getColAlign(); text = column.getText();
-		final Dimension d1 = INSTANCE.getStringExtents(text, font1);
-		String text1 = ""; g.setFont(font2);
-		if(sort == ASC) text1 = asc; else if(sort == DESC) text1 = desc;
-		final Dimension d2 = INSTANCE.getStringExtents(text1, g.getFont());
-		
-		g.setFont(font1); if(align == SWT.LEFT) {
+		Dimension d1 = INSTANCE.getStringExtents(text, g.getFont());
+		if(align == SWT.LEFT) {
 			g.drawText(this.text, r.x, (r.height - d1.height) / 2);
 		} else if(align == SWT.RIGHT) {
-			g.drawText(this.text, r.x + r.width - d1.width - d2.width - space, (r.height - d1.height) / 2);
+			g.drawText(this.text, r.x + r.width - d1.width - space, (r.height - d1.height) / 2);
 		} else {
-			g.drawText(this.text, r.x + (r.width - d1.width - d2.width) / 2, r.y + (r.height - d1.height) / 2);
+			g.drawText(this.text, r.x + (r.width - d1.width) / 2, r.y + (r.height - d1.height) / 2);
 		}
 		
-		g.setFont(font2); if(align == SWT.LEFT) {
-			g.drawText(text1, r.x + d1.width + space, (r.height - d2.height) / 2);
-		} else if(align == SWT.RIGHT) {
-			g.drawText(text1, r.x + r.width - d2.width, (r.height - d2.height) / 2);
-		} else {
-			g.drawText(text1, r.x + (r.width - d1.width - d2.width) / 2 + d1.width + space, r.y + (r.height - d2.height) / 2);
-		}
+		Font font = FontAwesome.getFont(6); String text1 = ""; g.setFont(font);
+		if(sort == ASC) text1 = asc; else if(sort == DESC) text1 = desc;
+		final Dimension d2 = INSTANCE.getStringExtents(text1, g.getFont());
+		g.drawText(text1, r.x + (r.width - d2.width) / 2 + space, r.y);
 	}
 	
 	@Override
@@ -84,6 +76,5 @@ public class DefaultColumnWidget extends AbstractXTableColumnWidget {
 		this.column.setSort(prev.next());
 		this.column.sort(rows); this.factory.sort();
 		this.column.fire(Column.PROPERTY_SORT, prev, next);
-		
 	}
 }

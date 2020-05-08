@@ -14,7 +14,7 @@ import cn.nextop.guava.widgets.table.support.selection.ISelection;
 public class MultiRowSelection extends AbstractSelection {
 	
 	@Override
-	public void add(Long rowId, List<Integer> colIds) {
+	public void add(Long rowId, Integer colId) {
 		final XTableModel model = getXTableModel();
 		boolean has = selections.containsKey(rowId);
 		List<Integer> ids = model.getColumns().getAllColumnId();
@@ -22,7 +22,7 @@ public class MultiRowSelection extends AbstractSelection {
 			this.selections.removeAll(rowId);
 			fire(ISelection.PROPERTY_SELECT, ids.size(), 0); // always
 		} else {
-			for (Integer colId : ids) selections.put(rowId, colId);
+			for (Integer cid : ids) selections.put(rowId, cid);
 			fire(ISelection.PROPERTY_SELECT, 0, ids.size()); // always
 		}
 	}

@@ -1,7 +1,6 @@
 package cn.nextop.guava.widgets.table.render.widget;
 
 import static cn.nextop.guava.support.Lists.isEmpty;
-import static cn.nextop.guava.support.Lists.toList;
 import static cn.nextop.guava.support.Objects.cast;
 import static cn.nextop.guava.support.swt.CGUtils.fillRect;
 import static org.eclipse.draw2d.TextUtilities.INSTANCE;
@@ -107,6 +106,6 @@ public class DefaultCellWidget extends AbstractXTableCellWidget {
 		final RowPanel rp = Objects.cast(getRowPanel());
 		final XTableModel model = this.factory.getModel();
 		final ISelection selection = model.getSelection();
-		selection.add(rp.getRow().getRowId(), toList(getColumn().getColId()));
+		selection.add(rp.getRow().getRowId(), getColumn().getColId());
 	}
 }

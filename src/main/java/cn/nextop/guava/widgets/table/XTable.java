@@ -40,7 +40,7 @@ public class XTable extends Canvas {
 	 * 
 	 */
 	public void input(List<IRow> rows) {
-		if(isEmpty(rows)) return; model.getSelection().clear();
+		if(isEmpty(rows)) return;
 		model.getRows().setRows(rows); factory.buildData(); // data
 	}
 	

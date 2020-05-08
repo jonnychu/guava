@@ -1,7 +1,6 @@
 package cn.nextop.guava.widgets.table.support.selection;
 
 import java.beans.PropertyChangeListener;
-import java.util.List;
 
 import com.google.common.collect.SetMultimap;
 
@@ -20,9 +19,9 @@ public interface ISelection {
 	
 	SetMultimap<Long, Integer> getSelection();
 	
-	void add(Long rowId, List<Integer> colIds);
+	void add(Long rowId, Integer colId);
 	
-	boolean isSelected(Long rowId, Integer colIds);
+	boolean isSelected(Long rowId, Integer colId);
 	
 	/**
 	 * 

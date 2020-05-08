@@ -21,6 +21,7 @@ import cn.nextop.guava.widgets.table.render.panel.content.DataContent;
 import cn.nextop.guava.widgets.table.render.panel.content.HeadContent;
 import cn.nextop.guava.widgets.table.render.widget.DefaultColumnResizeWidget;
 import cn.nextop.guava.widgets.table.render.widget.external.XTableWidget;
+import cn.nextop.guava.widgets.table.support.glossary.Sort;
 import cn.nextop.guava.widgets.table.support.selection.ISelection;
 
 /**
@@ -48,7 +49,15 @@ public class XTableFactory extends AbstractBuilder {
 		final XTableModel model = this.table.getModel();
 		final List<IRow> rows = model.getRows().getRows();
 		List<Column<?>> cols = model.getColumns().getColumns();
-		if(Lists.isEmpty(rows) || Lists.isEmpty(cols))  return; 
+		if(Lists.isEmpty(rows) || Lists.isEmpty(cols))  return;
+		// 1
+		model.getSelection().clear();
+		// 2
+		for (Column<?> col : cols) {
+			if(col.getSort() == Sort.ETERNAL) continue;
+			col.setSort(Sort.NONE);
+		}
+		// 3
 		int size = cols.size(); for (IRow row : rows) {
 			final RowPanel rp = new RowPanel(this); rp.setRow(row);
 			AbstractXTableCellWidget[] cw = new AbstractXTableCellWidget[size];
