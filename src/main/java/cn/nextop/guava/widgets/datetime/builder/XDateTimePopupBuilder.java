@@ -6,7 +6,7 @@ import org.eclipse.swt.widgets.Canvas;
 
 import cn.nextop.guava.widgets.AbstractBuilder;
 import cn.nextop.guava.widgets.datetime.XDateTimePopup;
-import cn.nextop.guava.widgets.datetime.action.ActorManager;
+import cn.nextop.guava.widgets.datetime.actor.ActorManager;
 import cn.nextop.guava.widgets.datetime.model.DummyCalendar;
 import cn.nextop.guava.widgets.datetime.render.popup.PopupPanel;
 import cn.nextop.guava.widgets.datetime.render.popup.calendar.CalendarPanel;

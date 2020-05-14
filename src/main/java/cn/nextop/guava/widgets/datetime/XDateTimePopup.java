@@ -13,7 +13,7 @@ import org.eclipse.swt.widgets.Event;
 import org.eclipse.swt.widgets.Listener;
 import org.eclipse.swt.widgets.Shell;
 
-import cn.nextop.guava.widgets.datetime.action.ActorManager;
+import cn.nextop.guava.widgets.datetime.actor.ActorManager;
 import cn.nextop.guava.widgets.datetime.builder.XDateTimePopupBuilder;
 import cn.nextop.guava.widgets.datetime.model.DummyCalendar;
 import cn.nextop.guava.widgets.datetime.model.XDateTimeModel;

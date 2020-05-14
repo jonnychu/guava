@@ -1,8 +1,8 @@
 package cn.nextop.guava.widgets.datetime.render.popup.calendar.year.widget;
 
 import static cn.nextop.guava.support.Objects.cast;
-import static cn.nextop.guava.widgets.datetime.action.ActorManager.ActionType.MONTH_SHOW;
-import static cn.nextop.guava.widgets.datetime.action.ActorManager.ActionType.YEAR_YEAR2;
+import static cn.nextop.guava.widgets.datetime.actor.ActorManager.ActionType.MONTH_SHOW;
+import static cn.nextop.guava.widgets.datetime.actor.ActorManager.ActionType.YEAR_YEAR2;
 
 import org.eclipse.draw2d.Graphics;
 import org.eclipse.draw2d.MouseEvent;
