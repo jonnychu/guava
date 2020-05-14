@@ -14,7 +14,7 @@ import org.eclipse.draw2d.geometry.Rectangle;
 
 import cn.nextop.guava.support.swt.Colors;
 import cn.nextop.guava.widgets.combo.XComboPopup;
-import cn.nextop.guava.widgets.combo.action.SelectionAction;
+import cn.nextop.guava.widgets.combo.action.SelectionActor;
 import cn.nextop.guava.widgets.combo.model.XComboModel;
 import cn.nextop.guava.widgets.combo.model.colum.Column;
 import cn.nextop.guava.widgets.combo.model.config.XComboConfig;
@@ -98,7 +98,7 @@ public class RowPanel extends AbstractComboPanel {
 	@Override
 	public void handleMouseReleased(MouseEvent event) {
 		super.handleMouseReleased(event);
-		new SelectionAction().onAction(this, null);
+		new SelectionActor().onAction(this, null);
 	}
 	
 	@Override

@@ -1,8 +1,8 @@
 package cn.nextop.guava.widgets.datetime.render.popup.calendar.date.widget;
 
 import static cn.nextop.guava.support.Objects.cast;
-import static cn.nextop.guava.widgets.datetime.action.ActionFactory.ActionType.DATE_DATE;
-import static cn.nextop.guava.widgets.datetime.action.ActionFactory.ActionType.TEXT_SHOW;
+import static cn.nextop.guava.widgets.datetime.action.ActorManager.ActionType.DATE_DATE;
+import static cn.nextop.guava.widgets.datetime.action.ActorManager.ActionType.TEXT_SHOW;
 import static java.lang.String.valueOf;
 import static org.eclipse.draw2d.TextUtilities.INSTANCE;
 

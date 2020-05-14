@@ -5,7 +5,7 @@ import org.eclipse.draw2d.IFigure;
 /**
  * @author jonny
  */
-public class ShowDateAction extends AbstractDateAction {
+public class ShowDateAction extends AbstractDateActor {
 
 	@Override
 	protected boolean updateData(IFigure container, IFigure widget) {

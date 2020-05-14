@@ -6,7 +6,7 @@ import org.eclipse.swt.widgets.Canvas;
 
 import cn.nextop.guava.widgets.AbstractBuilder;
 import cn.nextop.guava.widgets.datetime.XDateTimePopup;
-import cn.nextop.guava.widgets.datetime.action.ActionFactory;
+import cn.nextop.guava.widgets.datetime.action.ActorManager;
 import cn.nextop.guava.widgets.datetime.model.DummyCalendar;
 import cn.nextop.guava.widgets.datetime.render.popup.PopupPanel;
 import cn.nextop.guava.widgets.datetime.render.popup.calendar.CalendarPanel;
@@ -136,7 +136,7 @@ public class XDateTimePopupBuilder extends AbstractBuilder {
 	/**
 	 * Faster 
 	 */
-	public ActionFactory getActionFactory() {
+	public ActorManager getActionFactory() {
 		return getDateTimePopup().getActionFactory();
 	}
 	

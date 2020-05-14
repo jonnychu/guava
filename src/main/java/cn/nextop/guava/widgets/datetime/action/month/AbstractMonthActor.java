@@ -4,7 +4,7 @@ import static cn.nextop.guava.support.Objects.cast;
 
 import org.eclipse.draw2d.IFigure;
 
-import cn.nextop.guava.widgets.AbstractAction;
+import cn.nextop.guava.widgets.AbstractActor;
 import cn.nextop.guava.widgets.datetime.model.DummyCalendar;
 import cn.nextop.guava.widgets.datetime.render.popup.calendar.month.MonthPanel;
 import cn.nextop.guava.widgets.datetime.render.popup.calendar.month.widget.MonthItemWidget;
@@ -12,7 +12,7 @@ import cn.nextop.guava.widgets.datetime.render.popup.calendar.month.widget.Month
 /**
  * @author jonny
  */
-public abstract class AbstractMonthAction extends AbstractAction {
+public abstract class AbstractMonthActor extends AbstractActor {
 	
 	/**
 	 * 

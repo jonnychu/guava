@@ -9,7 +9,7 @@ import org.eclipse.draw2d.geometry.Dimension;
 import org.eclipse.draw2d.geometry.Rectangle;
 
 import cn.nextop.guava.support.swt.Colors;
-import cn.nextop.guava.widgets.datetime.action.ActionFactory.ActionType;
+import cn.nextop.guava.widgets.datetime.action.ActorManager.ActionType;
 import cn.nextop.guava.widgets.datetime.builder.XDateTimePopupBuilder;
 import cn.nextop.guava.widgets.datetime.render.AbstractTimeWidget;
 import cn.nextop.guava.widgets.datetime.render.popup.shortcut.ShortcutContent;

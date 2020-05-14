@@ -14,7 +14,7 @@ import cn.nextop.guava.widgets.datetime.support.glossary.PanelType;
 /**
  * @author jonny
  */
-public class Year4Action extends AbstractYearAction {
+public class Year4Action extends AbstractYearActor {
 
 	@Override
 	public boolean updateData(IFigure container, IFigure widget) {

@@ -5,7 +5,7 @@ import static cn.nextop.guava.widgets.datetime.XDateTimePopup.ITEMHEIGHT;
 
 import org.eclipse.draw2d.IFigure;
 
-import cn.nextop.guava.widgets.AbstractAction;
+import cn.nextop.guava.widgets.AbstractActor;
 import cn.nextop.guava.widgets.datetime.model.DummyCalendar;
 import cn.nextop.guava.widgets.datetime.render.popup.calendar.time.TimePanel;
 import cn.nextop.guava.widgets.datetime.render.popup.calendar.time.hour.HourContent;
@@ -21,7 +21,7 @@ import cn.nextop.guava.widgets.datetime.render.popup.calendar.time.sec.widget.Se
 /**
  * @author jonny
  */
-public abstract class AbstractTimeAction extends AbstractAction {
+public abstract class AbstractTimeActor extends AbstractActor {
 	
 	/**
 	 * 

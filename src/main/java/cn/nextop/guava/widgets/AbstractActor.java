@@ -5,7 +5,7 @@ import org.eclipse.draw2d.IFigure;
 /**
  * @author jonny
  */
-public abstract class AbstractAction {
+public abstract class AbstractActor {
 	//
 	protected abstract void updateUI(IFigure container, IFigure widget);
 	protected abstract boolean updateData(IFigure container, IFigure widget);

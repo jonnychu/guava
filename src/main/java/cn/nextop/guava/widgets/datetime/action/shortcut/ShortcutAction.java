@@ -14,7 +14,7 @@ import cn.nextop.guava.widgets.datetime.support.glossary.Shortcut;
 /**
  * @author jonny
  */
-public class ShortcutAction extends AbstractShortcutAction {
+public class ShortcutAction extends AbstractShortcutActor {
 
 	@Override
 	protected boolean updateData(IFigure container, IFigure widget) {

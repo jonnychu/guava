@@ -4,7 +4,7 @@ import static cn.nextop.guava.support.Objects.cast;
 
 import org.eclipse.draw2d.IFigure;
 
-import cn.nextop.guava.widgets.AbstractAction;
+import cn.nextop.guava.widgets.AbstractActor;
 import cn.nextop.guava.widgets.datetime.model.DummyCalendar;
 import cn.nextop.guava.widgets.datetime.model.DummyModel;
 import cn.nextop.guava.widgets.datetime.render.popup.calendar.date.DatePanel;
@@ -13,7 +13,7 @@ import cn.nextop.guava.widgets.datetime.render.popup.calendar.date.widget.DateIt
 /**
  * @author jonny
  */
-public abstract class AbstractDateAction extends AbstractAction {
+public abstract class AbstractDateActor extends AbstractActor {
 	
 	/**
 	 * 

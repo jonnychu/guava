@@ -6,7 +6,7 @@ import org.eclipse.draw2d.IFigure;
 import org.eclipse.swt.SWT;
 
 import cn.nextop.guava.support.Objects;
-import cn.nextop.guava.widgets.AbstractAction;
+import cn.nextop.guava.widgets.AbstractActor;
 import cn.nextop.guava.widgets.combo.XCombo;
 import cn.nextop.guava.widgets.combo.XComboPopup;
 import cn.nextop.guava.widgets.combo.model.XComboModel;
@@ -19,7 +19,7 @@ import cn.nextop.guava.widgets.combo.render.text.TextPanel;
 /**
  * @author jonny
  */
-public class SelectionAction extends AbstractAction {
+public class SelectionActor extends AbstractActor {
 
 	@Override
 	protected void updateUI(IFigure container, IFigure widget) {

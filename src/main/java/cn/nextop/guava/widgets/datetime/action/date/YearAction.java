@@ -13,7 +13,7 @@ import cn.nextop.guava.widgets.datetime.support.glossary.Type;
 /**
  * @author jonny
  */
-public class YearAction extends AbstractDateAction {
+public class YearAction extends AbstractDateActor {
 	//
 	private final Type type;
 	

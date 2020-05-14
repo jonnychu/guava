@@ -5,7 +5,7 @@ import static java.lang.Integer.parseInt;
 
 import org.eclipse.draw2d.IFigure;
 
-import cn.nextop.guava.widgets.AbstractAction;
+import cn.nextop.guava.widgets.AbstractActor;
 import cn.nextop.guava.widgets.datetime.model.DummyCalendar;
 import cn.nextop.guava.widgets.datetime.render.popup.calendar.year.YearPanel;
 import cn.nextop.guava.widgets.datetime.render.popup.calendar.year.widget.YearItemWidget;
@@ -13,7 +13,7 @@ import cn.nextop.guava.widgets.datetime.render.popup.calendar.year.widget.YearIt
 /**
  * @author jonny
  */
-public abstract class AbstractYearAction extends AbstractAction {
+public abstract class AbstractYearActor extends AbstractActor {
 	
 	/**
 	 * 

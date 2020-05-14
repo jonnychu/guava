@@ -13,7 +13,7 @@ import cn.nextop.guava.widgets.datetime.render.popup.calendar.time.min.widget.Mi
 /**
  * @author jonny
  */
-public class MinuteAction extends AbstractTimeAction {
+public class MinuteAction extends AbstractTimeActor {
 	
 	@Override
 	protected boolean updateData(IFigure container, IFigure widget) {

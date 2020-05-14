@@ -7,7 +7,7 @@ import java.util.Map;
 
 import org.eclipse.draw2d.Figure;
 
-import cn.nextop.guava.widgets.AbstractAction;
+import cn.nextop.guava.widgets.AbstractActor;
 import cn.nextop.guava.widgets.datetime.action.date.DateAction;
 import cn.nextop.guava.widgets.datetime.action.date.MonthAction;
 import cn.nextop.guava.widgets.datetime.action.date.ShowDateAction;
@@ -36,9 +36,9 @@ import cn.nextop.guava.widgets.datetime.support.glossary.Type;
 /**
  * @author jonny
  */
-public class ActionFactory {
+public class ActorManager {
 	//
-	private final Map<ActionType, AbstractAction> actions;
+	private final Map<ActionType, AbstractActor> actions;
 	
 	//
 	public enum ActionType {
@@ -57,7 +57,7 @@ public class ActionFactory {
 	/**
 	 * 
 	 */
-	public ActionFactory() {
+	public ActorManager() {
 		actions = new HashMap<>();
 		// Shortcut
 		actions.put(ActionType.SHORTCUT, new ShortcutAction());
@@ -94,7 +94,7 @@ public class ActionFactory {
 	/**
 	 * 
 	 */
-	public ActionFactory onAction(ActionType type, Figure container, Figure widget) {
+	public ActorManager onAction(ActionType type, Figure container, Figure widget) {
 		actions.get(type).onAction(container, widget); return this;
 	}
 	

@@ -13,7 +13,7 @@ import cn.nextop.guava.widgets.datetime.render.popup.calendar.time.hour.widget.H
 /**
  * @author jonny
  */
-public class HourAction extends AbstractTimeAction {
+public class HourAction extends AbstractTimeActor {
 	
 	@Override
 	protected boolean updateData(IFigure container, IFigure widget) {

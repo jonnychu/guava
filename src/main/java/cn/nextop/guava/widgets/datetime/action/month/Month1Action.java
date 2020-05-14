@@ -13,7 +13,7 @@ import cn.nextop.guava.widgets.datetime.support.glossary.PanelType;
 /**
  * @author jonny
  */
-public class Month1Action extends AbstractMonthAction {
+public class Month1Action extends AbstractMonthActor {
 
 	@Override
 	public boolean updateData(IFigure container, IFigure widget) {

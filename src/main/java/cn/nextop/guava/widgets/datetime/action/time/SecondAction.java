@@ -13,7 +13,7 @@ import cn.nextop.guava.widgets.datetime.render.popup.calendar.time.sec.widget.Se
 /**
  * @author jonny
  */
-public class SecondAction extends AbstractTimeAction {
+public class SecondAction extends AbstractTimeActor {
 	
 	@Override
 	protected boolean updateData(IFigure container, IFigure widget) {

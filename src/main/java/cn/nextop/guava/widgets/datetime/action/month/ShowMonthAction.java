@@ -5,7 +5,7 @@ import org.eclipse.draw2d.IFigure;
 /**
  * @author jonny
  */
-public class ShowMonthAction extends AbstractMonthAction {
+public class ShowMonthAction extends AbstractMonthActor {
 
 	@Override
 	protected boolean updateData(IFigure container, IFigure widget) {
