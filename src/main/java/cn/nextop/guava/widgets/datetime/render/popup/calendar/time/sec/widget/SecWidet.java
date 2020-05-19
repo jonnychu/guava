@@ -1,8 +1,8 @@
 package cn.nextop.guava.widgets.datetime.render.popup.calendar.time.sec.widget;
 
 import static cn.nextop.guava.support.Objects.cast;
-import static cn.nextop.guava.widgets.datetime.actor.ActorManager.ActionType.TEXT_SHOW;
-import static cn.nextop.guava.widgets.datetime.actor.ActorManager.ActionType.TIME_SECOND;
+import static cn.nextop.guava.widgets.datetime.action.actor.ActorManager.ActionType.TEXT_SHOW;
+import static cn.nextop.guava.widgets.datetime.action.actor.ActorManager.ActionType.TIME_SECOND;
 import static java.lang.String.valueOf;
 import static org.eclipse.draw2d.TextUtilities.INSTANCE;
 
@@ -12,6 +12,8 @@ import org.eclipse.draw2d.geometry.Dimension;
 import org.eclipse.draw2d.geometry.Rectangle;
 
 import cn.nextop.guava.support.swt.Colors;
+import cn.nextop.guava.widgets.datetime.action.event.Event;
+import cn.nextop.guava.widgets.datetime.action.event.Event.EventType;
 import cn.nextop.guava.widgets.datetime.render.AbstractTimeWidget;
 import cn.nextop.guava.widgets.datetime.render.popup.calendar.time.TimePanel;
 import cn.nextop.guava.widgets.datetime.render.popup.calendar.time.sec.SecContent;
@@ -58,8 +60,10 @@ public class SecWidet extends AbstractTimeWidget {
 	public void handleMouseReleased(MouseEvent event) {
 		super.handleMouseReleased(event);
 		final SecContent content = cast(getParent());
-		final TimePanel time = content.getBuilder().getTimePanel();
-		final TextPanel text = content.getBuilder().getTextPanel();
-		content.getBuilder().getActionFactory().onAction(TIME_SECOND, time, this, TEXT_SHOW, text, null);
+		final TimePanel time = content.getFactory().getTimePanel();
+		final TextPanel text = content.getFactory().getTextPanel();
+		content.getFactory().getEventBus()
+		.submit(new Event(EventType.COMMON, TIME_SECOND, this, time, this))
+		.submit(new Event(EventType.COMMON, TEXT_SHOW, this, text, null));
 	}
 }

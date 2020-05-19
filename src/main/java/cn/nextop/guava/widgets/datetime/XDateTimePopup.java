@@ -13,7 +13,6 @@ import org.eclipse.swt.widgets.Event;
 import org.eclipse.swt.widgets.Listener;
 import org.eclipse.swt.widgets.Shell;
 
-import cn.nextop.guava.widgets.datetime.actor.ActorManager;
 import cn.nextop.guava.widgets.datetime.builder.XDateTimePopupBuilder;
 import cn.nextop.guava.widgets.datetime.model.DummyCalendar;
 import cn.nextop.guava.widgets.datetime.model.XDateTimeModel;
@@ -30,7 +29,6 @@ public class XDateTimePopup extends Canvas {
 	private XDateTime dateTime;
 	private LightweightSystem lws;
 	private DummyCalendar dummyCalendar;
-	private ActorManager actionFactory;
 	private XDateTimePopupBuilder builder;
 	public static final int ITEMHEIGHT = 24;
 	
@@ -40,7 +38,6 @@ public class XDateTimePopup extends Canvas {
 	public PopupPanel getPopup() { return popup; }
 	public XDateTime getDateTime() { return dateTime; }
 	public DummyCalendar getDummyCalendar() { return dummyCalendar; }
-	public ActorManager getActionFactory() { return actionFactory; }
 	
 	/**
 	 * 
@@ -49,7 +46,6 @@ public class XDateTimePopup extends Canvas {
 		super(shell(dateTime.getShell()), SWT.DOUBLE_BUFFERED);
 		this.dateTime = dateTime; 
 		this.layout = new Layout();
-		this.actionFactory = new ActorManager();
 		final XDateTimeModel model = dateTime.getModel();
 		this.dummyCalendar = new DummyCalendar(model.getTime());
 		//

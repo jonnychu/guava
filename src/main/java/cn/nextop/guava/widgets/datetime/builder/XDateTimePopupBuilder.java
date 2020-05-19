@@ -6,7 +6,7 @@ import org.eclipse.swt.widgets.Canvas;
 
 import cn.nextop.guava.widgets.AbstractBuilder;
 import cn.nextop.guava.widgets.datetime.XDateTimePopup;
-import cn.nextop.guava.widgets.datetime.actor.ActorManager;
+import cn.nextop.guava.widgets.datetime.action.event.XEventBus;
 import cn.nextop.guava.widgets.datetime.model.DummyCalendar;
 import cn.nextop.guava.widgets.datetime.render.popup.PopupPanel;
 import cn.nextop.guava.widgets.datetime.render.popup.calendar.CalendarPanel;
@@ -30,6 +30,8 @@ import cn.nextop.guava.widgets.datetime.support.glossary.PanelType;
  */
 public class XDateTimePopupBuilder extends AbstractBuilder {
 	//
+	private XEventBus eventBus;
+	//
 	private SecPanel secPanel;
 	private MinPanel minPanel;
 	private TimePanel timePanel;
@@ -44,6 +46,7 @@ public class XDateTimePopupBuilder extends AbstractBuilder {
 	
 	@Override
 	public PopupPanel build(Canvas parent) {
+		this.eventBus = new XEventBus();
 		this.dateTimePopup = cast(parent);
 		this.popupPanel = new PopupPanel("popup.panel", this);
 		// shortcut
@@ -84,6 +87,13 @@ public class XDateTimePopupBuilder extends AbstractBuilder {
 		this.timePanel.add(this.secPanel); this.timePanel.add(this.minPanel);
 		this.timePanel.add(this.hourPanel); panel.add(this.timePanel); //root
 		panel.panel(PanelType.DATE); return panel; // switch first date panel
+	}
+	
+	/**
+	 * 
+	 */
+	public XEventBus getEventBus() {
+		return eventBus;
 	}
 	
 	/**
@@ -136,10 +146,6 @@ public class XDateTimePopupBuilder extends AbstractBuilder {
 	/**
 	 * Faster 
 	 */
-	public ActorManager getActionFactory() {
-		return getDateTimePopup().getActionFactory();
-	}
-	
 	public DummyCalendar getDummyCalendar() {
 		return getDateTimePopup().getDummyCalendar();
 	}

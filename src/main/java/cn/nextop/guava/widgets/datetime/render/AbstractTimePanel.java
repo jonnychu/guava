@@ -18,7 +18,7 @@ public abstract class AbstractTimePanel extends AbstractPanel {
 		super(name);
 	}
 
-	public XDateTimePopupBuilder getBuilder() {
+	public XDateTimePopupBuilder getFactory() {
 		return builder;
 	}
 }

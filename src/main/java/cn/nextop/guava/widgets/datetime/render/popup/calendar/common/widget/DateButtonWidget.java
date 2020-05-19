@@ -1,7 +1,7 @@
 package cn.nextop.guava.widgets.datetime.render.popup.calendar.common.widget;
 
 import static cn.nextop.guava.support.Objects.cast;
-import static cn.nextop.guava.widgets.datetime.actor.ActorManager.ActionType.DATE_SHOW;
+import static cn.nextop.guava.widgets.datetime.action.actor.ActorManager.ActionType.DATE_SHOW;
 
 import org.eclipse.draw2d.Graphics;
 import org.eclipse.draw2d.MouseEvent;
@@ -12,6 +12,8 @@ import org.eclipse.draw2d.geometry.Rectangle;
 import cn.nextop.guava.support.swt.CGUtils;
 import cn.nextop.guava.support.swt.Colors;
 import cn.nextop.guava.support.swt.Fonts;
+import cn.nextop.guava.widgets.datetime.action.event.Event;
+import cn.nextop.guava.widgets.datetime.action.event.Event.EventType;
 import cn.nextop.guava.widgets.datetime.render.AbstractTimeWidget;
 import cn.nextop.guava.widgets.datetime.render.popup.calendar.time.TimePanel;
 
@@ -42,6 +44,6 @@ public class DateButtonWidget extends AbstractTimeWidget {
 	@Override
 	public void handleMouseReleased(MouseEvent event) {
 		super.handleMouseReleased(event); final TimePanel tp = cast(getParent());
-		tp.getBuilder().getActionFactory().onShowDatePanelAction(DATE_SHOW, tp, null);
+		tp.getFactory().getEventBus().submit(new Event(EventType.SHOW_DATE, DATE_SHOW, this, tp, null));
 	}
 }

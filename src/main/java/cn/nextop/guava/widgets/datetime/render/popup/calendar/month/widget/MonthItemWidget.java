@@ -1,8 +1,8 @@
 package cn.nextop.guava.widgets.datetime.render.popup.calendar.month.widget;
 
 import static cn.nextop.guava.support.Objects.cast;
-import static cn.nextop.guava.widgets.datetime.actor.ActorManager.ActionType.DATE_SHOW;
-import static cn.nextop.guava.widgets.datetime.actor.ActorManager.ActionType.MONTH_MONTH;
+import static cn.nextop.guava.widgets.datetime.action.actor.ActorManager.ActionType.DATE_SHOW;
+import static cn.nextop.guava.widgets.datetime.action.actor.ActorManager.ActionType.MONTH_MONTH;
 
 import org.eclipse.draw2d.Graphics;
 import org.eclipse.draw2d.MouseEvent;
@@ -12,6 +12,8 @@ import org.eclipse.draw2d.geometry.Rectangle;
 
 import cn.nextop.guava.support.swt.CGUtils;
 import cn.nextop.guava.support.swt.Colors;
+import cn.nextop.guava.widgets.datetime.action.event.Event;
+import cn.nextop.guava.widgets.datetime.action.event.Event.EventType;
 import cn.nextop.guava.widgets.datetime.render.AbstractTimeWidget;
 import cn.nextop.guava.widgets.datetime.render.popup.calendar.date.DatePanel;
 import cn.nextop.guava.widgets.datetime.render.popup.calendar.month.MonthPanel;
@@ -62,7 +64,9 @@ public class MonthItemWidget extends AbstractTimeWidget {
 	@Override
 	public void handleMouseReleased(MouseEvent event) {
 		super.handleMouseReleased(event); 
-		MonthPanel mp = cast(getParent()); DatePanel dp = mp.getBuilder().getDatePanel();
-		mp.getBuilder().getActionFactory().onAction(MONTH_MONTH, mp, this, DATE_SHOW, dp, null);
+		MonthPanel mp = cast(getParent()); DatePanel dp = mp.getFactory().getDatePanel();
+		mp.getFactory().getEventBus()
+		.submit(new Event(EventType.COMMON, MONTH_MONTH, this, mp, this))
+		.submit(new Event(EventType.COMMON, DATE_SHOW, this, dp, null));
 	}
 }
