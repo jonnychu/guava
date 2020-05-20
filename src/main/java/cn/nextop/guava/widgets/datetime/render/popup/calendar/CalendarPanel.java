@@ -2,8 +2,8 @@ package cn.nextop.guava.widgets.datetime.render.popup.calendar;
 
 import org.eclipse.draw2d.IFigure;
 
-import cn.nextop.guava.widgets.datetime.builder.XDateTimePopupBuilder;
 import cn.nextop.guava.widgets.datetime.render.AbstractTimePanel;
+import cn.nextop.guava.widgets.datetime.support.builder.XDateTimePopupBuilder;
 import cn.nextop.guava.widgets.datetime.support.glossary.PanelType;
 
 /**

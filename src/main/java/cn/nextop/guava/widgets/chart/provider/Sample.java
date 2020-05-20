@@ -24,4 +24,9 @@ public class Sample implements ISample {
 	public double getValue() {
 		return value;
 	}
+	
+	@Override
+	public String toString() {
+		return "[" + this.time + "," + this.value + "]";
+	}
 }

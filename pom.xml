@@ -42,6 +42,14 @@
 			<artifactId>guava</artifactId>
 			<version>29.0-jre</version>
 		</dependency>
+		<!-- https://mvnrepository.com/artifact/io.aeron/aeron-all -->
+		<dependency>
+			<groupId>io.aeron</groupId>
+			<artifactId>aeron-all</artifactId>
+			<version>1.27.0</version>
+			<type>pom</type>
+		</dependency>
+
 	</dependencies>
 
 	<build>

@@ -6,9 +6,9 @@ import static cn.nextop.guava.widgets.datetime.XDateTimePopup.ITEMHEIGHT;
 import org.eclipse.draw2d.IFigure;
 import org.eclipse.draw2d.geometry.Rectangle;
 
-import cn.nextop.guava.widgets.datetime.builder.XDateTimePopupBuilder;
 import cn.nextop.guava.widgets.datetime.render.AbstractTimePanel;
 import cn.nextop.guava.widgets.datetime.render.popup.shortcut.widget.ShortcutItem;
+import cn.nextop.guava.widgets.datetime.support.builder.XDateTimePopupBuilder;
 import cn.nextop.guava.widgets.datetime.support.glossary.Shortcut;
 
 /**

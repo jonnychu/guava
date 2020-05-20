@@ -1,7 +1,7 @@
 package cn.nextop.guava.widgets.datetime.render;
 
 import cn.nextop.guava.widgets.AbstractPanel;
-import cn.nextop.guava.widgets.datetime.builder.XDateTimePopupBuilder;
+import cn.nextop.guava.widgets.datetime.support.builder.XDateTimePopupBuilder;
 
 /**
  * @author jonny
